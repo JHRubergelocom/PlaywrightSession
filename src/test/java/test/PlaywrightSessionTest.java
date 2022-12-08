@@ -8,7 +8,18 @@ import java.nio.file.Paths;
 
 public class PlaywrightSessionTest {
 
-    private void firstScript() {
+    @Before
+    public void setUp() {
+
+    }
+
+    @Test
+    public void TestSession() {
+        firstScript();
+        traceViewer();
+    }
+    @Test
+    public void firstScript() {
         try (Playwright playwright = Playwright.create()) {
             Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(5000));
             Page page = browser.newPage();
@@ -18,10 +29,10 @@ public class PlaywrightSessionTest {
         }
     }
 
-    private void traceViewer() {
-        Browser browser;
+    @Test
+    public void traceViewer() {
         try (Playwright playwright = Playwright.create()) {
-            browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(5000));
+            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(5000));
             BrowserContext context = browser.newContext();
 
             // Start tracing before creating / navigating a page.
@@ -36,18 +47,7 @@ public class PlaywrightSessionTest {
             // Stop tracing and export it into a zip archive.
             context.tracing().stop(new Tracing.StopOptions()
                     .setPath(Paths.get("trace.zip")));    }
-        }
-
-
-    @Before
-    public void setUp() {
-
     }
 
-    @Test
-    public void TestSession() {
-        firstScript();
-        traceViewer();
-    }
 
 }
