@@ -1,9 +1,7 @@
 package test;
 
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.AriaRole;
 import org.junit.jupiter.api.*;
-import session.Action;
 import session.AssignmentStatus;
 import session.TabPage;
 import session.WebclientSession;
@@ -182,9 +180,6 @@ public class PlaywrightSessionTest {
 
         ws.selectSolutionsFolder();
         tabPages = createMB1();
-
-
-
 /*
         Action action = new Action(ws, "CreateMeetingBoard");
         action.startFormula();
@@ -200,8 +195,11 @@ public class PlaywrightSessionTest {
         System.out.println("benachrichtigungen: " + benachrichtigungen);
         benachrichtigungen.click();
 */
-
         ws.executeAction("CreateMeetingBoard", tabPages);
+
+
+
+
 
         ws.getPage().pause();
         ws.close();

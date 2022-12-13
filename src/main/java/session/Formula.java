@@ -1,9 +1,7 @@
 package session;
 
-import com.microsoft.playwright.Frame;
 import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
 import java.util.List;
@@ -11,7 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class Formula {
-    private Action action;
+    private final Action action;
 
     public Formula(Action action) {
         this.action = action;
@@ -26,7 +24,7 @@ public class Formula {
     }
 
     public void save() {
-        action.getFrameLocator().getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")).click();;
+        action.getFrameLocator().getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")).click();
     }
 
 
