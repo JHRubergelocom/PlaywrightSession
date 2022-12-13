@@ -11,25 +11,22 @@ import java.util.Map;
 import java.util.Optional;
 
 public class Formula {
-    private Page page;
-    private String frameSelector;
+    private Action action;
 
-    public Formula(Page page, String frameSelector) {
-        this.page = page;
-        this.frameSelector = frameSelector;
+    public Formula(Action action) {
+        this.action = action;
     }
 
     public void selectTab(String tabName, String startElement, AssignmentStatus assignment) {
         if (!tabName.equals("")) {
-            page.frame(frameSelector).getByRole(AriaRole.LINK, new Frame.GetByRoleOptions().setName("Mitglieder")).click();
+            action.getFrameLocator().getByRole(AriaRole.LINK, new FrameLocator.GetByRoleOptions().setName(tabName)).click();
         }
         selectAssignment(assignment);
-        BaseFunctions.clickable(page, startElement);
         System.out.println("ZZZZ BaseFunctions.clickable(frame, startElement) " + startElement + " ZZZZ");
     }
 
     public void save() {
-        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("OK")).click();
+        action.getFrameLocator().getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")).click();;
     }
 
 
@@ -38,11 +35,11 @@ public class Formula {
     }
 
     public void inputTextField(String name, String text) {
-        BaseFunctions.type(page.locator("[name=" + name + "]"), text);
+        BaseFunctions.type(action.getFrameLocator().locator("[name=\"" + name + "\"]"), text);
     }
 
     private void inputCheckBox(String name, Boolean value) {
-        BaseFunctions.select(page.locator("[name=" + name + "]"), value);
+        BaseFunctions.select(action.getFrameLocator().locator("[name=\"" + name + "\"]"), value);
     }
 
     public void inputTextFields(Map<String, String> fields) {
@@ -63,7 +60,7 @@ public class Formula {
         int index = 1;
         for (Map<String,String> tableLine: table) {
             if (index > 1) {
-                click(page.locator("xpath="+ addLineButtonXpath));
+                click(action.getFrameLocator().locator("xpath="+ addLineButtonXpath));
                 try {
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
@@ -106,7 +103,7 @@ public class Formula {
     private void selectAssignment(AssignmentStatus assignment) {
         switch (assignment) {
             case MEETING -> {
-                BaseFunctions.click(page.locator("xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[2]"));
+                BaseFunctions.click(action.getFrameLocator().locator("xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[2]"));
             }
         }
         System.out.println("selectassigment assignment" + assignment);

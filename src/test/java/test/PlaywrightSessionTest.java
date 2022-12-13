@@ -1,7 +1,9 @@
 package test;
 
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.AriaRole;
 import org.junit.jupiter.api.*;
+import session.Action;
 import session.AssignmentStatus;
 import session.TabPage;
 import session.WebclientSession;
@@ -177,11 +179,31 @@ public class PlaywrightSessionTest {
         WebclientSession ws = new WebclientSession();
         ws.login("ruberg-meeting.dev.elo", "Administrator", "elo");
 
+
         ws.selectSolutionsFolder();
         tabPages = createMB1();
+
+
+
+/*
+        Action action = new Action(ws, "CreateMeetingBoard");
+        action.startFormula();
+
+        FrameLocator frameLocator = ws.getPage().frameLocator("#IFramePanelIFrame-panel-iframe-1782");
+        System.out.println("frameLocator: " + frameLocator);
+        Locator locator = frameLocator.locator("input[name=\"IX_GRP_MEETING_BOARD_NAME\"]");
+        System.out.println("locator: " + locator);
+        locator.fill("MB1");
+        locator.press("Tab");
+
+        Locator benachrichtigungen = frameLocator.getByRole(AriaRole.LINK, new FrameLocator.GetByRoleOptions().setName("Benachrichtigungen"));
+        System.out.println("benachrichtigungen: " + benachrichtigungen);
+        benachrichtigungen.click();
+*/
+
         ws.executeAction("CreateMeetingBoard", tabPages);
 
-
+        ws.getPage().pause();
         ws.close();
 
     }
@@ -194,7 +216,10 @@ public class PlaywrightSessionTest {
 
     @Test
     public void secondScript() {
-        page.navigate("https://playwright.dev");
+        page.navigate("http://" + "ruberg-meeting.dev.elo" + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
+
+
+
         page.pause(); // Start Codegen
     }
 

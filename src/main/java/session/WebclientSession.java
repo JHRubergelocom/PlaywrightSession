@@ -44,7 +44,7 @@ public class WebclientSession {
     public void executeAction(String actionName, Map<String, TabPage> tabPages) {
         Action action = new Action(this, actionName);
         action.startFormula();
-        Formula formula = new Formula(page, "IFramePanelIFrame-panel-iframe-1992");
+        Formula formula = new Formula(action);
         formula.inputData(tabPages);
         formula.save();
 

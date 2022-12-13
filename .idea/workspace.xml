@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="PlaywrightSessionTest with tracing">
-      <change afterPath="$PROJECT_DIR$/src/main/java/session/Action.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/session/AssignmentStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/session/Formula.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/session/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/session/TabPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright WebclientSession">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/Formula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Formula.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trace.zip" beforeDir="false" afterPath="$PROJECT_DIR$/trace.zip" afterDir="false" />
     </list>
@@ -42,16 +39,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/ruberg/Documents/Entwicklung/IntelliJ/PlaywrightSession/src/main/java",
-    "settings.editor.selected.configurable": "advanced.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ruberg/Documents/Entwicklung/IntelliJ/PlaywrightSession/src/main/java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession\src\main\java" />
@@ -69,6 +66,22 @@
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlaywrightSessionTest.TestCreateMeeting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PlaywrightSession" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
+      <option name="METHOD_NAME" value="TestCreateMeeting" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -121,28 +134,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PlaywrightSession" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.Test2" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
         <item itemvalue="JUnit.PlaywrightSessionTest.secondScript" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.TestCreateMeeting" />
         <item itemvalue="JUnit.PlaywrightSessionTest" />
         <item itemvalue="JUnit.PlaywrightSessionTest.firstScript" />
-        <item itemvalue="JUnit.Test2" />
       </list>
     </recent_temporary>
   </component>
@@ -190,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670511779852</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Playwright WebclientSession">
+      <created>1670858228916</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670858228916</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -210,14 +215,15 @@
     <MESSAGE value="PlaywrightSessionTest" />
     <MESSAGE value="Test Runners" />
     <MESSAGE value="PlaywrightSessionTest with tracing" />
-    <option name="LAST_COMMIT_MESSAGE" value="PlaywrightSessionTest with tracing" />
+    <MESSAGE value="Playwright WebclientSession" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright WebclientSession" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/session/Formula.java</url>
-          <line>124</line>
+          <line>121</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
