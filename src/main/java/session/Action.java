@@ -60,6 +60,16 @@ public class Action {
     }
 
     public FrameLocator getFrameLocator() {
+        /*
+        String selector = "";
+        for (Frame f: ws.getPage().frames()) {
+            System.out.println("Framename " + f.name());
+            if (f.name().contains("iframe")) {
+                selector = f.name();
+            }
+        }
+        return ws.getPage().frameLocator(selector);
+         */
         return frameLocator;
     }
 

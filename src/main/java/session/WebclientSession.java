@@ -1,9 +1,7 @@
 package session;
 
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.AriaRole;
 
-import java.util.List;
 import java.util.Map;
 
 public class WebclientSession {
@@ -66,7 +64,6 @@ public class WebclientSession {
     }
 
     public void close() {
-        page.pause();
         playwright.close();
     }
 

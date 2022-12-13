@@ -54,11 +54,11 @@ public class Formula {
 
 
 
-    public void inputTextFieldTable(List<Map<String, String>> table, String addLineButtonXpath) {
+    public void inputTextFieldTable(List<Map<String, String>> table, String addLineButtonName) {
         int index = 1;
         for (Map<String,String> tableLine: table) {
             if (index > 1) {
-                click(action.getFrameLocator().locator("xpath="+ addLineButtonXpath));
+                click(action.getFrameLocator().getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName(addLineButtonName)));
                 try {
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
@@ -119,7 +119,7 @@ public class Formula {
             String startElement = getStartElement(tabPage);
             selectTab(tabName, startElement, tabPage.getAssignment());
             inputTextFields(tabPage.getFields());
-            inputTextFieldTable(tabPage.getTable(), tabPage.getAddLineButtonXpath());
+            inputTextFieldTable(tabPage.getTable(), tabPage.getAddLineButtonName());
             inputCheckBoxes(tabPage.getCheckboxes());
 
         }

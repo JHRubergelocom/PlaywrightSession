@@ -7,7 +7,7 @@ public class TabPage {
 
     private final Map<String,String> fields;
     private final List<Map<String, String>> table;
-    private final String addLineButtonXpath;
+    private final String addLineButtonName;
 
     private final Map<String, Boolean> checkboxes;
 
@@ -17,10 +17,10 @@ public class TabPage {
         return assignment;
     }
 
-    public TabPage(Map<String, String> fields, List<Map<String, String>> table, String addLineButtonXpath, Map<String, Boolean> checkboxes, AssignmentStatus assignment) {
+    public TabPage(Map<String, String> fields, List<Map<String, String>> table, String addLineButtonName, Map<String, Boolean> checkboxes, AssignmentStatus assignment) {
         this.fields = fields;
         this.table = table;
-        this.addLineButtonXpath = addLineButtonXpath;
+        this.addLineButtonName = addLineButtonName;
         this.checkboxes = checkboxes;
         this.assignment = assignment;
     }
@@ -37,8 +37,8 @@ public class TabPage {
         return checkboxes;
     }
 
-    public String getAddLineButtonXpath() {
-        return addLineButtonXpath;
+    public String getAddLineButtonName() {
+        return addLineButtonName;
     }
 
     @Override

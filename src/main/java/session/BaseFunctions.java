@@ -9,6 +9,14 @@ public class BaseFunctions {
         textbox.clear();
         textbox.fill(inputText);
         textbox.press("Tab");
+
+        /*
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        */
     }
 
     public static void click(Locator locator) {

@@ -7,8 +7,12 @@
     <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright WebclientSession CreateMeetingBoard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/session/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/session/Formula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Formula.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/TabPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/TabPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trace.zip" beforeDir="false" afterPath="$PROJECT_DIR$/trace.zip" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670927126222</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Playwright WebclientSession CreateMeetingBoard">
+      <created>1670927719942</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670927719942</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -230,6 +241,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/session/Formula.java</url>
           <line>119</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/session/Action.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
