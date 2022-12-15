@@ -215,7 +215,6 @@ public class PlaywrightSessionTest {
         tabPages.put("Benachrichtigungen", tabPage);
 
         // Wiederholung
-        /*
         fields = new TreeMap<>();
 
         table = new ArrayList<>();
@@ -223,11 +222,46 @@ public class PlaywrightSessionTest {
         checkboxes = new TreeMap<>();
         checkboxes.put("WF_MAP_MEETING_REPETITION_CREATE", true);
 
-        tabPage = new TabPage(fields, table, "//*[@id='part_410_notifications']/tr[7]/td[2]/div/input", checkboxes, AssignmentStatus.NOTHING);
+        tabPage = new TabPage(fields, table, "", checkboxes, AssignmentStatus.NOTHING);
         tabPages.put("Wiederholung", tabPage);
-        */
         return tabPages;
 
+    }
+
+    private Map<String, TabPage> createMI1() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // "" (Nur eine tabPage)
+
+        Map<String,String> fields = new TreeMap<>();
+
+        fields.put("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1");
+        fields.put("IX_GRP_MEETING_BOARD_CODE", "MB1");
+        fields.put("IX_GRP_MEETING_NAME", "Meeting1");
+        fields.put("IX_GRP_MEETING_ITEM_TITLE", "Thema1");
+        fields.put("IX_GRP_MEETING_ITEM_DURATION", "40");
+        fields.put("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith");
+
+        // fields.put("IX_DESC", "Beschreibung Thema1");
+
+        List<Map<String, String>> table = new ArrayList<>();
+        Map<String, String> tableLine = new TreeMap<>();
+        tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Kraft");
+        tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Bodo");
+        table.add(tableLine);
+
+        tableLine = new TreeMap<>();
+        tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Davis");
+        tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Jessica");
+        table.add(tableLine);
+
+        Map<String,Boolean> checkboxes = new TreeMap<>();
+
+        TabPage tabPage = new TabPage(fields, table, "Weitere Person", checkboxes, AssignmentStatus.MEETING);
+        tabPages.put("", tabPage);
+
+        return tabPages;
 
     }
 
@@ -281,9 +315,23 @@ public class PlaywrightSessionTest {
         tabPages = createME1();
         ws.executeAction("CreateMeeting", tabPages);
 
-        for (Frame f: ws.getPage().frames()) {
-            System.out.println("Framename " + f.name());
-        }
+        ws.selectSolutionsFolder();
+        tabPages = createMI1();
+        ws.executeAction("CreateMeetingItem", tabPages);
+
+/*
+        ws.selectSolutionsFolder();
+        tabPages = createMB2Premium();
+        ws.executeAction("CreateMeetingBoardPremium", tabPages);
+
+        ws.selectSolutionsFolder();
+        tabPages = createME1Premium();
+        ws.executeAction("CreateMeetingPremium", tabPages);
+
+        ws.selectSolutionsFolder();
+        tabPages = createMI1Premium();
+        ws.executeAction("CreateMeetingItemPremium", tabPages);
+*/
 
         ws.getPage().pause();
         ws.close();

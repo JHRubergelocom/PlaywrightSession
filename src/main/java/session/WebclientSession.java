@@ -5,8 +5,8 @@ import com.microsoft.playwright.*;
 import java.util.Map;
 
 public class WebclientSession {
-    private Page page;
-    private Playwright playwright;
+    private final Page page;
+    private final Playwright playwright;
 
     public Page getPage() {
         return page;
@@ -39,10 +39,28 @@ public class WebclientSession {
         selectSolutionTile();
     }
 
+    private FrameLocator getFrameLocator() {
+        String selector = "";
+        getPage().mainFrame().content();
+        for (Frame frame: getPage().frames()) {
+            System.out.println("Frame.name " + frame.name());
+            if (frame.name().contains("iframe")) {
+                selector = "#" + frame.name();
+            }
+        }
+        FrameLocator frameLocator = getPage().frameLocator(selector);
+        System.out.println("selector " + selector);
+        System.out.println("frameLocator " + frameLocator);
+
+        return frameLocator;
+    }
+
     public void executeAction(String actionName, Map<String, TabPage> tabPages) {
         Action action = new Action(this, actionName);
         action.startFormula();
-        Formula formula = new Formula(action);
+        System.out.println("actionName " +actionName);
+        FrameLocator frameLocator = getFrameLocator();
+        Formula formula = new Formula(frameLocator);
         formula.inputData(tabPages);
         formula.save();
 

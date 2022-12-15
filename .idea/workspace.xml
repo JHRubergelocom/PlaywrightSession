@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright WebclientSession CreateMeetingBoard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example.png" beforeDir="false" afterPath="$PROJECT_DIR$/example.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/session/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/session/Formula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Formula.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/TabPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/TabPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trace.zip" beforeDir="false" afterPath="$PROJECT_DIR$/trace.zip" afterDir="false" />
@@ -138,10 +137,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.secondScript" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.TestCreateMeeting" />
         <item itemvalue="JUnit.PlaywrightSessionTest" />
         <item itemvalue="JUnit.PlaywrightSessionTest.firstScript" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.secondScript" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.TestCreateMeeting" />
       </list>
     </recent_temporary>
   </component>
@@ -244,7 +243,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/session/Action.java</url>
-          <line>58</line>
+          <line>50</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
