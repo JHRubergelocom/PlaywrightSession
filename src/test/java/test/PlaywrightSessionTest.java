@@ -215,6 +215,7 @@ public class PlaywrightSessionTest {
         tabPages.put("Benachrichtigungen", tabPage);
 
         // Wiederholung
+        /*
         fields = new TreeMap<>();
 
         table = new ArrayList<>();
@@ -224,6 +225,7 @@ public class PlaywrightSessionTest {
 
         tabPage = new TabPage(fields, table, "", checkboxes, AssignmentStatus.NOTHING);
         tabPages.put("Wiederholung", tabPage);
+         */
         return tabPages;
 
     }
@@ -246,10 +248,12 @@ public class PlaywrightSessionTest {
         // fields.put("IX_DESC", "Beschreibung Thema1");
 
         List<Map<String, String>> table = new ArrayList<>();
+
         Map<String, String> tableLine = new TreeMap<>();
         tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Kraft");
         tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Bodo");
         table.add(tableLine);
+
 
         tableLine = new TreeMap<>();
         tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Davis");
@@ -309,7 +313,6 @@ public class PlaywrightSessionTest {
         ws.selectSolutionsFolder();
         tabPages = createMB1();
         ws.executeAction("CreateMeetingBoard", tabPages);
-
 
         ws.selectSolutionsFolder();
         tabPages = createME1();

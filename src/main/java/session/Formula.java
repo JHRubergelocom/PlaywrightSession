@@ -6,7 +6,6 @@ import com.microsoft.playwright.options.AriaRole;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public class Formula {
     private final FrameLocator frameLocator;
@@ -15,16 +14,20 @@ public class Formula {
         this.frameLocator = frameLocator;
     }
 
-    public void selectTab(String tabName, String startElement, AssignmentStatus assignment) {
+    public void selectTab(String tabName, AssignmentStatus assignment) {
         if (!tabName.equals("")) {
             frameLocator.getByRole(AriaRole.LINK, new FrameLocator.GetByRoleOptions().setName(tabName)).click();
         }
         selectAssignment(assignment);
-        System.out.println("ZZZZ BaseFunctions.clickable(frame, startElement) " + startElement + " ZZZZ");
     }
 
     public void save() {
-        frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")).click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")));
     }
 
 
@@ -72,32 +75,6 @@ public class Formula {
         }
     }
 
-    private String getStartElement(TabPage tabPage) {
-        String startElement = "";
-
-        if(tabPage.getFields().size() > 0) {
-            Optional<String> firstKey = tabPage.getFields().keySet().stream().findFirst();
-            if (firstKey.isPresent()) {
-                startElement = firstKey.get();
-            }
-        } else if(tabPage.getTable().size() > 0) {
-            Optional<Map<String, String>> firstElement = tabPage.getTable().stream().findFirst();
-            if (firstElement.isPresent()) {
-                Optional<String> firstKey = firstElement.get().keySet().stream().findFirst();
-                if (firstKey.isPresent()) {
-                    startElement = firstKey.get();
-                    startElement = startElement + "1";
-                }
-            }
-        } else if(tabPage.getCheckboxes().size() > 0) {
-            Optional<String> firstKey = tabPage.getCheckboxes().keySet().stream().findFirst();
-            if (firstKey.isPresent()) {
-                startElement = firstKey.get();
-            }
-        }
-        return startElement;
-    }
-
     private void selectAssignment(AssignmentStatus assignment) {
         switch (assignment) {
             case MEETING -> {
@@ -116,8 +93,7 @@ public class Formula {
             String tabName = entry.getKey();
             TabPage tabPage = entry.getValue();
 
-            String startElement = getStartElement(tabPage);
-            selectTab(tabName, startElement, tabPage.getAssignment());
+            selectTab(tabName, tabPage.getAssignment());
             inputTextFields(tabPage.getFields());
             inputTextFieldTable(tabPage.getTable(), tabPage.getAddLineButtonName());
             inputCheckBoxes(tabPage.getCheckboxes());
