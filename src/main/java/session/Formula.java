@@ -22,11 +22,7 @@ public class Formula {
     }
 
     public void save() {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        BaseFunctions.sleep();
         click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")));
     }
 
@@ -35,8 +31,8 @@ public class Formula {
         BaseFunctions.click(locator);
     }
 
-    public void inputTextField(String name, String text) {
-        BaseFunctions.type(frameLocator.locator("[name=\"" + name + "\"]"), text);
+    public void inputTextField(String name, String text, boolean timeout) {
+        BaseFunctions.type(frameLocator.locator("[name=\"" + name + "\"]"), text, timeout);
     }
 
     private void inputCheckBox(String name, Boolean value) {
@@ -45,7 +41,7 @@ public class Formula {
 
     public void inputTextFields(Map<String, String> fields) {
         for (Map.Entry<String,String> entry: fields.entrySet()) {
-            inputTextField(entry.getKey(), entry.getValue());
+            inputTextField(entry.getKey(), entry.getValue(), false);
         }
     }
 
@@ -62,14 +58,10 @@ public class Formula {
         for (Map<String,String> tableLine: table) {
             if (index > 1) {
                 click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName(addLineButtonName)));
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                BaseFunctions.sleep();
             }
             for (Map.Entry<String,String> entry: tableLine.entrySet()) {
-                inputTextField(entry.getKey() + index, entry.getValue());
+                inputTextField(entry.getKey() + index, entry.getValue(), true);
             }
             index++;
         }
@@ -97,7 +89,6 @@ public class Formula {
             inputTextFields(tabPage.getFields());
             inputTextFieldTable(tabPage.getTable(), tabPage.getAddLineButtonName());
             inputCheckBoxes(tabPage.getCheckboxes());
-
         }
     }
 

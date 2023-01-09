@@ -28,7 +28,7 @@ public class WebclientSession {
     }
 
     public void type(Locator locator, String text) {
-        BaseFunctions.type(locator, text);
+        BaseFunctions.type(locator, text, false);
     }
 
     public void login(String stack, String userName, String password) {
@@ -63,13 +63,7 @@ public class WebclientSession {
         Formula formula = new Formula(frameLocator);
         formula.inputData(tabPages);
         formula.save();
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
+        BaseFunctions.sleep();
     }
 
     private void selectSolutionTile() {

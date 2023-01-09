@@ -97,7 +97,7 @@ public class PlaywrightSessionTest {
 
         table = new ArrayList<>();
         tableLine = new TreeMap<>();
-        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "default");
+        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Meeting-Einladung");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "O");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "y");
@@ -106,7 +106,7 @@ public class PlaywrightSessionTest {
         table.add(tableLine);
 
         tableLine = new TreeMap<>();
-        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "default");
+        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Meeting-Einladung");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "A");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "Q");
@@ -192,7 +192,7 @@ public class PlaywrightSessionTest {
 
         table = new ArrayList<>();
         tableLine = new TreeMap<>();
-        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "default");
+        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Meeting-Einladung");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "O");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "y");
@@ -201,7 +201,7 @@ public class PlaywrightSessionTest {
         table.add(tableLine);
 
         tableLine = new TreeMap<>();
-        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "default");
+        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Meeting-Einladung");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "A");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "Q");
@@ -344,7 +344,7 @@ public class PlaywrightSessionTest {
 
         table = new ArrayList<>();
         tableLine = new TreeMap<>();
-        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "default");
+        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Sitzungseinladung");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "O");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "y");
@@ -353,7 +353,7 @@ public class PlaywrightSessionTest {
         table.add(tableLine);
 
         tableLine = new TreeMap<>();
-        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "default");
+        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Sitzungseinladung");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "A");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "Q");
@@ -439,7 +439,7 @@ public class PlaywrightSessionTest {
 
         table = new ArrayList<>();
         tableLine = new TreeMap<>();
-        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "default");
+        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Sitzungseinladung");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "O");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "y");
@@ -448,7 +448,7 @@ public class PlaywrightSessionTest {
         table.add(tableLine);
 
         tableLine = new TreeMap<>();
-        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "default");
+        tableLine.put("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Sitzungseinladung");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "A");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1");
         tableLine.put("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "Q");

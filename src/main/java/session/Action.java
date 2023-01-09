@@ -53,16 +53,8 @@ public class Action {
     public void startFormula() {
         ws.click(ribbonLocator);
         ws.click(menuLocator);
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        BaseFunctions.sleep();
         ws.click(buttonLocator);
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        BaseFunctions.sleep();
     }
 }
