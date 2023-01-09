@@ -72,6 +72,9 @@ public class Formula {
             case MEETING -> {
                 BaseFunctions.click(frameLocator.locator("xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[2]"));
             }
+            case POOL -> {
+                BaseFunctions.click(frameLocator.locator("xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[1]"));
+            }
         }
         System.out.println("selectassigment assignment" + assignment);
     }

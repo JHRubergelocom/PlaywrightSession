@@ -268,6 +268,69 @@ public class PlaywrightSessionTest {
 
     }
 
+    private Map<String, TabPage> createMIP1() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // "" (Nur eine tabPage)
+
+        Map<String,String> fields = new TreeMap<>();
+
+        fields.put("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1");
+        fields.put("IX_GRP_MEETING_BOARD_CODE", "MB1");
+        fields.put("IX_GRP_MEETING_ITEM_POOL_NAME", "Meetingitempool1");
+        fields.put("IX_DESC", "Beschreibung Meetingitempool1");
+
+        List<Map<String, String>> table = new ArrayList<>();
+
+        Map<String,Boolean> checkboxes = new TreeMap<>();
+
+        TabPage tabPage = new TabPage(fields, table, "", checkboxes, AssignmentStatus.NOTHING);
+        tabPages.put("", tabPage);
+
+        return tabPages;
+
+    }
+
+    private Map<String, TabPage> createMIPMI1() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // "" (Nur eine tabPage)
+
+        Map<String,String> fields = new TreeMap<>();
+
+        fields.put("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1");
+        fields.put("IX_GRP_MEETING_BOARD_CODE", "MB1");
+        fields.put("IX_MAP_MEETING_ITEM_POOL_NAME", "Meetingitempool1");
+        fields.put("IX_GRP_MEETING_ITEM_TITLE", "Thema1 Ideenpool1");
+        fields.put("IX_GRP_MEETING_ITEM_DURATION", "40");
+        fields.put("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith");
+
+        // fields.put("IX_DESC", "Beschreibung Thema1");
+
+        List<Map<String, String>> table = new ArrayList<>();
+
+        Map<String, String> tableLine = new TreeMap<>();
+        tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Kraft");
+        tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Bodo");
+        table.add(tableLine);
+
+        tableLine = new TreeMap<>();
+        tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Davis");
+        tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Jessica");
+        table.add(tableLine);
+
+        Map<String,Boolean> checkboxes = new TreeMap<>();
+
+        TabPage tabPage = new TabPage(fields, table, "Weitere Person", checkboxes, AssignmentStatus.POOL);
+        tabPages.put("", tabPage);
+
+        return tabPages;
+
+    }
+
+
     private Map<String, TabPage> createMB2Premium() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -488,11 +551,11 @@ public class PlaywrightSessionTest {
         fields.put("IX_GRP_MEETING_BOARD_NAME", "Meetingboard2");
         fields.put("IX_GRP_MEETING_BOARD_CODE", "MB2");
         fields.put("IX_GRP_MEETING_NAME", "Sitzung1");
-        fields.put("IX_GRP_MEETING_ITEM_TITLE", "Thema1");
+        fields.put("IX_GRP_MEETING_ITEM_TITLE", "TOP1");
         fields.put("IX_GRP_MEETING_ITEM_DURATION", "30");
         fields.put("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "David Lee");
 
-        // fields.put("IX_DESC", "Beschreibung Thema1");
+        // fields.put("IX_DESC", "Beschreibung TOP1");
 
         List<Map<String, String>> table = new ArrayList<>();
         Map<String, String> tableLine = new TreeMap<>();
@@ -508,6 +571,68 @@ public class PlaywrightSessionTest {
         Map<String,Boolean> checkboxes = new TreeMap<>();
 
         TabPage tabPage = new TabPage(fields, table, "Weitere Person", checkboxes, AssignmentStatus.MEETING);
+        tabPages.put("", tabPage);
+
+        return tabPages;
+
+    }
+
+    private Map<String, TabPage> createMIP2Premium() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // "" (Nur eine tabPage)
+
+        Map<String,String> fields = new TreeMap<>();
+
+        fields.put("IX_GRP_MEETING_BOARD_NAME", "Meetingboard2");
+        fields.put("IX_GRP_MEETING_BOARD_CODE", "MB2");
+        fields.put("IX_GRP_MEETING_ITEM_POOL_NAME", "Meetingitempool2");
+        fields.put("IX_DESC", "Beschreibung Meetingitempool2");
+
+        List<Map<String, String>> table = new ArrayList<>();
+
+        Map<String,Boolean> checkboxes = new TreeMap<>();
+
+        TabPage tabPage = new TabPage(fields, table, "", checkboxes, AssignmentStatus.NOTHING);
+        tabPages.put("", tabPage);
+
+        return tabPages;
+
+    }
+
+    private Map<String, TabPage> createMIPMI1Premium() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // "" (Nur eine tabPage)
+
+        Map<String,String> fields = new TreeMap<>();
+
+        fields.put("IX_GRP_MEETING_BOARD_NAME", "Meetingboard2");
+        fields.put("IX_GRP_MEETING_BOARD_CODE", "MB2");
+        fields.put("IX_MAP_MEETING_ITEM_POOL_NAME", "Meetingitempool2");
+
+        fields.put("IX_GRP_MEETING_ITEM_TITLE", "TOP1");
+        fields.put("IX_GRP_MEETING_ITEM_DURATION", "30");
+        fields.put("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "David Lee");
+
+        // fields.put("IX_DESC", "Beschreibung TOP1 Meetingitempool2");
+
+        List<Map<String, String>> table = new ArrayList<>();
+        Map<String, String> tableLine = new TreeMap<>();
+        tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Bennett");
+        tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Charlotte");
+        table.add(tableLine);
+
+        tableLine = new TreeMap<>();
+        tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Davis");
+        tableLine.put("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Jessica");
+        table.add(tableLine);
+
+        Map<String,Boolean> checkboxes = new TreeMap<>();
+
+        TabPage tabPage = new TabPage(fields, table, "Weitere Person", checkboxes, AssignmentStatus.POOL);
         tabPages.put("", tabPage);
 
         return tabPages;
@@ -578,10 +703,27 @@ public class PlaywrightSessionTest {
         tabPages = createMI1Premium();
         ws.executeAction("CreateMeetingItemPremium", tabPages);
 
+        ws.selectSolutionsFolder();
+        tabPages = createMIP1();
+        ws.executeAction("CreateMeetingItemPool", tabPages);
+
+        ws.selectSolutionsFolder();
+        tabPages = createMIPMI1();
+        ws.executeAction("CreateMeetingItem", tabPages);
+
+        ws.selectSolutionsFolder();
+        tabPages = createMIP2Premium();
+        ws.executeAction("CreateMeetingItemPoolPremium", tabPages);
+
+        ws.selectSolutionsFolder();
+        tabPages = createMIPMI1Premium();
+        ws.executeAction("CreateMeetingItemPremium", tabPages);
+
         ws.getPage().pause();
         ws.close();
 
     }
+
     @Test
     public void firstScript() {
         page.navigate("http://playwright.dev");

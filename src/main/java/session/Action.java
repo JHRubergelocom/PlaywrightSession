@@ -42,6 +42,16 @@ public class Action {
                 menuLocator = ws.getPage().locator("xpath=//*[@id=\"button-1288-btnIconEl\"]");   // Sitzung
                 buttonLocator = ws.getPage().locator("xpath=//*[@id=\"ext-comp-1284-textEl\"]");  // Neuer TOP
             }
+            case "CreateMeetingItemPool" -> {
+                ribbonLocator = ws.getPage().locator("xpath=//*[@id=\"button-1218-btnIconEl\"]"); // Neu
+                menuLocator = ws.getPage().locator("xpath=//*[@id=\"button-1280-btnIconEl\"]");   // Meeting
+                buttonLocator = ws.getPage().locator("xpath=//*[@id=\"ext-comp-1277-textEl\"]");  // Neue Themensammlung
+            }
+            case "CreateMeetingItemPoolPremium" -> {
+                ribbonLocator = ws.getPage().locator("xpath=//*[@id=\"button-1218-btnIconEl\"]"); // Neu
+                menuLocator = ws.getPage().locator("xpath=//*[@id=\"button-1288-btnIconEl\"]");   // Sitzung
+                buttonLocator = ws.getPage().locator("xpath=//*[@id=\"ext-comp-1285-textEl\"]");  // Neuer Themensammlung
+            }
             default -> {
                 ribbonLocator = ws.getPage().locator("");
                 menuLocator = ws.getPage().locator("");
