@@ -9,50 +9,43 @@ import java.util.Map;
 
 public class Formula {
     private final FrameLocator frameLocator;
-
-    public Formula(FrameLocator frameLocator) {
+    private final String selectorAssignmentMeeting;
+    private final String selectorAssignmentPool;
+    public Formula(FrameLocator frameLocator, String selectorAssignmentMeeting, String selectorAssignmentPool) {
         this.frameLocator = frameLocator;
+        this.selectorAssignmentMeeting = selectorAssignmentMeeting;
+        this.selectorAssignmentPool = selectorAssignmentPool;
     }
-
     public void selectTab(String tabName, AssignmentStatus assignment) {
         if (!tabName.equals("")) {
+            System.out.println("tabname="+ tabName);
             frameLocator.getByRole(AriaRole.LINK, new FrameLocator.GetByRoleOptions().setName(tabName)).click();
         }
         selectAssignment(assignment);
     }
-
     public void save() {
         BaseFunctions.sleep();
         click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")));
     }
-
-
     public void click(Locator locator) {
         BaseFunctions.click(locator);
     }
-
     public void inputTextField(String name, String text, boolean timeout) {
         BaseFunctions.type(frameLocator.locator("[name=\"" + name + "\"]"), text, timeout);
     }
-
     private void inputCheckBox(String name, Boolean value) {
         BaseFunctions.select(frameLocator.locator("[name=\"" + name + "\"]"), value);
     }
-
     public void inputTextFields(Map<String, String> fields) {
         for (Map.Entry<String,String> entry: fields.entrySet()) {
             inputTextField(entry.getKey(), entry.getValue(), false);
         }
     }
-
     private void inputCheckBoxes(Map<String, Boolean> checkboxes) {
         for (Map.Entry<String,Boolean> entry: checkboxes.entrySet()) {
             inputCheckBox(entry.getKey(), entry.getValue());
         }
     }
-
-
-
     public void inputTextFieldTable(List<Map<String, String>> table, String addLineButtonName) {
         int index = 1;
         for (Map<String,String> tableLine: table) {
@@ -66,24 +59,18 @@ public class Formula {
             index++;
         }
     }
-
     private void selectAssignment(AssignmentStatus assignment) {
         switch (assignment) {
-            case MEETING -> {
-                BaseFunctions.click(frameLocator.locator("xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[2]"));
-            }
-            case POOL -> {
-                BaseFunctions.click(frameLocator.locator("xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[1]"));
-            }
+            case MEETING -> BaseFunctions.click(frameLocator.locator(selectorAssignmentMeeting));
+            case POOL -> BaseFunctions.click(frameLocator.locator(selectorAssignmentPool));
+            case NOTHING -> {}
         }
         System.out.println("selectassigment assignment" + assignment);
     }
-
-
     public void inputData(Map<String, TabPage> tabpages) {
         for (Map.Entry<String,TabPage> entry: tabpages.entrySet()) {
-            // System.out.println("Key Tabpage: " + entry.getKey());
-            // System.out.println("Value Tabpage: " + entry.getValue());
+            System.out.println("Key Tabpage: " + entry.getKey());
+            System.out.println("Value Tabpage: " + entry.getValue());
 
             String tabName = entry.getKey();
             TabPage tabPage = entry.getValue();
@@ -94,5 +81,4 @@ public class Formula {
             inputCheckBoxes(tabPage.getCheckboxes());
         }
     }
-
 }

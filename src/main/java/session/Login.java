@@ -4,16 +4,16 @@ package session;
 import com.microsoft.playwright.Locator;
 
 public class Login {
-    private WebclientSession ws;
-    private Locator usernameLocator;
-    private Locator passwordLocator;
-    private Locator loginButtonLocator;
+    private final WebclientSession ws;
+    private final Locator usernameLocator;
+    private final Locator passwordLocator;
+    private final Locator loginButtonLocator;
 
-    public Login(WebclientSession ws, String stack) {
+    public Login(WebclientSession ws, String stack, String selectorUsername, String selectorPassword, String selectorLoginButton) {
         this.ws = ws;
-        usernameLocator = ws.getPage().locator("xpath=//*[@id=\"field-focustext-1020-inputEl\"]");
-        passwordLocator = ws.getPage().locator("xpath=//*[@id=\"textfield-1021-inputEl\"]");
-        loginButtonLocator = ws.getPage().locator("xpath=//*[@id=\"button-1023-btnIconEl\"]");
+        usernameLocator = ws.getPage().locator(selectorUsername);
+        passwordLocator = ws.getPage().locator(selectorPassword);
+        loginButtonLocator = ws.getPage().locator(selectorLoginButton);
         this.ws.visit("http://" + stack + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
     }
 

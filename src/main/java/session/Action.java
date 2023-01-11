@@ -7,9 +7,7 @@ public class Action {
     private final Locator ribbonLocator;
     private final Locator menuLocator;
     private final Locator buttonLocator;
-
     public Action(WebclientSession ws, String action) {
-
         this.ws = ws;
         switch (action) {
             case "CreateMeetingBoard" -> {
@@ -59,7 +57,6 @@ public class Action {
             }
         }
     }
-
     public void startFormula() {
         ws.click(ribbonLocator);
         ws.click(menuLocator);

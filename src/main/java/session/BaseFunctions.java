@@ -3,7 +3,7 @@ package session;
 import com.microsoft.playwright.Locator;
 
 public class BaseFunctions {
-    private static long millis = 3000;
+    private static final long millis = 3000;
 
     public static void sleep() {
         try {
@@ -11,9 +11,7 @@ public class BaseFunctions {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
     }
-
     public static void type(Locator textbox, String inputText, boolean timeout) {
         textbox.click();
         textbox.clear();
@@ -23,11 +21,9 @@ public class BaseFunctions {
             sleep();
         }
     }
-
     public static void click(Locator locator) {
         locator.click();
     }
-
     public static void select(Locator checkbox, Boolean value) {
         if (value) {
             if (!checkbox.isChecked()) {

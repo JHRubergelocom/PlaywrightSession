@@ -330,7 +330,6 @@ public class PlaywrightSessionTest {
 
     }
 
-
     private Map<String, TabPage> createMB2Premium() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -639,6 +638,72 @@ public class PlaywrightSessionTest {
 
     }
 
+    private void TestSessionVersion1() {
+        final String selectorSolutionTile = "xpath=//*[@id=\"tile-1013\"]";
+        final String selectorSolutionsFolder = "xpath=//*[@id=\"treeview-1061-record-1\"]";
+
+        final String selectorUsername = "xpath=//*[@id=\"field-focustext-1020-inputEl\"]";
+        final String selectorPassword = "xpath=//*[@id=\"textfield-1021-inputEl\"]";
+        final String selectorLoginButton = "xpath=//*[@id=\"button-1023-btnIconEl\"]";
+
+        final String selectorAssignmentMeeting = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[2]";
+        final String selectorAssignmentPool = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[1]";
+
+        final String stack = "ruberg-meeting.dev.elo";
+        final String userName = "Administrator";
+        final String password = "elo";
+
+        Map<String, TabPage> tabPages;
+
+        WebclientSession ws = new WebclientSession(selectorSolutionTile, selectorSolutionsFolder );
+        ws.login(stack, userName, password, selectorUsername, selectorPassword, selectorLoginButton);
+
+        ws.selectSolutionsFolder();
+        tabPages = createMB1();
+        ws.executeAction("CreateMeetingBoard", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
+
+        ws.selectSolutionsFolder();
+        tabPages = createME1();
+        ws.executeAction("CreateMeeting", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
+
+        ws.selectSolutionsFolder();
+        tabPages = createMI1();
+        ws.executeAction("CreateMeetingItem", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
+
+        ws.selectSolutionsFolder();
+        tabPages = createMB2Premium();
+        ws.executeAction("CreateMeetingBoardPremium", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
+
+        ws.selectSolutionsFolder();
+        tabPages = createME1Premium();
+        ws.executeAction("CreateMeetingPremium", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
+
+        ws.selectSolutionsFolder();
+        tabPages = createMI1Premium();
+        ws.executeAction("CreateMeetingItemPremium", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
+
+        ws.selectSolutionsFolder();
+        tabPages = createMIP1();
+        ws.executeAction("CreateMeetingItemPool", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
+
+        ws.selectSolutionsFolder();
+        tabPages = createMIPMI1();
+        ws.executeAction("CreateMeetingItem", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
+
+        ws.selectSolutionsFolder();
+        tabPages = createMIP2Premium();
+        ws.executeAction("CreateMeetingItemPoolPremium", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
+
+        ws.selectSolutionsFolder();
+        tabPages = createMIPMI1Premium();
+        ws.executeAction("CreateMeetingItemPremium", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
+
+        ws.getPage().pause();
+        ws.close();
+
+    }
+
+
     @BeforeAll
     static void launchBrowser() {
         playwright = Playwright.create();
@@ -674,23 +739,38 @@ public class PlaywrightSessionTest {
 
     @Test
     public void TestSession() {
+        final String selectorSolutionTile = "xpath=//*[@id=\"tile-1013\"]";
+        final String selectorSolutionsFolder = "xpath=//*[@id=\"treeview-1061-record-1\"]";
+
+        final String selectorUsername = "xpath=//*[@id=\"field-focustext-1020-inputEl\"]";
+        final String selectorPassword = "xpath=//*[@id=\"textfield-1021-inputEl\"]";
+        final String selectorLoginButton = "xpath=//*[@id=\"button-1023-btnIconEl\"]";
+
+        final String selectorAssignmentMeeting = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[2]";
+        final String selectorAssignmentPool = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[1]";
+
+        final String stack = "ruberg-meeting.dev.elo";
+        final String userName = "Administrator";
+        final String password = "elo";
+
         Map<String, TabPage> tabPages;
 
-        WebclientSession ws = new WebclientSession();
-        ws.login("ruberg-meeting.dev.elo", "Administrator", "elo");
+        WebclientSession ws = new WebclientSession(selectorSolutionTile, selectorSolutionsFolder);
+        ws.login(stack, userName, password, selectorUsername, selectorPassword, selectorLoginButton);
+
 
         ws.selectSolutionsFolder();
         tabPages = createMB1();
-        ws.executeAction("CreateMeetingBoard", tabPages);
+        ws.executeAction("CreateMeetingBoard", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
 
         ws.selectSolutionsFolder();
         tabPages = createME1();
-        ws.executeAction("CreateMeeting", tabPages);
+        ws.executeAction("CreateMeeting", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
 
         ws.selectSolutionsFolder();
         tabPages = createMI1();
-        ws.executeAction("CreateMeetingItem", tabPages);
-
+        ws.executeAction("CreateMeetingItem", tabPages, selectorAssignmentMeeting, selectorAssignmentPool);
+/*
         ws.selectSolutionsFolder();
         tabPages = createMB2Premium();
         ws.executeAction("CreateMeetingBoardPremium", tabPages);
@@ -719,6 +799,7 @@ public class PlaywrightSessionTest {
         tabPages = createMIPMI1Premium();
         ws.executeAction("CreateMeetingItemPremium", tabPages);
 
+ */
         ws.getPage().pause();
         ws.close();
 

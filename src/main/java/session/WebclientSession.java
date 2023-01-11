@@ -7,12 +7,14 @@ import java.util.Map;
 public class WebclientSession {
     private final Page page;
     private final Playwright playwright;
-
+    private final String selectorSolutionTile;
+    private final String selectorSolutionsFolder;
     public Page getPage() {
         return page;
     }
-
-    public WebclientSession() {
+    public WebclientSession(String selectorSolutionTile, String selectorSolutionsFolder) {
+        this.selectorSolutionTile = selectorSolutionTile;
+        this.selectorSolutionsFolder = selectorSolutionsFolder;
         playwright = Playwright.create();
         Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
         BrowserContext context = browser.newContext();
@@ -31,8 +33,8 @@ public class WebclientSession {
         BaseFunctions.type(locator, text, false);
     }
 
-    public void login(String stack, String userName, String password) {
-        Login login = new Login(this, stack);
+    public void login(String stack, String userName, String password, String selectorUsername, String selectorPassword, String selectorLoginButton) {
+        Login login = new Login(this, stack, selectorUsername, selectorPassword, selectorLoginButton);
         login.typeUsername(userName);
         login.typePassword(password);
         login.clickLoginButton();
@@ -55,12 +57,12 @@ public class WebclientSession {
         return frameLocator;
     }
 
-    public void executeAction(String actionName, Map<String, TabPage> tabPages) {
+    public void executeAction(String actionName, Map<String, TabPage> tabPages, String selectorAssignmentMeeting, String selectorAssignmentPool) {
         Action action = new Action(this, actionName);
         action.startFormula();
         System.out.println("actionName " +actionName);
         FrameLocator frameLocator = getFrameLocator();
-        Formula formula = new Formula(frameLocator);
+        Formula formula = new Formula(frameLocator, selectorAssignmentMeeting, selectorAssignmentPool);
         formula.inputData(tabPages);
         formula.save();
         BaseFunctions.sleep();
@@ -68,11 +70,11 @@ public class WebclientSession {
 
     private void selectSolutionTile() {
 
-        BaseFunctions.click(page.locator("xpath=//*[@id=\"tile-1013\"]"));
+        BaseFunctions.click(page.locator(selectorSolutionTile));
     }
 
     public void  selectSolutionsFolder() {
-        BaseFunctions.click(page.locator("xpath=//*[@id=\"treeview-1061-record-1\"]"));
+        BaseFunctions.click(page.locator(selectorSolutionsFolder));
     }
 
     public void close() {
