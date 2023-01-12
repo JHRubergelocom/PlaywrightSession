@@ -893,20 +893,21 @@ public class PlaywrightSessionTest {
 
     @Test
     public void TestSession() {
-        final String selectorSolutionTile = "xpath=//*[@id=\"tile-1013\"]";
-        final String selectorSolutionsFolder = "xpath=//*[@id=\"treeview-1061-record-1\"]";
 
+        // Login Data
         final String selectorUsername = "xpath=//*[@id=\"field-focustext-1020-inputEl\"]";
         final String selectorPassword = "xpath=//*[@id=\"textfield-1021-inputEl\"]";
         final String selectorLoginButton = "xpath=//*[@id=\"button-1023-btnIconEl\"]";
-
-        final String selectorAssignmentMeeting = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[2]";
-        final String selectorAssignmentPool = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[1]";
 
         final String stack = "ruberg-meeting.dev.elo";
         final String userName = "Administrator";
         final String password = "elo";
 
+        // ELO Solution Archive Data
+        final String selectorSolutionTile = "xpath=//*[@id=\"tile-1013\"]";
+        final String selectorSolutionsFolder = "xpath=//*[@id=\"treeview-1061-record-1\"]";
+
+        // ELO Action Def Data
         final String selectorRibbonNew = "xpath=//*[@id=\"button-1218-btnIconEl\"]";
         final String selectorMenuMeeting = "xpath=//*[@id=\"button-1280-btnIconEl\"]";
         final String selectorMenuMeetingPremium = "xpath=//*[@id=\"button-1288-btnIconEl\"]";
@@ -919,6 +920,11 @@ public class PlaywrightSessionTest {
         final String selectorButtonCreateMeetingItemPool = "xpath=//*[@id=\"ext-comp-1277-textEl\"]";
         final String selectorButtonCreateMeetingItemPoolPremium = "xpath=//*[@id=\"ext-comp-1285-textEl\"]";
 
+        // ELO Formula Data
+        final String selectorAssignmentMeeting = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[2]";
+        final String selectorAssignmentPool = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[1]";
+
+        // ELO Input Data
         Map<String, TabPage> tabPages;
 
         WebclientSession ws = new WebclientSession(selectorSolutionTile, selectorSolutionsFolder);

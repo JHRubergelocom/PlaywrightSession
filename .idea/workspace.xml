@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Refactoring Data">
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Refactoring Data Action">
+      <change afterPath="$PROJECT_DIR$/src/main/java/session/DataConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/session/ELOActionDef.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/session/ELOActionDefData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/session/ELOActionFormulaData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/session/ELOControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/session/ELOInputData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/session/ELOSolutionArchiveData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/session/LoginData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +53,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="session" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession\src\main\java" />
     </key>
@@ -249,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673448100332</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Playwright Refactoring Data Action">
+      <created>1673514743770</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1673514743770</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -276,6 +291,7 @@
     <MESSAGE value="Playwright Refactoring Sleep Timeout" />
     <MESSAGE value="Playwright CreateMeetingItemPool" />
     <MESSAGE value="Playwright Refactoring Data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright Refactoring Data" />
+    <MESSAGE value="Playwright Refactoring Data Action" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright Refactoring Data Action" />
   </component>
 </project>
