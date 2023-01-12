@@ -57,8 +57,34 @@ public class WebclientSession {
         return frameLocator;
     }
 
-    public void executeAction(String actionName, Map<String, TabPage> tabPages, String selectorAssignmentMeeting, String selectorAssignmentPool) {
-        Action action = new Action(this, actionName);
+    public void executeAction(String actionName,
+                              Map<String, TabPage> tabPages,
+                              String selectorAssignmentMeeting,
+                              String selectorAssignmentPool,
+                              String selectorRibbonNew,
+                              String selectorMenuMeeting,
+                              String selectorMenuMeetingPremium,
+                              String selectorButtonCreateMeetingBoard,
+                              String selectorButtonCreateMeetingBoardPremium,
+                              String selectorButtonCreateMeeting,
+                              String selectorButtonCreateMeetingPremium,
+                              String selectorButtonCreateMeetingItem,
+                              String selectorButtonCreateMeetingItemPremium,
+                              String selectorButtonCreateMeetingItemPool,
+                              String selectorButtonCreateMeetingItemPoolPremium) {
+        Action action = new Action(this,
+                                    actionName,
+                                    selectorRibbonNew,
+                                    selectorMenuMeeting,
+                                    selectorMenuMeetingPremium,
+                                    selectorButtonCreateMeetingBoard,
+                                    selectorButtonCreateMeetingBoardPremium,
+                                    selectorButtonCreateMeeting,
+                                    selectorButtonCreateMeetingPremium,
+                                    selectorButtonCreateMeetingItem,
+                                    selectorButtonCreateMeetingItemPremium,
+                                    selectorButtonCreateMeetingItemPool,
+                                    selectorButtonCreateMeetingItemPoolPremium);
         action.startFormula();
         System.out.println("actionName " +actionName);
         FrameLocator frameLocator = getFrameLocator();
