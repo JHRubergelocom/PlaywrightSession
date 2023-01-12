@@ -8,4 +8,12 @@ public class ELOActionFormulaData {
         this.selectorAssignmentMeeting = selectorAssignmentMeeting;
         this.selectorAssignmentPool = selectorAssignmentPool;
     }
+
+    public String getSelectorAssignmentMeeting() {
+        return selectorAssignmentMeeting;
+    }
+
+    public String getSelectorAssignmentPool() {
+        return selectorAssignmentPool;
+    }
 }

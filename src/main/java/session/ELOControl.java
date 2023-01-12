@@ -8,4 +8,12 @@ public class ELOControl {
         this.selector = selector;
         this.value = value;
     }
+
+    public String getSelector() {
+        return selector;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }

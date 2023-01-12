@@ -8,4 +8,8 @@ public class ELOActionDefData {
     public ELOActionDefData(Map<String, ELOActionDef> eloActionDefs) {
         this.eloActionDefs = eloActionDefs;
     }
+
+    public Map<String, ELOActionDef> getEloActionDefs() {
+        return eloActionDefs;
+    }
 }

@@ -8,4 +8,8 @@ public class ELOInputData {
     public ELOInputData(Map<String, Map<String, TabPage>> eloActions) {
         this.eloActions = eloActions;
     }
+
+    public Map<String, Map<String, TabPage>> getEloActions() {
+        return eloActions;
+    }
 }

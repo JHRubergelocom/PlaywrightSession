@@ -2,25 +2,18 @@ package test;
 
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.*;
-import session.AssignmentStatus;
-import session.TabPage;
-import session.WebclientSession;
+import session.*;
 
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class PlaywrightSessionTest {
     // Shared between all tests in this class.
     static Playwright playwright;
     static Browser browser;
-
     // New instance for each test method.
     BrowserContext context;
     Page page;
-
     private Map<String, TabPage> createMB1() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -134,7 +127,6 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-
     private Map<String, TabPage> createME1() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -229,7 +221,6 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-
     private Map<String, TabPage> createMI1() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -267,7 +258,6 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-
     private Map<String, TabPage> createMIP1() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -291,7 +281,6 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-
     private Map<String, TabPage> createMIPMI1() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -329,7 +318,6 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-
     private Map<String, TabPage> createMB2Premium() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -443,7 +431,6 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-
     private Map<String, TabPage> createME1Premium() {
         Map<String, TabPage> tabPages = new TreeMap<>();
 
@@ -538,7 +525,6 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-
     private Map<String, TabPage> createMI1Premium() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -575,7 +561,6 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-
     private Map<String, TabPage> createMIP2Premium() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -599,7 +584,6 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-
     private Map<String, TabPage> createMIPMI1Premium() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -637,20 +621,15 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-
-
-
     @BeforeAll
     static void launchBrowser() {
         playwright = Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
     }
-
     @AfterAll
     static void closeBrowser() {
         playwright.close();
     }
-
     @BeforeEach
     void createContextAndPage() {
         context = browser.newContext();
@@ -663,7 +642,6 @@ public class PlaywrightSessionTest {
 
         page = context.newPage();
     }
-
     @AfterEach
     void closeContext() {
         // Stop tracing and export it into a zip archive.
@@ -672,9 +650,9 @@ public class PlaywrightSessionTest {
 
         context.close();
     }
-
     @Test
     public void TestSessionVersion1() {
+
         final String selectorSolutionTile = "xpath=//*[@id=\"tile-1013\"]";
         final String selectorSolutionsFolder = "xpath=//*[@id=\"treeview-1061-record-1\"]";
 
@@ -888,24 +866,9 @@ public class PlaywrightSessionTest {
 
         ws.getPage().pause();
         ws.close();
-
     }
-
     @Test
     public void TestSession() {
-
-        // Login Data
-        final String selectorUsername = "xpath=//*[@id=\"field-focustext-1020-inputEl\"]";
-        final String selectorPassword = "xpath=//*[@id=\"textfield-1021-inputEl\"]";
-        final String selectorLoginButton = "xpath=//*[@id=\"button-1023-btnIconEl\"]";
-
-        final String stack = "ruberg-meeting.dev.elo";
-        final String userName = "Administrator";
-        final String password = "elo";
-
-        // ELO Solution Archive Data
-        final String selectorSolutionTile = "xpath=//*[@id=\"tile-1013\"]";
-        final String selectorSolutionsFolder = "xpath=//*[@id=\"treeview-1061-record-1\"]";
 
         // ELO Action Def Data
         final String selectorRibbonNew = "xpath=//*[@id=\"button-1218-btnIconEl\"]";
@@ -924,111 +887,85 @@ public class PlaywrightSessionTest {
         final String selectorAssignmentMeeting = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[2]";
         final String selectorAssignmentPool = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[1]";
 
-        // ELO Input Data
-        Map<String, TabPage> tabPages;
+        // Login Data
+        final String selectorUsername = "xpath=//*[@id=\"field-focustext-1020-inputEl\"]";
+        final String selectorPassword = "xpath=//*[@id=\"textfield-1021-inputEl\"]";
+        final String selectorLoginButton = "xpath=//*[@id=\"button-1023-btnIconEl\"]";
 
-        WebclientSession ws = new WebclientSession(selectorSolutionTile, selectorSolutionsFolder);
-        ws.login(stack, userName, password, selectorUsername, selectorPassword, selectorLoginButton);
+        final String stack = "ruberg-meeting.dev.elo";
+        final String userName = "Administrator";
+        final String password = "elo";
 
-        ws.selectSolutionsFolder();
-        tabPages = createMB1();
-        ws.executeAction("CreateMeetingBoard",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
+        // Fill DataConfig
 
-        ws.selectSolutionsFolder();
-        tabPages = createME1();
-        ws.executeAction("CreateMeeting",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
+        final ELOControl textUserName = new ELOControl("xpath=//*[@id=\"field-focustext-1020-inputEl\"]", "Administrator");
+        final ELOControl textPassword = new ELOControl("xpath=//*[@id=\"textfield-1021-inputEl\"]", "elo");
+        final ELOControl buttonLogin = new ELOControl("xpath=//*[@id=\"button-1023-btnIconEl\"]", "Login");
+        final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
 
-        ws.selectSolutionsFolder();
-        tabPages = createMI1();
-        ws.executeAction("CreateMeetingItem",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
-/*
-        ws.selectSolutionsFolder();
-        tabPages = createMB2Premium();
-        ws.executeAction("CreateMeetingBoardPremium", tabPages);
+        final ELOSolutionArchiveData eloSolutionArchiveData = new ELOSolutionArchiveData("xpath=//*[@id=\"tile-1013\"]", "xpath=//*[@id=\"treeview-1061-record-1\"]");
 
-        ws.selectSolutionsFolder();
-        tabPages = createME1Premium();
-        ws.executeAction("CreateMeetingPremium", tabPages);
+        final Map<String, ELOActionDef> eloActionDefs = new HashMap<>();
+        eloActionDefs.put("CreateMeetingBoard", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingBoard));
+        eloActionDefs.put("CreateMeetingBoardPremium", new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingBoardPremium));
+        eloActionDefs.put("CreateMeeting", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeeting));
+        eloActionDefs.put("CreateMeetingPremium", new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingPremium));
+        eloActionDefs.put("CreateMeetingItem", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingItem));
+        eloActionDefs.put("CreateMeetingItemPremium", new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingItemPremium));
+        eloActionDefs.put("CreateMeetingItemPool", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingItemPool));
+        eloActionDefs.put("CreateMeetingItemPoolPremium", new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingItemPoolPremium));
+        final ELOActionDefData eloActionDefData = new ELOActionDefData(eloActionDefs);
 
-        ws.selectSolutionsFolder();
-        tabPages = createMI1Premium();
-        ws.executeAction("CreateMeetingItemPremium", tabPages);
+        final ELOActionFormulaData eloActionFormularData = new ELOActionFormulaData(selectorAssignmentMeeting, selectorAssignmentPool);
 
-        ws.selectSolutionsFolder();
-        tabPages = createMIP1();
-        ws.executeAction("CreateMeetingItemPool", tabPages);
+        final Map<String, Map<String, TabPage>> eloActions = new HashMap<>();
 
-        ws.selectSolutionsFolder();
-        tabPages = createMIPMI1();
-        ws.executeAction("CreateMeetingItem", tabPages);
+        Map<String, TabPage> eloTabPages = createMB1();
+        eloActions.put("CreateMeetingBoard", eloTabPages);
 
-        ws.selectSolutionsFolder();
-        tabPages = createMIP2Premium();
-        ws.executeAction("CreateMeetingItemPoolPremium", tabPages);
+        eloTabPages = createME1();
+        eloActions.put("CreateMeeting", eloTabPages);
 
-        ws.selectSolutionsFolder();
-        tabPages = createMIPMI1Premium();
-        ws.executeAction("CreateMeetingItemPremium", tabPages);
+        eloTabPages = createMI1();
+        eloActions.put("CreateMeetingItem", eloTabPages);
 
- */
+        final ELOInputData eloInputData = new ELOInputData(eloActions);
+
+        final DataConfig dataConfig = new DataConfig(loginData,
+                                                    eloSolutionArchiveData,
+                                                    eloActionDefData,
+                                                    eloActionFormularData,
+                                                    eloInputData);
+
+        // Execute DataConfig
+        WebclientSession ws = new WebclientSession(dataConfig.getEloSolutionArchiveData());
+        ws.login(dataConfig.getLoginData());
+
+        for (Map.Entry<String,Map<String, TabPage>> entryEloAction: dataConfig.getEloInputData().getEloActions().entrySet()) {
+            String actionName = entryEloAction.getKey();
+            Map<String, TabPage> tabPages = entryEloAction.getValue();
+
+            // Get Action Definition
+            ELOActionDef eloActionDef = dataConfig.getEloActionDefData().getEloActionDefs().get(actionName);
+
+            // Execute Action
+            ws.selectSolutionsFolder();
+            ws.executeAction(actionName, tabPages, dataConfig.getEloActionFormularData(), eloActionDef);
+        }
+
         ws.getPage().pause();
         ws.close();
 
     }
-
     @Test
     public void firstScript() {
         page.navigate("http://playwright.dev");
         page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("example.png")));
         System.out.println(page.title());
     }
-
     @Test
     public void secondScript() {
         page.navigate("http://" + "ruberg-meeting.dev.elo" + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
         page.pause(); // Start Codegen
     }
-
 }

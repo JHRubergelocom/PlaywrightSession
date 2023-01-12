@@ -14,5 +14,25 @@ public class DataConfig {
         this.eloActionFormularData = eloActionFormularData;
         this.eloInputData = eloInputData;
     }
+
+    public LoginData getLoginData() {
+        return loginData;
+    }
+
+    public ELOSolutionArchiveData getEloSolutionArchiveData() {
+        return eloSolutionArchiveData;
+    }
+
+    public ELOActionDefData getEloActionDefData() {
+        return eloActionDefData;
+    }
+
+    public ELOActionFormulaData getEloActionFormularData() {
+        return eloActionFormularData;
+    }
+
+    public ELOInputData getEloInputData() {
+        return eloInputData;
+    }
 }
 

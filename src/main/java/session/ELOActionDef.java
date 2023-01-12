@@ -10,4 +10,16 @@ public class ELOActionDef {
         this.selectorMenu = selectorMenu;
         this.selectorButton = selectorButton;
     }
+
+    public String getSelectorRibbon() {
+        return selectorRibbon;
+    }
+
+    public String getSelectorMenu() {
+        return selectorMenu;
+    }
+
+    public String getSelectorButton() {
+        return selectorButton;
+    }
 }

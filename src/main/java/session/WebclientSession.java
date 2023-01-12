@@ -21,6 +21,16 @@ public class WebclientSession {
         page = context.newPage();
     }
 
+    public WebclientSession(ELOSolutionArchiveData eloSolutionArchiveData) {
+        this.selectorSolutionTile = eloSolutionArchiveData.getSelectorSolutionTile();
+        this.selectorSolutionsFolder = eloSolutionArchiveData.getSelectorSolutionsFolder();
+        playwright = Playwright.create();
+        Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        BrowserContext context = browser.newContext();
+        page = context.newPage();
+    }
+
+
     public void visit(String url) {
         page.navigate(url);
     }
@@ -33,6 +43,14 @@ public class WebclientSession {
         BaseFunctions.type(locator, text, false);
     }
 
+    public void login(LoginData loginData) {
+        Login login = new Login(this, loginData.getStack(), loginData.getTextUserName().getSelector(), loginData.getTextPassword().getSelector(), loginData.getButtonLogin().getSelector());
+        login.typeUsername(loginData.getTextUserName().getValue());
+        login.typePassword(loginData.getTextPassword().getValue());
+        login.clickLoginButton();
+        selectSolutionTile();
+    }
+
     public void login(String stack, String userName, String password, String selectorUsername, String selectorPassword, String selectorLoginButton) {
         Login login = new Login(this, stack, selectorUsername, selectorPassword, selectorLoginButton);
         login.typeUsername(userName);
@@ -40,6 +58,8 @@ public class WebclientSession {
         login.clickLoginButton();
         selectSolutionTile();
     }
+
+
 
     private FrameLocator getFrameLocator() {
         String selector = "";
@@ -93,6 +113,23 @@ public class WebclientSession {
         formula.save();
         BaseFunctions.sleep();
     }
+
+    public void executeAction(String actionName,
+                              Map<String, TabPage> tabPages,
+                              ELOActionFormulaData eloActionFormulaData,
+                              ELOActionDef eloActionDef) {
+        Action action = new Action(this,
+                eloActionDef);
+        action.startFormula();
+        System.out.println("actionName " +actionName);
+        FrameLocator frameLocator = getFrameLocator();
+        Formula formula = new Formula(frameLocator, eloActionFormulaData.getSelectorAssignmentMeeting(), eloActionFormulaData.getSelectorAssignmentMeeting());
+        formula.inputData(tabPages);
+        formula.save();
+        BaseFunctions.sleep();
+    }
+
+
 
     private void selectSolutionTile() {
 
