@@ -887,20 +887,12 @@ public class PlaywrightSessionTest {
         final String selectorAssignmentMeeting = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[2]";
         final String selectorAssignmentPool = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[1]";
 
-        // Login Data
-        final String selectorUsername = "xpath=//*[@id=\"field-focustext-1020-inputEl\"]";
-        final String selectorPassword = "xpath=//*[@id=\"textfield-1021-inputEl\"]";
-        final String selectorLoginButton = "xpath=//*[@id=\"button-1023-btnIconEl\"]";
-
-        final String stack = "ruberg-meeting.dev.elo";
-        final String userName = "Administrator";
-        final String password = "elo";
-
         // Fill DataConfig
-
         final ELOControl textUserName = new ELOControl("xpath=//*[@id=\"field-focustext-1020-inputEl\"]", "Administrator");
         final ELOControl textPassword = new ELOControl("xpath=//*[@id=\"textfield-1021-inputEl\"]", "elo");
         final ELOControl buttonLogin = new ELOControl("xpath=//*[@id=\"button-1023-btnIconEl\"]", "Login");
+        final String stack = "ruberg-meeting.dev.elo";
+
         final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
 
         final ELOSolutionArchiveData eloSolutionArchiveData = new ELOSolutionArchiveData("xpath=//*[@id=\"tile-1013\"]", "xpath=//*[@id=\"treeview-1061-record-1\"]");

@@ -69,14 +69,12 @@ public class Action {
             }
         }
     }
-
     public Action(WebclientSession ws, ELOActionDef eloActionDef) {
         this.ws = ws;
         ribbonLocator = ws.getPage().locator(eloActionDef.getSelectorRibbon());
         menuLocator = ws.getPage().locator(eloActionDef.getSelectorMenu());
         buttonLocator = ws.getPage().locator(eloActionDef.getSelectorButton());
     }
-
     public void startFormula() {
         ws.click(ribbonLocator);
         ws.click(menuLocator);

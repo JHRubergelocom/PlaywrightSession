@@ -4,7 +4,6 @@ import com.microsoft.playwright.Locator;
 
 public class BaseFunctions {
     private static final long millis = 5000;
-
     public static void sleep() {
         try {
             Thread.sleep(millis);

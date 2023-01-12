@@ -1,7 +1,6 @@
 package session;
 
 import com.microsoft.playwright.*;
-
 import java.util.Map;
 
 public class WebclientSession {
@@ -20,7 +19,6 @@ public class WebclientSession {
         BrowserContext context = browser.newContext();
         page = context.newPage();
     }
-
     public WebclientSession(ELOSolutionArchiveData eloSolutionArchiveData) {
         this.selectorSolutionTile = eloSolutionArchiveData.getSelectorSolutionTile();
         this.selectorSolutionsFolder = eloSolutionArchiveData.getSelectorSolutionsFolder();
@@ -29,20 +27,15 @@ public class WebclientSession {
         BrowserContext context = browser.newContext();
         page = context.newPage();
     }
-
-
     public void visit(String url) {
         page.navigate(url);
     }
-
     public void click(Locator locator) {
         BaseFunctions.click(locator);
     }
-
     public void type(Locator locator, String text) {
         BaseFunctions.type(locator, text, false);
     }
-
     public void login(LoginData loginData) {
         Login login = new Login(this, loginData.getStack(), loginData.getTextUserName().getSelector(), loginData.getTextPassword().getSelector(), loginData.getButtonLogin().getSelector());
         login.typeUsername(loginData.getTextUserName().getValue());
@@ -50,7 +43,6 @@ public class WebclientSession {
         login.clickLoginButton();
         selectSolutionTile();
     }
-
     public void login(String stack, String userName, String password, String selectorUsername, String selectorPassword, String selectorLoginButton) {
         Login login = new Login(this, stack, selectorUsername, selectorPassword, selectorLoginButton);
         login.typeUsername(userName);
@@ -58,9 +50,6 @@ public class WebclientSession {
         login.clickLoginButton();
         selectSolutionTile();
     }
-
-
-
     private FrameLocator getFrameLocator() {
         String selector = "";
         getPage().mainFrame().content();
@@ -73,10 +62,8 @@ public class WebclientSession {
         FrameLocator frameLocator = getPage().frameLocator(selector);
         System.out.println("selector " + selector);
         System.out.println("frameLocator " + frameLocator);
-
         return frameLocator;
     }
-
     public void executeAction(String actionName,
                               Map<String, TabPage> tabPages,
                               String selectorAssignmentMeeting,
@@ -113,7 +100,6 @@ public class WebclientSession {
         formula.save();
         BaseFunctions.sleep();
     }
-
     public void executeAction(String actionName,
                               Map<String, TabPage> tabPages,
                               ELOActionFormulaData eloActionFormulaData,
@@ -123,25 +109,18 @@ public class WebclientSession {
         action.startFormula();
         System.out.println("actionName " +actionName);
         FrameLocator frameLocator = getFrameLocator();
-        Formula formula = new Formula(frameLocator, eloActionFormulaData.getSelectorAssignmentMeeting(), eloActionFormulaData.getSelectorAssignmentMeeting());
+        Formula formula = new Formula(frameLocator, eloActionFormulaData.getSelectorAssignmentMeeting(), eloActionFormulaData.getSelectorAssignmentPool());
         formula.inputData(tabPages);
         formula.save();
         BaseFunctions.sleep();
     }
-
-
-
     private void selectSolutionTile() {
-
         BaseFunctions.click(page.locator(selectorSolutionTile));
     }
-
     public void  selectSolutionsFolder() {
         BaseFunctions.click(page.locator(selectorSolutionsFolder));
     }
-
     public void close() {
         playwright.close();
     }
-
 }
