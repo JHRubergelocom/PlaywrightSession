@@ -18,4 +18,12 @@ public class ELOAction {
     public Map<String, TabPage> getTabPages() {
         return tabPages;
     }
+
+    @Override
+    public String toString() {
+        return "ELOAction{" +
+                "actionName='" + actionName + '\'' +
+                ", tabPages=" + tabPages +
+                '}';
+    }
 }

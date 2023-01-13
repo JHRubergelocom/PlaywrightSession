@@ -24,4 +24,14 @@ public class Login {
     public void clickLoginButton() {
         ws.click(loginButtonLocator);
     }
+
+    @Override
+    public String toString() {
+        return "Login{" +
+                "ws=" + ws +
+                ", usernameLocator=" + usernameLocator +
+                ", passwordLocator=" + passwordLocator +
+                ", loginButtonLocator=" + loginButtonLocator +
+                '}';
+    }
 }

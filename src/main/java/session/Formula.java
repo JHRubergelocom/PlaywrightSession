@@ -81,4 +81,13 @@ public class Formula {
             inputCheckBoxes(tabPage.getCheckboxes());
         }
     }
+
+    @Override
+    public String toString() {
+        return "Formula{" +
+                "frameLocator=" + frameLocator +
+                ", selectorAssignmentMeeting='" + selectorAssignmentMeeting + '\'' +
+                ", selectorAssignmentPool='" + selectorAssignmentPool + '\'' +
+                '}';
+    }
 }

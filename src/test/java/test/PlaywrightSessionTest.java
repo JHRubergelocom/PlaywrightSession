@@ -1,9 +1,12 @@
 package test;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.*;
 import session.*;
 
+import java.io.*;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -767,6 +770,40 @@ public class PlaywrightSessionTest {
 
         ws.getPage().pause();
         ws.close();
+    }
+    @Test
+    public void TestJson() {
+        // Create DataConfig
+        final DataConfig dataConfig = createDataConfig();
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+        String json = gson.toJson(dataConfig);
+        System.out.println(json);
+
+        // Save DataConfig
+        try (FileWriter writer = new FileWriter("DataConfig.json")) {
+            writer.write(json);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Read DataConfig
+        gson = new Gson();
+
+        System.out.println("Reading DataConfig.json");
+        System.out.println("-".repeat(100));
+
+        try(BufferedReader br = new BufferedReader(new FileReader("DataConfig.json"))) {
+            DataConfig dataConfig1 = gson.fromJson(br, DataConfig.class);
+            System.out.println(dataConfig1);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("-".repeat(100));
     }
     @Test
     public void firstScript() {

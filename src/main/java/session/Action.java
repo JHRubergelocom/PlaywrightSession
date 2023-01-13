@@ -20,4 +20,14 @@ public class Action {
         ws.click(buttonLocator);
         BaseFunctions.sleep();
     }
+
+    @Override
+    public String toString() {
+        return "Action{" +
+                "ws=" + ws +
+                ", ribbonLocator=" + ribbonLocator +
+                ", menuLocator=" + menuLocator +
+                ", buttonLocator=" + buttonLocator +
+                '}';
+    }
 }

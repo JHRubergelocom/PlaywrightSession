@@ -13,4 +13,12 @@ public class ELOControl {
     public String getValue() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return "ELOControl{" +
+                "selector='" + selector + '\'' +
+                ", value='" + value + '\'' +
+                '}';
+    }
 }

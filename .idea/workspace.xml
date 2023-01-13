@@ -4,9 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfig Action Data">
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfig Action Data Refactoring">
+      <change afterPath="$PROJECT_DIR$/DataConfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/session/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/DataConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/DataConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOActionData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOActionData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOActionDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOActionDef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOActionDefData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOActionDefData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOActionFormulaData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOActionFormulaData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOSolutionArchiveData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOSolutionArchiveData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/Formula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Formula.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/LoginData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/LoginData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/TabPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/TabPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
     </list>
@@ -54,7 +68,7 @@
       <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlaywrightSessionTest.secondScript">
+  <component name="RunManager" selected="JUnit.PlaywrightSessionTest.TestJson">
     <configuration name="PlaywrightSessionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
@@ -66,6 +80,22 @@
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlaywrightSessionTest.TestJson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PlaywrightSession" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
+      <option name="METHOD_NAME" value="TestJson" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -102,22 +132,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaywrightSessionTest.firstScript" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PlaywrightSession" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
-      <option name="METHOD_NAME" value="firstScript" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PlaywrightSessionTest.secondScript" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
@@ -136,11 +150,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlaywrightSessionTest.TestJson" />
         <item itemvalue="JUnit.PlaywrightSessionTest.secondScript" />
         <item itemvalue="JUnit.PlaywrightSessionTest" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSessionVersion1" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.firstScript" />
       </list>
     </recent_temporary>
   </component>
@@ -300,7 +314,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673599546481</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Playwright DataConfig Action Data Refactoring">
+      <created>1673602594832</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1673602594832</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -331,6 +352,7 @@
     <MESSAGE value="Playwright DataConfig Definition" />
     <MESSAGE value="Playwright DataConfig Execution" />
     <MESSAGE value="Playwright DataConfig Action Data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfig Action Data" />
+    <MESSAGE value="Playwright DataConfig Action Data Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfig Action Data Refactoring" />
   </component>
 </project>

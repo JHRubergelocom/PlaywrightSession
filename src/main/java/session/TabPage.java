@@ -31,26 +31,15 @@ public class TabPage {
     public String getAddLineButtonName() {
         return addLineButtonName;
     }
+
     @Override
     public String toString() {
-        StringBuilder output = new StringBuilder();
-        StringBuilder outputBuilder = new StringBuilder(output + "fields:\n");
-        for (Map.Entry<String,String> entry: fields.entrySet()) {
-            outputBuilder.append("    Key Field: ").append(entry.getKey()).append(" ");
-            outputBuilder.append("Value Field: ").append(entry.getValue()).append(" ");
-            outputBuilder.append("\n");
-        }
-        output = new StringBuilder(outputBuilder.toString());
-        output.append("table:\n");
-
-        for (Map<String, String> tableLine: table) {
-            for (Map.Entry<String,String> entry: tableLine.entrySet()) {
-                output.append("    Key TableLine: ").append(entry.getKey()).append(" ");
-                output.append("Value TableLine: ").append(entry.getValue()).append(" ");
-                output.append("\n");
-            }
-            output.append("\n");
-        }
-        return output.toString();
+        return "TabPage{" +
+                "fields=" + fields +
+                ", table=" + table +
+                ", addLineButtonName='" + addLineButtonName + '\'' +
+                ", checkboxes=" + checkboxes +
+                ", assignment=" + assignment +
+                '}';
     }
 }

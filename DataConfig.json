@@ -1,0 +1,499 @@
+{
+  "loginData": {
+    "textUserName": {
+      "selector": "xpath\u003d//*[@id\u003d\"field-focustext-1020-inputEl\"]",
+      "value": "Administrator"
+    },
+    "textPassword": {
+      "selector": "xpath\u003d//*[@id\u003d\"textfield-1021-inputEl\"]",
+      "value": "elo"
+    },
+    "buttonLogin": {
+      "selector": "xpath\u003d//*[@id\u003d\"button-1023-btnIconEl\"]",
+      "value": "Login"
+    },
+    "stack": "ruberg-meeting.dev.elo"
+  },
+  "eloSolutionArchiveData": {
+    "selectorSolutionTile": "xpath\u003d//*[@id\u003d\"tile-1013\"]",
+    "selectorSolutionsFolder": "xpath\u003d//*[@id\u003d\"treeview-1061-record-1\"]"
+  },
+  "eloActionDefData": {
+    "eloActionDefs": {
+      "CreateMeeting": {
+        "selectorRibbon": "xpath\u003d//*[@id\u003d\"button-1218-btnIconEl\"]",
+        "selectorMenu": "xpath\u003d//*[@id\u003d\"button-1280-btnIconEl\"]",
+        "selectorButton": "xpath\u003d//*[@id\u003d\"ext-comp-1275-textEl\"]"
+      },
+      "CreateMeetingPremium": {
+        "selectorRibbon": "xpath\u003d//*[@id\u003d\"button-1218-btnIconEl\"]",
+        "selectorMenu": "xpath\u003d//*[@id\u003d\"button-1288-btnIconEl\"]",
+        "selectorButton": "xpath\u003d//*[@id\u003d\"ext-comp-1282-textEl\"]"
+      },
+      "CreateMeetingItem": {
+        "selectorRibbon": "xpath\u003d//*[@id\u003d\"button-1218-btnIconEl\"]",
+        "selectorMenu": "xpath\u003d//*[@id\u003d\"button-1280-btnIconEl\"]",
+        "selectorButton": "xpath\u003d//*[@id\u003d\"ext-comp-1276-textEl\"]"
+      },
+      "CreateMeetingItemPool": {
+        "selectorRibbon": "xpath\u003d//*[@id\u003d\"button-1218-btnIconEl\"]",
+        "selectorMenu": "xpath\u003d//*[@id\u003d\"button-1280-btnIconEl\"]",
+        "selectorButton": "xpath\u003d//*[@id\u003d\"ext-comp-1277-textEl\"]"
+      },
+      "CreateMeetingItemPoolPremium": {
+        "selectorRibbon": "xpath\u003d//*[@id\u003d\"button-1218-btnIconEl\"]",
+        "selectorMenu": "xpath\u003d//*[@id\u003d\"button-1288-btnIconEl\"]",
+        "selectorButton": "xpath\u003d//*[@id\u003d\"ext-comp-1285-textEl\"]"
+      },
+      "CreateMeetingBoard": {
+        "selectorRibbon": "xpath\u003d//*[@id\u003d\"button-1218-btnIconEl\"]",
+        "selectorMenu": "xpath\u003d//*[@id\u003d\"button-1280-btnIconEl\"]",
+        "selectorButton": "xpath\u003d//*[@id\u003d\"ext-comp-1274-textEl\"]"
+      },
+      "CreateMeetingItemPremium": {
+        "selectorRibbon": "xpath\u003d//*[@id\u003d\"button-1218-btnIconEl\"]",
+        "selectorMenu": "xpath\u003d//*[@id\u003d\"button-1288-btnIconEl\"]",
+        "selectorButton": "xpath\u003d//*[@id\u003d\"ext-comp-1284-textEl\"]"
+      },
+      "CreateMeetingBoardPremium": {
+        "selectorRibbon": "xpath\u003d//*[@id\u003d\"button-1218-btnIconEl\"]",
+        "selectorMenu": "xpath\u003d//*[@id\u003d\"button-1288-btnIconEl\"]",
+        "selectorButton": "xpath\u003d//*[@id\u003d\"ext-comp-1281-textEl\"]"
+      }
+    }
+  },
+  "eloActionFormularData": {
+    "selectorAssignmentMeeting": "xpath\u003d//*[@id\u003d\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[2]",
+    "selectorAssignmentPool": "xpath\u003d//*[@id\u003d\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[1]"
+  },
+  "eloActionData": {
+    "eloActions": {
+      "1": {
+        "actionName": "CreateMeetingBoard",
+        "tabPages": {
+          "Allgemein": {
+            "fields": {
+              "IX_DESC": "Beschreibung Meetingboard1",
+              "IX_GRP_MEETING_BOARD_CODE": "MB1",
+              "IX_GRP_MEETING_BOARD_MINUTE_TAKER": "Bodo Kraft",
+              "IX_GRP_MEETING_BOARD_NAME": "Meetingboard1"
+            },
+            "table": [
+              {
+                "IX_MAP_MEETING_BOARD_ORGANIZER": "Jan Eichner"
+              },
+              {
+                "IX_MAP_MEETING_BOARD_ORGANIZER": "Sandra Renz"
+              }
+            ],
+            "addLineButtonName": "Weitere Person",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          },
+          "Benachrichtigungen": {
+            "fields": {},
+            "table": [
+              {
+                "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_": "O",
+                "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_": "MEETING_STARTDATE",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_": "y",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_": "1",
+                "IX_MAP_MEETING_NOTIFICATION_SIGN_": "-",
+                "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_": "Meeting-Einladung"
+              },
+              {
+                "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_": "A",
+                "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_": "MEETING_ENDDATE",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_": "Q",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_": "1",
+                "IX_MAP_MEETING_NOTIFICATION_SIGN_": "+",
+                "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_": "Meeting-Einladung"
+              }
+            ],
+            "addLineButtonName": "Weitere Benachrichtigung",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          },
+          "Einstellungen": {
+            "fields": {
+              "IX_MAP_MEETING_BOARD_MEETING_DEFAULT_NAME": "Meeting1"
+            },
+            "table": [],
+            "addLineButtonName": "",
+            "checkboxes": {
+              "IX_MAP_MEETING_BOARD_SETTING_ITEMTOAGENDA": true
+            },
+            "assignment": "NOTHING"
+          },
+          "Themen": {
+            "fields": {},
+            "table": [
+              {
+                "WF_MAP_MEETING_ITEM_DESC": "Rückblick vergangene Projekte",
+                "WF_MAP_MEETING_ITEM_DURATION": "30",
+                "WF_MAP_MEETING_ITEM_TITLE": "Rückblende"
+              },
+              {
+                "WF_MAP_MEETING_ITEM_DESC": "Zukünftige Projekte",
+                "WF_MAP_MEETING_ITEM_DURATION": "40",
+                "WF_MAP_MEETING_ITEM_TITLE": "Planung"
+              }
+            ],
+            "addLineButtonName": "Weiteres Thema",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          }
+        }
+      },
+      "2": {
+        "actionName": "CreateMeeting",
+        "tabPages": {
+          "Allgemein": {
+            "fields": {
+              "IX_GRP_MEETING_LOCATION": "Musterstadt",
+              "IX_GRP_MEETING_MINUTE_TAKER": "Charlotte Bennett",
+              "IX_GRP_MEETING_NAME": "Meeting1"
+            },
+            "table": [
+              {
+                "IX_MAP_MEETING_TIMESLOT_END": "17:00",
+                "IX_MAP_MEETING_TIMESLOT_START": "09:00"
+              },
+              {
+                "IX_MAP_MEETING_TIMESLOT_END": "17:00",
+                "IX_MAP_MEETING_TIMESLOT_START": "09:00"
+              }
+            ],
+            "addLineButtonName": "Weiterer Tag",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          },
+          "Benachrichtigungen": {
+            "fields": {},
+            "table": [
+              {
+                "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_": "O",
+                "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_": "MEETING_STARTDATE",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_": "y",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_": "1",
+                "IX_MAP_MEETING_NOTIFICATION_SIGN_": "-",
+                "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_": "Meeting-Einladung"
+              },
+              {
+                "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_": "A",
+                "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_": "MEETING_ENDDATE",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_": "Q",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_": "1",
+                "IX_MAP_MEETING_NOTIFICATION_SIGN_": "+",
+                "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_": "Meeting-Einladung"
+              }
+            ],
+            "addLineButtonName": "Weitere Benachrichtigung",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          },
+          "Teilnehmende": {
+            "fields": {},
+            "table": [
+              {
+                "WF_MAP_MEETING_PERSON_COMPANYNAME": "Contelo AG",
+                "WF_MAP_MEETING_PERSON_EMAIL": "g.baum@contelo.de",
+                "WF_MAP_MEETING_PERSON_FIRSTNAME": "Gerd",
+                "WF_MAP_MEETING_PERSON_LASTNAME": "Baum"
+              }
+            ],
+            "addLineButtonName": "Weiterer Gast",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          }
+        }
+      },
+      "3": {
+        "actionName": "CreateMeetingItem",
+        "tabPages": {
+          "": {
+            "fields": {
+              "IX_GRP_MEETING_BOARD_CODE": "MB1",
+              "IX_GRP_MEETING_BOARD_NAME": "Meetingboard1",
+              "IX_GRP_MEETING_ITEM_DURATION": "40",
+              "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON": "Adrian Smith",
+              "IX_GRP_MEETING_ITEM_TITLE": "Thema1",
+              "IX_GRP_MEETING_NAME": "Meeting1"
+            },
+            "table": [
+              {
+                "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME": "Bodo",
+                "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME": "Kraft"
+              },
+              {
+                "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME": "Jessica",
+                "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME": "Davis"
+              }
+            ],
+            "addLineButtonName": "Weitere Person",
+            "checkboxes": {},
+            "assignment": "MEETING"
+          }
+        }
+      },
+      "4": {
+        "actionName": "CreateMeetingBoardPremium",
+        "tabPages": {
+          "Allgemein": {
+            "fields": {
+              "IX_DESC": "Beschreibung Meetingboard2",
+              "IX_GRP_MEETING_BOARD_CODE": "MB2",
+              "IX_GRP_MEETING_BOARD_MINUTE_TAKER": "David Lee",
+              "IX_GRP_MEETING_BOARD_NAME": "Meetingboard2"
+            },
+            "table": [
+              {
+                "IX_MAP_MEETING_BOARD_ORGANIZER": "Jan Eichner"
+              },
+              {
+                "IX_MAP_MEETING_BOARD_ORGANIZER": "Sandra Renz"
+              }
+            ],
+            "addLineButtonName": "Weitere Person",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          },
+          "Benachrichtigungen": {
+            "fields": {},
+            "table": [
+              {
+                "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_": "O",
+                "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_": "MEETING_STARTDATE",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_": "y",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_": "1",
+                "IX_MAP_MEETING_NOTIFICATION_SIGN_": "-",
+                "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_": "Sitzungseinladung"
+              },
+              {
+                "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_": "A",
+                "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_": "MEETING_ENDDATE",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_": "Q",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_": "1",
+                "IX_MAP_MEETING_NOTIFICATION_SIGN_": "+",
+                "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_": "Sitzungseinladung"
+              }
+            ],
+            "addLineButtonName": "Weitere Benachrichtigung",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          },
+          "Einstellungen": {
+            "fields": {
+              "IX_MAP_MEETING_BOARD_MEETING_DEFAULT_NAME": "Meeting2"
+            },
+            "table": [],
+            "addLineButtonName": "Weitere Benachrichtigung",
+            "checkboxes": {
+              "IX_MAP_MEETING_BOARD_SETTING_APPROVAL_REQUIRED": false
+            },
+            "assignment": "NOTHING"
+          },
+          "Tagesordnungspunkte": {
+            "fields": {},
+            "table": [
+              {
+                "WF_MAP_MEETING_ITEM_DESC": "Rückblick vergangene Projekte",
+                "WF_MAP_MEETING_ITEM_DURATION": "30",
+                "WF_MAP_MEETING_ITEM_TITLE": "Rückblende"
+              },
+              {
+                "WF_MAP_MEETING_ITEM_DESC": "Zukünftige Projekte",
+                "WF_MAP_MEETING_ITEM_DURATION": "40",
+                "WF_MAP_MEETING_ITEM_TITLE": "Planung"
+              }
+            ],
+            "addLineButtonName": "Weiterer TOP",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          }
+        }
+      },
+      "5": {
+        "actionName": "CreateMeetingPremium",
+        "tabPages": {
+          "Allgemein": {
+            "fields": {
+              "IX_GRP_MEETING_LOCATION": "Musterdorf",
+              "IX_GRP_MEETING_MINUTE_TAKER": "Bodo Kraft",
+              "IX_GRP_MEETING_NAME": "Sitzung1"
+            },
+            "table": [
+              {
+                "IX_MAP_MEETING_TIMESLOT_END": "16:00",
+                "IX_MAP_MEETING_TIMESLOT_START": "11:00"
+              },
+              {
+                "IX_MAP_MEETING_TIMESLOT_END": "17:00",
+                "IX_MAP_MEETING_TIMESLOT_START": "09:00"
+              }
+            ],
+            "addLineButtonName": "Weiterer Tag",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          },
+          "Benachrichtigungen": {
+            "fields": {},
+            "table": [
+              {
+                "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_": "O",
+                "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_": "MEETING_STARTDATE",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_": "y",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_": "1",
+                "IX_MAP_MEETING_NOTIFICATION_SIGN_": "-",
+                "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_": "Sitzungseinladung"
+              },
+              {
+                "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_": "A",
+                "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_": "MEETING_ENDDATE",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_": "Q",
+                "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_": "1",
+                "IX_MAP_MEETING_NOTIFICATION_SIGN_": "+",
+                "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_": "Sitzungseinladung"
+              }
+            ],
+            "addLineButtonName": "Weitere Benachrichtigung",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          },
+          "Teilnehmende": {
+            "fields": {},
+            "table": [
+              {
+                "WF_MAP_MEETING_PERSON_COMPANYNAME": "Contelo AG",
+                "WF_MAP_MEETING_PERSON_EMAIL": "g.baum@contelo.de",
+                "WF_MAP_MEETING_PERSON_FIRSTNAME": "Gerd",
+                "WF_MAP_MEETING_PERSON_LASTNAME": "Baum"
+              }
+            ],
+            "addLineButtonName": "Weiterer Gast",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          }
+        }
+      },
+      "6": {
+        "actionName": "CreateMeetingItemPremium",
+        "tabPages": {
+          "": {
+            "fields": {
+              "IX_GRP_MEETING_BOARD_CODE": "MB2",
+              "IX_GRP_MEETING_BOARD_NAME": "Meetingboard2",
+              "IX_GRP_MEETING_ITEM_DURATION": "30",
+              "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON": "David Lee",
+              "IX_GRP_MEETING_ITEM_TITLE": "TOP1",
+              "IX_GRP_MEETING_NAME": "Sitzung1"
+            },
+            "table": [
+              {
+                "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME": "Charlotte",
+                "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME": "Bennett"
+              },
+              {
+                "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME": "Jessica",
+                "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME": "Davis"
+              }
+            ],
+            "addLineButtonName": "Weitere Person",
+            "checkboxes": {},
+            "assignment": "MEETING"
+          }
+        }
+      },
+      "7": {
+        "actionName": "CreateMeetingItemPool",
+        "tabPages": {
+          "": {
+            "fields": {
+              "IX_DESC": "Beschreibung Meetingitempool1",
+              "IX_GRP_MEETING_BOARD_CODE": "MB1",
+              "IX_GRP_MEETING_BOARD_NAME": "Meetingboard1",
+              "IX_GRP_MEETING_ITEM_POOL_NAME": "Meetingitempool1"
+            },
+            "table": [],
+            "addLineButtonName": "",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          }
+        }
+      },
+      "8": {
+        "actionName": "CreateMeetingItem",
+        "tabPages": {
+          "": {
+            "fields": {
+              "IX_GRP_MEETING_BOARD_CODE": "MB1",
+              "IX_GRP_MEETING_BOARD_NAME": "Meetingboard1",
+              "IX_GRP_MEETING_ITEM_DURATION": "40",
+              "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON": "Adrian Smith",
+              "IX_GRP_MEETING_ITEM_TITLE": "Thema1 Ideenpool1",
+              "IX_MAP_MEETING_ITEM_POOL_NAME": "Meetingitempool1"
+            },
+            "table": [
+              {
+                "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME": "Bodo",
+                "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME": "Kraft"
+              },
+              {
+                "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME": "Jessica",
+                "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME": "Davis"
+              }
+            ],
+            "addLineButtonName": "Weitere Person",
+            "checkboxes": {},
+            "assignment": "POOL"
+          }
+        }
+      },
+      "9": {
+        "actionName": "CreateMeetingItemPoolPremium",
+        "tabPages": {
+          "": {
+            "fields": {
+              "IX_DESC": "Beschreibung Meetingitempool2",
+              "IX_GRP_MEETING_BOARD_CODE": "MB2",
+              "IX_GRP_MEETING_BOARD_NAME": "Meetingboard2",
+              "IX_GRP_MEETING_ITEM_POOL_NAME": "Meetingitempool2"
+            },
+            "table": [],
+            "addLineButtonName": "",
+            "checkboxes": {},
+            "assignment": "NOTHING"
+          }
+        }
+      },
+      "10": {
+        "actionName": "CreateMeetingItemPremium",
+        "tabPages": {
+          "": {
+            "fields": {
+              "IX_GRP_MEETING_BOARD_CODE": "MB2",
+              "IX_GRP_MEETING_BOARD_NAME": "Meetingboard2",
+              "IX_GRP_MEETING_ITEM_DURATION": "30",
+              "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON": "David Lee",
+              "IX_GRP_MEETING_ITEM_TITLE": "TOP1",
+              "IX_MAP_MEETING_ITEM_POOL_NAME": "Meetingitempool2"
+            },
+            "table": [
+              {
+                "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME": "Charlotte",
+                "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME": "Bennett"
+              },
+              {
+                "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME": "Jessica",
+                "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME": "Davis"
+              }
+            ],
+            "addLineButtonName": "Weitere Person",
+            "checkboxes": {},
+            "assignment": "POOL"
+          }
+        }
+      }
+    }
+  }
+}

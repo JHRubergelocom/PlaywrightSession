@@ -13,4 +13,12 @@ public class ELOActionFormulaData {
     public String getSelectorAssignmentPool() {
         return selectorAssignmentPool;
     }
+
+    @Override
+    public String toString() {
+        return "ELOActionFormulaData{" +
+                "selectorAssignmentMeeting='" + selectorAssignmentMeeting + '\'' +
+                ", selectorAssignmentPool='" + selectorAssignmentPool + '\'' +
+                '}';
+    }
 }

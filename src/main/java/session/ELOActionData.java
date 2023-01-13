@@ -12,4 +12,11 @@ public class ELOActionData {
     public SortedMap<Integer, ELOAction> getEloActions() {
         return eloActions;
     }
+
+    @Override
+    public String toString() {
+        return "ELOActionData{" +
+                "eloActions=" + eloActions +
+                '}';
+    }
 }

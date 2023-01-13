@@ -72,4 +72,14 @@ public class WebclientSession {
     public void close() {
         playwright.close();
     }
+
+    @Override
+    public String toString() {
+        return "WebclientSession{" +
+                "page=" + page +
+                ", playwright=" + playwright +
+                ", selectorSolutionTile='" + selectorSolutionTile + '\'' +
+                ", selectorSolutionsFolder='" + selectorSolutionsFolder + '\'' +
+                '}';
+    }
 }

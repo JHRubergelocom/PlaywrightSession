@@ -10,4 +10,11 @@ public class ELOActionDefData {
     public Map<String, ELOActionDef> getEloActionDefs() {
         return eloActionDefs;
     }
+
+    @Override
+    public String toString() {
+        return "ELOActionDefData{" +
+                "eloActionDefs=" + eloActionDefs +
+                '}';
+    }
 }

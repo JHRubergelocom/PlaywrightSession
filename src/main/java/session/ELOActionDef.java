@@ -18,4 +18,13 @@ public class ELOActionDef {
     public String getSelectorButton() {
         return selectorButton;
     }
+
+    @Override
+    public String toString() {
+        return "ELOActionDef{" +
+                "selectorRibbon='" + selectorRibbon + '\'' +
+                ", selectorMenu='" + selectorMenu + '\'' +
+                ", selectorButton='" + selectorButton + '\'' +
+                '}';
+    }
 }

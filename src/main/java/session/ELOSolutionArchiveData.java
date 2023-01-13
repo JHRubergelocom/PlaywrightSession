@@ -13,4 +13,12 @@ public class ELOSolutionArchiveData {
     public String getSelectorSolutionsFolder() {
         return selectorSolutionsFolder;
     }
+
+    @Override
+    public String toString() {
+        return "ELOSolutionArchiveData{" +
+                "selectorSolutionTile='" + selectorSolutionTile + '\'' +
+                ", selectorSolutionsFolder='" + selectorSolutionsFolder + '\'' +
+                '}';
+    }
 }

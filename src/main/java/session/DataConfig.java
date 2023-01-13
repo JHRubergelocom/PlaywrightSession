@@ -28,5 +28,16 @@ public class DataConfig {
     public ELOActionData getEloActionData() {
         return eloActionData;
     }
+
+    @Override
+    public String toString() {
+        return "DataConfig{" +
+                "loginData=" + loginData +
+                ", eloSolutionArchiveData=" + eloSolutionArchiveData +
+                ", eloActionDefData=" + eloActionDefData +
+                ", eloActionFormularData=" + eloActionFormularData +
+                ", eloActionData=" + eloActionData +
+                '}';
+    }
 }
 
