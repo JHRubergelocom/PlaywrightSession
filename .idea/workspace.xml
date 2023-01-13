@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfig Json">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" afterDir="false" />
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfigTest Json">
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +55,7 @@
       <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession\target" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlaywrightSessionTest.TestSession">
+  <component name="RunManager" selected="JUnit.PlaywrightSessionTest.TestJson">
     <configuration name="PlaywrightSessionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
@@ -139,9 +137,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlaywrightSessionTest.TestJson" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
         <item itemvalue="JUnit.PlaywrightSessionTest.secondScript" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.TestJson" />
         <item itemvalue="JUnit.PlaywrightSessionTest" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSessionVersion1" />
       </list>
@@ -317,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673616974976</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Playwright DataConfigTest Json">
+      <created>1673620731102</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1673620731102</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -350,6 +355,7 @@
     <MESSAGE value="Playwright DataConfig Action Data" />
     <MESSAGE value="Playwright DataConfig Action Data Refactoring" />
     <MESSAGE value="Playwright DataConfig Json" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfig Json" />
+    <MESSAGE value="Playwright DataConfigTest Json" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfigTest Json" />
   </component>
 </project>

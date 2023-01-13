@@ -709,13 +709,11 @@ public class PlaywrightSessionTest {
 
         final ELOActionData eloActionData = new ELOActionData(eloActions);
 
-        final DataConfig dataConfig = new DataConfig(loginData,
+        return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionDefData,
                 eloActionFormularData,
                 eloActionData);
-
-        return  dataConfig;
     }
     @BeforeAll
     static void launchBrowser() {
