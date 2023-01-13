@@ -5,13 +5,13 @@ public class DataConfig {
     private final ELOSolutionArchiveData eloSolutionArchiveData;
     private final ELOActionDefData eloActionDefData;
     private final ELOActionFormulaData eloActionFormularData;
-    private final ELOInputData eloInputData;
-    public DataConfig(LoginData loginData, ELOSolutionArchiveData eloSolutionArchiveData, ELOActionDefData eloActionDefData, ELOActionFormulaData eloActionFormularData, ELOInputData eloInputData) {
+    private final ELOActionData eloActionData;
+    public DataConfig(LoginData loginData, ELOSolutionArchiveData eloSolutionArchiveData, ELOActionDefData eloActionDefData, ELOActionFormulaData eloActionFormularData, ELOActionData eloActionData) {
         this.loginData = loginData;
         this.eloSolutionArchiveData = eloSolutionArchiveData;
         this.eloActionDefData = eloActionDefData;
         this.eloActionFormularData = eloActionFormularData;
-        this.eloInputData = eloInputData;
+        this.eloActionData = eloActionData;
     }
     public LoginData getLoginData() {
         return loginData;
@@ -25,8 +25,8 @@ public class DataConfig {
     public ELOActionFormulaData getEloActionFormularData() {
         return eloActionFormularData;
     }
-    public ELOInputData getEloInputData() {
-        return eloInputData;
+    public ELOActionData getEloActionData() {
+        return eloActionData;
     }
 }
 

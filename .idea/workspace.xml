@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfig Execution">
+      <change afterPath="$PROJECT_DIR$/src/main/java/session/ELOAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trace.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/session/DataConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/DataConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOActionDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOActionDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOActionDefData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOActionDefData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOActionFormulaData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOActionFormulaData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOSolutionArchiveData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOSolutionArchiveData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/Formula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Formula.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/LoginData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/LoginData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOActionData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -290,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673534874158</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Playwright DataConfig Execution">
+      <created>1673535973622</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1673535973622</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
