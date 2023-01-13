@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfig Execution">
-      <change afterPath="$PROJECT_DIR$/src/main/java/session/ELOAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trace.zip" afterDir="false" />
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfig Action Data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/DataConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/DataConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOActionData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +54,7 @@
       <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlaywrightSessionTest.TestSession">
+  <component name="RunManager" selected="JUnit.PlaywrightSessionTest.secondScript">
     <configuration name="PlaywrightSessionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
@@ -138,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlaywrightSessionTest.secondScript" />
+        <item itemvalue="JUnit.PlaywrightSessionTest" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSessionVersion1" />
-        <item itemvalue="JUnit.PlaywrightSessionTest" />
         <item itemvalue="JUnit.PlaywrightSessionTest.firstScript" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.secondScript" />
       </list>
     </recent_temporary>
   </component>
@@ -288,7 +286,21 @@
       <option name="project" value="LOCAL" />
       <updated>1673535973622</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Playwright DataConfig Action Data">
+      <created>1673599502453</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1673599502453</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Playwright DataConfig Action Data">
+      <created>1673599546481</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1673599546481</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -318,6 +330,7 @@
     <MESSAGE value="Playwright Refactoring Data Action" />
     <MESSAGE value="Playwright DataConfig Definition" />
     <MESSAGE value="Playwright DataConfig Execution" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfig Execution" />
+    <MESSAGE value="Playwright DataConfig Action Data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfig Action Data" />
   </component>
 </project>

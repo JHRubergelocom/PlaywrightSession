@@ -622,7 +622,6 @@ public class PlaywrightSessionTest {
 
     }
     private DataConfig createDataConfig() {
-
         // ELO Action Def Data
         final String selectorRibbonNew = "xpath=//*[@id=\"button-1218-btnIconEl\"]";
         final String selectorMenuMeeting = "xpath=//*[@id=\"button-1280-btnIconEl\"]";
@@ -677,6 +676,34 @@ public class PlaywrightSessionTest {
         eloAction = new ELOAction("CreateMeetingItem", eloTabPages);
         eloActions.put(3, eloAction);
 
+        eloTabPages = createMB2Premium();
+        eloAction = new ELOAction("CreateMeetingBoardPremium", eloTabPages);
+        eloActions.put(4, eloAction);
+
+        eloTabPages = createME1Premium();
+        eloAction = new ELOAction("CreateMeetingPremium", eloTabPages);
+        eloActions.put(5, eloAction);
+
+        eloTabPages = createMI1Premium();
+        eloAction = new ELOAction("CreateMeetingItemPremium", eloTabPages);
+        eloActions.put(6, eloAction);
+
+        eloTabPages = createMIP1();
+        eloAction = new ELOAction("CreateMeetingItemPool", eloTabPages);
+        eloActions.put(7, eloAction);
+
+        eloTabPages = createMIPMI1();
+        eloAction = new ELOAction("CreateMeetingItem", eloTabPages);
+        eloActions.put(8, eloAction);
+
+        eloTabPages = createMIP2Premium();
+        eloAction = new ELOAction("CreateMeetingItemPoolPremium", eloTabPages);
+        eloActions.put(9, eloAction);
+
+        eloTabPages = createMIPMI1Premium();
+        eloAction = new ELOAction("CreateMeetingItemPremium", eloTabPages);
+        eloActions.put(10, eloAction);
+
         final ELOActionData eloActionData = new ELOActionData(eloActions);
 
         final DataConfig dataConfig = new DataConfig(loginData,
@@ -715,223 +742,6 @@ public class PlaywrightSessionTest {
                 .setPath(Paths.get("trace.zip")));
 
         context.close();
-    }
-    @Test
-    public void TestSessionVersion1() {
-
-        final String selectorSolutionTile = "xpath=//*[@id=\"tile-1013\"]";
-        final String selectorSolutionsFolder = "xpath=//*[@id=\"treeview-1061-record-1\"]";
-
-        final String selectorUsername = "xpath=//*[@id=\"field-focustext-1020-inputEl\"]";
-        final String selectorPassword = "xpath=//*[@id=\"textfield-1021-inputEl\"]";
-        final String selectorLoginButton = "xpath=//*[@id=\"button-1023-btnIconEl\"]";
-
-        final String selectorAssignmentMeeting = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[2]";
-        final String selectorAssignmentPool = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[1]";
-
-        final String stack = "ruberg-meeting.dev.elo";
-        final String userName = "Administrator";
-        final String password = "elo";
-
-        final String selectorRibbonNew = "xpath=//*[@id=\"button-1218-btnIconEl\"]";
-        final String selectorMenuMeeting = "xpath=//*[@id=\"button-1280-btnIconEl\"]";
-        final String selectorMenuMeetingPremium = "xpath=//*[@id=\"button-1288-btnIconEl\"]";
-        final String selectorButtonCreateMeetingBoard = "xpath=//*[@id=\"ext-comp-1274-textEl\"]";
-        final String selectorButtonCreateMeetingBoardPremium = "xpath=//*[@id=\"ext-comp-1281-textEl\"]";
-        final String selectorButtonCreateMeeting = "xpath=//*[@id=\"ext-comp-1275-textEl\"]";
-        final String selectorButtonCreateMeetingPremium = "xpath=//*[@id=\"ext-comp-1282-textEl\"]";
-        final String selectorButtonCreateMeetingItem = "xpath=//*[@id=\"ext-comp-1276-textEl\"]";
-        final String selectorButtonCreateMeetingItemPremium = "xpath=//*[@id=\"ext-comp-1284-textEl\"]";
-        final String selectorButtonCreateMeetingItemPool = "xpath=//*[@id=\"ext-comp-1277-textEl\"]";
-        final String selectorButtonCreateMeetingItemPoolPremium = "xpath=//*[@id=\"ext-comp-1285-textEl\"]";
-
-        Map<String, TabPage> tabPages;
-
-        WebclientSession ws = new WebclientSession(selectorSolutionTile, selectorSolutionsFolder );
-        ws.login(stack, userName, password, selectorUsername, selectorPassword, selectorLoginButton);
-
-        ws.selectSolutionsFolder();
-        tabPages = createMB1();
-        ws.executeAction("CreateMeetingBoard",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
-
-        ws.selectSolutionsFolder();
-        tabPages = createME1();
-        ws.executeAction("CreateMeeting",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
-
-        ws.selectSolutionsFolder();
-        tabPages = createMI1();
-        ws.executeAction("CreateMeetingItem",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
-
-        ws.selectSolutionsFolder();
-        tabPages = createMB2Premium();
-        ws.executeAction("CreateMeetingBoardPremium",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
-
-        ws.selectSolutionsFolder();
-        tabPages = createME1Premium();
-        ws.executeAction("CreateMeetingPremium",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
-
-        ws.selectSolutionsFolder();
-        tabPages = createMI1Premium();
-        ws.executeAction("CreateMeetingItemPremium",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
-
-        ws.selectSolutionsFolder();
-        tabPages = createMIP1();
-        ws.executeAction("CreateMeetingItemPool",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
-
-        ws.selectSolutionsFolder();
-        tabPages = createMIPMI1();
-        ws.executeAction("CreateMeetingItem",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
-
-        ws.selectSolutionsFolder();
-        tabPages = createMIP2Premium();
-        ws.executeAction("CreateMeetingItemPoolPremium",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
-
-        ws.selectSolutionsFolder();
-        tabPages = createMIPMI1Premium();
-        ws.executeAction("CreateMeetingItemPremium",
-                        tabPages,
-                        selectorAssignmentMeeting,
-                        selectorAssignmentPool,
-                        selectorRibbonNew,
-                        selectorMenuMeeting,
-                        selectorMenuMeetingPremium,
-                        selectorButtonCreateMeetingBoard,
-                        selectorButtonCreateMeetingBoardPremium,
-                        selectorButtonCreateMeeting,
-                        selectorButtonCreateMeetingPremium,
-                        selectorButtonCreateMeetingItem,
-                        selectorButtonCreateMeetingItemPremium,
-                        selectorButtonCreateMeetingItemPool,
-                        selectorButtonCreateMeetingItemPoolPremium);
-
-        ws.getPage().pause();
-        ws.close();
     }
     @Test
     public void TestSession() {
