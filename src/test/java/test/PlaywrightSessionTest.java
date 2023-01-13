@@ -749,7 +749,8 @@ public class PlaywrightSessionTest {
     @Test
     public void TestSession() {
         // Create DataConfig
-        final DataConfig dataConfig = createDataConfig();
+        // final DataConfig dataConfig = createDataConfig();
+        final DataConfig dataConfig = BaseFunctions.readDataConfig("DataConfigTest.json");
 
         // Execute DataConfig
         WebclientSession ws = new WebclientSession(dataConfig.getEloSolutionArchiveData());
