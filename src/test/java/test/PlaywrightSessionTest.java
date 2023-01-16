@@ -643,14 +643,14 @@ public class PlaywrightSessionTest {
         final String selectorAssignmentPool = "xpath=//*[@id=\"part_550_toggle_assignment\"]/tr[4]/td[2]/div/input[1]";
 
         // Fill DataConfig
-        final ELOControl textUserName = new ELOControl("xpath=//*[@id=\"field-focustext-1020-inputEl\"]", "Administrator");
-        final ELOControl textPassword = new ELOControl("xpath=//*[@id=\"textfield-1021-inputEl\"]", "elo");
-        final ELOControl buttonLogin = new ELOControl("xpath=//*[@id=\"button-1023-btnIconEl\"]", "Login");
+        final ELOControl textUserName = new ELOControl("Name", "Administrator");
+        final ELOControl textPassword = new ELOControl("Passwort", "elo");
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login");
         final String stack = "ruberg-meeting.dev.elo";
 
         final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
 
-        final ELOSolutionArchiveData eloSolutionArchiveData = new ELOSolutionArchiveData("xpath=//*[@id=\"tile-1013\"]", "xpath=//*[@id=\"treeview-1061-record-1\"]");
+        final ELOSolutionArchiveData eloSolutionArchiveData = new ELOSolutionArchiveData("xpath=//*[@id=\"tile-1013\"]", "Solutions");
 
         final Map<String, ELOActionDef> eloActionDefs = new HashMap<>();
         eloActionDefs.put("CreateMeetingBoard", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingBoard));
@@ -814,5 +814,28 @@ public class PlaywrightSessionTest {
     public void secondScript() {
         page.navigate("http://" + "ruberg-meeting.dev.elo" + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
         page.pause(); // Start Codegen
+    }
+    @Test
+    public void testLocator() {
+        final DataConfig dataConfig = BaseFunctions.readDataConfig("DataConfigTest.json");
+
+        // Execute DataConfig
+        WebclientSession ws = new WebclientSession(dataConfig.getEloSolutionArchiveData());
+        // ws.login(dataConfig.getLoginData());
+
+        Page p = ws.getPage();
+        p.navigate("http://" + "ruberg-meeting.dev.elo" + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
+        p.getByPlaceholder("Name").fill("Administrator");
+        p.getByPlaceholder("Passwort").fill("elo");
+        p.getByText("Anmelden").click();
+
+        p.locator("xpath=//*[@id=\"tile-1013\"]").click();
+
+        // Create MeetingBoard
+
+
+
+        ws.getPage().pause();
+        ws.close();
     }
 }

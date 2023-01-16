@@ -67,7 +67,24 @@ public class WebclientSession {
         BaseFunctions.click(page.locator(selectorSolutionTile));
     }
     public void  selectSolutionsFolder() {
-        BaseFunctions.click(page.locator(selectorSolutionsFolder));
+        Locator rows = page.getByText(selectorSolutionsFolder);
+
+        int count = rows.count();
+        System.out.println("rows.count(): " + count);
+        for (int i = 0; i < count; ++i) {
+            System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
+            System.out.println("Row: " + i + " innerHTML() " + rows.nth(i).innerHTML());
+            System.out.println("Row: " + i + " " + rows.nth(i));
+            if (rows.nth(i).isVisible()) {
+                System.out.println("      Row: " + i + "getAttribute(\"class\") " + rows.nth(i).getAttribute("class"));
+                System.out.println("      Row: " + i + "click() " + rows.nth(i));
+
+                if (rows.nth(i).getAttribute("class").contains("color")) {
+                    BaseFunctions.click(rows.nth(i));
+                    break;
+                }
+            }
+        }
     }
     public void close() {
         playwright.close();

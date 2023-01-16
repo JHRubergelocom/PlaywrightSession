@@ -1,22 +1,22 @@
 {
   "loginData": {
     "textUserName": {
-      "selector": "xpath\u003d//*[@id\u003d\"field-focustext-1020-inputEl\"]",
+      "selector": "Name",
       "value": "Administrator"
     },
     "textPassword": {
-      "selector": "xpath\u003d//*[@id\u003d\"textfield-1021-inputEl\"]",
+      "selector": "Passwort",
       "value": "elo"
     },
     "buttonLogin": {
-      "selector": "xpath\u003d//*[@id\u003d\"button-1023-btnIconEl\"]",
+      "selector": "Anmelden",
       "value": "Login"
     },
     "stack": "ruberg-meeting.dev.elo"
   },
   "eloSolutionArchiveData": {
     "selectorSolutionTile": "xpath\u003d//*[@id\u003d\"tile-1013\"]",
-    "selectorSolutionsFolder": "xpath\u003d//*[@id\u003d\"treeview-1061-record-1\"]"
+    "selectorSolutionsFolder": "Solutions"
   },
   "eloActionDefData": {
     "eloActionDefs": {
