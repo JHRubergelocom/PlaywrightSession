@@ -821,19 +821,50 @@ public class PlaywrightSessionTest {
 
         // Execute DataConfig
         WebclientSession ws = new WebclientSession(dataConfig.getEloSolutionArchiveData());
-        // ws.login(dataConfig.getLoginData());
+        ws.login(dataConfig.getLoginData());
+        // Get Action Definition
+        ELOActionDef eloActionDef = dataConfig.getEloActionDefData().getEloActionDefs().get("CreateMeetingBoard");
 
-        Page p = ws.getPage();
-        p.navigate("http://" + "ruberg-meeting.dev.elo" + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
-        p.getByPlaceholder("Name").fill("Administrator");
-        p.getByPlaceholder("Passwort").fill("elo");
-        p.getByText("Anmelden").click();
-
-        p.locator("xpath=//*[@id=\"tile-1013\"]").click();
-
-        // Create MeetingBoard
+        // Execute Action
+        ws.selectSolutionsFolder();
+        ELOAction eloAction = dataConfig.getEloActionData().getEloActions().get(1);
+        String actionName = eloAction.getActionName();
+        Map<String, TabPage> tabPages = new HashMap<>();
 
 
+        // Allgemein
+        Map<String,String> fields = new TreeMap<>();
+
+        fields.put("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1");
+        fields.put("IX_GRP_MEETING_BOARD_CODE", "MB1");
+        fields.put("IX_GRP_MEETING_BOARD_MINUTE_TAKER", "Bodo Kraft");
+        fields.put("IX_DESC", "Beschreibung Meetingboard1");
+
+        List<Map<String, String>> table = new ArrayList<>();
+        Map<String, String> tableLine = new TreeMap<>();
+        tableLine.put("IX_MAP_MEETING_BOARD_ORGANIZER", "Jan Eichner");
+        table.add(tableLine);
+
+        tableLine = new TreeMap<>();
+        tableLine.put("IX_MAP_MEETING_BOARD_ORGANIZER", "Sandra Renz");
+        table.add(tableLine);
+
+        Map<String,Boolean> checkboxes = new TreeMap<>();
+
+        TabPage tabPage = new TabPage(fields, table, "Weitere Person", checkboxes, AssignmentStatus.NOTHING);
+        tabPages.put("Allgemein", tabPage);
+
+        Action action = new Action(ws,
+                eloActionDef);
+        action.startFormula();
+        System.out.println("actionName " +actionName);
+        FrameLocator frameLocator = ws.getFrameLocator();
+        Formula formula = new Formula(frameLocator, dataConfig.getEloActionFormularData().getSelectorAssignmentMeeting(), dataConfig.getEloActionFormularData().getSelectorAssignmentPool());
+
+        formula.inputData(tabPages);
+
+        formula.save();
+        BaseFunctions.sleep();
 
         ws.getPage().pause();
         ws.close();

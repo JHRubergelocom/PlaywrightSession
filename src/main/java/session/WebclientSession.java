@@ -35,7 +35,7 @@ public class WebclientSession {
         login.clickLoginButton();
         selectSolutionTile();
     }
-    private FrameLocator getFrameLocator() {
+    public FrameLocator getFrameLocator() {
         String selector = "";
         getPage().mainFrame().content();
         for (Frame frame: getPage().frames()) {

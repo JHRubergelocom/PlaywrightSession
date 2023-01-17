@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfigTest Json">
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfigTest Test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataConfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataConfigTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigTest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
     </list>
@@ -143,8 +140,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PlaywrightSessionTest.testLocator" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.TestJson" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.TestJson" />
         <item itemvalue="JUnit.PlaywrightSessionTest.secondScript" />
         <item itemvalue="JUnit.PlaywrightSessionTest" />
       </list>
@@ -368,6 +365,7 @@
     <MESSAGE value="Playwright DataConfig Action Data Refactoring" />
     <MESSAGE value="Playwright DataConfig Json" />
     <MESSAGE value="Playwright DataConfigTest Json" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfigTest Json" />
+    <MESSAGE value="Playwright DataConfigTest Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfigTest Test" />
   </component>
 </project>
