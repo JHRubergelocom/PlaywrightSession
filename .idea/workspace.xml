@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfigTest Test">
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfigTest Test Main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -335,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673964252234</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Playwright DataConfigTest Test Main">
+      <created>1674030081801</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1674030081801</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -370,6 +376,7 @@
     <MESSAGE value="Playwright DataConfig Json" />
     <MESSAGE value="Playwright DataConfigTest Json" />
     <MESSAGE value="Playwright DataConfigTest Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfigTest Test" />
+    <MESSAGE value="Playwright DataConfigTest Test Main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfigTest Test Main" />
   </component>
 </project>
