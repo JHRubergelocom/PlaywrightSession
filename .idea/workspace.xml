@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfigTest Test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,18 +56,16 @@
       <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession\target" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlaywrightSessionTest.testLocator">
-    <configuration name="PlaywrightSessionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.App" />
       <module name="PlaywrightSession" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.*" />
+          <option name="PATTERN" value="org.example.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -139,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PlaywrightSessionTest.testLocator" />
+        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.testLocator" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestJson" />
         <item itemvalue="JUnit.PlaywrightSessionTest.secondScript" />
-        <item itemvalue="JUnit.PlaywrightSessionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -331,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673620982003</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Playwright DataConfigTest Test">
+      <created>1673964252234</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1673964252234</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
