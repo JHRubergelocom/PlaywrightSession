@@ -1,45 +1,40 @@
 package session;
 
 import java.util.List;
-import java.util.Map;
 
 public class TabPage {
-    private final Map<String,String> fields;
-    private final List<Map<String, String>> table;
+    private final List<ELOControl> initTabPage;
+    private final List<ELOControl> controls;
+    private final List<List<ELOControl>> table;
     private final String addLineButtonName;
-    private final Map<String, Boolean> checkboxes;
-    private final AssignmentStatus assignment;
-    public AssignmentStatus getAssignment() {
-        return assignment;
-    }
-    public TabPage(Map<String, String> fields, List<Map<String, String>> table, String addLineButtonName, Map<String, Boolean> checkboxes, AssignmentStatus assignment) {
-        this.fields = fields;
+    public TabPage(List<ELOControl> initTabPage, List<ELOControl> controls, List<List<ELOControl>> table, String addLineButtonName) {
+        this.initTabPage = initTabPage;
+        this.controls = controls;
         this.table = table;
         this.addLineButtonName = addLineButtonName;
-        this.checkboxes = checkboxes;
-        this.assignment = assignment;
     }
-    public Map<String, String> getFields() {
-        return fields;
-    }
-    public List<Map<String, String>> getTable() {
+    public List<List<ELOControl>> getTable() {
         return table;
-    }
-    public Map<String, Boolean> getCheckboxes() {
-        return checkboxes;
     }
     public String getAddLineButtonName() {
         return addLineButtonName;
     }
 
+    public List<ELOControl> getControls() {
+        return controls;
+    }
+
+    public List<ELOControl> getInitTabPage() {
+        return initTabPage;
+    }
+
     @Override
     public String toString() {
         return "TabPage{" +
-                "fields=" + fields +
+                "initTabPage=" + initTabPage +
+                ", controls=" + controls +
                 ", table=" + table +
                 ", addLineButtonName='" + addLineButtonName + '\'' +
-                ", checkboxes=" + checkboxes +
-                ", assignment=" + assignment +
                 '}';
     }
 }

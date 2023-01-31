@@ -9,19 +9,14 @@ import java.util.Map;
 
 public class Formula {
     private final FrameLocator frameLocator;
-    private final String selectorAssignmentMeeting;
-    private final String selectorAssignmentPool;
-    public Formula(FrameLocator frameLocator, String selectorAssignmentMeeting, String selectorAssignmentPool) {
+    public Formula(FrameLocator frameLocator) {
         this.frameLocator = frameLocator;
-        this.selectorAssignmentMeeting = selectorAssignmentMeeting;
-        this.selectorAssignmentPool = selectorAssignmentPool;
     }
-    public void selectTab(String tabName, AssignmentStatus assignment) {
+    public void selectTab(String tabName) {
         if (!tabName.equals("")) {
             System.out.println("tabname="+ tabName);
             frameLocator.getByRole(AriaRole.LINK, new FrameLocator.GetByRoleOptions().setName(tabName)).click();
         }
-        selectAssignment(assignment);
     }
     public void save() {
         BaseFunctions.sleep();
@@ -33,39 +28,46 @@ public class Formula {
     public void inputTextField(String name, String text, boolean timeout) {
         BaseFunctions.type(frameLocator.locator("[name=\"" + name + "\"]"), text, timeout);
     }
-    private void inputCheckBox(String name, Boolean value) {
-        BaseFunctions.select(frameLocator.locator("[name=\"" + name + "\"]"), value);
+    private void inputCheckBox(String name, String value) {
+        BaseFunctions.select(frameLocator.locator("[name=\"" + name + "\"]"), Boolean.valueOf(value));
     }
-    public void inputTextFields(Map<String, String> fields) {
-        for (Map.Entry<String,String> entry: fields.entrySet()) {
-            inputTextField(entry.getKey(), entry.getValue(), false);
+    private void inputRadioButton(String name) {
+        BaseFunctions.check(frameLocator.getByRole(AriaRole.RADIO, new FrameLocator.GetByRoleOptions().setName(name)));
+    }
+    private void initTabPage(List<ELOControl> initTabPage) {
+        for (ELOControl control: initTabPage) {
+            if (control.getType() == ELOControlType.RADIO) {
+                inputRadioButton(control.getSelector());
+            }
         }
     }
-    private void inputCheckBoxes(Map<String, Boolean> checkboxes) {
-        for (Map.Entry<String,Boolean> entry: checkboxes.entrySet()) {
-            inputCheckBox(entry.getKey(), entry.getValue());
+    private void inputControls(List<ELOControl> controls) {
+        for (ELOControl control: controls) {
+            switch(control.getType()) {
+                case TEXT -> inputTextField(control.getSelector(), control.getValue(), false);
+                case DYNKWL -> inputTextField(control.getSelector(), control.getValue(), true);
+                case CHECKBOX -> inputCheckBox(control.getSelector(), control.getValue());
+                case RADIO -> inputRadioButton(control.getSelector());
+            }
         }
     }
-    public void inputTextFieldTable(List<Map<String, String>> table, String addLineButtonName) {
+    private void inputControlsTable(List<List<ELOControl>> table, String addLineButtonName) {
         int index = 1;
-        for (Map<String,String> tableLine: table) {
+        for (List<ELOControl> tableLine: table) {
             if (index > 1) {
                 click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName(addLineButtonName)));
                 BaseFunctions.sleep();
             }
-            for (Map.Entry<String,String> entry: tableLine.entrySet()) {
-                inputTextField(entry.getKey() + index, entry.getValue(), true);
+            for (ELOControl control: tableLine) {
+                switch(control.getType()) {
+                    case TEXT -> inputTextField(control.getSelector() + index, control.getValue(), false);
+                    case DYNKWL -> inputTextField(control.getSelector() + index, control.getValue(), true);
+                    case CHECKBOX -> inputCheckBox(control.getSelector() + index, control.getValue());
+                    case RADIO -> inputRadioButton(control.getSelector() + index);
+                }
             }
             index++;
         }
-    }
-    private void selectAssignment(AssignmentStatus assignment) {
-        switch (assignment) {
-            case MEETING -> BaseFunctions.click(frameLocator.locator(selectorAssignmentMeeting));
-            case POOL -> BaseFunctions.click(frameLocator.locator(selectorAssignmentPool));
-            case NOTHING -> {}
-        }
-        System.out.println("selectassigment assignment" + assignment);
     }
     public void inputData(Map<String, TabPage> tabpages) {
         for (Map.Entry<String,TabPage> entry: tabpages.entrySet()) {
@@ -75,10 +77,10 @@ public class Formula {
             String tabName = entry.getKey();
             TabPage tabPage = entry.getValue();
 
-            selectTab(tabName, tabPage.getAssignment());
-            inputTextFields(tabPage.getFields());
-            inputTextFieldTable(tabPage.getTable(), tabPage.getAddLineButtonName());
-            inputCheckBoxes(tabPage.getCheckboxes());
+            selectTab(tabName);
+            initTabPage(tabPage.getInitTabPage());
+            inputControls(tabPage.getControls());
+            inputControlsTable(tabPage.getTable(), tabPage.getAddLineButtonName());
         }
     }
 
@@ -86,8 +88,6 @@ public class Formula {
     public String toString() {
         return "Formula{" +
                 "frameLocator=" + frameLocator +
-                ", selectorAssignmentMeeting='" + selectorAssignmentMeeting + '\'' +
-                ", selectorAssignmentPool='" + selectorAssignmentPool + '\'' +
                 '}';
     }
 }

@@ -35,7 +35,7 @@ public class WebclientSession {
         login.clickLoginButton();
         selectSolutionTile();
     }
-    public FrameLocator getFrameLocator() {
+    private FrameLocator getFrameLocator() {
         String selector = "";
         getPage().mainFrame().content();
         for (Frame frame: getPage().frames()) {
@@ -49,16 +49,25 @@ public class WebclientSession {
         System.out.println("frameLocator " + frameLocator);
         return frameLocator;
     }
-    public void executeAction(String actionName,
-                              Map<String, TabPage> tabPages,
-                              ELOActionFormulaData eloActionFormulaData,
-                              ELOActionDef eloActionDef) {
-        Action action = new Action(this,
-                eloActionDef);
-        action.startFormula();
-        System.out.println("actionName " +actionName);
+
+    private void startFormula(ELOActionDef eloActionDef) {
+        selectRibbonMenu(eloActionDef.getSelectorRibbon());
+        selectRibbonMenu(eloActionDef.getSelectorMenu());
+        BaseFunctions.sleep();
+        selectButton(eloActionDef.getSelectorButton());
+        BaseFunctions.sleep();
+
+    }
+
+    public void executeAction(ELOAction eloAction,
+                              Map<String, TabPage> tabPages) {
+
+        selectSolutionsFolder();
+        startFormula(eloAction.getEloActionDef());
+
+        System.out.println("eloAction.getEloActionDef() " + eloAction.getEloActionDef());
         FrameLocator frameLocator = getFrameLocator();
-        Formula formula = new Formula(frameLocator, eloActionFormulaData.getSelectorAssignmentMeeting(), eloActionFormulaData.getSelectorAssignmentPool());
+        Formula formula = new Formula(frameLocator);
         formula.inputData(tabPages);
         formula.save();
         BaseFunctions.sleep();
@@ -66,26 +75,17 @@ public class WebclientSession {
     private void selectSolutionTile() {
         BaseFunctions.click(page.locator(selectorSolutionTile));
     }
-    public void  selectSolutionsFolder() {
-        Locator rows = page.getByText(selectorSolutionsFolder);
-
-        int count = rows.count();
-        System.out.println("rows.count(): " + count);
-        for (int i = 0; i < count; ++i) {
-            System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
-            System.out.println("Row: " + i + " innerHTML() " + rows.nth(i).innerHTML());
-            System.out.println("Row: " + i + " " + rows.nth(i));
-            if (rows.nth(i).isVisible()) {
-                System.out.println("      Row: " + i + "getAttribute(\"class\") " + rows.nth(i).getAttribute("class"));
-                System.out.println("      Row: " + i + "click() " + rows.nth(i));
-
-                if (rows.nth(i).getAttribute("class").contains("color")) {
-                    BaseFunctions.click(rows.nth(i));
-                    break;
-                }
-            }
-        }
+    private void selectSolutionsFolder() {
+        BaseFunctions.selectByTextAttribute(page, selectorSolutionsFolder, "class", "color");
     }
+    private void selectRibbonMenu(String selectorRibbonMenu){
+        BaseFunctions.selectByTextAttribute(page, selectorRibbonMenu, "id", "button");
+    }
+    private void selectButton(String selectorButton){
+        BaseFunctions.selectByTextAttribute(page, selectorButton, "id", "comp");
+    }
+
+
     public void close() {
         playwright.close();
     }

@@ -2,6 +2,7 @@ package session;
 
 import com.google.gson.Gson;
 import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -40,6 +41,27 @@ public class BaseFunctions {
             }
         }
     }
+    public static void check(Locator radiobutton) {
+        radiobutton.check();
+    }
+
+    public static void selectByTextAttribute(Page page, String text, String attributeKey, String attributeValue) {
+        Locator rows = page.getByText(text, new Page.GetByTextOptions().setExact(true));
+        int count = rows.count();
+        System.out.println("rows.count(): " + count);
+        for (int i = 0; i < count; ++i) {
+            System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
+            System.out.println("Row: " + i + " innerHTML() " + rows.nth(i).innerHTML());
+            System.out.println("Row: " + i + " " + rows.nth(i));
+            if (rows.nth(i).isVisible()) {
+                System.out.println("      Row: " + i + "getAttribute(" + attributeKey + ") " + rows.nth(i).getAttribute(attributeKey));
+                if (rows.nth(i).getAttribute(attributeKey).contains(attributeValue)) {
+                    click(rows.nth(i));
+                    break;
+                }
+            }
+        }
+    }
 
     public static DataConfig readDataConfig(String jsonFileName) {
         Gson gson = new Gson();
@@ -60,4 +82,5 @@ public class BaseFunctions {
         System.out.println("-".repeat(100));
         return dataConfig;
     }
+
 }

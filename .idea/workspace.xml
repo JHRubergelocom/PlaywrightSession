@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfigTest Test Main">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Refinement DataConfig" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -24,6 +23,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2IaV8IvFa5kCMlLaroS1RK7v6pD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -39,7 +41,10 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ruberg/Documents/Entwicklung/IntelliJ/PlaywrightSession/src/main/java&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ruberg/Documents/Entwicklung/IntelliJ/PlaywrightSession&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.47586206&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor.code.editing&quot;
   }
 }</component>
@@ -48,6 +53,7 @@
       <recent name="session" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession" />
       <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -85,7 +91,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaywrightSessionTest.TestSession" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlaywrightSessionTest.firstScript" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
         <pattern>
@@ -95,7 +101,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
-      <option name="METHOD_NAME" value="TestSession" />
+      <option name="METHOD_NAME" value="firstScript" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -136,10 +142,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.testLocator" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestJson" />
         <item itemvalue="JUnit.PlaywrightSessionTest.secondScript" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.testLocator" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.firstScript" />
       </list>
     </recent_temporary>
   </component>
@@ -341,7 +347,70 @@
       <option name="project" value="LOCAL" />
       <updated>1674030081801</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Playwright Refinement Datastructures">
+      <created>1674211344393</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1674211344393</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Playwright Refinement Datastructures">
+      <created>1674221993072</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1674221993072</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Playwright Refinement Datastructures">
+      <created>1674226224722</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1674226224722</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Playwright Refinement Locators">
+      <created>1674742968263</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1674742968263</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Playwright Refinement Locators">
+      <created>1675073896798</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1675073896798</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Playwright Refinement Locators">
+      <created>1675073955225</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1675073955225</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Playwright Refinement DataConfig">
+      <created>1675084947076</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1675084947076</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Playwright Refinement DataConfig">
+      <created>1675158886163</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1675158886163</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Playwright Refinement DataConfig">
+      <created>1675170160671</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1675170160671</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -377,6 +446,14 @@
     <MESSAGE value="Playwright DataConfigTest Json" />
     <MESSAGE value="Playwright DataConfigTest Test" />
     <MESSAGE value="Playwright DataConfigTest Test Main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfigTest Test Main" />
+    <MESSAGE value="Playwright Refinement Datastructures" />
+    <MESSAGE value="Playwright Refinement Locators" />
+    <MESSAGE value="Playwright Refinement DataConfig" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright Refinement DataConfig" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PlaywrightSession$App.ic" NAME="App Coverage Results" MODIFIED="1675168046011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.example.*</FILTER>
+    </SUITE>
   </component>
 </project>

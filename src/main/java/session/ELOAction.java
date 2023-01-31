@@ -3,16 +3,16 @@ package session;
 import java.util.Map;
 
 public class ELOAction {
-    private final String actionName;
+    private final ELOActionDef eloActionDef;
     private final Map<String, TabPage> tabPages;
 
-    public ELOAction(String actionName, Map<String, TabPage> tabPages) {
-        this.actionName = actionName;
+    public ELOAction(ELOActionDef eloActionDef, Map<String, TabPage> tabPages) {
+        this.eloActionDef = eloActionDef;
         this.tabPages = tabPages;
     }
 
-    public String getActionName() {
-        return actionName;
+    public ELOActionDef getEloActionDef() {
+        return eloActionDef;
     }
 
     public Map<String, TabPage> getTabPages() {
@@ -22,7 +22,7 @@ public class ELOAction {
     @Override
     public String toString() {
         return "ELOAction{" +
-                "actionName='" + actionName + '\'' +
+                "eloActionDef=" + eloActionDef +
                 ", tabPages=" + tabPages +
                 '}';
     }

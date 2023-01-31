@@ -1,15 +1,15 @@
 package session;
 
-import java.util.SortedMap;
+import java.util.List;
 
 public class ELOActionData {
-    private final SortedMap<Integer, ELOAction> eloActions;
+    private final List<ELOAction> eloActions;
 
-    public ELOActionData(SortedMap<Integer, ELOAction> eloActions) {
+    public ELOActionData(List<ELOAction> eloActions) {
         this.eloActions = eloActions;
     }
 
-    public SortedMap<Integer, ELOAction> getEloActions() {
+    public List<ELOAction> getEloActions() {
         return eloActions;
     }
 
