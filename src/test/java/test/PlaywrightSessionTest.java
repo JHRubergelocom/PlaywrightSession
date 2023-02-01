@@ -5,6 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import session.*;
 
 import java.io.*;
@@ -730,7 +732,7 @@ public class PlaywrightSessionTest {
     public void TestSession() {
         // Create DataConfig
         // final DataConfig dataConfig = createDataConfig();
-        final DataConfig dataConfig = BaseFunctions.readDataConfig("DataConfigTest.json");
+        final DataConfig dataConfig = BaseFunctions.readDataConfig("DataConfigHr.json");
 
         // Execute DataConfig
         WebclientSession ws = new WebclientSession(dataConfig.getEloSolutionArchiveData());
@@ -780,8 +782,10 @@ public class PlaywrightSessionTest {
 
         System.out.println("-".repeat(100));
     }
-    @Test
-    public void firstScript() {
+    @ParameterizedTest
+    @ValueSource(strings = {"test1", "test2"})
+    public void firstScript(String text) {
+        System.out.println("Test: " + text);
         page.navigate("http://playwright.dev");
         page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("example.png")));
         System.out.println(page.title());
