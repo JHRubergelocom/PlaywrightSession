@@ -140,7 +140,7 @@ public class PlaywrightSessionTest {
         controls.add(new ELOControl("IX_GRP_MEETING_NAME", "Meeting1", ELOControlType.TEXT));
         controls.add(new ELOControl("IX_GRP_MEETING_LOCATION", "Musterstadt", ELOControlType.DYNKWL));
         controls.add(new ELOControl("IX_GRP_MEETING_MINUTE_TAKER", "Charlotte Bennett", ELOControlType.DYNKWL));
-        // fields.put("IX_DESC", "Beschreibung Meeting1");
+        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des Meetings.", "Beschreibung Meeting1", ELOControlType.REDACTOR));
 
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
@@ -238,8 +238,7 @@ public class PlaywrightSessionTest {
         controls.add(new ELOControl("IX_GRP_MEETING_ITEM_TITLE", "Thema1", ELOControlType.TEXT));
         controls.add(new ELOControl("IX_GRP_MEETING_ITEM_DURATION", "40", ELOControlType.TEXT));
         controls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith", ELOControlType.DYNKWL));
-
-        // fields.put("IX_DESC", "Beschreibung Thema1");
+        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des Themas.", "Beschreibung Thema1", ELOControlType.REDACTOR));
 
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
@@ -297,8 +296,7 @@ public class PlaywrightSessionTest {
         controls.add(new ELOControl("IX_GRP_MEETING_ITEM_TITLE", "Thema1 Ideenpool1", ELOControlType.TEXT));
         controls.add(new ELOControl("IX_GRP_MEETING_ITEM_DURATION", "40", ELOControlType.TEXT));
         controls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith", ELOControlType.DYNKWL));
-
-        // fields.put("IX_DESC", "Beschreibung Thema1");
+        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des Themas.", "Beschreibung Thema1", ELOControlType.REDACTOR));
 
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
@@ -436,7 +434,7 @@ public class PlaywrightSessionTest {
         controls.add(new ELOControl("IX_GRP_MEETING_NAME", "Sitzung1", ELOControlType.TEXT));
         controls.add(new ELOControl("IX_GRP_MEETING_LOCATION", "Musterdorf", ELOControlType.DYNKWL));
         controls.add(new ELOControl("IX_GRP_MEETING_MINUTE_TAKER", "Bodo Kraft", ELOControlType.DYNKWL));
-        // fields.put("IX_DESC", "Beschreibung Sitzung1");
+        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung der Sitzung.", "Beschreibung Sitzung1", ELOControlType.REDACTOR));
 
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
@@ -534,8 +532,7 @@ public class PlaywrightSessionTest {
         controls.add(new ELOControl("IX_GRP_MEETING_ITEM_TITLE", "TOP1", ELOControlType.TEXT));
         controls.add(new ELOControl("IX_GRP_MEETING_ITEM_DURATION", "30", ELOControlType.TEXT));
         controls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "David Lee", ELOControlType.DYNKWL));
-
-        // fields.put("IX_DESC", "Beschreibung TOP1");
+        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des TOPs.", "Beschreibung TOP1", ELOControlType.REDACTOR));
 
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
@@ -593,8 +590,7 @@ public class PlaywrightSessionTest {
         controls.add(new ELOControl("IX_GRP_MEETING_ITEM_TITLE", "TOP1", ELOControlType.TEXT));
         controls.add(new ELOControl("IX_GRP_MEETING_ITEM_DURATION", "30", ELOControlType.TEXT));
         controls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "David Lee", ELOControlType.DYNKWL));
-
-        // fields.put("IX_DESC", "Beschreibung TOP1 Meetingitempool2");
+        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des TOPs.", "Beschreibung TOP1 Meetingitempool2", ELOControlType.REDACTOR));
 
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
@@ -800,12 +796,15 @@ public class PlaywrightSessionTest {
         page.locator("xpath=//*[@title=\"Solutions\"]").click();
 
         // Ribbon "Neu" auswählen
+        BaseFunctions.sleep();
         BaseFunctions.selectByTextAttribute(page, "Neu", "id", "button");
 
         // Menü "Meeting" auswählen
+        BaseFunctions.sleep();
         BaseFunctions.selectByTextAttribute(page, "Meeting", "id", "button");
 
         // Button "Neues Thema" auswählen
+        BaseFunctions.sleep();
         BaseFunctions.selectByTextAttribute(page, "Neues Thema", "id", "comp");
 
         // Get Frame
@@ -816,7 +815,10 @@ public class PlaywrightSessionTest {
         // Set Assignment "Meeting"
         BaseFunctions.sleep();
         frameLocator.getByRole(AriaRole.RADIO, new FrameLocator.GetByRoleOptions().setName("Meeting")).check();
-        BaseFunctions.sleep();
+
+        // Set Redactorfeld Beschreibung
+        // BaseFunctions.sleep();
+        BaseFunctions.fillRedactorFieldByPlaceholder(frameLocator, "Hinterlegen Sie eine Beschreibung des Themas.", "Beschreibung Redactorfeld");
 
         page.pause(); // Start Codegen
     }

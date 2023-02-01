@@ -51,7 +51,9 @@ public class WebclientSession {
     }
 
     private void startFormula(ELOActionDef eloActionDef) {
+        BaseFunctions.sleep();
         selectRibbonMenu(eloActionDef.getSelectorRibbon());
+        BaseFunctions.sleep();
         selectRibbonMenu(eloActionDef.getSelectorMenu());
         BaseFunctions.sleep();
         selectButton(eloActionDef.getSelectorButton());

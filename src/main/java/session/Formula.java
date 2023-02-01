@@ -34,6 +34,9 @@ public class Formula {
     private void inputRadioButton(String name) {
         BaseFunctions.check(frameLocator.getByRole(AriaRole.RADIO, new FrameLocator.GetByRoleOptions().setName(name)));
     }
+    private void inputRedactorField(String placeHolder, String value) {
+        BaseFunctions.fillRedactorFieldByPlaceholder(frameLocator, placeHolder, value);
+    }
     private void initTabPage(List<ELOControl> initTabPage) {
         for (ELOControl control: initTabPage) {
             if (control.getType() == ELOControlType.RADIO) {
@@ -48,6 +51,7 @@ public class Formula {
                 case DYNKWL -> inputTextField(control.getSelector(), control.getValue(), true);
                 case CHECKBOX -> inputCheckBox(control.getSelector(), control.getValue());
                 case RADIO -> inputRadioButton(control.getSelector());
+                case REDACTOR -> inputRedactorField(control.getSelector(), control.getValue());
             }
         }
     }
@@ -64,6 +68,7 @@ public class Formula {
                     case DYNKWL -> inputTextField(control.getSelector() + index, control.getValue(), true);
                     case CHECKBOX -> inputCheckBox(control.getSelector() + index, control.getValue());
                     case RADIO -> inputRadioButton(control.getSelector() + index);
+                    case REDACTOR -> inputRedactorField(control.getSelector() + index, control.getValue());
                 }
             }
             index++;
