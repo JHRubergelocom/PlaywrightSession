@@ -93,8 +93,10 @@ public class BaseFunctions {
             dataConfig = gson.fromJson(br, DataConfig.class);
             System.out.println(dataConfig);
         } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
             throw new RuntimeException();
         } catch (IOException e) {
+            System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
 

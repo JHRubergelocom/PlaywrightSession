@@ -20,6 +20,50 @@ public class PlaywrightSessionTest {
     // New instance for each test method.
     BrowserContext context;
     Page page;
+    private Map<String, TabPage> createEmployee1() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // "" (Nur eine tabPage)
+
+        List<ELOControl> initTabPage = new ArrayList<>();
+        List<ELOControl> controls = new ArrayList<>();
+
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_FIRSTNAME", "Hans", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_LASTNAME", "Hansen", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELNO", "12345", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DATEOFJOINING", "20220101", ELOControlType.TEXT));
+
+        List<List<ELOControl>> table = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, table, "");
+        tabPages.put("", tabPage);
+
+        return tabPages;
+
+    }
+    private Map<String, TabPage> createCompany1() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // "" (Nur eine tabPage)
+
+        List<ELOControl> initTabPage = new ArrayList<>();
+        List<ELOControl> controls = new ArrayList<>();
+
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_COMPANY", "Firma Hansens", ELOControlType.TEXT));
+
+        List<List<ELOControl>> table = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, table, "");
+        tabPages.put("", tabPage);
+
+        return tabPages;
+
+    }
     private Map<String, TabPage> createMB1() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -611,7 +655,49 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-    private DataConfig createDataConfig() {
+    private DataConfig createDataConfig(String jsonFile) {
+        switch(jsonFile) {
+            case "DataConfigMeeting.json" -> {return createDataConfigMeeting();}
+            case "DataConfigHr.json" -> {return createDataConfigHr();}
+        }
+        return new DataConfig();
+    }
+
+    private DataConfig createDataConfigHr() {
+        // ELO Action Def Data
+        final String selectorRibbonNew = "Neu";
+        final String selectorMenuPersonnel = "Personal";
+        final String selectorButtonNewEmployee = "Neuer Mitarbeiter";
+        final String selectorButtonNewCompany = "Neue Organisation";
+
+        // Fill DataConfig
+        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT);
+        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT);
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON);
+        final String stack = "ruberg-hr.dev.elo";
+
+        final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
+
+        final ELOSolutionArchiveData eloSolutionArchiveData = new ELOSolutionArchiveData("xpath=//*[@title=\"Solutions\"]", "Solutions");
+
+        final List<ELOAction> eloActions = new ArrayList<>();
+
+        Map<String, TabPage> eloTabPages = createEmployee1();
+        ELOAction eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
+        eloActions.add(eloAction);
+
+        eloTabPages = createCompany1();
+        eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewCompany), eloTabPages);
+        eloActions.add(eloAction);
+
+        final ELOActionData eloActionData = new ELOActionData(eloActions);
+
+        return new DataConfig(loginData,
+                eloSolutionArchiveData,
+                eloActionData);
+    }
+
+    private DataConfig createDataConfigMeeting() {
         // ELO Action Def Data
         final String selectorRibbonNew = "Neu";
         final String selectorMenuMeeting = "Meeting";
@@ -728,11 +814,10 @@ public class PlaywrightSessionTest {
 
         context.close();
     }
-    @Test
-    public void TestSession() {
-        // Create DataConfig
-        // final DataConfig dataConfig = createDataConfig();
-        final DataConfig dataConfig = BaseFunctions.readDataConfig("DataConfigHr.json");
+    @ParameterizedTest
+    @ValueSource(strings = {"DataConfigHr.json", "DataConfigTest.json"})
+    public void TestSession(String jsonFile) {
+        final DataConfig dataConfig = BaseFunctions.readDataConfig(jsonFile);
 
         // Execute DataConfig
         WebclientSession ws = new WebclientSession(dataConfig.getEloSolutionArchiveData());
@@ -748,10 +833,11 @@ public class PlaywrightSessionTest {
         ws.getPage().pause();
         ws.close();
     }
-    @Test
-    public void TestJson() {
+    @ParameterizedTest
+    @ValueSource(strings = {"DataConfigHr.json", "DataConfigMeeting.json"})
+    public void CreateDataConfigJson(String jsonFile) {
         // Create DataConfig
-        final DataConfig dataConfig = createDataConfig();
+        final DataConfig dataConfig = createDataConfig(jsonFile);
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
@@ -759,7 +845,7 @@ public class PlaywrightSessionTest {
         System.out.println(json);
 
         // Save DataConfig
-        try (FileWriter writer = new FileWriter("DataConfig.json")) {
+        try (FileWriter writer = new FileWriter(jsonFile)) {
             writer.write(json);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -768,10 +854,10 @@ public class PlaywrightSessionTest {
         // Read DataConfig
         gson = new Gson();
 
-        System.out.println("Reading DataConfig.json");
+        System.out.println("Reading " + jsonFile);
         System.out.println("-".repeat(100));
 
-        try(BufferedReader br = new BufferedReader(new FileReader("DataConfig.json"))) {
+        try(BufferedReader br = new BufferedReader(new FileReader(jsonFile))) {
             DataConfig dataConfig1 = gson.fromJson(br, DataConfig.class);
             System.out.println(dataConfig1);
         } catch (FileNotFoundException e) {
@@ -782,10 +868,9 @@ public class PlaywrightSessionTest {
 
         System.out.println("-".repeat(100));
     }
-    @ParameterizedTest
-    @ValueSource(strings = {"test1", "test2"})
-    public void firstScript(String text) {
-        System.out.println("Test: " + text);
+
+    @Test
+    public void firstScript() {
         page.navigate("http://playwright.dev");
         page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("example.png")));
         System.out.println(page.title());
