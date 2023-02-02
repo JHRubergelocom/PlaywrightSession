@@ -20,6 +20,7 @@ public class PlaywrightSessionTest {
     // New instance for each test method.
     BrowserContext context;
     Page page;
+
     private Map<String, TabPage> createEmployee1() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -834,7 +835,7 @@ public class PlaywrightSessionTest {
         ws.close();
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigHr.json", "DataConfigMeeting.json"})
+    @ValueSource(strings = {"DataConfigHr.json", "DataConfigMeeting.json", "Empty.json"})
     public void CreateDataConfigJson(String jsonFile) {
         // Create DataConfig
         final DataConfig dataConfig = createDataConfig(jsonFile);
@@ -877,37 +878,47 @@ public class PlaywrightSessionTest {
     }
     @Test
     public void secondScript() {
-        page.navigate("http://" + "ruberg-meeting.dev.elo" + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
+        page.navigate("http://" + "ruberg-hr.dev.elo" + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
         page.getByPlaceholder("Name").fill("0");
         page.getByPlaceholder("Passwort").fill("elo");
         page.getByText("Anmelden").click();
 
+        // Kachel "Solutions" klicken
         page.locator("xpath=//*[@title=\"Solutions\"]").click();
+
+        // Ordner "Solutions" auswählen
+        BaseFunctions.selectByTextAttribute(page, "Solutions", "class", "color");
 
         // Ribbon "Neu" auswählen
         BaseFunctions.sleep();
         BaseFunctions.selectByTextAttribute(page, "Neu", "id", "button");
 
-        // Menü "Meeting" auswählen
+        // Menü "Personal" auswählen
         BaseFunctions.sleep();
-        BaseFunctions.selectByTextAttribute(page, "Meeting", "id", "button");
+        BaseFunctions.selectByTextAttribute(page, "Personal", "id", "button");
 
-        // Button "Neues Thema" auswählen
+        // Button "Neuer Mitarbeiter" auswählen
         BaseFunctions.sleep();
-        BaseFunctions.selectByTextAttribute(page, "Neues Thema", "id", "comp");
+        BaseFunctions.selectByTextAttribute(page, "Neuer Mitarbeiter", "id", "comp");
 
         // Get Frame
         BaseFunctions.sleep();
         FrameLocator frameLocator = getFrameLocator();
         System.out.println("framelocator = " + frameLocator);
 
-        // Set Assignment "Meeting"
-        BaseFunctions.sleep();
-        frameLocator.getByRole(AriaRole.RADIO, new FrameLocator.GetByRoleOptions().setName("Meeting")).check();
+        // Felder füllen
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_FIRSTNAME" + "\"]"), "Hans", false);
 
-        // Set Redactorfeld Beschreibung
-        // BaseFunctions.sleep();
-        BaseFunctions.fillRedactorFieldByPlaceholder(frameLocator, "Hinterlegen Sie eine Beschreibung des Themas.", "Beschreibung Redactorfeld");
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_LASTNAME" + "\"]"), "Hansen", false);
+
+        // Formular speichern
+        BaseFunctions.sleep();
+        BaseFunctions.click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")));
+
+        // Ordner "Keil, Fritz" auswählen
+        BaseFunctions.selectByTextAttribute(page, "Personalmanagement", "class", "color");
+        // BaseFunctions.selectByTextAttribute(page, "Keil, Fritz", "class", "color");
+        // page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Keil, Fritz"));
 
         page.pause(); // Start Codegen
     }

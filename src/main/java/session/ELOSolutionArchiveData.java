@@ -7,6 +7,10 @@ public class ELOSolutionArchiveData {
         this.selectorSolutionTile = selectorSolutionTile;
         this.selectorSolutionsFolder = selectorSolutionsFolder;
     }
+    public ELOSolutionArchiveData() {
+        this.selectorSolutionTile = "";
+        this.selectorSolutionsFolder = "";
+    }
     public String getSelectorSolutionTile() {
         return selectorSolutionTile;
     }

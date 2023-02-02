@@ -9,6 +9,13 @@ public class ELOControl {
         this.value = value;
         this.type = type;
     }
+
+    public ELOControl() {
+        this.selector = "";
+        this.value = "";
+        this.type = ELOControlType.NONE;
+    }
+
     public String getSelector() {
         return selector;
     }

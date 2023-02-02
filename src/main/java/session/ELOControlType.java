@@ -6,5 +6,6 @@ public enum ELOControlType {
     CHECKBOX,
     BUTTON,
     RADIO,
-    REDACTOR
+    REDACTOR,
+    NONE
 }

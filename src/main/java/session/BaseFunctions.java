@@ -1,9 +1,7 @@
 package session;
 
 import com.google.gson.Gson;
-import com.microsoft.playwright.FrameLocator;
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
+import com.microsoft.playwright.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -58,10 +56,11 @@ public class BaseFunctions {
                 System.out.println("      Row: " + i + "getAttribute(" + attributeKey + ") " + rows.nth(i).getAttribute(attributeKey));
                 if (rows.nth(i).getAttribute(attributeKey).contains(attributeValue)) {
                     click(rows.nth(i));
-                    break;
+                    return;
                 }
             }
         }
+        throw new RuntimeException("selectByTextAttribute: " + text + " nicht gefunden!");
     }
 
     public static void fillRedactorFieldByPlaceholder(FrameLocator frameLocator, String placeHolder, String text) {
@@ -76,10 +75,11 @@ public class BaseFunctions {
             if (rows.nth(i).isVisible()) {
                 if (rows.nth(i).innerHTML().contains("<p></p>")) {
                     rows.nth(i).fill(text);
-                    break;
+                    return;
                 }
             }
         }
+        throw new RuntimeException("fillRedactorFieldByPlaceholder: " + placeHolder + " nicht gefunden!");
     }
 
     public static DataConfig readDataConfig(String jsonFileName) {

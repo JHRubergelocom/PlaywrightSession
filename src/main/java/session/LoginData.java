@@ -11,6 +11,12 @@ public class LoginData {
         this.buttonLogin = buttonLogin;
         this.stack = stack;
     }
+    public LoginData() {
+        this.textUserName = new ELOControl();
+        this.textPassword = new ELOControl();
+        this.buttonLogin = new ELOControl();
+        this.stack = "";
+    }
     public ELOControl getTextUserName() {
         return textUserName;
     }
