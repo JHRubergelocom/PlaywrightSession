@@ -3,6 +3,7 @@ package test;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.AriaRole;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -897,7 +898,7 @@ public class PlaywrightSessionTest {
 
         // Kachel "Solutions" klicken
         page.locator("xpath=//*[@title=\"Solutions\"]").click();
-/*
+
         // Ordner "Solutions" auswählen
         BaseFunctions.selectByTextAttribute(page, "Solutions", "class", "color").get().click();
 
@@ -926,26 +927,9 @@ public class PlaywrightSessionTest {
         // Formular speichern
         BaseFunctions.sleep();
         BaseFunctions.click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")));
-*/
+
         // Ordner "Keil, Fritz" auswählen
-        /*
-        page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Personalmanagement")).getByRole(AriaRole.IMG).nth(1).click();
-        page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Personalmanagement")).getByRole(AriaRole.IMG).nth(1).click();
-        if(!page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Personalakten")).getByRole(AriaRole.IMG).nth(1).isVisible()) {
-            page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Personalmanagement")).getByRole(AriaRole.IMG).nth(1).click();
-            page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Personalakten")).getByRole(AriaRole.IMG).nth(1).click();
-        }
-        */
-        // Ornder Solutions zuklappen
-        // page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Solutions")).getByRole(AriaRole.IMG).nth(1).dblclick();
         selectFolderPath("Solutions/Personalmanagement/Personalakten/K/Keil, Fritz");
-
-
-        // page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Keil, Fritz")).getByText("Keil, Fritz").click();
-
-        // BaseFunctions.selectByTextAttribute(page, "Personalmanagement", "class", "color");
-        // BaseFunctions.selectByTextAttribute(page, "Keil, Fritz", "class", "color");
-        // page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Keil, Fritz"));
 
         page.pause(); // Start Codegen
     }

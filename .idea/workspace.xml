@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfig Hr, Meeting">
-      <change afterPath="$PROJECT_DIR$/Empty.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trace.zip" afterDir="false" />
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfig Hr, Meeting, select folder path">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -446,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675350843799</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Playwright DataConfig Hr, Meeting, select folder path">
+      <created>1675428047592</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1675428047592</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -462,7 +464,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="PlaywrightSessionTest" />
     <MESSAGE value="Test Runners" />
     <MESSAGE value="PlaywrightSessionTest with tracing" />
     <MESSAGE value="Playwright WebclientSession" />
@@ -487,7 +488,8 @@
     <MESSAGE value="Playwright Refinement DataConfig Redactorfields" />
     <MESSAGE value="Playwright DataConfig Hr" />
     <MESSAGE value="Playwright DataConfig Hr, Meeting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfig Hr, Meeting" />
+    <MESSAGE value="Playwright DataConfig Hr, Meeting, select folder path" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfig Hr, Meeting, select folder path" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PlaywrightSession$App.ic" NAME="App Coverage Results" MODIFIED="1675168046011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
