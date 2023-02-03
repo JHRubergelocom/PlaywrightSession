@@ -770,12 +770,12 @@ public class PlaywrightSessionTest {
                 eloSolutionArchiveData,
                 eloActionData);
     }
-    private FrameLocator getFrameLocator() {
+    private FrameLocator getFrameLocator(String frameName) {
         String selector = "";
         page.mainFrame().content();
         for (Frame frame: page.frames()) {
             System.out.println("Frame.name " + frame.name());
-            if (frame.name().contains("iframe")) {
+            if (frame.name().contains(frameName)) {
                 selector = "#" + frame.name();
             }
         }
@@ -785,6 +785,18 @@ public class PlaywrightSessionTest {
         return frameLocator;
 
     }
+    private void selectTab(FrameLocator frameLocator, String tabName) {
+        if (!tabName.equals("")) {
+            System.out.println("tabname="+ tabName);
+            frameLocator.getByRole(AriaRole.LINK, new FrameLocator.GetByRoleOptions().setName(tabName)).click();
+        }
+    }
+    public void save(FrameLocator frameLocator) {
+        BaseFunctions.sleep();
+        BaseFunctions.click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("Speichern")));
+    }
+
+
 
     private Locator selectFolder(String folder) {
         return BaseFunctions.selectByTextAttribute(page, folder, "class", "color").get();
@@ -916,7 +928,7 @@ public class PlaywrightSessionTest {
 
         // Get Frame
         BaseFunctions.sleep();
-        FrameLocator frameLocator = getFrameLocator();
+        FrameLocator frameLocator = getFrameLocator("iframe");
         System.out.println("framelocator = " + frameLocator);
 
         // Felder füllen
@@ -928,8 +940,40 @@ public class PlaywrightSessionTest {
         BaseFunctions.sleep();
         BaseFunctions.click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")));
 
-        // Ordner "Keil, Fritz" auswählen
-        selectFolderPath("Solutions/Personalmanagement/Personalakten/K/Keil, Fritz");
+        // Ordner "Solutions" auswählen
+        BaseFunctions.selectByTextAttribute(page, "Solutions", "class", "color").get().click();
+
+        // Ordner "Hansen, Hans" auswählen
+        selectFolderPath("Solutions/Personalmanagement/Personalakten/H/Hansen, Hans");
+
+        // Viewer Formular auswählen
+        System.out.println("*".repeat(10) + " Viewer Formular auswählen " + "*".repeat(10));
+
+        Locator rows = page.locator("xpath=//*[@class=\"x-btn-button\"]");
+        int count = rows.count();
+        System.out.println("rows.count(): " + count);
+        for (int i = 0; i < count; ++i) {
+            System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
+            System.out.println("Row: " + i + " innerHTML() " + rows.nth(i).innerHTML());
+            System.out.println("Row: " + i + " " + rows.nth(i));
+            if (rows.nth(i).textContent().equals("Formular")) {
+                rows.nth(i).click();
+            }
+        }
+        System.out.println("*".repeat(10) + " Viewer Formular auswählen " + "*".repeat(10));
+
+
+        // FrameLocator Viewer Formular
+        frameLocator = getFrameLocator("FormularViewer");
+
+        // Tabpage auswählen
+        selectTab(frameLocator, "Persönlich");
+
+        // Titel eintragen
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_TITLE" + "\"]"), "Doktor H", false);
+
+        // Speichern
+        save(frameLocator);
 
         page.pause(); // Start Codegen
     }
