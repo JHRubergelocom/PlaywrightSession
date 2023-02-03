@@ -1,6 +1,7 @@
 package session;
 
 import com.microsoft.playwright.*;
+
 import java.util.Map;
 
 public class WebclientSession {
@@ -8,7 +9,7 @@ public class WebclientSession {
     private final Playwright playwright;
     private final String selectorSolutionTile;
     private final String selectorSolutionsFolder;
-    public Page getPage() {
+    protected Page getPage() {
         return page;
     }
     public WebclientSession(ELOSolutionArchiveData eloSolutionArchiveData) {
@@ -19,7 +20,7 @@ public class WebclientSession {
         BrowserContext context = browser.newContext();
         page = context.newPage();
     }
-    public void visit(String url) {
+    protected void visit(String url) {
         page.navigate(url);
     }
     public void click(Locator locator) {
@@ -28,7 +29,7 @@ public class WebclientSession {
     public void type(Locator locator, String text) {
         BaseFunctions.type(locator, text, false);
     }
-    public void login(LoginData loginData) {
+    private void login(LoginData loginData) {
         Login login = new Login(this, loginData.getStack(), loginData.getTextUserName().getSelector(), loginData.getTextPassword().getSelector(), loginData.getButtonLogin().getSelector());
         login.typeUsername(loginData.getTextUserName().getValue());
         login.typePassword(loginData.getTextPassword().getValue());
@@ -60,8 +61,7 @@ public class WebclientSession {
         BaseFunctions.sleep();
 
     }
-
-    public void executeAction(ELOAction eloAction,
+    private void executeAction(ELOAction eloAction,
                               Map<String, TabPage> tabPages) {
 
         selectSolutionsFolder();
@@ -78,18 +78,36 @@ public class WebclientSession {
         BaseFunctions.click(page.locator(selectorSolutionTile));
     }
     private void selectSolutionsFolder() {
-        BaseFunctions.selectByTextAttribute(page, selectorSolutionsFolder, "class", "color");
+        BaseFunctions.selectByTextAttribute(page, selectorSolutionsFolder, "class", "color").get().click();
     }
     private void selectRibbonMenu(String selectorRibbonMenu){
-        BaseFunctions.selectByTextAttribute(page, selectorRibbonMenu, "id", "button");
+        BaseFunctions.selectByTextAttribute(page, selectorRibbonMenu, "id", "button").get().click();
     }
     private void selectButton(String selectorButton){
-        BaseFunctions.selectByTextAttribute(page, selectorButton, "id", "comp");
+        BaseFunctions.selectByTextAttribute(page, selectorButton, "id", "comp").get().click();
+    }
+    private void close() {
+        playwright.close();
     }
 
+    public static void execute(String jsonFile, boolean setPause) {
+        final DataConfig dataConfig = BaseFunctions.readDataConfig(jsonFile);
 
-    public void close() {
-        playwright.close();
+        // Execute DataConfig
+        WebclientSession ws = new WebclientSession(dataConfig.getEloSolutionArchiveData());
+        ws.login(dataConfig.getLoginData());
+
+        for (ELOAction eloAction: dataConfig.getEloActionData().getEloActions()) {
+            Map<String, TabPage> tabPages = eloAction.getTabPages();
+
+            // Execute Action
+            ws.executeAction(eloAction, tabPages);
+        }
+
+        if (setPause) {
+            ws.getPage().pause();
+        }
+        ws.close();
     }
 
     @Override

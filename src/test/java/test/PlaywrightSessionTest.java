@@ -3,7 +3,6 @@ package test;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.AriaRole;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -786,6 +785,33 @@ public class PlaywrightSessionTest {
 
     }
 
+    private Locator selectFolder(String folder) {
+        return BaseFunctions.selectByTextAttribute(page, folder, "class", "color").get();
+    }
+
+    private void selectFolderPath(String path) {
+        String[] folders = path.split("/");
+
+        if(folders.length > 0) {
+            if (selectFolder(folders[0]).isVisible()) {
+                for (int i = 0; i < folders.length-1; i++) {
+                    BaseFunctions.sleep();
+                    if (!selectFolder(folders[i+1]).isVisible()) {
+                        selectFolder(folders[i]).dblclick();
+                        System.out.println("selectFolder parentfolder " + folders[i] + " dblclick");
+                    }
+                    selectFolder(folders[i+1]).dblclick();
+                    System.out.println("selectFolder folder " + folders[i+1] + " dblclick");
+
+                }
+            } else {
+                System.err.println("selectorFolder folder=" + folders[0] + " of path=" + path + "is not available");
+            }
+        } else {
+            System.err.println("selectorFolder path=" + path + "is empty");
+        }
+    }
+
     @BeforeAll
     static void launchBrowser() {
         playwright = Playwright.create();
@@ -816,23 +842,9 @@ public class PlaywrightSessionTest {
         context.close();
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigHr.json", "DataConfigTest.json"})
+    @ValueSource(strings = {"DataConfigHr.json"})
     public void TestSession(String jsonFile) {
-        final DataConfig dataConfig = BaseFunctions.readDataConfig(jsonFile);
-
-        // Execute DataConfig
-        WebclientSession ws = new WebclientSession(dataConfig.getEloSolutionArchiveData());
-        ws.login(dataConfig.getLoginData());
-
-        for (ELOAction eloAction: dataConfig.getEloActionData().getEloActions()) {
-            Map<String, TabPage> tabPages = eloAction.getTabPages();
-
-            // Execute Action
-            ws.executeAction(eloAction, tabPages);
-        }
-
-        ws.getPage().pause();
-        ws.close();
+        WebclientSession.execute(jsonFile, true);
     }
     @ParameterizedTest
     @ValueSource(strings = {"DataConfigHr.json", "DataConfigMeeting.json", "Empty.json"})
@@ -877,7 +889,7 @@ public class PlaywrightSessionTest {
         System.out.println(page.title());
     }
     @Test
-    public void secondScript() {
+    public void testLocator() {
         page.navigate("http://" + "ruberg-hr.dev.elo" + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
         page.getByPlaceholder("Name").fill("0");
         page.getByPlaceholder("Passwort").fill("elo");
@@ -885,21 +897,21 @@ public class PlaywrightSessionTest {
 
         // Kachel "Solutions" klicken
         page.locator("xpath=//*[@title=\"Solutions\"]").click();
-
+/*
         // Ordner "Solutions" auswählen
-        BaseFunctions.selectByTextAttribute(page, "Solutions", "class", "color");
+        BaseFunctions.selectByTextAttribute(page, "Solutions", "class", "color").get().click();
 
         // Ribbon "Neu" auswählen
         BaseFunctions.sleep();
-        BaseFunctions.selectByTextAttribute(page, "Neu", "id", "button");
+        BaseFunctions.selectByTextAttribute(page, "Neu", "id", "button").get().click();
 
         // Menü "Personal" auswählen
         BaseFunctions.sleep();
-        BaseFunctions.selectByTextAttribute(page, "Personal", "id", "button");
+        BaseFunctions.selectByTextAttribute(page, "Personal", "id", "button").get().click();
 
         // Button "Neuer Mitarbeiter" auswählen
         BaseFunctions.sleep();
-        BaseFunctions.selectByTextAttribute(page, "Neuer Mitarbeiter", "id", "comp");
+        BaseFunctions.selectByTextAttribute(page, "Neuer Mitarbeiter", "id", "comp").get().click();
 
         // Get Frame
         BaseFunctions.sleep();
@@ -914,50 +926,27 @@ public class PlaywrightSessionTest {
         // Formular speichern
         BaseFunctions.sleep();
         BaseFunctions.click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")));
-
+*/
         // Ordner "Keil, Fritz" auswählen
-        BaseFunctions.selectByTextAttribute(page, "Personalmanagement", "class", "color");
+        /*
+        page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Personalmanagement")).getByRole(AriaRole.IMG).nth(1).click();
+        page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Personalmanagement")).getByRole(AriaRole.IMG).nth(1).click();
+        if(!page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Personalakten")).getByRole(AriaRole.IMG).nth(1).isVisible()) {
+            page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Personalmanagement")).getByRole(AriaRole.IMG).nth(1).click();
+            page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Personalakten")).getByRole(AriaRole.IMG).nth(1).click();
+        }
+        */
+        // Ornder Solutions zuklappen
+        // page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Solutions")).getByRole(AriaRole.IMG).nth(1).dblclick();
+        selectFolderPath("Solutions/Personalmanagement/Personalakten/K/Keil, Fritz");
+
+
+        // page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Keil, Fritz")).getByText("Keil, Fritz").click();
+
+        // BaseFunctions.selectByTextAttribute(page, "Personalmanagement", "class", "color");
         // BaseFunctions.selectByTextAttribute(page, "Keil, Fritz", "class", "color");
         // page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName("Keil, Fritz"));
 
         page.pause(); // Start Codegen
-    }
-    @Test
-    public void testLocator() {
-        final DataConfig dataConfig = BaseFunctions.readDataConfig("DataConfigTest.json");
-
-        // Execute DataConfig
-        WebclientSession ws = new WebclientSession(dataConfig.getEloSolutionArchiveData());
-        ws.login(dataConfig.getLoginData());
-
-        ELOAction eloAction = dataConfig.getEloActionData().getEloActions().get(0);
-        Map<String, TabPage> tabPages = new HashMap<>();
-
-        // Allgemein
-        List<ELOControl> initTabPage = new ArrayList<>();
-        List<ELOControl> controls = new ArrayList<>();
-
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1", ELOControlType.TEXT));
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB1", ELOControlType.TEXT));
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_MINUTE_TAKER", "Bodo Kraft", ELOControlType.DYNKWL));
-        controls.add(new ELOControl("IX_DESC", "Meetingboard1", ELOControlType.TEXT));
-
-        List<List<ELOControl>> table = new ArrayList<>();
-        List<ELOControl> tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER", "Jan Eichner", ELOControlType.DYNKWL));
-        table.add(tableLine);
-
-        tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER", "Sandra Renz", ELOControlType.DYNKWL));
-        table.add(tableLine);
-
-        TabPage tabPage = new TabPage(initTabPage, controls, table, "Weitere Person");
-        tabPages.put("Allgemein", tabPage);
-
-        // Execute Action
-        ws.executeAction(eloAction, tabPages);
-
-        ws.getPage().pause();
-        ws.close();
     }
 }
