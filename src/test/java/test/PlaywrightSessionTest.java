@@ -791,18 +791,14 @@ public class PlaywrightSessionTest {
             frameLocator.getByRole(AriaRole.LINK, new FrameLocator.GetByRoleOptions().setName(tabName)).click();
         }
     }
-    public void save(FrameLocator frameLocator) {
+    public void clickButton(FrameLocator frameLocator, String name) {
         BaseFunctions.sleep();
-        BaseFunctions.click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("Speichern")));
+        BaseFunctions.click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName(name)));
     }
-
-
-
     private Locator selectFolder(String folder) {
         return BaseFunctions.selectByTextAttribute(page, folder, "class", "color").get();
     }
-
-    private void selectFolderPath(String path) {
+    private void selectEntryByPath(String path) {
         String[] folders = path.split("/");
 
         if(folders.length > 0) {
@@ -824,7 +820,6 @@ public class PlaywrightSessionTest {
             System.err.println("selectorFolder path=" + path + "is empty");
         }
     }
-
     @BeforeAll
     static void launchBrowser() {
         playwright = Playwright.create();
@@ -855,7 +850,7 @@ public class PlaywrightSessionTest {
         context.close();
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigHr.json"})
+    @ValueSource(strings = {"DataConfigTest.json"})
     public void TestSession(String jsonFile) {
         WebclientSession.execute(jsonFile, true);
     }
@@ -894,7 +889,6 @@ public class PlaywrightSessionTest {
 
         System.out.println("-".repeat(100));
     }
-
     @Test
     public void firstScript() {
         page.navigate("http://playwright.dev");
@@ -912,7 +906,7 @@ public class PlaywrightSessionTest {
         page.locator("xpath=//*[@title=\"Solutions\"]").click();
 
         // Ordner "Solutions" auswählen
-        BaseFunctions.selectByTextAttribute(page, "Solutions", "class", "color").get().click();
+        selectEntryByPath("Solutions");
 
         // Ribbon "Neu" auswählen
         BaseFunctions.sleep();
@@ -926,7 +920,7 @@ public class PlaywrightSessionTest {
         BaseFunctions.sleep();
         BaseFunctions.selectByTextAttribute(page, "Neuer Mitarbeiter", "id", "comp").get().click();
 
-        // Get Frame
+        // Get Frame External Formula
         BaseFunctions.sleep();
         FrameLocator frameLocator = getFrameLocator("iframe");
         System.out.println("framelocator = " + frameLocator);
@@ -937,14 +931,13 @@ public class PlaywrightSessionTest {
         BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_LASTNAME" + "\"]"), "Hansen", false);
 
         // Formular speichern
-        BaseFunctions.sleep();
-        BaseFunctions.click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")));
+        clickButton(frameLocator, "OK");
 
         // Ordner "Solutions" auswählen
-        BaseFunctions.selectByTextAttribute(page, "Solutions", "class", "color").get().click();
+        selectEntryByPath("Solutions");
 
         // Ordner "Hansen, Hans" auswählen
-        selectFolderPath("Solutions/Personalmanagement/Personalakten/H/Hansen, Hans");
+        selectEntryByPath("Solutions/Personalmanagement/Personalakten/H/Hansen, Hans");
 
         // Viewer Formular auswählen
         System.out.println("*".repeat(10) + " Viewer Formular auswählen " + "*".repeat(10));
@@ -962,7 +955,6 @@ public class PlaywrightSessionTest {
         }
         System.out.println("*".repeat(10) + " Viewer Formular auswählen " + "*".repeat(10));
 
-
         // FrameLocator Viewer Formular
         frameLocator = getFrameLocator("FormularViewer");
 
@@ -973,7 +965,7 @@ public class PlaywrightSessionTest {
         BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_TITLE" + "\"]"), "Doktor H", false);
 
         // Speichern
-        save(frameLocator);
+        clickButton(frameLocator, "Speichern");
 
         page.pause(); // Start Codegen
     }

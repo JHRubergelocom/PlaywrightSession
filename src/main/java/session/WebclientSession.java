@@ -3,13 +3,14 @@ package session;
 import com.microsoft.playwright.*;
 
 import java.util.Map;
+import java.util.Optional;
 
 public class WebclientSession {
     private final Page page;
     private final Playwright playwright;
     private final String selectorSolutionTile;
     private final String selectorSolutionsFolder;
-    protected Page getPage() {
+    private Page getPage() {
         return page;
     }
     public WebclientSession(ELOSolutionArchiveData eloSolutionArchiveData) {
@@ -20,9 +21,6 @@ public class WebclientSession {
         BrowserContext context = browser.newContext();
         page = context.newPage();
     }
-    protected void visit(String url) {
-        page.navigate(url);
-    }
     public void click(Locator locator) {
         BaseFunctions.click(locator);
     }
@@ -30,10 +28,11 @@ public class WebclientSession {
         BaseFunctions.type(locator, text, false);
     }
     private void login(LoginData loginData) {
-        Login login = new Login(this, loginData.getStack(), loginData.getTextUserName().getSelector(), loginData.getTextPassword().getSelector(), loginData.getButtonLogin().getSelector());
-        login.typeUsername(loginData.getTextUserName().getValue());
-        login.typePassword(loginData.getTextPassword().getValue());
-        login.clickLoginButton();
+        page.navigate("http://" + loginData.getStack() + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
+        type(page.getByPlaceholder(loginData.getTextUserName().getSelector()), loginData.getTextUserName().getValue());
+        type(page.getByPlaceholder(loginData.getTextPassword().getSelector()), loginData.getTextPassword().getValue());
+        click(page.getByText(loginData.getButtonLogin().getSelector()));
+
         selectSolutionTile();
     }
     private FrameLocator getFrameLocator() {
@@ -50,7 +49,6 @@ public class WebclientSession {
         System.out.println("frameLocator " + frameLocator);
         return frameLocator;
     }
-
     private void startFormula(ELOActionDef eloActionDef) {
         BaseFunctions.sleep();
         selectRibbonMenu(eloActionDef.getSelectorRibbon());
@@ -78,18 +76,20 @@ public class WebclientSession {
         BaseFunctions.click(page.locator(selectorSolutionTile));
     }
     private void selectSolutionsFolder() {
-        BaseFunctions.selectByTextAttribute(page, selectorSolutionsFolder, "class", "color").get().click();
+        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, selectorSolutionsFolder, "class", "color");
+        optionalLocator.ifPresent(Locator::click);
     }
     private void selectRibbonMenu(String selectorRibbonMenu){
-        BaseFunctions.selectByTextAttribute(page, selectorRibbonMenu, "id", "button").get().click();
+        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, selectorRibbonMenu, "id", "button");
+        optionalLocator.ifPresent(Locator::click);
     }
     private void selectButton(String selectorButton){
-        BaseFunctions.selectByTextAttribute(page, selectorButton, "id", "comp").get().click();
+        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, selectorButton, "id", "comp");
+        optionalLocator.ifPresent(Locator::click);
     }
     private void close() {
         playwright.close();
     }
-
     public static void execute(String jsonFile, boolean setPause) {
         final DataConfig dataConfig = BaseFunctions.readDataConfig(jsonFile);
 

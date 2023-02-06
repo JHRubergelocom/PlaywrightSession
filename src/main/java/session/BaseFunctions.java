@@ -3,9 +3,7 @@ package session;
 import com.google.gson.Gson;
 import com.microsoft.playwright.*;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.Optional;
 
 public class BaseFunctions {
@@ -43,7 +41,6 @@ public class BaseFunctions {
     public static void check(Locator radiobutton) {
         radiobutton.check();
     }
-
     public static Optional<Locator> selectByTextAttribute(Page page, String text, String attributeKey, String attributeValue) {
         Locator rows = page.getByText(text, new Page.GetByTextOptions().setExact(true));
         int count = rows.count();
@@ -62,7 +59,6 @@ public class BaseFunctions {
         System.err.println("selectByTextAttribute: " + text + " nicht gefunden!");
         return Optional.empty();
     }
-
     public static void fillRedactorFieldByPlaceholder(FrameLocator frameLocator, String placeHolder, String text) {
         Locator rows = frameLocator.getByPlaceholder(placeHolder);
         int count = rows.count();
@@ -81,7 +77,6 @@ public class BaseFunctions {
         }
         System.err.println("fillRedactorFieldByPlaceholder: " + placeHolder + " nicht gefunden!");
     }
-
     public static DataConfig readDataConfig(String jsonFileName) {
         Gson gson = new Gson();
         DataConfig dataConfig = new DataConfig();
@@ -92,14 +87,11 @@ public class BaseFunctions {
         try(BufferedReader br = new BufferedReader(new FileReader(jsonFileName))) {
             dataConfig = gson.fromJson(br, DataConfig.class);
             System.out.println(dataConfig);
-        } catch (FileNotFoundException e) {
-            System.err.println(e.getMessage());
-        } catch (IOException e) {
+        } catch ( Exception e) {
             System.err.println(e.getMessage());
         }
 
         System.out.println("-".repeat(100));
         return dataConfig;
     }
-
 }
