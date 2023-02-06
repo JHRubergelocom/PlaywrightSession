@@ -24,6 +24,9 @@
   "eloActionData": {
     "eloActions": [
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Meeting",
@@ -204,6 +207,9 @@
         }
       },
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Meeting",
@@ -365,6 +371,9 @@
         }
       },
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Meeting",

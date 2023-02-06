@@ -18,9 +18,9 @@ public class Formula {
             frameLocator.getByRole(AriaRole.LINK, new FrameLocator.GetByRoleOptions().setName(tabName)).click();
         }
     }
-    public void save() {
+    public void save(String formulaSaveButton) {
         BaseFunctions.sleep();
-        click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("OK")));
+        click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName(formulaSaveButton)));
     }
     public void click(Locator locator) {
         BaseFunctions.click(locator);

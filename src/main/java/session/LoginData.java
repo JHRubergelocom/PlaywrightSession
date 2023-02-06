@@ -27,7 +27,6 @@ public class LoginData {
         return buttonLogin;
     }
     public String getStack() { return stack; }
-
     @Override
     public String toString() {
         return "LoginData{" +

@@ -684,11 +684,11 @@ public class PlaywrightSessionTest {
         final List<ELOAction> eloActions = new ArrayList<>();
 
         Map<String, TabPage> eloTabPages = createEmployee1();
-        ELOAction eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
+        ELOAction eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
         eloActions.add(eloAction);
 
         eloTabPages = createCompany1();
-        eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewCompany), eloTabPages);
+        eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewCompany), eloTabPages);
         eloActions.add(eloAction);
 
         final ELOActionData eloActionData = new ELOActionData(eloActions);
@@ -725,43 +725,43 @@ public class PlaywrightSessionTest {
         final List<ELOAction> eloActions = new ArrayList<>();
 
         Map<String, TabPage> eloTabPages = createMB1();
-        ELOAction eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingBoard), eloTabPages);
+        ELOAction eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingBoard), eloTabPages);
         eloActions.add(eloAction);
 
         eloTabPages = createME1();
-        eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeeting), eloTabPages);
+        eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeeting), eloTabPages);
         eloActions.add(eloAction);
 
         eloTabPages = createMI1();
-        eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingItem), eloTabPages);
+        eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingItem), eloTabPages);
         eloActions.add(eloAction);
 
         eloTabPages = createMB2Premium();
-        eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingBoardPremium), eloTabPages);
+        eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingBoardPremium), eloTabPages);
         eloActions.add(eloAction);
 
         eloTabPages = createME1Premium();
-        eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingPremium), eloTabPages);
+        eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingPremium), eloTabPages);
         eloActions.add(eloAction);
 
         eloTabPages = createMI1Premium();
-        eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingItemPremium), eloTabPages);
+        eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingItemPremium), eloTabPages);
         eloActions.add(eloAction);
 
         eloTabPages = createMIP1();
-        eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingItemPool), eloTabPages);
+        eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingItemPool), eloTabPages);
         eloActions.add(eloAction);
 
         eloTabPages = createMIPMI1();
-        eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingItem), eloTabPages);
+        eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingItem), eloTabPages);
         eloActions.add(eloAction);
 
         eloTabPages = createMIP2Premium();
-        eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingItemPoolPremium), eloTabPages);
+        eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingItemPoolPremium), eloTabPages);
         eloActions.add(eloAction);
 
         eloTabPages = createMIPMI1Premium();
-        eloAction = new ELOAction(new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingItemPremium), eloTabPages);
+        eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", new ELOActionDef(selectorRibbonNew, selectorMenuMeetingPremium, selectorButtonCreateMeetingItemPremium), eloTabPages);
         eloActions.add(eloAction);
 
         final ELOActionData eloActionData = new ELOActionData(eloActions);
@@ -850,7 +850,7 @@ public class PlaywrightSessionTest {
         context.close();
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigTest.json"})
+    @ValueSource(strings = {"DataConfigHr.json"})
     public void TestSession(String jsonFile) {
         WebclientSession.execute(jsonFile, true);
     }

@@ -24,6 +24,9 @@
   "eloActionData": {
     "eloActions": [
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Personal",
@@ -75,6 +78,9 @@
         }
       },
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Personal",

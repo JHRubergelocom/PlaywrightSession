@@ -19,15 +19,12 @@ public class TabPage {
     public String getAddLineButtonName() {
         return addLineButtonName;
     }
-
     public List<ELOControl> getControls() {
         return controls;
     }
-
     public List<ELOControl> getInitTabPage() {
         return initTabPage;
     }
-
     @Override
     public String toString() {
         return "TabPage{" +
