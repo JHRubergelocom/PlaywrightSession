@@ -24,6 +24,10 @@
   "eloActionData": {
     "eloActions": [
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Meeting",
@@ -204,6 +208,10 @@
         }
       },
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Meeting",
@@ -227,6 +235,11 @@
                 "selector": "IX_GRP_MEETING_MINUTE_TAKER",
                 "value": "Charlotte Bennett",
                 "type": "DYNKWL"
+              },
+              {
+                "selector": "Hinterlegen Sie eine Beschreibung des Meetings.",
+                "value": "Beschreibung Meeting1",
+                "type": "REDACTOR"
               }
             ],
             "table": [
@@ -360,6 +373,10 @@
         }
       },
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Meeting",
@@ -404,6 +421,11 @@
                 "selector": "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON",
                 "value": "Adrian Smith",
                 "type": "DYNKWL"
+              },
+              {
+                "selector": "Hinterlegen Sie eine Beschreibung des Themas.",
+                "value": "Beschreibung Thema1",
+                "type": "REDACTOR"
               }
             ],
             "table": [
@@ -437,6 +459,10 @@
         }
       },
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Sitzung",
@@ -617,6 +643,10 @@
         }
       },
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Sitzung",
@@ -640,6 +670,11 @@
                 "selector": "IX_GRP_MEETING_MINUTE_TAKER",
                 "value": "Bodo Kraft",
                 "type": "DYNKWL"
+              },
+              {
+                "selector": "Hinterlegen Sie eine Beschreibung der Sitzung.",
+                "value": "Beschreibung Sitzung1",
+                "type": "REDACTOR"
               }
             ],
             "table": [
@@ -773,6 +808,10 @@
         }
       },
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Sitzung",
@@ -817,6 +856,11 @@
                 "selector": "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON",
                 "value": "David Lee",
                 "type": "DYNKWL"
+              },
+              {
+                "selector": "Hinterlegen Sie eine Beschreibung des TOPs.",
+                "value": "Beschreibung TOP1",
+                "type": "REDACTOR"
               }
             ],
             "table": [
@@ -850,6 +894,10 @@
         }
       },
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Meeting",
@@ -886,6 +934,10 @@
         }
       },
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Meeting",
@@ -930,6 +982,11 @@
                 "selector": "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON",
                 "value": "Adrian Smith",
                 "type": "DYNKWL"
+              },
+              {
+                "selector": "Hinterlegen Sie eine Beschreibung des Themas.",
+                "value": "Beschreibung Thema1",
+                "type": "REDACTOR"
               }
             ],
             "table": [
@@ -963,6 +1020,10 @@
         }
       },
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Sitzung",
@@ -999,6 +1060,10 @@
         }
       },
       {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
           "selectorMenu": "Sitzung",
@@ -1043,6 +1108,11 @@
                 "selector": "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON",
                 "value": "David Lee",
                 "type": "DYNKWL"
+              },
+              {
+                "selector": "Hinterlegen Sie eine Beschreibung des TOPs.",
+                "value": "Beschreibung TOP1 Meetingitempool2",
+                "type": "REDACTOR"
               }
             ],
             "table": [

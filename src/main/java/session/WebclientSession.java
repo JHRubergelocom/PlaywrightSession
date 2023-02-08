@@ -1,17 +1,19 @@
 package session;
 
 import com.microsoft.playwright.*;
+
 import java.util.Map;
+import java.util.Optional;
 
 public class WebclientSession {
     private final Page page;
     private final Playwright playwright;
     private final String selectorSolutionTile;
     private final String selectorSolutionsFolder;
-    public Page getPage() {
+    private Page getPage() {
         return page;
     }
-    public WebclientSession(ELOSolutionArchiveData eloSolutionArchiveData) {
+    private WebclientSession(ELOSolutionArchiveData eloSolutionArchiveData) {
         this.selectorSolutionTile = eloSolutionArchiveData.getSelectorSolutionTile();
         this.selectorSolutionsFolder = eloSolutionArchiveData.getSelectorSolutionsFolder();
         playwright = Playwright.create();
@@ -19,77 +21,159 @@ public class WebclientSession {
         BrowserContext context = browser.newContext();
         page = context.newPage();
     }
-    public void visit(String url) {
-        page.navigate(url);
-    }
-    public void click(Locator locator) {
+    private void click(Locator locator) {
         BaseFunctions.click(locator);
     }
-    public void type(Locator locator, String text) {
+    private void type(Locator locator, String text) {
         BaseFunctions.type(locator, text, false);
     }
-    public void login(LoginData loginData) {
-        Login login = new Login(this, loginData.getStack(), loginData.getTextUserName().getSelector(), loginData.getTextPassword().getSelector(), loginData.getButtonLogin().getSelector());
-        login.typeUsername(loginData.getTextUserName().getValue());
-        login.typePassword(loginData.getTextPassword().getValue());
-        login.clickLoginButton();
+    private void login(LoginData loginData) {
+        page.navigate("http://" + loginData.getStack() + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
+        type(page.getByPlaceholder(loginData.getTextUserName().getSelector()), loginData.getTextUserName().getValue());
+        type(page.getByPlaceholder(loginData.getTextPassword().getSelector()), loginData.getTextPassword().getValue());
+        click(page.getByText(loginData.getButtonLogin().getSelector()));
+
         selectSolutionTile();
     }
-    private FrameLocator getFrameLocator() {
+    private FrameLocator getFrameLocator(String frameName) {
         String selector = "";
-        getPage().mainFrame().content();
-        for (Frame frame: getPage().frames()) {
+        page.mainFrame().content();
+        for (Frame frame: page.frames()) {
             System.out.println("Frame.name " + frame.name());
-            if (frame.name().contains("iframe")) {
+            if (frame.name().contains(frameName)) {
                 selector = "#" + frame.name();
             }
         }
-        FrameLocator frameLocator = getPage().frameLocator(selector);
+        FrameLocator frameLocator = page.frameLocator(selector);
         System.out.println("selector " + selector);
         System.out.println("frameLocator " + frameLocator);
         return frameLocator;
     }
-
-    private void startFormula(ELOActionDef eloActionDef) {
-        selectRibbonMenu(eloActionDef.getSelectorRibbon());
-        selectRibbonMenu(eloActionDef.getSelectorMenu());
-        BaseFunctions.sleep();
-        selectButton(eloActionDef.getSelectorButton());
-        BaseFunctions.sleep();
+    private void startSelectionDialogItem(String selectionDialogItem) {
+        if (!selectionDialogItem.equals("")) {
+            System.out.println("selectionDialogItem = "+ selectionDialogItem);
+            BaseFunctions.sleep();
+            page.getByText(selectionDialogItem).click();
+        }
 
     }
+    private FrameLocator startExternalFormular(ELOAction eloAction) {
+        System.out.println("eloActionDef " + eloAction.getEloActionDef());
+        System.out.println("selectionDialogItem " + eloAction.getSelectionDialogItem());
+        BaseFunctions.sleep();
+        selectRibbonMenu(eloAction.getEloActionDef().getSelectorRibbon());
+        BaseFunctions.sleep();
+        selectRibbonMenu(eloAction.getEloActionDef().getSelectorMenu());
+        BaseFunctions.sleep();
+        selectButton(eloAction.getEloActionDef().getSelectorButton());
+        BaseFunctions.sleep();
+        startSelectionDialogItem(eloAction.getSelectionDialogItem());
+        BaseFunctions.sleep();
 
-    public void executeAction(ELOAction eloAction,
-                              Map<String, TabPage> tabPages) {
+        return getFrameLocator("iframe");
+    }
+    private FrameLocator startViewerFormular(ELOAction eloAction) {
+        BaseFunctions.sleep();
+        Locator rows = page.locator("xpath=//*[@class=\"x-btn-button\"]");
+        int count = rows.count();
+        System.out.println("rows.count(): " + count);
+        for (int i = 0; i < count; ++i) {
+            System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
+            System.out.println("Row: " + i + " innerHTML() " + rows.nth(i).innerHTML());
+            System.out.println("Row: " + i + " " + rows.nth(i));
+            if (rows.nth(i).textContent().equals("Formular")) {
+                rows.nth(i).click();
+            }
+        }
+        startSelectionDialogItem(eloAction.getSelectionDialogItem());
+        BaseFunctions.sleep();
+
+        return getFrameLocator("FormularViewer");
+    }
+    private FrameLocator startFormula(ELOAction eloAction) {
+        switch (eloAction.getFormulaType()) {
+            case EXTERNAL -> { return startExternalFormular(eloAction);}
+            case VIEWER -> { return startViewerFormular(eloAction);}
+        }
+        return page.frameLocator("");
+    }
+    private void executeAction(ELOAction eloAction,
+                               Map<String, TabPage> tabPages) {
 
         selectSolutionsFolder();
-        startFormula(eloAction.getEloActionDef());
+        selectEntryByPath(eloAction.getEntryPath());
 
-        System.out.println("eloAction.getEloActionDef() " + eloAction.getEloActionDef());
-        FrameLocator frameLocator = getFrameLocator();
+        FrameLocator frameLocator = startFormula(eloAction);
         Formula formula = new Formula(frameLocator);
         formula.inputData(tabPages);
-        formula.save();
+        formula.save(eloAction.getFormulaSaveButton());
         BaseFunctions.sleep();
     }
     private void selectSolutionTile() {
         BaseFunctions.click(page.locator(selectorSolutionTile));
     }
     private void selectSolutionsFolder() {
-        BaseFunctions.selectByTextAttribute(page, selectorSolutionsFolder, "class", "color");
+        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, selectorSolutionsFolder, "class", "color");
+        optionalLocator.ifPresent(Locator::click);
+    }
+    private Locator selectFolder(String folder) {
+        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, folder, "class", "color");
+        return optionalLocator.orElse(page.locator(""));
+    }
+    private void selectEntryByPath(String path) {
+        if (path.equals("")) {
+            return;
+        }
+        String[] folders = path.split("/");
+        if(folders.length > 0) {
+            if (selectFolder(folders[0]).isVisible()) {
+                for (int i = 0; i < folders.length-1; i++) {
+                    BaseFunctions.sleep();
+                    if (!selectFolder(folders[i+1]).isVisible()) {
+                        selectFolder(folders[i]).dblclick();
+                        System.out.println("selectFolder parentfolder " + folders[i] + " dblclick");
+                    }
+                    selectFolder(folders[i+1]).dblclick();
+                    System.out.println("selectFolder folder " + folders[i+1] + " dblclick");
+
+                }
+            } else {
+                System.err.println("selectorFolder folder=" + folders[0] + " of path=" + path + "is not available");
+            }
+        } else {
+            System.err.println("selectorFolder path=" + path + "is empty");
+        }
     }
     private void selectRibbonMenu(String selectorRibbonMenu){
-        BaseFunctions.selectByTextAttribute(page, selectorRibbonMenu, "id", "button");
+        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, selectorRibbonMenu, "id", "button");
+        optionalLocator.ifPresent(Locator::click);
     }
     private void selectButton(String selectorButton){
-        BaseFunctions.selectByTextAttribute(page, selectorButton, "id", "comp");
+        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, selectorButton, "id", "comp");
+        optionalLocator.ifPresent(Locator::click);
     }
-
-
-    public void close() {
+    private void close() {
         playwright.close();
     }
+    public static void execute(String jsonFile, boolean setPause) {
+        final DataConfig dataConfig = BaseFunctions.readDataConfig(jsonFile);
 
+        // Execute DataConfig
+        WebclientSession ws = new WebclientSession(dataConfig.getEloSolutionArchiveData());
+        ws.login(dataConfig.getLoginData());
+
+        for (ELOAction eloAction: dataConfig.getEloActionData().getEloActions()) {
+            Map<String, TabPage> tabPages = eloAction.getTabPages();
+
+            // Execute Action
+            ws.executeAction(eloAction, tabPages);
+        }
+
+        if (setPause) {
+            ws.getPage().pause();
+        }
+        ws.close();
+    }
     @Override
     public String toString() {
         return "WebclientSession{" +
