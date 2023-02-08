@@ -9,6 +9,11 @@ public class ELOActionDef {
         this.selectorMenu = selectorMenu;
         this.selectorButton = selectorButton;
     }
+    public ELOActionDef() {
+        this.selectorRibbon = "";
+        this.selectorMenu = "";
+        this.selectorButton = "";
+    }
     public String getSelectorRibbon() {
         return selectorRibbon;
     }
@@ -18,7 +23,6 @@ public class ELOActionDef {
     public String getSelectorButton() {
         return selectorButton;
     }
-
     @Override
     public String toString() {
         return "ELOActionDef{" +

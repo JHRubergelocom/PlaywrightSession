@@ -1,13 +1,10 @@
 package session;
 
 import com.google.gson.Gson;
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.*;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
+import java.util.Optional;
 
 public class BaseFunctions {
     private static final long millis = 5000;
@@ -44,8 +41,7 @@ public class BaseFunctions {
     public static void check(Locator radiobutton) {
         radiobutton.check();
     }
-
-    public static void selectByTextAttribute(Page page, String text, String attributeKey, String attributeValue) {
+    public static Optional<Locator> selectByTextAttribute(Page page, String text, String attributeKey, String attributeValue) {
         Locator rows = page.getByText(text, new Page.GetByTextOptions().setExact(true));
         int count = rows.count();
         System.out.println("rows.count(): " + count);
@@ -56,16 +52,34 @@ public class BaseFunctions {
             if (rows.nth(i).isVisible()) {
                 System.out.println("      Row: " + i + "getAttribute(" + attributeKey + ") " + rows.nth(i).getAttribute(attributeKey));
                 if (rows.nth(i).getAttribute(attributeKey).contains(attributeValue)) {
-                    click(rows.nth(i));
-                    break;
+                    return Optional.of(rows.nth(i));
                 }
             }
         }
+        System.err.println("selectByTextAttribute: " + text + " nicht gefunden!");
+        return Optional.empty();
     }
+    public static void fillRedactorFieldByPlaceholder(FrameLocator frameLocator, String placeHolder, String text) {
+        Locator rows = frameLocator.getByPlaceholder(placeHolder);
+        int count = rows.count();
+        System.out.println("rows.count(): " + count);
+        for (int i = 0; i < count; ++i) {
+            System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
+            System.out.println("Row: " + i + " innerHTML() " + rows.nth(i).innerHTML());
+            System.out.println("Row: " + i + " " + rows.nth(i));
 
+            if (rows.nth(i).isVisible()) {
+                if (rows.nth(i).innerHTML().contains("<p></p>")) {
+                    rows.nth(i).fill(text);
+                    return;
+                }
+            }
+        }
+        System.err.println("fillRedactorFieldByPlaceholder: " + placeHolder + " nicht gefunden!");
+    }
     public static DataConfig readDataConfig(String jsonFileName) {
         Gson gson = new Gson();
-        DataConfig dataConfig;
+        DataConfig dataConfig = new DataConfig();
 
         System.out.println("Reading " + jsonFileName);
         System.out.println("-".repeat(100));
@@ -73,14 +87,11 @@ public class BaseFunctions {
         try(BufferedReader br = new BufferedReader(new FileReader(jsonFileName))) {
             dataConfig = gson.fromJson(br, DataConfig.class);
             System.out.println(dataConfig);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch ( Exception e) {
+            System.err.println(e.getMessage());
         }
 
         System.out.println("-".repeat(100));
         return dataConfig;
     }
-
 }

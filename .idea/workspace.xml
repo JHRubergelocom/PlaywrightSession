@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Refinement DataConfig" />
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright DataConfig Hr, Meeting, select dialog" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +45,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.47586206&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor.code.editing&quot;
   }
 }</component>
@@ -61,7 +62,7 @@
       <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession\target" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="JUnit.PlaywrightSessionTest.TestSession (1)">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.App" />
       <module name="PlaywrightSession" />
@@ -75,7 +76,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaywrightSessionTest.TestJson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlaywrightSessionTest.CreateDataConfigJson (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
         <pattern>
@@ -85,13 +86,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
-      <option name="METHOD_NAME" value="TestJson" />
+      <option name="METHOD_NAME" value="CreateDataConfigJson(java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaywrightSessionTest.firstScript" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlaywrightSessionTest.TestSession (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
         <pattern>
@@ -101,7 +102,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
-      <option name="METHOD_NAME" value="firstScript" />
+      <option name="METHOD_NAME" value="TestSession(java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -141,11 +142,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.TestJson" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.secondScript" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.TestSession (1)" />
         <item itemvalue="JUnit.PlaywrightSessionTest.testLocator" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.firstScript" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.CreateDataConfigJson (1)" />
+        <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.secondScript" />
       </list>
     </recent_temporary>
   </component>
@@ -157,20 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670419530192</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Init">
-      <created>1670422154488</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1670422154488</updated>
-    </task>
-    <task id="LOCAL-00002" summary="PlaywrightSessionTest">
-      <created>1670491467643</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1670491467643</updated>
     </task>
     <task id="LOCAL-00003" summary="PlaywrightSessionTest">
       <created>1670491599024</created>
@@ -410,7 +397,112 @@
       <option name="project" value="LOCAL" />
       <updated>1675170160671</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Playwright Refinement DataConfig Redactorfields">
+      <created>1675257124540</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1675257124540</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Playwright DataConfig Hr">
+      <created>1675264888578</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1675264888578</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Playwright DataConfig Hr, Meeting">
+      <created>1675331523726</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1675331523726</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Playwright DataConfig Hr, Meeting">
+      <created>1675350843799</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1675350843799</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Playwright DataConfig Hr, Meeting, select folder path">
+      <created>1675428047592</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1675428047592</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Playwright DataConfig Hr, Meeting, select folder path">
+      <created>1675429348136</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1675429348136</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula">
+      <created>1675437147595</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1675437147595</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula">
+      <created>1675675533817</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1675675533817</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula">
+      <created>1675688034163</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1675688034163</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula">
+      <created>1675692585821</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1675692585821</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula">
+      <created>1675695783107</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1675695783107</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula">
+      <created>1675697647921</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1675697647921</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Playwright DataConfig Hr, Meeting, select dialog">
+      <created>1675773419881</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1675773419881</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Playwright DataConfig Hr, Meeting, select dialog">
+      <created>1675778387859</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1675778387859</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Playwright DataConfig Hr, Meeting, select dialog">
+      <created>1675843089722</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1675843089723</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,10 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Init" />
-    <MESSAGE value="PlaywrightSessionTest" />
-    <MESSAGE value="Test Runners" />
-    <MESSAGE value="PlaywrightSessionTest with tracing" />
     <MESSAGE value="Playwright WebclientSession" />
     <MESSAGE value="Playwright WebclientSession CreateMeetingBoard" />
     <MESSAGE value="Playwright WebclientSession CreateMeetingItem" />
@@ -449,7 +537,13 @@
     <MESSAGE value="Playwright Refinement Datastructures" />
     <MESSAGE value="Playwright Refinement Locators" />
     <MESSAGE value="Playwright Refinement DataConfig" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright Refinement DataConfig" />
+    <MESSAGE value="Playwright Refinement DataConfig Redactorfields" />
+    <MESSAGE value="Playwright DataConfig Hr" />
+    <MESSAGE value="Playwright DataConfig Hr, Meeting" />
+    <MESSAGE value="Playwright DataConfig Hr, Meeting, select folder path" />
+    <MESSAGE value="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula" />
+    <MESSAGE value="Playwright DataConfig Hr, Meeting, select dialog" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright DataConfig Hr, Meeting, select dialog" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PlaywrightSession$App.ic" NAME="App Coverage Results" MODIFIED="1675168046011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

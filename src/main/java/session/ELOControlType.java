@@ -5,5 +5,7 @@ public enum ELOControlType {
     DYNKWL,
     CHECKBOX,
     BUTTON,
-    RADIO
+    RADIO,
+    REDACTOR,
+    NONE
 }
