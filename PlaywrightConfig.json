@@ -1,0 +1,8 @@
+{
+  "notHeadless": true,
+  "recordVideo": true,
+  "screenShots": true,
+  "snapShots": true,
+  "sources": true,
+  "pause": true
+}

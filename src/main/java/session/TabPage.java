@@ -5,19 +5,14 @@ import java.util.List;
 public class TabPage {
     private final List<ELOControl> initTabPage;
     private final List<ELOControl> controls;
-    private final List<List<ELOControl>> table;
-    private final String addLineButtonName;
-    public TabPage(List<ELOControl> initTabPage, List<ELOControl> controls, List<List<ELOControl>> table, String addLineButtonName) {
+    private final List<ELOTable> tables;
+    public TabPage(List<ELOControl> initTabPage, List<ELOControl> controls, List<ELOTable> tables) {
         this.initTabPage = initTabPage;
         this.controls = controls;
-        this.table = table;
-        this.addLineButtonName = addLineButtonName;
+        this.tables = tables;
     }
-    public List<List<ELOControl>> getTable() {
-        return table;
-    }
-    public String getAddLineButtonName() {
-        return addLineButtonName;
+    public List<ELOTable> getTables() {
+        return tables;
     }
     public List<ELOControl> getControls() {
         return controls;
@@ -25,13 +20,13 @@ public class TabPage {
     public List<ELOControl> getInitTabPage() {
         return initTabPage;
     }
+
     @Override
     public String toString() {
         return "TabPage{" +
                 "initTabPage=" + initTabPage +
                 ", controls=" + controls +
-                ", table=" + table +
-                ", addLineButtonName='" + addLineButtonName + '\'' +
+                ", tables=" + tables +
                 '}';
     }
 }

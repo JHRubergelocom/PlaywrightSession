@@ -19,6 +19,12 @@ public class App
             System.out.println(page.title());
         }
         */
-        WebclientSession.execute("DataConfigHr.json", true);
+        try {
+            String jsonDataConfigFile = args[0];
+            String jsonPlaywrightConfigFile = args[1];
+            WebclientSession.execute(jsonDataConfigFile, jsonPlaywrightConfigFile);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

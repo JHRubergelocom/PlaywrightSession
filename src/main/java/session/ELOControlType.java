@@ -7,5 +7,6 @@ public enum ELOControlType {
     BUTTON,
     RADIO,
     REDACTOR,
-    NONE
+    NONE,
+    KWL
 }

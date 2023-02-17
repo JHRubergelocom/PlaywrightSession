@@ -34,8 +34,11 @@ public class Formula {
     private void inputRadioButton(String name) {
         BaseFunctions.check(frameLocator.getByRole(AriaRole.RADIO, new FrameLocator.GetByRoleOptions().setName(name)));
     }
-    private void inputRedactorField(String placeHolder, String value) {
-        BaseFunctions.fillRedactorFieldByPlaceholder(frameLocator, placeHolder, value);
+    private void inputRedactorField(String placeHolder, String text) {
+        BaseFunctions.fillRedactorFieldByPlaceholder(frameLocator, placeHolder, text);
+    }
+    private void inputKwlField(String selector, String text) {
+        BaseFunctions.selectkwlitem(frameLocator, frameLocator.locator("[inpname=\"" + selector + "\"]"), text);
     }
     private void initTabPage(List<ELOControl> initTabPage) {
         for (ELOControl control: initTabPage) {
@@ -52,15 +55,23 @@ public class Formula {
                 case CHECKBOX -> inputCheckBox(control.getSelector(), control.getValue());
                 case RADIO -> inputRadioButton(control.getSelector());
                 case REDACTOR -> inputRedactorField(control.getSelector(), control.getValue());
+                case KWL -> inputKwlField(control.getSelector(), control.getValue());
             }
         }
     }
-    private void inputControlsTable(List<List<ELOControl>> table, String addLineButtonName) {
+    private void clickAddLineButton(ELOTable eloTable) {
+        if (!eloTable.getSelectorTable().equals("")) {
+            BaseFunctions.click(frameLocator.locator("#"+ eloTable.getSelectorTable()).getByRole(AriaRole.BUTTON, new Locator.GetByRoleOptions().setName(eloTable.getAddLineButtonName())));
+        } else {
+            BaseFunctions.click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName(eloTable.getAddLineButtonName())));
+        }
+        BaseFunctions.sleep();
+    }
+    private void inputControlsTable(ELOTable eloTable) {
         int index = 1;
-        for (List<ELOControl> tableLine: table) {
+        for (List<ELOControl> tableLine: eloTable.getTable()) {
             if (index > 1) {
-                click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName(addLineButtonName)));
-                BaseFunctions.sleep();
+                clickAddLineButton(eloTable);
             }
             for (ELOControl control: tableLine) {
                 switch(control.getType()) {
@@ -69,9 +80,15 @@ public class Formula {
                     case CHECKBOX -> inputCheckBox(control.getSelector() + index, control.getValue());
                     case RADIO -> inputRadioButton(control.getSelector() + index);
                     case REDACTOR -> inputRedactorField(control.getSelector() + index, control.getValue());
+                    case KWL -> inputKwlField(control.getSelector() + index, control.getValue());
                 }
             }
             index++;
+        }
+    }
+    private void inputControlsTables(List<ELOTable> tables) {
+        for(ELOTable eloTable: tables) {
+            inputControlsTable(eloTable);
         }
     }
     public void inputData(Map<String, TabPage> tabpages) {
@@ -85,7 +102,7 @@ public class Formula {
             selectTab(tabName);
             initTabPage(tabPage.getInitTabPage());
             inputControls(tabPage.getControls());
-            inputControlsTable(tabPage.getTable(), tabPage.getAddLineButtonName());
+            inputControlsTables(tabPage.getTables());
         }
     }
     @Override

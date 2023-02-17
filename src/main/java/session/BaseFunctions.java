@@ -2,6 +2,8 @@ package session;
 
 import com.google.gson.Gson;
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.AriaRole;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Optional;
@@ -23,6 +25,10 @@ public class BaseFunctions {
         if (timeout) {
             sleep();
         }
+    }
+    public static void selectkwlitem(FrameLocator frameLocator, Locator kwllist, String kwlitem) {
+        kwllist.click();
+        frameLocator.getByRole(AriaRole.CELL, new FrameLocator.GetByRoleOptions().setName(kwlitem)).click();
     }
     public static void click(Locator locator) {
         locator.click();
@@ -77,14 +83,14 @@ public class BaseFunctions {
         }
         System.err.println("fillRedactorFieldByPlaceholder: " + placeHolder + " nicht gefunden!");
     }
-    public static DataConfig readDataConfig(String jsonFileName) {
+    public static DataConfig readDataConfig(String jsonDataConfigFileName) {
         Gson gson = new Gson();
         DataConfig dataConfig = new DataConfig();
 
-        System.out.println("Reading " + jsonFileName);
+        System.out.println("Reading " + jsonDataConfigFileName);
         System.out.println("-".repeat(100));
 
-        try(BufferedReader br = new BufferedReader(new FileReader(jsonFileName))) {
+        try(BufferedReader br = new BufferedReader(new FileReader(jsonDataConfigFileName))) {
             dataConfig = gson.fromJson(br, DataConfig.class);
             System.out.println(dataConfig);
         } catch ( Exception e) {
@@ -93,5 +99,23 @@ public class BaseFunctions {
 
         System.out.println("-".repeat(100));
         return dataConfig;
+    }
+    public static PlaywrightConfig readPlaywrightConfig(String jsonPlaywrightConfigFileName) {
+        Gson gson = new Gson();
+        PlaywrightConfig playwrightConfig = new PlaywrightConfig();
+
+        System.out.println("Reading " + jsonPlaywrightConfigFileName);
+        System.out.println("-".repeat(100));
+
+        try(BufferedReader br = new BufferedReader(new FileReader(jsonPlaywrightConfigFileName))) {
+            playwrightConfig = gson.fromJson(br, PlaywrightConfig.class);
+            System.out.println(playwrightConfig);
+        } catch ( Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        System.out.println("-".repeat(100));
+        return playwrightConfig;
+
     }
 }
