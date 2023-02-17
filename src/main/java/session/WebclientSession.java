@@ -1,25 +1,69 @@
 package session;
 
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.AriaRole;
 
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Optional;
 
 public class WebclientSession {
-    private final Page page;
+    private Page page;
     private final Playwright playwright;
+    private BrowserContext browserContext;
     private final String selectorSolutionTile;
     private final String selectorSolutionsFolder;
     private Page getPage() {
         return page;
     }
-    private WebclientSession(ELOSolutionArchiveData eloSolutionArchiveData) {
+    private Browser launch(BrowserType browserType, BrowserType.LaunchOptions options) {
+        return browserType.launch(options);
+    }
+    private BrowserContext createContext(Browser browser, Browser.NewContextOptions options) {
+        return browser.newContext(options);
+    }
+    private Page startContextPage(BrowserContext browserContext, Tracing.StartOptions startOptions) {
+        browserContext.tracing().start(startOptions);
+        return browserContext.newPage();
+    }
+    private void setPlaywrightConfigParameter(PlaywrightConfig playwrightConfig) {
+
+        final BrowserType chromium = playwright.chromium();
+
+        BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions();
+        if (playwrightConfig.isNotHeadless()) {
+            launchOptions.setHeadless(false);
+        }
+
+        final Browser browser = launch(chromium, launchOptions);
+
+        Browser.NewContextOptions newContextOptions = new Browser.NewContextOptions();
+        if (playwrightConfig.isRecordVideo()) {
+            newContextOptions.setRecordVideoDir(Paths.get(""));
+        }
+
+        browserContext = createContext(browser, newContextOptions);
+
+        Tracing.StartOptions startOptions = new Tracing.StartOptions();
+        if (playwrightConfig.isScreenShots()) {
+            startOptions.setScreenshots(true);
+        }
+        if (playwrightConfig.isSnapShots()) {
+            startOptions.setSnapshots(true);
+        }
+        if (playwrightConfig.isSources()) {
+            startOptions.setSources(true);
+        }
+
+        page = startContextPage(browserContext, startOptions);
+
+    }
+    private WebclientSession(PlaywrightConfig playwrightConfig, ELOSolutionArchiveData eloSolutionArchiveData) {
         this.selectorSolutionTile = eloSolutionArchiveData.getSelectorSolutionTile();
         this.selectorSolutionsFolder = eloSolutionArchiveData.getSelectorSolutionsFolder();
+
         playwright = Playwright.create();
-        Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-        BrowserContext context = browser.newContext();
-        page = context.newPage();
+        setPlaywrightConfigParameter(playwrightConfig);
     }
     private void click(Locator locator) {
         BaseFunctions.click(locator);
@@ -29,6 +73,9 @@ public class WebclientSession {
     }
     private void login(LoginData loginData) {
         page.navigate("http://" + loginData.getStack() + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
+        Locator locator = page.locator("[name=\"" + "locale" + "\"]");
+        locator.click();
+        page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("Deutsch")).click();
         type(page.getByPlaceholder(loginData.getTextUserName().getSelector()), loginData.getTextUserName().getValue());
         type(page.getByPlaceholder(loginData.getTextPassword().getSelector()), loginData.getTextPassword().getValue());
         click(page.getByText(loginData.getButtonLogin().getSelector()));
@@ -153,13 +200,17 @@ public class WebclientSession {
         optionalLocator.ifPresent(Locator::click);
     }
     private void close() {
+        browserContext.tracing().stop(new Tracing.StopOptions()
+                .setPath(Paths.get("trace_" + browserContext.browser().browserType().name() + ".zip")));
+        browserContext.close();
         playwright.close();
     }
-    public static void execute(String jsonFile, boolean setPause) {
-        final DataConfig dataConfig = BaseFunctions.readDataConfig(jsonFile);
+    public static void execute(String jsonDataConfigFile, String jsonPlaywrightConfigFile) throws Exception {
+        final DataConfig dataConfig = BaseFunctions.readDataConfig(jsonDataConfigFile);
+        final PlaywrightConfig playwrightConfig = BaseFunctions.readPlaywrightConfig(jsonPlaywrightConfigFile);
 
         // Execute DataConfig
-        WebclientSession ws = new WebclientSession(dataConfig.getEloSolutionArchiveData());
+        WebclientSession ws = new WebclientSession(playwrightConfig, dataConfig.getEloSolutionArchiveData());
         ws.login(dataConfig.getLoginData());
 
         for (ELOAction eloAction: dataConfig.getEloActionData().getEloActions()) {
@@ -169,7 +220,7 @@ public class WebclientSession {
             ws.executeAction(eloAction, tabPages);
         }
 
-        if (setPause) {
+        if (playwrightConfig.isPause()) {
             ws.getPage().pause();
         }
         ws.close();
