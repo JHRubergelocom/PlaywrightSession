@@ -2,8 +2,12 @@ package session;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
+import de.elo.ix.client.IXConnection;
+import eloix.ELOIxConnection;
+import eloix.RepoUtils;
 
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -205,26 +209,58 @@ public class WebclientSession {
         browserContext.close();
         playwright.close();
     }
-    public static void execute(String jsonDataConfigFile, String jsonPlaywrightConfigFile) throws Exception {
-        final DataConfig dataConfig = BaseFunctions.readDataConfig(jsonDataConfigFile);
-        final PlaywrightConfig playwrightConfig = BaseFunctions.readPlaywrightConfig(jsonPlaywrightConfigFile);
+    private void deleteData(DataConfig dataConfig) throws Exception {
+        // Ix Connect
+        IXConnection ixConn = ELOIxConnection.getIxConnection(dataConfig.getLoginData());
+        System.out.println("IxConn: " + ixConn);
 
-        // Execute DataConfig
-        WebclientSession ws = new WebclientSession(playwrightConfig, dataConfig.getEloSolutionArchiveData());
-        ws.login(dataConfig.getLoginData());
-
-        for (ELOAction eloAction: dataConfig.getEloActionData().getEloActions()) {
-            Map<String, TabPage> tabPages = eloAction.getTabPages();
-
-            // Execute Action
-            ws.executeAction(eloAction, tabPages);
+        // Delete arcpath
+        for (String arcPath: dataConfig.getEloDeleteData().getArcPaths()) {
+            RepoUtils.DeleteSord(ixConn, arcPath);
         }
 
-        if (playwrightConfig.isPause()) {
-            ws.getPage().pause();
-        }
-        ws.close();
+        ixConn.close();
+
     }
+    public static void execute(String jsonDataConfigFile, String jsonPlaywrightConfigFile) {
+
+        WebclientSession ws = null;
+        try {
+            final DataConfig dataConfig = BaseFunctions.readDataConfig(jsonDataConfigFile);
+            final PlaywrightConfig playwrightConfig = BaseFunctions.readPlaywrightConfig(jsonPlaywrightConfigFile);
+
+            // Execute DataConfig
+            ws = new WebclientSession(playwrightConfig, dataConfig.getEloSolutionArchiveData());
+            ws.login(dataConfig.getLoginData());
+            for (ELOAction eloAction: dataConfig.getEloActionData().getEloActions()) {
+                Map<String, TabPage> tabPages = eloAction.getTabPages();
+
+                // Execute Action
+                ws.executeAction(eloAction, tabPages);
+            }
+
+            if (playwrightConfig.isPause()) {
+                ws.getPage().pause();
+            }
+
+            // Delete Data
+            List<String> arcPaths = dataConfig.getEloDeleteData().getArcPaths();
+            if(arcPaths.size() > 0) {
+                ws.deleteData(dataConfig);
+            }
+
+        } catch ( Exception e) {
+            System.err.println(e.getMessage());
+            if (ws != null) {
+                ws.getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get("exeception.png")));
+            }
+        } finally {
+            if (ws != null) {
+                ws.close();
+            }
+        }
+    }
+
     @Override
     public String toString() {
         return "WebclientSession{" +

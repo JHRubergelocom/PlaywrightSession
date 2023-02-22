@@ -279,5 +279,11 @@
         }
       }
     ]
+  },
+  "eloDeleteData": {
+    "arcPaths": [
+      "ARCPATH:/Personalmanagement/Personalakten/H/Hansen, Hans",
+      "ARCPATH:/Firma Hansens"
+    ]
   }
 }

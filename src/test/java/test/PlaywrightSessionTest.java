@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
+import de.elo.ix.client.IXConnection;
+import eloix.ELOIxConnection;
+import eloix.RepoUtils;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -862,9 +865,17 @@ public class PlaywrightSessionTest {
 
         final ELOActionData eloActionData = new ELOActionData(eloActions);
 
+        // Delete Data
+        final List<String> arcPaths = new ArrayList<>();
+        arcPaths.add("ARCPATH:/Personalmanagement/Personalakten/H/Hansen, Hans");
+        arcPaths.add("ARCPATH:/Firma Hansens");
+
+        final ELODeleteData eloDeleteData = new ELODeleteData(arcPaths);
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
-                eloActionData);
+                eloActionData,
+                eloDeleteData);
     }
     private DataConfig createDataConfigMeeting() {
         // ELO Action Def Data
@@ -934,9 +945,13 @@ public class PlaywrightSessionTest {
 
         final ELOActionData eloActionData = new ELOActionData(eloActions);
 
+        // Delete Data
+        final ELODeleteData eloDeleteData = new ELODeleteData(new ArrayList<>());
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
-                eloActionData);
+                eloActionData,
+                eloDeleteData);
     }
     private FrameLocator getFrameLocator(String frameName) {
         String selector = "";
@@ -1027,13 +1042,9 @@ public class PlaywrightSessionTest {
         context.close();
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigTest.json"})
+    @ValueSource(strings = {"DataConfigHr.json"})
     public void TestSession(String jsonFile) {
-        try {
-            WebclientSession.execute(jsonFile, "PlaywrightConfig.json");
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
+        WebclientSession.execute(jsonFile, "PlaywrightConfig.json");
     }
     @ParameterizedTest
     @ValueSource(strings = {"DataConfigHr.json", "DataConfigMeeting.json", "Empty.json"})
@@ -1336,7 +1347,7 @@ public class PlaywrightSessionTest {
         BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_DATEOFJOINING" + "\"]"), "20220101", false);
 
         // Formular speichern
-        clickButton(frameLocator, "OKx");
+        clickButton(frameLocator, "OK");
 
         // Ordner "Solutions" auswählen
         selectEntryByPath("Solutions");
@@ -1416,5 +1427,30 @@ public class PlaywrightSessionTest {
 
         page.pause(); // Start Codegen
 
+    }
+    @Test
+    public void testEloIxConnectAndDeleteData() {
+
+        // Fill LoginData
+        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT);
+        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT);
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON);
+        final String stack = "ruberg-hr.dev.elo";
+        final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
+        final String arcPath = "ARCPATH:/Personalmanagement/Personalakten/H/Hansen, Hans";
+
+        // Ix Connect
+        IXConnection ixConn;
+        try {
+            ixConn = ELOIxConnection.getIxConnection(loginData);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("IxConn: " + ixConn);
+        System.out.println( "ixConn.getLoginResult().getUser(): " + ixConn.getLoginResult().getUser());
+
+        // Delete arcpath
+        RepoUtils.DeleteSord(ixConn, arcPath);
+        ixConn.close();
     }
 }
