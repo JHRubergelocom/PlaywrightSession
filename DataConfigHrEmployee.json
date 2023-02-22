@@ -168,5 +168,10 @@
         }
       }
     ]
+  },
+  "eloDeleteData": {
+    "arcPaths": [
+      "ARCPATH:/Personalmanagement/Personalakten/H/Hansen, Hans"
+    ]
   }
 }

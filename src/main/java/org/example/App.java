@@ -1,6 +1,6 @@
 package org.example;
 
-import session.*;
+import session.WebclientSession;
 
 /**
  * Hello world!
@@ -19,12 +19,8 @@ public class App
             System.out.println(page.title());
         }
         */
-        try {
-            String jsonDataConfigFile = args[0];
-            String jsonPlaywrightConfigFile = args[1];
-            WebclientSession.execute(jsonDataConfigFile, jsonPlaywrightConfigFile);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
+        String jsonDataConfigFile = args[0];
+        String jsonPlaywrightConfigFile = args[1];
+        WebclientSession.execute(jsonDataConfigFile, jsonPlaywrightConfigFile);
     }
 }

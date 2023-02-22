@@ -284,10 +284,6 @@ public class PlaywrightParameterTest {
     @ParameterizedTest
     @ValueSource(strings = {"DataConfigHr.json"})
     public void TestSession(String jsonFile) {
-        try {
-            WebclientSession.execute(jsonFile, "PlaywrightConfig.json");
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
+        WebclientSession.execute(jsonFile, "PlaywrightConfig.json");
     }
 }
