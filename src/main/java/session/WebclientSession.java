@@ -5,8 +5,12 @@ import com.microsoft.playwright.options.AriaRole;
 import de.elo.ix.client.IXConnection;
 import eloix.ELOIxConnection;
 import eloix.RepoUtils;
+import report.HtmlReport;
+import report.ReportData;
+import report.ReportParagraph;
 
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -17,8 +21,12 @@ public class WebclientSession {
     private BrowserContext browserContext;
     private final String selectorSolutionTile;
     private final String selectorSolutionsFolder;
-    private Page getPage() {
+    private final List<ReportParagraph> reportParagraphs;
+    public Page getPage() {
         return page;
+    }
+    public List<ReportParagraph> getReportParagraphs() {
+        return reportParagraphs;
     }
     private Browser launch(BrowserType browserType, BrowserType.LaunchOptions options) {
         return browserType.launch(options);
@@ -65,15 +73,24 @@ public class WebclientSession {
     private WebclientSession(PlaywrightConfig playwrightConfig, ELOSolutionArchiveData eloSolutionArchiveData) {
         this.selectorSolutionTile = eloSolutionArchiveData.getSelectorSolutionTile();
         this.selectorSolutionsFolder = eloSolutionArchiveData.getSelectorSolutionsFolder();
+        this.reportParagraphs = new ArrayList<>();
 
         playwright = Playwright.create();
         setPlaywrightConfigParameter(playwrightConfig);
     }
     private void click(Locator locator) {
-        BaseFunctions.click(locator);
+        try {
+            BaseFunctions.click(locator);
+        } catch (Exception e) {
+            BaseFunctions.reportMessage(reportParagraphs, "<span>" + "Control not clickable" + "</span>");
+        }
     }
     private void type(Locator locator, String text) {
-        BaseFunctions.type(locator, text, false);
+        try {
+            BaseFunctions.type(locator, text, false);
+        } catch (Exception e) {
+            BaseFunctions.reportMessage(reportParagraphs, "<span>" + "Control not clickable" + "</span>");
+        }
     }
     private void login(LoginData loginData) {
         page.navigate("http://" + loginData.getStack() + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
@@ -82,6 +99,8 @@ public class WebclientSession {
         page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("Deutsch")).click();
         type(page.getByPlaceholder(loginData.getTextUserName().getSelector()), loginData.getTextUserName().getValue());
         type(page.getByPlaceholder(loginData.getTextPassword().getSelector()), loginData.getTextPassword().getValue());
+
+        BaseFunctions.reportScreenshot(this, "Login Webclient", "loginwebclient.png");
         click(page.getByText(loginData.getButtonLogin().getSelector()));
 
         selectSolutionTile();
@@ -100,34 +119,45 @@ public class WebclientSession {
         System.out.println("frameLocator " + frameLocator);
         return frameLocator;
     }
-    private void startSelectionDialogItem(String selectionDialogItem) {
-        if (!selectionDialogItem.equals("")) {
-            System.out.println("selectionDialogItem = "+ selectionDialogItem);
+    private void startSelectionDialogItem(ELOAction eloAction) {
+        if (!eloAction.getSelectionDialogItem().equals("")) {
+            System.out.println("selectionDialogItem = "+ eloAction.getSelectionDialogItem());
             BaseFunctions.sleep();
-            page.getByText(selectionDialogItem).click();
+            BaseFunctions.reportScreenshot(this, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "selectionDialogItem") + ".png");
+            page.getByText(eloAction.getSelectionDialogItem()).click();
         }
-
     }
-    private FrameLocator startExternalFormular(ELOAction eloAction) {
+    private Optional<FrameLocator> startExternalFormular(ELOAction eloAction) {
         System.out.println("eloActionDef " + eloAction.getEloActionDef());
         System.out.println("selectionDialogItem " + eloAction.getSelectionDialogItem());
         BaseFunctions.sleep();
-        selectRibbonMenu(eloAction.getEloActionDef().getSelectorRibbon());
+        if (!selectRibbon(eloAction)) {
+            return Optional.empty();
+        }
         BaseFunctions.sleep();
-        selectRibbonMenu(eloAction.getEloActionDef().getSelectorMenu());
+        if(!selectMenu(eloAction)) {
+            return Optional.empty();
+        }
+
         BaseFunctions.sleep();
-        selectButton(eloAction.getEloActionDef().getSelectorButton());
+        if (!selectButton(eloAction)) {
+            return Optional.empty();
+        }
+
         BaseFunctions.sleep();
-        startSelectionDialogItem(eloAction.getSelectionDialogItem());
+        startSelectionDialogItem(eloAction);
         BaseFunctions.sleep();
 
-        return getFrameLocator("iframe");
+        return  Optional.of(getFrameLocator("iframe"));
     }
-    private FrameLocator startViewerFormular(ELOAction eloAction) {
+    private Optional<FrameLocator> startViewerFormular(ELOAction eloAction) {
         BaseFunctions.sleep();
         Locator rows = page.locator("xpath=//*[@class=\"x-btn-button\"]");
         int count = rows.count();
         System.out.println("rows.count(): " + count);
+        if (count == 0) {
+            return Optional.empty();
+        }
         for (int i = 0; i < count; ++i) {
             System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
             System.out.println("Row: " + i + " innerHTML() " + rows.nth(i).innerHTML());
@@ -136,28 +166,29 @@ public class WebclientSession {
                 rows.nth(i).click();
             }
         }
-        startSelectionDialogItem(eloAction.getSelectionDialogItem());
+        startSelectionDialogItem(eloAction);
         BaseFunctions.sleep();
 
-        return getFrameLocator("FormularViewer");
+        return Optional.of(getFrameLocator("FormularViewer"));
     }
-    private FrameLocator startFormula(ELOAction eloAction) {
+    private Optional<FrameLocator> startFormula(ELOAction eloAction) {
         switch (eloAction.getFormulaType()) {
             case EXTERNAL -> { return startExternalFormular(eloAction);}
             case VIEWER -> { return startViewerFormular(eloAction);}
         }
-        return page.frameLocator("");
+        return Optional.empty();
     }
     private void executeAction(ELOAction eloAction,
                                Map<String, TabPage> tabPages) {
-
         selectSolutionsFolder();
-        selectEntryByPath(eloAction.getEntryPath());
-
-        FrameLocator frameLocator = startFormula(eloAction);
-        Formula formula = new Formula(frameLocator);
-        formula.inputData(tabPages);
-        formula.save(eloAction.getFormulaSaveButton());
+        if(selectEntryByPath(eloAction.getEntryPath())) {
+            Optional<FrameLocator> frameLocatorOptional = startFormula(eloAction);
+            if (frameLocatorOptional.isPresent()) {
+                Formula formula = new Formula(frameLocatorOptional.get(), this, eloAction);
+                formula.inputData(tabPages);
+                formula.save(eloAction.getFormulaSaveButton());
+            }
+        }
         BaseFunctions.sleep();
     }
     private void selectSolutionTile() {
@@ -167,41 +198,86 @@ public class WebclientSession {
         Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, selectorSolutionsFolder, "class", "color");
         optionalLocator.ifPresent(Locator::click);
     }
-    private Locator selectFolder(String folder) {
-        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, folder, "class", "color");
-        return optionalLocator.orElse(page.locator(""));
+    private Optional<Locator> selectFolder(String folder) {
+        return BaseFunctions.selectByTextAttribute(page, folder, "class", "color");
     }
-    private void selectEntryByPath(String path) {
+    private boolean selectEntryByPath(String path) {
         if (path.equals("")) {
-            return;
+            return true;
         }
-        String[] folders = path.split("/");
-        if(folders.length > 0) {
-            if (selectFolder(folders[0]).isVisible()) {
-                for (int i = 0; i < folders.length-1; i++) {
-                    BaseFunctions.sleep();
-                    if (!selectFolder(folders[i+1]).isVisible()) {
-                        selectFolder(folders[i]).dblclick();
-                        System.out.println("selectFolder parentfolder " + folders[i] + " dblclick");
+        try {
+            String[] folders = path.split("/");
+            if(folders.length > 0) {
+                if (selectFolder(folders[0]).isPresent()) {
+                    for (int i = 0; i < folders.length-1; i++) {
+                        BaseFunctions.sleep();
+                        if (selectFolder(folders[i+1]).isEmpty()) {
+                            try {
+                                if(selectFolder(folders[i]).isPresent()) {
+                                    selectFolder(folders[i]).get().dblclick();
+                                    System.out.println("selectFolder parentfolder " + folders[i] + " dblclick");
+                                } else {
+                                    BaseFunctions.reportMessage(reportParagraphs, "<span>" + "selectFolder parentfolder " + folders[i] + " not available" + "</span>");
+                                    return false;
+                                }
+                            } catch (Exception e) {
+                                BaseFunctions.reportMessage(reportParagraphs, "<span>" + "selectFolder parentfolder " + folders[i] + " not available" + "</span>");
+                                return false;
+                            }
+                        }
+                        try {
+                            selectFolder(folders[i+1]).get().dblclick();
+                            System.out.println("selectFolder folder " + folders[i+1] + " dblclick");
+                        } catch (Exception e) {
+                            BaseFunctions.reportMessage(reportParagraphs, "<span>" + "selectFolder folder " + folders[i+1] + " not available" + "</span>");
+                            return false;
+                        }
                     }
-                    selectFolder(folders[i+1]).dblclick();
-                    System.out.println("selectFolder folder " + folders[i+1] + " dblclick");
-
+                } else {
+                    System.err.println("selectorFolder folder=" + folders[0] + " of path=" + path + "is not available");
+                    BaseFunctions.reportMessage(reportParagraphs, "<span>" + "selectorFolder folder=" + folders[0] + " of path=" + path + "is not available" + "</span>");
+                    return false;
                 }
             } else {
-                System.err.println("selectorFolder folder=" + folders[0] + " of path=" + path + "is not available");
+                System.err.println("selectorFolder path=" + path + "is empty");
+                BaseFunctions.reportMessage(reportParagraphs, "<span>" + "selectorFolder path=" + path + "is empty" + "</span>");
+                return false;
             }
-        } else {
-            System.err.println("selectorFolder path=" + path + "is empty");
+        } catch (Exception e) {
+            BaseFunctions.reportMessage(reportParagraphs, "<span>" + e.getMessage() + "</span>");
+            return false;
         }
+        return true;
     }
-    private void selectRibbonMenu(String selectorRibbonMenu){
-        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, selectorRibbonMenu, "id", "button");
-        optionalLocator.ifPresent(Locator::click);
+    private boolean selectRibbon(ELOAction eloAction){
+        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, eloAction.getEloActionDef().getSelectorRibbon(), "id", "button");
+        if(optionalLocator.isPresent()) {
+            BaseFunctions.reportScreenshot(this, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "Ribbon") + ".png");
+            optionalLocator.get().click();
+            return true;
+        }
+        BaseFunctions.reportMessage(reportParagraphs, "<span>Ribbon " + eloAction.getEloActionDef().getSelectorRibbon() + " nicht gefunden!</span>");
+        return false;
     }
-    private void selectButton(String selectorButton){
-        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, selectorButton, "id", "comp");
-        optionalLocator.ifPresent(Locator::click);
+    private boolean selectMenu(ELOAction eloAction){
+        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, eloAction.getEloActionDef().getSelectorMenu(), "id", "button");
+        if (optionalLocator.isPresent()) {
+            BaseFunctions.reportScreenshot(this, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "Menu") + ".png");
+            optionalLocator.get().click();
+            return true;
+        }
+        BaseFunctions.reportMessage(reportParagraphs, "<span>Menu " + eloAction.getEloActionDef().getSelectorMenu() + " nicht gefunden!</span>");
+        return false;
+    }
+    private boolean selectButton(ELOAction eloAction){
+        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, eloAction.getEloActionDef().getSelectorButton(), "id", "comp");
+        if (optionalLocator.isPresent()) {
+            BaseFunctions.reportScreenshot(this, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "Button") + ".png");
+            optionalLocator.get().click();
+            return true;
+        }
+        BaseFunctions.reportMessage(reportParagraphs, "<span>Button " + eloAction.getEloActionDef().getSelectorButton() + " nicht gefunden!</span>");
+        return false;
     }
     private void close() {
         browserContext.tracing().stop(new Tracing.StopOptions()
@@ -220,11 +296,15 @@ public class WebclientSession {
         }
 
         ixConn.close();
-
+    }
+    private static void showReport(List<ReportParagraph> reportParagraphs) {
+        ReportData reportData = new ReportData("Report Test", reportParagraphs);
+        String htmlDoc = HtmlReport.createReport(reportData);
+        HtmlReport.showReport(htmlDoc);
     }
     public static void execute(String jsonDataConfigFile, String jsonPlaywrightConfigFile) {
-
         WebclientSession ws = null;
+        List<ReportParagraph> reportParagraphs = new ArrayList<>();
         try {
             final DataConfig dataConfig = BaseFunctions.readDataConfig(jsonDataConfigFile);
             final PlaywrightConfig playwrightConfig = BaseFunctions.readPlaywrightConfig(jsonPlaywrightConfigFile);
@@ -248,19 +328,26 @@ public class WebclientSession {
             if(arcPaths.size() > 0) {
                 ws.deleteData(dataConfig);
             }
+            BaseFunctions.reportMessage(ws.getReportParagraphs(), "Test war erfolgreich!");
 
         } catch ( Exception e) {
             System.err.println(e.getMessage());
             if (ws != null) {
-                ws.getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get("exeception.png")));
+                BaseFunctions.reportScreenshot(ws,"<span>" + e.getMessage() + "</span>", "exeception.png");
+                BaseFunctions.reportMessage(ws.getReportParagraphs(), "<span>Test ist fehlgeschlagen!</span>");
+            } else {
+                BaseFunctions.reportMessage(reportParagraphs, "<span>" + e.getMessage() + "</span>");
+                BaseFunctions.reportMessage(reportParagraphs, "<span>Test ist fehlgeschlagen!</span>");
             }
         } finally {
             if (ws != null) {
+                showReport(ws.getReportParagraphs());
                 ws.close();
+            } else {
+                showReport(reportParagraphs);
             }
         }
     }
-
     @Override
     public String toString() {
         return "WebclientSession{" +

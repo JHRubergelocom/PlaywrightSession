@@ -946,7 +946,13 @@ public class PlaywrightSessionTest {
         final ELOActionData eloActionData = new ELOActionData(eloActions);
 
         // Delete Data
-        final ELODeleteData eloDeleteData = new ELODeleteData(new ArrayList<>());
+        final List<String> arcPaths = new ArrayList<>();
+        arcPaths.add("ARCPATH:/Meetingboard1");
+        arcPaths.add("ARCPATH:/Meetingboard2");
+        arcPaths.add("ARCPATH:/Meetingitempool1");
+        arcPaths.add("ARCPATH:/Meetingitempool2");
+
+        final ELODeleteData eloDeleteData = new ELODeleteData(arcPaths);
 
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
@@ -1042,7 +1048,7 @@ public class PlaywrightSessionTest {
         context.close();
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigHr.json"})
+    @ValueSource(strings = {"DataConfigTest.json"})
     public void TestSession(String jsonFile) {
         WebclientSession.execute(jsonFile, "PlaywrightConfig.json");
     }

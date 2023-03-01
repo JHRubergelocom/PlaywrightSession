@@ -7,15 +7,6 @@ public class PlaywrightConfig {
     private final boolean snapShots;
     private final boolean sources;
     private final boolean pause;
-
-    public PlaywrightConfig() {
-        this.notHeadless = false;
-        this.recordVideo = false;
-        this.screenShots = false;
-        this.snapShots = false;
-        this.sources = false;
-        this.pause = false;
-    }
     public PlaywrightConfig(boolean notHeadless, boolean recordVideo, boolean screenShots, boolean snapShots, boolean sources, boolean pause) {
         this.notHeadless = notHeadless;
         this.recordVideo = recordVideo;
@@ -24,7 +15,6 @@ public class PlaywrightConfig {
         this.sources = sources;
         this.pause = pause;
     }
-
     public boolean isNotHeadless() {
         return notHeadless;
     }
