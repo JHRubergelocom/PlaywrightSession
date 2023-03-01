@@ -11,10 +11,6 @@ public class ELOIxConnection {
     private static String getIxUrl(LoginData loginData) {
         return  "http://" + loginData.getStack() + "/ix-Solutions/ix";
     }
-
-    private static String getPwd(LoginData loginData) {
-        return loginData.getTextPassword().getValue();
-    }
     private static String getUser(LoginData loginData) {
         return loginData.getTextUserName().getValue();
     }
@@ -29,7 +25,7 @@ public class ELOIxConnection {
             throw new Exception("ELOIxConnection");
         }
         try {
-            ixConn = connFact.create(getUser(loginData), getPwd(loginData), null, null);
+            ixConn = connFact.create("Administrator", "elo", null, null);
         } catch (RemoteException ex) {
             System.err.println("ELO ELOIxConnection Indexserver-Verbindung ungültig \n User: " + getUser(loginData) + "\n IxUrl: " + getIxUrl(loginData));
             System.err.println("RemoteException message: " + ex.getMessage());

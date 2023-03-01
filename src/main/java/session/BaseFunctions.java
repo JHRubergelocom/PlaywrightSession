@@ -3,9 +3,14 @@ package session;
 import com.google.gson.Gson;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
+import report.ReportParagraph;
+import report.ReportTable;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class BaseFunctions {
@@ -85,7 +90,7 @@ public class BaseFunctions {
     }
     public static DataConfig readDataConfig(String jsonDataConfigFileName) {
         Gson gson = new Gson();
-        DataConfig dataConfig = new DataConfig();
+        DataConfig dataConfig;
 
         System.out.println("Reading " + jsonDataConfigFileName);
         System.out.println("-".repeat(100));
@@ -95,6 +100,7 @@ public class BaseFunctions {
             System.out.println(dataConfig);
         } catch ( Exception e) {
             System.err.println(e.getMessage());
+            throw new RuntimeException(e);
         }
 
         System.out.println("-".repeat(100));
@@ -102,7 +108,7 @@ public class BaseFunctions {
     }
     public static PlaywrightConfig readPlaywrightConfig(String jsonPlaywrightConfigFileName) {
         Gson gson = new Gson();
-        PlaywrightConfig playwrightConfig = new PlaywrightConfig();
+        PlaywrightConfig playwrightConfig;
 
         System.out.println("Reading " + jsonPlaywrightConfigFileName);
         System.out.println("-".repeat(100));
@@ -112,10 +118,49 @@ public class BaseFunctions {
             System.out.println(playwrightConfig);
         } catch ( Exception e) {
             System.err.println(e.getMessage());
+            throw new RuntimeException(e);
         }
 
         System.out.println("-".repeat(100));
         return playwrightConfig;
 
     }
+    public static String getScreenShotFileName(ELOAction eloAction, String tabName) {
+        if (eloAction.getFormulaType() == FormulaType.VIEWER) {
+            return eloAction.getEntryPath().replace("/", " ") + " " + tabName;
+        }
+        return eloAction.getEloActionDef().getSelectorRibbon() + " " +
+                eloAction.getEloActionDef().getSelectorMenu() + " " +
+                eloAction.getEloActionDef().getSelectorButton() + " " +
+                eloAction.getSelectionDialogItem() + " " +
+                tabName;
+    }
+
+    public static void reportScreenshot(WebclientSession webclientSession,  String message, String screenshot) {
+        webclientSession.getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get(screenshot)));
+
+        List<String> reportHeader = new ArrayList<>();
+        reportHeader.add(message);
+
+        List<String> reportText = new ArrayList<>();
+        reportText.add("<img src=\"" + screenshot + "\" alt=\"" + screenshot + " is missing\" loading=\"lazy\">");
+
+        ReportTable reportTable = new ReportTable(new ArrayList<>(), new ArrayList<>());
+        ReportParagraph reportParagraph = new ReportParagraph(reportHeader, reportText, reportTable);
+
+        webclientSession.getReportParagraphs().add(reportParagraph);
+    }
+    public static void reportMessage(List<ReportParagraph> reportParagraphs, String message) {
+
+        List<String> reportHeader = new ArrayList<>();
+        reportHeader.add(message);
+
+        List<String> reportText = new ArrayList<>();
+
+        ReportTable reportTable = new ReportTable(new ArrayList<>(), new ArrayList<>());
+        ReportParagraph reportParagraph = new ReportParagraph(reportHeader, reportText, reportTable);
+
+        reportParagraphs.add(reportParagraph);
+    }
+
 }

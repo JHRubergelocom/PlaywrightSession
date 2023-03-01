@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright optional delete Testdata" />
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Html Report Test Reporting with Screenshots">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,22 +42,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/ruberg/Documents/Entwicklung/IntelliJ/EloIxClient/EloixClient.jar",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.46896553",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.editor.code.editing"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ruberg/Documents/Entwicklung/IntelliJ/EloIxClient/EloixClient.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.46896553&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor.code.editing&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="report" />
       <recent name="session" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -78,6 +81,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlaywrightReportTest.testPlaywrightReport" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PlaywrightSession" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.PlaywrightReportTest" />
+      <option name="METHOD_NAME" value="testPlaywrightReport" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -114,7 +133,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaywrightSessionTest.testEloIxConnectAndDeleteData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlaywrightSessionTest.firstScript" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
         <pattern>
@@ -124,23 +143,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
-      <option name="METHOD_NAME" value="testEloIxConnectAndDeleteData" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlaywrightSessionTest.testLocatorEmployee" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PlaywrightSession" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
-      <option name="METHOD_NAME" value="testLocatorEmployee" />
+      <option name="METHOD_NAME" value="firstScript" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -148,18 +151,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.App" />
-      <item itemvalue="JUnit.PlaywrightSessionTest.testEloIxConnectAndDeleteData" />
+      <item itemvalue="JUnit.PlaywrightSessionTest.firstScript" />
+      <item itemvalue="JUnit.PlaywrightReportTest.testPlaywrightReport" />
       <item itemvalue="JUnit.PlaywrightSessionTest.CreateDataConfigJson" />
-      <item itemvalue="JUnit.PlaywrightSessionTest.testLocatorEmployee" />
       <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
-        <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.PlaywrightReportTest.testPlaywrightReport" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.firstScript" />
         <item itemvalue="JUnit.PlaywrightSessionTest.CreateDataConfigJson" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.testEloIxConnectAndDeleteData" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.testLocatorEmployee" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -171,55 +174,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670419530192</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Playwright DataConfig Execution">
-      <created>1673534874158</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1673534874158</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Playwright DataConfig Execution">
-      <created>1673535973622</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1673535973622</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Playwright DataConfig Action Data">
-      <created>1673599502453</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1673599502453</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Playwright DataConfig Action Data">
-      <created>1673599546481</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1673599546481</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Playwright DataConfig Action Data Refactoring">
-      <created>1673602594832</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1673602594832</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Playwright DataConfig Json">
-      <created>1673616974976</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1673616974976</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Playwright DataConfigTest Json">
-      <created>1673620731102</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1673620731102</updated>
     </task>
     <task id="LOCAL-00025" summary="Playwright DataConfigTest Json">
       <created>1673620982003</created>
@@ -515,7 +469,56 @@
       <option name="project" value="LOCAL" />
       <updated>1677072799564</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Playwright Screenshots after Formula Input">
+      <created>1677149558594</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1677149558595</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Playwright Html Report">
+      <created>1677166128703</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1677166128703</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Playwright Html Report Testlogging">
+      <created>1677233324790</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1677233324790</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Playwright Html Report Test Reporting with Screenshots">
+      <created>1677249399887</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1677249399887</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Playwright Html Report Test Reporting with Screenshots">
+      <created>1677500047132</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1677500047133</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Playwright Html Report Test Reporting with Screenshots">
+      <created>1677512517241</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1677512517241</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Playwright Html Report Test Reporting with Screenshots">
+      <created>1677577045441</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1677577045442</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -531,10 +534,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Playwright DataConfig Execution" />
-    <MESSAGE value="Playwright DataConfig Action Data" />
-    <MESSAGE value="Playwright DataConfig Action Data Refactoring" />
-    <MESSAGE value="Playwright DataConfig Json" />
     <MESSAGE value="Playwright DataConfigTest Json" />
     <MESSAGE value="Playwright DataConfigTest Test" />
     <MESSAGE value="Playwright DataConfigTest Test Main" />
@@ -556,14 +555,18 @@
     <MESSAGE value="Playwright Exception Handling with Screenshot" />
     <MESSAGE value="Playwright Ix Connection" />
     <MESSAGE value="Playwright optional delete Testdata" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright optional delete Testdata" />
+    <MESSAGE value="Playwright Screenshots after Formula Input" />
+    <MESSAGE value="Playwright Html Report" />
+    <MESSAGE value="Playwright Html Report Testlogging" />
+    <MESSAGE value="Playwright Html Report Test Reporting with Screenshots" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright Html Report Test Reporting with Screenshots" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/session/BaseFunctions.java</url>
-          <line>13</line>
+          <line>18</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
