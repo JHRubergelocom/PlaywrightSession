@@ -11,12 +11,7 @@ public class Formula {
     private final FrameLocator frameLocator;
     private final WebclientSession webclientSession;
     private final ELOAction eloAction;
-    public Formula(FrameLocator frameLocator, WebclientSession webclientSession, ELOAction eloAction) {
-        this.frameLocator = frameLocator;
-        this.webclientSession = webclientSession;
-        this.eloAction = eloAction;
-    }
-    public void selectTab(String tabName) {
+    private void selectTab(String tabName) {
         if (!tabName.equals("")) {
             System.out.println("tabname="+ tabName);
             try {
@@ -26,15 +21,6 @@ public class Formula {
             }
         }
     }
-    public void save(String formulaSaveButton) {
-        BaseFunctions.sleep();
-        try {
-            click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName(formulaSaveButton)));
-        } catch (Exception e) {
-            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "Formula") + ".png");
-            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + "Formular cannot be saved" + "</span>");
-        }
-    }
     public void click(Locator locator) {
         try {
             BaseFunctions.click(locator);
@@ -42,39 +28,53 @@ public class Formula {
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + "Control not clickable" + "</span>");
         }
     }
-    public void inputTextField(String name, String text, boolean timeout) {
+    public boolean inputTextField(String name, String text) {
         try {
-            BaseFunctions.type(frameLocator.locator("[name=\"" + name + "\"]"), text, timeout);
+            BaseFunctions.type(frameLocator.locator("[name=\"" + name + "\"]"), text);
+            return true;
         } catch (Exception e) {
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not editable</span>");
+            return false;
         }
     }
-    private void inputCheckBox(String name, String value) {
+    private boolean inputCheckBox(String name, String value) {
         try {
-            BaseFunctions.select(frameLocator.locator("[name=\"" + name + "\"]"), Boolean.valueOf(value));
+            return BaseFunctions.select(frameLocator.locator("[name=\"" + name + "\"]"), Boolean.valueOf(value));
         } catch (Exception e) {
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not clickable</span>");
+            return false;
         }
     }
-    private void inputRadioButton(String name) {
+    private boolean inputRadioButton(String name) {
         try {
-            BaseFunctions.check(frameLocator.getByRole(AriaRole.RADIO, new FrameLocator.GetByRoleOptions().setName(name)));
+            return BaseFunctions.check(frameLocator.getByRole(AriaRole.RADIO, new FrameLocator.GetByRoleOptions().setName(name)));
         } catch (Exception e) {
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not selectable</span>");
+            return false;
         }
     }
-    private void inputRedactorField(String placeHolder, String text) {
+    private boolean inputRedactorField(String placeHolder, String text) {
         try {
-            BaseFunctions.fillRedactorFieldByPlaceholder(frameLocator, placeHolder, text);
+            return BaseFunctions.fillRedactorFieldByPlaceholder(frameLocator, placeHolder, text);
         } catch (Exception e) {
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + placeHolder + " not editable</span>");
+            return false;
         }
     }
-    private void inputKwlField(String selector, String text) {
+    private boolean inputDynKwlField(String name, String text, boolean checkValue) {
         try {
-            BaseFunctions.selectkwlitem(frameLocator, frameLocator.locator("[inpname=\"" + selector + "\"]"), text);
+            return BaseFunctions.inputDynKwlField(webclientSession.getReportParagraphs(),frameLocator, name, text, checkValue);
         } catch (Exception e) {
-            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + selector + " or" + text + " not selectable</span>");
+            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + text + " in " + name + " not selectable</span>");
+            return false;
+        }
+    }
+    private boolean inputKwlField(String name, String text) {
+        try {
+            return BaseFunctions.inputKwlField(webclientSession.getReportParagraphs(),frameLocator, name, text);
+        } catch (Exception e) {
+            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + text + " in " + name + " not selectable</span>");
+            return false;
         }
     }
     private void initTabPage(List<ELOControl> initTabPage) {
@@ -84,17 +84,34 @@ public class Formula {
             }
         }
     }
-    private void inputControls(List<ELOControl> controls) {
+    private boolean inputControl(ELOControl control, int index) {
+        boolean checkData = true;
+
+        String selector = control.getSelector();
+        if (index > 0) {
+            selector = selector + index;
+        }
+        switch(control.getType()) {
+            case TEXT -> checkData = inputTextField(selector, control.getValue());
+            case DYNKWL -> checkData = inputDynKwlField(selector, control.getValue(), control.isCheckValue());
+            case CHECKBOX -> checkData =  inputCheckBox(selector, control.getValue());
+            case RADIO -> checkData =  inputRadioButton(selector);
+            case REDACTOR -> checkData =  inputRedactorField(selector, control.getValue());
+            case KWL -> checkData =  inputKwlField(selector, control.getValue());
+        }
+        if(!checkData) {
+            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, selector) + ".png");
+        }
+        return checkData;
+    }
+    private boolean inputControls(List<ELOControl> controls) {
+        boolean checkData = true;
         for (ELOControl control: controls) {
-            switch(control.getType()) {
-                case TEXT -> inputTextField(control.getSelector(), control.getValue(), false);
-                case DYNKWL -> inputTextField(control.getSelector(), control.getValue(), true);
-                case CHECKBOX -> inputCheckBox(control.getSelector(), control.getValue());
-                case RADIO -> inputRadioButton(control.getSelector());
-                case REDACTOR -> inputRedactorField(control.getSelector(), control.getValue());
-                case KWL -> inputKwlField(control.getSelector(), control.getValue());
+            if(!inputControl(control, 0)) {
+                checkData = false;
             }
         }
+        return checkData;
     }
     private void clickAddLineButton(ELOTable eloTable) {
         try {
@@ -108,31 +125,38 @@ public class Formula {
         }
         BaseFunctions.sleep();
     }
-    private void inputControlsTable(ELOTable eloTable) {
+    private boolean inputControlsTable(ELOTable eloTable) {
+        boolean checkData = true;
         int index = 1;
         for (List<ELOControl> tableLine: eloTable.getTable()) {
             if (index > 1) {
                 clickAddLineButton(eloTable);
             }
             for (ELOControl control: tableLine) {
-                switch(control.getType()) {
-                    case TEXT -> inputTextField(control.getSelector() + index, control.getValue(), false);
-                    case DYNKWL -> inputTextField(control.getSelector() + index, control.getValue(), true);
-                    case CHECKBOX -> inputCheckBox(control.getSelector() + index, control.getValue());
-                    case RADIO -> inputRadioButton(control.getSelector() + index);
-                    case REDACTOR -> inputRedactorField(control.getSelector() + index, control.getValue());
-                    case KWL -> inputKwlField(control.getSelector() + index, control.getValue());
+                if(!inputControl(control, index)) {
+                    checkData = false;
                 }
             }
             index++;
         }
+        return checkData;
     }
-    private void inputControlsTables(List<ELOTable> tables) {
+    private boolean inputControlsTables(List<ELOTable> tables) {
+        boolean checkData = true;
         for(ELOTable eloTable: tables) {
-            inputControlsTable(eloTable);
+            if(!inputControlsTable(eloTable)) {
+                checkData = false;
+            }
         }
+        return checkData;
     }
-    public void inputData(Map<String, TabPage> tabpages) {
+    public Formula(FrameLocator frameLocator, WebclientSession webclientSession, ELOAction eloAction) {
+        this.frameLocator = frameLocator;
+        this.webclientSession = webclientSession;
+        this.eloAction = eloAction;
+    }
+    public boolean inputData(Map<String, TabPage> tabpages) {
+        boolean checkData = true;
         for (Map.Entry<String,TabPage> entry: tabpages.entrySet()) {
             System.out.println("Key Tabpage: " + entry.getKey());
             System.out.println("Value Tabpage: " + entry.getValue());
@@ -142,9 +166,23 @@ public class Formula {
 
             selectTab(tabName);
             initTabPage(tabPage.getInitTabPage());
-            inputControls(tabPage.getControls());
-            inputControlsTables(tabPage.getTables());
+            if(!inputControls(tabPage.getControls())) {
+                checkData = false;
+            }
+            if(!inputControlsTables(tabPage.getTables())) {
+                checkData = false;
+            }
             BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotFileName(eloAction, tabName), BaseFunctions.getScreenShotFileName(eloAction, tabName) + ".png");
+        }
+        return checkData;
+    }
+    public void quit(String formulaSaveButton) {
+        BaseFunctions.sleep();
+        try {
+            click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName(formulaSaveButton)));
+        } catch (Exception e) {
+            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "Formula") + ".png");
+            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + "Formular cannot be saved" + "</span>");
         }
     }
     @Override

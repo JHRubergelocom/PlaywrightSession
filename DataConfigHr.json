@@ -3,17 +3,20 @@
     "textUserName": {
       "selector": "Name",
       "value": "Administrator",
-      "type": "TEXT"
+      "type": "TEXT",
+      "checkValue": true
     },
     "textPassword": {
       "selector": "Passwort",
       "value": "elo",
-      "type": "TEXT"
+      "type": "TEXT",
+      "checkValue": true
     },
     "buttonLogin": {
       "selector": "Anmelden",
       "value": "Login",
-      "type": "BUTTON"
+      "type": "BUTTON",
+      "checkValue": true
     },
     "stack": "ruberg-hr.dev.elo"
   },
@@ -27,6 +30,7 @@
         "entryPath": "",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -40,37 +44,44 @@
               {
                 "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
                 "value": "Hans",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_LASTNAME",
                 "value": "Hansen",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_PERSONNELNO",
                 "value": "12345",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_ELOUSERID",
                 "value": "Jan Eichner",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_RESPONSIBLE",
                 "value": "Bodo Kraft",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_SUPERIOR",
                 "value": "Gerd Baum",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_DATEOFJOINING",
                 "value": "20220101",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               }
             ],
             "tables": []
@@ -81,6 +92,7 @@
         "entryPath": "",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -94,7 +106,8 @@
               {
                 "selector": "IX_GRP_HR_PERSONNEL_COMPANY",
                 "value": "Firma Hansens",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               }
             ],
             "tables": []
@@ -105,6 +118,7 @@
         "entryPath": "Solutions/Personalmanagement/Personalakten/H/Hansen, Hans",
         "formulaType": "VIEWER",
         "formulaSaveButton": "Speichern",
+        "formulaCancelButton": "",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "",
@@ -118,12 +132,14 @@
               {
                 "selector": "IX_MAP_HR_PERSONNEL_TITLE",
                 "value": "Doktor H",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_GENDER",
                 "value": "Männlich",
-                "type": "KWL"
+                "type": "KWL",
+                "checkValue": true
               }
             ],
             "tables": [
@@ -135,24 +151,28 @@
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME",
                       "value": "Hugo",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME",
                       "value": "Egon",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME",
                       "value": "Sandra",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME",
                       "value": "Renz",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -165,24 +185,28 @@
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME",
                       "value": "Heinrich",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME",
                       "value": "Müller",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME",
                       "value": "Sebastian",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME",
                       "value": "Schulz",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -195,6 +219,7 @@
         "entryPath": "Solutions/Firma Hansens",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "Neuer Organisationsbereich",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -208,12 +233,14 @@
               {
                 "selector": "IX_GRP_HR_PERSONNEL_DIVISION",
                 "value": "Orgastruktur1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_HR_CHARTELEMENT_DESC",
                 "value": "Beschreibung Orgastruktur1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               }
             ],
             "tables": []
@@ -224,6 +251,7 @@
         "entryPath": "Solutions/Firma Hansens",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "Neue Abteilung",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -237,12 +265,14 @@
               {
                 "selector": "IX_GRP_HR_PERSONNEL_DEPARTMENT",
                 "value": "Abteilung1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_HR_CHARTELEMENT_DESC",
                 "value": "Beschreibung Beschreibung Abteilung1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               }
             ],
             "tables": []
@@ -253,6 +283,7 @@
         "entryPath": "Solutions/Firma Hansens",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "Neues Team",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -266,12 +297,14 @@
               {
                 "selector": "IX_GRP_HR_PERSONNEL_TEAM",
                 "value": "Team1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_HR_CHARTELEMENT_DESC",
                 "value": "Beschreibung Team1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               }
             ],
             "tables": []

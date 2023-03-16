@@ -87,7 +87,7 @@ public class WebclientSession {
     }
     private void type(Locator locator, String text) {
         try {
-            BaseFunctions.type(locator, text, false);
+            BaseFunctions.type(locator, text);
         } catch (Exception e) {
             BaseFunctions.reportMessage(reportParagraphs, "<span>" + "Control not clickable" + "</span>");
         }
@@ -178,18 +178,30 @@ public class WebclientSession {
         }
         return Optional.empty();
     }
-    private void executeAction(ELOAction eloAction,
+    private boolean executeAction(ELOAction eloAction,
                                Map<String, TabPage> tabPages) {
+        boolean checkData = true;
         selectSolutionsFolder();
         if(selectEntryByPath(eloAction.getEntryPath())) {
             Optional<FrameLocator> frameLocatorOptional = startFormula(eloAction);
             if (frameLocatorOptional.isPresent()) {
                 Formula formula = new Formula(frameLocatorOptional.get(), this, eloAction);
-                formula.inputData(tabPages);
-                formula.save(eloAction.getFormulaSaveButton());
+                if(formula.inputData(tabPages)) {
+                    formula.quit(eloAction.getFormulaSaveButton());
+                } else {
+                    if(!eloAction.getFormulaCancelButton().equals("")) {
+                        formula.quit(eloAction.getFormulaCancelButton());
+                        BaseFunctions.reportScreenshot(this, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "Formula") + ".png");
+                        BaseFunctions.reportMessage(reportParagraphs, "<span>" + "Formular cannot be saved" + "</span>");
+                    }
+                    checkData = false;
+                }
             }
+        } else {
+            checkData = false;
         }
         BaseFunctions.sleep();
+        return checkData;
     }
     private void selectSolutionTile() {
         BaseFunctions.click(page.locator(selectorSolutionTile));
@@ -287,7 +299,7 @@ public class WebclientSession {
     }
     private void deleteData(DataConfig dataConfig) throws Exception {
         // Ix Connect
-        IXConnection ixConn = ELOIxConnection.getIxConnection(dataConfig.getLoginData());
+        IXConnection ixConn = ELOIxConnection.getIxConnection(dataConfig.getLoginData(), true);
         System.out.println("IxConn: " + ixConn);
 
         // Delete arcpath
@@ -303,6 +315,7 @@ public class WebclientSession {
         HtmlReport.showReport(htmlDoc);
     }
     public static void execute(String jsonDataConfigFile, String jsonPlaywrightConfigFile) {
+        boolean checkData = true;
         WebclientSession ws = null;
         List<ReportParagraph> reportParagraphs = new ArrayList<>();
         try {
@@ -311,12 +324,18 @@ public class WebclientSession {
 
             // Execute DataConfig
             ws = new WebclientSession(playwrightConfig, dataConfig.getEloSolutionArchiveData());
-            ws.login(dataConfig.getLoginData());
+            try {
+                ws.login(dataConfig.getLoginData());
+            } catch ( Exception e) {
+                throw new Exception("Login fehlgeschlagen!");
+            }
             for (ELOAction eloAction: dataConfig.getEloActionData().getEloActions()) {
                 Map<String, TabPage> tabPages = eloAction.getTabPages();
 
                 // Execute Action
-                ws.executeAction(eloAction, tabPages);
+                if(!ws.executeAction(eloAction, tabPages)) {
+                    checkData = false;
+                }
             }
 
             if (playwrightConfig.isPause()) {
@@ -328,7 +347,11 @@ public class WebclientSession {
             if(arcPaths.size() > 0) {
                 ws.deleteData(dataConfig);
             }
-            BaseFunctions.reportMessage(ws.getReportParagraphs(), "Test war erfolgreich!");
+            if(checkData) {
+                BaseFunctions.reportMessage(ws.getReportParagraphs(), "Test war erfolgreich!");
+            } else {
+                BaseFunctions.reportMessage(ws.getReportParagraphs(), "<span>Test ist fehlgeschlagen!</span>");
+            }
 
         } catch ( Exception e) {
             System.err.println(e.getMessage());
