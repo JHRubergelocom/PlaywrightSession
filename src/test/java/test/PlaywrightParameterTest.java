@@ -7,12 +7,15 @@ import com.microsoft.playwright.options.AriaRole;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import report.ReportParagraph;
 import session.BaseFunctions;
 import session.PlaywrightConfig;
 import session.WebclientSession;
 
 import java.io.*;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class PlaywrightParameterTest {
@@ -121,13 +124,15 @@ public class PlaywrightParameterTest {
         System.out.println("framelocator = " + frameLocator);
 
         // Felder füllen
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_FIRSTNAME" + "\"]"), "Hans", false);
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_LASTNAME" + "\"]"), "Hansen", false);
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_PERSONNELNO" + "\"]"), "12345", false);
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_ELOUSERID" + "\"]"), "Jan Eichner", true);
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_RESPONSIBLE" + "\"]"), "Bodo Kraft", true);
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_SUPERIOR" + "\"]"), "Gerd Baum", true);
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_DATEOFJOINING" + "\"]"), "20220101", false);
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_FIRSTNAME" + "\"]"), "Hans");
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_LASTNAME" + "\"]"), "Hansen");
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_PERSONNELNO" + "\"]"), "12345");
+
+        List<ReportParagraph> reportParagraphs = new ArrayList<>();
+        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner", true);
+        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft", true);
+        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum", true);
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_DATEOFJOINING" + "\"]"), "20220101");
 
         // Formular speichern
         clickButton(frameLocator, "OK");
@@ -162,26 +167,26 @@ public class PlaywrightParameterTest {
         selectTab(frameLocator, tabName);
 
         // Beschreibung eintragen
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_TITLE" + "\"]"), "Doktor H", false);
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_TITLE" + "\"]"), "Doktor H");
 
         // Tabellenfelder füllen
         String addLineButtonName = "Eintrag hinzufügen";
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME1" + "\"]"), "Hugo", false);
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME1" + "\"]"), "Egon", false);
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME1" + "\"]"), "Hugo");
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME1" + "\"]"), "Egon");
 
         clickAddLineButton(frameLocator, "part_240_family_members", addLineButtonName);
 
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME2" + "\"]"), "Sandra", false);
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME2" + "\"]"), "Renz", false);
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME2" + "\"]"), "Sandra");
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME2" + "\"]"), "Renz");
 
 
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME1" + "\"]"), "Heinrich", false);
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME1" + "\"]"), "Müller", false);
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME1" + "\"]"), "Heinrich");
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME1" + "\"]"), "Müller");
 
         clickAddLineButton(frameLocator, "part_250_emergency_contacts", "Eintrag hinzufügen");
 
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME2" + "\"]"), "Sebastian", false);
-        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME2" + "\"]"), "Schulz", false);
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME2" + "\"]"), "Sebastian");
+        BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME2" + "\"]"), "Schulz");
 
         // Stichwortlistenfeld Geschlecht füllen
         System.out.println("*".repeat(10) + " Stichwortlistenfeld Geschlecht füllen " + "*".repeat(10));

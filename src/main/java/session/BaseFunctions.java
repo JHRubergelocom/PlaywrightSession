@@ -22,23 +22,21 @@ public class BaseFunctions {
             throw new RuntimeException(e);
         }
     }
-    public static void type(Locator textbox, String inputText, boolean timeout) {
+    public static Locator type(Locator textbox, String inputText) {
         textbox.click();
         textbox.clear();
         textbox.fill(inputText);
         textbox.press("Tab");
-        if (timeout) {
-            sleep();
-        }
+        return textbox;
     }
-    public static void selectkwlitem(FrameLocator frameLocator, Locator kwllist, String kwlitem) {
+    private static void selectkwlitem(FrameLocator frameLocator, Locator kwllist, String kwlitem) {
         kwllist.click();
         frameLocator.getByRole(AriaRole.CELL, new FrameLocator.GetByRoleOptions().setName(kwlitem)).click();
     }
     public static void click(Locator locator) {
         locator.click();
     }
-    public static void select(Locator checkbox, Boolean value) {
+    public static boolean select(Locator checkbox, Boolean value) {
         if (value) {
             if (!checkbox.isChecked()) {
                 checkbox.click();
@@ -48,9 +46,11 @@ public class BaseFunctions {
                 checkbox.click();
             }
         }
+        return true;
     }
-    public static void check(Locator radiobutton) {
+    public static boolean check(Locator radiobutton) {
         radiobutton.check();
+        return true;
     }
     public static Optional<Locator> selectByTextAttribute(Page page, String text, String attributeKey, String attributeValue) {
         Locator rows = page.getByText(text, new Page.GetByTextOptions().setExact(true));
@@ -70,7 +70,7 @@ public class BaseFunctions {
         System.err.println("selectByTextAttribute: " + text + " nicht gefunden!");
         return Optional.empty();
     }
-    public static void fillRedactorFieldByPlaceholder(FrameLocator frameLocator, String placeHolder, String text) {
+    public static boolean fillRedactorFieldByPlaceholder(FrameLocator frameLocator, String placeHolder, String text) {
         Locator rows = frameLocator.getByPlaceholder(placeHolder);
         int count = rows.count();
         System.out.println("rows.count(): " + count);
@@ -82,11 +82,144 @@ public class BaseFunctions {
             if (rows.nth(i).isVisible()) {
                 if (rows.nth(i).innerHTML().contains("<p></p>")) {
                     rows.nth(i).fill(text);
-                    return;
+                    return true;
                 }
             }
         }
         System.err.println("fillRedactorFieldByPlaceholder: " + placeHolder + " nicht gefunden!");
+        return false;
+    }
+    private static ReportTable getDynKwlTable(FrameLocator frameLocator) {
+        Locator rows = frameLocator.locator("xpath=//*[@class=\"" + "dynamicswl" +  "\"]");
+        int count = rows.count();
+
+        System.out.println("-".repeat(100));
+        System.out.println("rows.count(): " + count);
+
+        List<String> tableCols = new ArrayList<>();
+        List<List<String>> tableCells = new ArrayList<>();
+
+        for (int i = 0; i < count; ++i) {
+            String textContent = rows.nth(i).textContent();
+            String innerHTML = rows.nth(i).innerHTML();
+            String innerText = rows.nth(i).innerText();
+
+            System.out.println("Row: " + i + " textContent() " + textContent);
+            System.out.println("Row: " + i + " innerHTML() " + innerHTML);
+            System.out.println("Row: " + i + " innerText() " + innerText);
+
+            String[] lines = innerText.split("\n");
+            boolean firstLine = true;
+            for (String line: lines) {
+                List<String> tableLineCells = new ArrayList<>();
+                String[] cells = line.split("\t");
+                for (String cell: cells) {
+                    if (firstLine) {
+                        tableCols.add(cell);
+                    } else {
+                        tableLineCells.add(cell);
+                    }
+                }
+                if (!firstLine) {
+                    tableCells.add(tableLineCells);
+                }
+                firstLine = false;
+            }
+        }
+        System.out.println("-".repeat(100));
+
+        return new ReportTable(tableCols, tableCells);
+
+    }
+    private static ReportTable getEloUserTable(FrameLocator frameLocator, String autocomplete) {
+        Locator rows = frameLocator.locator("xpath=//*[@id=\"" + "sel" + autocomplete +  "\"]").locator("xpath=//*[@class=\"afnormitem\"]");
+        int count = rows.count();
+
+        System.out.println("-".repeat(100));
+        System.out.println("rows.count(): " + count);
+
+        List<String> tableCols = new ArrayList<>();
+        List<List<String>> tableCells = new ArrayList<>();
+
+        tableCols.add("ELO User / Groups");
+        for (int i = 0; i < count; ++i) {
+            String textContent = rows.nth(i).textContent();
+            String innerHTML = rows.nth(i).innerHTML();
+            String innerText = rows.nth(i).innerText();
+
+            System.out.println("Row: " + i + " textContent() " + textContent);
+            System.out.println("Row: " + i + " innerHTML() " + innerHTML);
+            System.out.println("Row: " + i + " innerText() " + innerText);
+
+            List<String> tableLineCells = new ArrayList<>();
+            tableLineCells.add(innerText);
+            tableCells.add(tableLineCells);
+        }
+        System.out.println("-".repeat(100));
+
+        return new ReportTable(tableCols, tableCells);
+
+    }
+    private static Locator getKeywordList(FrameLocator frameLocator) {
+        Locator keywordlist = frameLocator.locator("xpath=//*[@class=\"keywordlist\"]");
+        System.out.println("+".repeat(100));
+        System.out.println("keywordlist.textContent() " + keywordlist.textContent());
+        System.out.println("keywordlist.innerHTML() " +  keywordlist.innerHTML());
+        System.out.println("keywordlist " +  keywordlist);
+        System.out.println("+".repeat(100));
+        return keywordlist;
+    }
+    private static boolean checkDynKwlTable(List<ReportParagraph> reportParagraphs, ReportTable reportTable,  String text) {
+        if (reportTable.getTableCells().isEmpty()) {
+            reportMessage(reportParagraphs, "<span>" + text + " not selectable in dynkwl</span>");
+            return false;
+        } else if (reportTable.getTableCells().size() > 1) {
+            reportMessageAndTable(reportParagraphs, "<span>" + text + " ambiguous in dynkwl</span>", reportTable);
+            return false;
+        }
+        return true;
+    }
+    private static boolean checkKwlTable(List<ReportParagraph> reportParagraphs, ReportTable reportTable, String text) {
+        boolean checkOK = false;
+        for (List<String> tableLineCells: reportTable.getTableCells()) {
+            for (String cell: tableLineCells) {
+                if (cell.equals(text)) {
+                    checkOK = true;
+                    break;
+                }
+            }
+        }
+        if (!checkOK) {
+            reportMessage(reportParagraphs, "<span>" + text + " not selectable in kwl</span>");
+        }
+        return checkOK;
+    }
+    public static boolean inputDynKwlField(List<ReportParagraph> reportParagraphs, FrameLocator frameLocator, String name, String text, boolean checkValue) {
+        Locator locator = type(frameLocator.locator("[name=\"" + name + "\"]"), text);
+        sleep();
+
+        if(!checkValue) {
+            return true;
+        }
+
+        String autocomplete = locator.getAttribute("id");
+        System.out.println("autocomplete = " + autocomplete);
+
+        Locator keywordlist = getKeywordList(frameLocator);
+
+        String innerHTML = keywordlist.innerHTML();
+        if (innerHTML.contains("dynamicswl")) {
+            ReportTable reportTable = getDynKwlTable(frameLocator);
+            return checkDynKwlTable(reportParagraphs, reportTable, text);
+        } else {
+            ReportTable reportTable = getEloUserTable(frameLocator, autocomplete);
+            return checkKwlTable(reportParagraphs, reportTable, text);
+        }
+    }
+    public static boolean inputKwlField(List<ReportParagraph> reportParagraphs, FrameLocator frameLocator, String name, String text) {
+        selectkwlitem(frameLocator, frameLocator.locator("[inpname=\"" + name + "\"]"), text);
+        ReportTable reportTable = getDynKwlTable(frameLocator);
+        return checkKwlTable(reportParagraphs, reportTable, text);
     }
     public static DataConfig readDataConfig(String jsonDataConfigFileName) {
         Gson gson = new Gson();
@@ -135,7 +268,6 @@ public class BaseFunctions {
                 eloAction.getSelectionDialogItem() + " " +
                 tabName;
     }
-
     public static void reportScreenshot(WebclientSession webclientSession,  String message, String screenshot) {
         webclientSession.getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get(screenshot)));
 
@@ -158,6 +290,17 @@ public class BaseFunctions {
         List<String> reportText = new ArrayList<>();
 
         ReportTable reportTable = new ReportTable(new ArrayList<>(), new ArrayList<>());
+        ReportParagraph reportParagraph = new ReportParagraph(reportHeader, reportText, reportTable);
+
+        reportParagraphs.add(reportParagraph);
+    }
+    public static void reportMessageAndTable(List<ReportParagraph> reportParagraphs, String message, ReportTable reportTable) {
+
+        List<String> reportHeader = new ArrayList<>();
+        reportHeader.add(message);
+
+        List<String> reportText = new ArrayList<>();
+
         ReportParagraph reportParagraph = new ReportParagraph(reportHeader, reportText, reportTable);
 
         reportParagraphs.add(reportParagraph);

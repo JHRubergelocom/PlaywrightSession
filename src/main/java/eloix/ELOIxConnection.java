@@ -14,7 +14,7 @@ public class ELOIxConnection {
     private static String getUser(LoginData loginData) {
         return loginData.getTextUserName().getValue();
     }
-    public static IXConnection getIxConnection(LoginData loginData) throws Exception{
+    public static IXConnection getIxConnection(LoginData loginData, boolean asAdmin) throws Exception{
         IXConnection ixConn;
         IXConnFactory connFact;
         try {
@@ -23,9 +23,14 @@ public class ELOIxConnection {
             System.err.println("ELO ELOIxConnection Falsche Verbindungsdaten zu ELO \n: " + ex.getMessage());
             System.err.println("IllegalStateException message: " +  ex.getMessage());
             throw new Exception("ELOIxConnection");
+
         }
         try {
-            ixConn = connFact.create("Administrator", "elo", null, null);
+            if (asAdmin) {
+                ixConn = connFact.create("Administrator", "elo", null, null);
+            } else {
+                ixConn = connFact.create(loginData.getTextUserName().getValue(), loginData.getTextPassword().getValue(), null, null);
+            }
         } catch (RemoteException ex) {
             System.err.println("ELO ELOIxConnection Indexserver-Verbindung ungültig \n User: " + getUser(loginData) + "\n IxUrl: " + getIxUrl(loginData));
             System.err.println("RemoteException message: " + ex.getMessage());

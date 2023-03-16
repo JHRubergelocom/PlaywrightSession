@@ -3,17 +3,20 @@
     "textUserName": {
       "selector": "Name",
       "value": "Administrator",
-      "type": "TEXT"
+      "type": "TEXT",
+      "checkValue": true
     },
     "textPassword": {
       "selector": "Passwort",
       "value": "elo",
-      "type": "TEXT"
+      "type": "TEXT",
+      "checkValue": true
     },
     "buttonLogin": {
       "selector": "Anmelden",
       "value": "Login",
-      "type": "BUTTON"
+      "type": "BUTTON",
+      "checkValue": true
     },
     "stack": "ruberg-meeting.dev.elo"
   },
@@ -27,6 +30,7 @@
         "entryPath": "",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -40,22 +44,26 @@
               {
                 "selector": "IX_GRP_MEETING_BOARD_NAME",
                 "value": "Meetingboard1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_BOARD_CODE",
                 "value": "MB1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_BOARD_MINUTE_TAKER",
                 "value": "Bodo Kraft",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_DESC",
                 "value": "Meetingboard1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               }
             ],
             "tables": [
@@ -67,14 +75,16 @@
                     {
                       "selector": "IX_MAP_MEETING_BOARD_ORGANIZER",
                       "value": "Jan Eichner",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_MEETING_BOARD_ORGANIZER",
                       "value": "Sandra Renz",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -93,64 +103,76 @@
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_",
                       "value": "Meeting-Einladung",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_",
                       "value": "O",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_",
                       "value": "1",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_",
                       "value": "y",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SIGN_",
                       "value": "-",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_",
                       "value": "MEETING_STARTDATE",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_",
                       "value": "Meeting-Einladung",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_",
                       "value": "A",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_",
                       "value": "1",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_",
                       "value": "Q",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SIGN_",
                       "value": "+",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_",
                       "value": "MEETING_ENDDATE",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -163,12 +185,14 @@
               {
                 "selector": "IX_MAP_MEETING_BOARD_MEETING_DEFAULT_NAME",
                 "value": "Meeting1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_MAP_MEETING_BOARD_SETTING_ITEMTOAGENDA",
                 "value": "true",
-                "type": "CHECKBOX"
+                "type": "CHECKBOX",
+                "checkValue": true
               }
             ],
             "tables": []
@@ -185,34 +209,40 @@
                     {
                       "selector": "WF_MAP_MEETING_ITEM_TITLE",
                       "value": "Rückblende",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_ITEM_DURATION",
                       "value": "30",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_ITEM_DESC",
                       "value": "Rückblick vergangene Projekte",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "WF_MAP_MEETING_ITEM_TITLE",
                       "value": "Planung",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_ITEM_DURATION",
                       "value": "40",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_ITEM_DESC",
                       "value": "Zukünftige Projekte",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -225,6 +255,7 @@
         "entryPath": "",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -238,22 +269,26 @@
               {
                 "selector": "IX_GRP_MEETING_NAME",
                 "value": "Meeting1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_LOCATION",
                 "value": "Musterstadt",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": false
               },
               {
                 "selector": "IX_GRP_MEETING_MINUTE_TAKER",
                 "value": "Charlotte Bennett",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "Hinterlegen Sie eine Beschreibung des Meetings.",
                 "value": "Beschreibung Meeting1",
-                "type": "REDACTOR"
+                "type": "REDACTOR",
+                "checkValue": true
               }
             ],
             "tables": [
@@ -265,24 +300,28 @@
                     {
                       "selector": "IX_MAP_MEETING_TIMESLOT_START",
                       "value": "09:00",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_TIMESLOT_END",
                       "value": "17:00",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_MEETING_TIMESLOT_START",
                       "value": "09:00",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_TIMESLOT_END",
                       "value": "17:00",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -301,64 +340,76 @@
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_",
                       "value": "Meeting-Einladung",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_",
                       "value": "O",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_",
                       "value": "1",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_",
                       "value": "y",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SIGN_",
                       "value": "-",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_",
                       "value": "MEETING_STARTDATE",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_",
                       "value": "Meeting-Einladung",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_",
                       "value": "A",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_",
                       "value": "1",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_",
                       "value": "Q",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SIGN_",
                       "value": "+",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_",
                       "value": "MEETING_ENDDATE",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -377,22 +428,26 @@
                     {
                       "selector": "WF_MAP_MEETING_PERSON_LASTNAME",
                       "value": "Baum",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_PERSON_FIRSTNAME",
                       "value": "Gerd",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_PERSON_EMAIL",
                       "value": "g.baum@contelo.de",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_PERSON_COMPANYNAME",
                       "value": "Contelo AG",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -405,6 +460,7 @@
         "entryPath": "",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -417,44 +473,52 @@
               {
                 "selector": "Meeting",
                 "value": "true",
-                "type": "RADIO"
+                "type": "RADIO",
+                "checkValue": true
               }
             ],
             "controls": [
               {
                 "selector": "IX_GRP_MEETING_BOARD_NAME",
                 "value": "Meetingboard1",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_BOARD_CODE",
                 "value": "MB1",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_NAME",
                 "value": "Meeting1",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_TITLE",
                 "value": "Thema1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_DURATION",
                 "value": "40",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON",
                 "value": "Adrian Smith",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "Hinterlegen Sie eine Beschreibung des Themas.",
                 "value": "Beschreibung Thema1",
-                "type": "REDACTOR"
+                "type": "REDACTOR",
+                "checkValue": true
               }
             ],
             "tables": [
@@ -466,24 +530,28 @@
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME",
                       "value": "Kraft",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME",
                       "value": "Bodo",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME",
                       "value": "Davis",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME",
                       "value": "Jessica",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -496,6 +564,7 @@
         "entryPath": "",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -509,22 +578,26 @@
               {
                 "selector": "IX_GRP_MEETING_BOARD_NAME",
                 "value": "Meetingboard2",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_BOARD_CODE",
                 "value": "MB2",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_BOARD_MINUTE_TAKER",
                 "value": "David Lee",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_DESC",
                 "value": "Beschreibung Meetingboard2",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               }
             ],
             "tables": [
@@ -536,14 +609,16 @@
                     {
                       "selector": "IX_MAP_MEETING_BOARD_ORGANIZER",
                       "value": "Jan Eichner",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_MEETING_BOARD_ORGANIZER",
                       "value": "Sandra Renz",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -562,64 +637,76 @@
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_",
                       "value": "Sitzungseinladung",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_",
                       "value": "O",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_",
                       "value": "1",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_",
                       "value": "y",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SIGN_",
                       "value": "-",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_",
                       "value": "MEETING_STARTDATE",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_",
                       "value": "Sitzungseinladung",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_",
                       "value": "A",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_",
                       "value": "1",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_",
                       "value": "Q",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SIGN_",
                       "value": "+",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_",
                       "value": "MEETING_ENDDATE",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -632,12 +719,14 @@
               {
                 "selector": "IX_MAP_MEETING_BOARD_MEETING_DEFAULT_NAME",
                 "value": "Meeting2",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_MAP_MEETING_BOARD_SETTING_APPROVAL_REQUIRED",
                 "value": "false",
-                "type": "CHECKBOX"
+                "type": "CHECKBOX",
+                "checkValue": true
               }
             ],
             "tables": []
@@ -654,34 +743,40 @@
                     {
                       "selector": "WF_MAP_MEETING_ITEM_TITLE",
                       "value": "Rückblende",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_ITEM_DURATION",
                       "value": "30",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_ITEM_DESC",
                       "value": "Rückblick vergangene Projekte",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "WF_MAP_MEETING_ITEM_TITLE",
                       "value": "Planung",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_ITEM_DURATION",
                       "value": "40",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_ITEM_DESC",
                       "value": "Zukünftige Projekte",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -694,6 +789,7 @@
         "entryPath": "",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -707,22 +803,26 @@
               {
                 "selector": "IX_GRP_MEETING_NAME",
                 "value": "Sitzung1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_LOCATION",
                 "value": "Musterdorf",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": false
               },
               {
                 "selector": "IX_GRP_MEETING_MINUTE_TAKER",
                 "value": "Bodo Kraft",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "Hinterlegen Sie eine Beschreibung der Sitzung.",
                 "value": "Beschreibung Sitzung1",
-                "type": "REDACTOR"
+                "type": "REDACTOR",
+                "checkValue": true
               }
             ],
             "tables": [
@@ -734,24 +834,28 @@
                     {
                       "selector": "IX_MAP_MEETING_TIMESLOT_START",
                       "value": "11:00",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_TIMESLOT_END",
                       "value": "16:00",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_MEETING_TIMESLOT_START",
                       "value": "09:00",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_TIMESLOT_END",
                       "value": "17:00",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -770,64 +874,76 @@
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_",
                       "value": "Sitzungseinladung",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_",
                       "value": "O",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_",
                       "value": "1",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_",
                       "value": "y",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SIGN_",
                       "value": "-",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_",
                       "value": "MEETING_STARTDATE",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_TEMPLATE_",
                       "value": "Sitzungseinladung",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_",
                       "value": "A",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_",
                       "value": "1",
-                      "type": "TEXT"
+                      "type": "TEXT",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_",
                       "value": "Q",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_SIGN_",
                       "value": "+",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_",
                       "value": "MEETING_ENDDATE",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -846,22 +962,26 @@
                     {
                       "selector": "WF_MAP_MEETING_PERSON_LASTNAME",
                       "value": "Baum",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_PERSON_FIRSTNAME",
                       "value": "Gerd",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_PERSON_EMAIL",
                       "value": "g.baum@contelo.de",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "WF_MAP_MEETING_PERSON_COMPANYNAME",
                       "value": "Contelo AG",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -874,6 +994,7 @@
         "entryPath": "",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -886,44 +1007,52 @@
               {
                 "selector": "Sitzung",
                 "value": "true",
-                "type": "RADIO"
+                "type": "RADIO",
+                "checkValue": true
               }
             ],
             "controls": [
               {
                 "selector": "IX_GRP_MEETING_BOARD_NAME",
                 "value": "Meetingboard2",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_BOARD_CODE",
                 "value": "MB2",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_NAME",
                 "value": "Sitzung1",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_TITLE",
                 "value": "TOP1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_DURATION",
                 "value": "30",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON",
                 "value": "David Lee",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "Hinterlegen Sie eine Beschreibung des TOPs.",
                 "value": "Beschreibung TOP1",
-                "type": "REDACTOR"
+                "type": "REDACTOR",
+                "checkValue": true
               }
             ],
             "tables": [
@@ -935,24 +1064,28 @@
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME",
                       "value": "Bennett",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME",
                       "value": "Charlotte",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME",
                       "value": "Davis",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME",
                       "value": "Jessica",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -965,6 +1098,7 @@
         "entryPath": "",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -978,22 +1112,26 @@
               {
                 "selector": "IX_GRP_MEETING_BOARD_NAME",
                 "value": "Meetingboard1",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_BOARD_CODE",
                 "value": "MB1",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_POOL_NAME",
                 "value": "Meetingitempool1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_DESC",
                 "value": "Beschreibung Meetingitempool1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               }
             ],
             "tables": []
@@ -1004,6 +1142,7 @@
         "entryPath": "",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -1016,44 +1155,52 @@
               {
                 "selector": "Themensammlung",
                 "value": "true",
-                "type": "RADIO"
+                "type": "RADIO",
+                "checkValue": true
               }
             ],
             "controls": [
               {
                 "selector": "IX_GRP_MEETING_BOARD_NAME",
                 "value": "Meetingboard1",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_BOARD_CODE",
                 "value": "MB1",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_MAP_MEETING_ITEM_POOL_NAME",
                 "value": "Meetingitempool1",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_TITLE",
                 "value": "Thema1 Ideenpool1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_DURATION",
                 "value": "40",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON",
                 "value": "Adrian Smith",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "Hinterlegen Sie eine Beschreibung des Themas.",
                 "value": "Beschreibung Thema1",
-                "type": "REDACTOR"
+                "type": "REDACTOR",
+                "checkValue": true
               }
             ],
             "tables": [
@@ -1065,24 +1212,28 @@
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME",
                       "value": "Kraft",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME",
                       "value": "Bodo",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME",
                       "value": "Davis",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME",
                       "value": "Jessica",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ]
                 ]
@@ -1095,6 +1246,7 @@
         "entryPath": "",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -1108,22 +1260,26 @@
               {
                 "selector": "IX_GRP_MEETING_BOARD_NAME",
                 "value": "Meetingboard2",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_BOARD_CODE",
                 "value": "MB2",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_POOL_NAME",
                 "value": "Meetingitempool2",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_DESC",
                 "value": "Beschreibung Meetingitempool2",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               }
             ],
             "tables": []
@@ -1134,6 +1290,7 @@
         "entryPath": "",
         "formulaType": "EXTERNAL",
         "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
         "selectionDialogItem": "",
         "eloActionDef": {
           "selectorRibbon": "Neu",
@@ -1146,44 +1303,52 @@
               {
                 "selector": "Themensammlung",
                 "value": "true",
-                "type": "RADIO"
+                "type": "RADIO",
+                "checkValue": true
               }
             ],
             "controls": [
               {
                 "selector": "IX_GRP_MEETING_BOARD_NAME",
                 "value": "Meetingboard2",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_BOARD_CODE",
                 "value": "MB2",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_MAP_MEETING_ITEM_POOL_NAME",
                 "value": "Meetingitempool2",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_TITLE",
                 "value": "TOP1",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_DURATION",
                 "value": "30",
-                "type": "TEXT"
+                "type": "TEXT",
+                "checkValue": true
               },
               {
                 "selector": "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON",
                 "value": "David Lee",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "checkValue": true
               },
               {
                 "selector": "Hinterlegen Sie eine Beschreibung des TOPs.",
                 "value": "Beschreibung TOP1 Meetingitempool2",
-                "type": "REDACTOR"
+                "type": "REDACTOR",
+                "checkValue": true
               }
             ],
             "tables": [
@@ -1195,24 +1360,28 @@
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME",
                       "value": "Bennett",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME",
                       "value": "Charlotte",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME",
                       "value": "Davis",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     },
                     {
                       "selector": "IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME",
                       "value": "Jessica",
-                      "type": "DYNKWL"
+                      "type": "DYNKWL",
+                      "checkValue": true
                     }
                   ]
                 ]

@@ -9,9 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Html Report Test Reporting with Screenshots">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Input validation Keyword List" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,8 +46,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ruberg/Documents/Entwicklung/IntelliJ/EloIxClient/EloixClient.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ruberg/OneDrive - ELO Digital Office GmbH/Dokumente/Entwicklung/IntelliJ/PlaywrightSession&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.46896553&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -62,6 +60,7 @@
       <recent name="session" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ruberg\OneDrive - ELO Digital Office GmbH\Dokumente\Entwicklung\IntelliJ\PlaywrightSession" />
       <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession" />
       <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession\src\main\java" />
     </key>
@@ -74,7 +73,6 @@
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.App" />
       <module name="PlaywrightSession" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;DataConfigHrEmployee.json&quot; &quot;PlaywrightConfig.json&quot;" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.*" />
@@ -85,7 +83,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaywrightReportTest.testPlaywrightReport" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlaywrightParameterTest.TestSession" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PlaywrightSession" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.PlaywrightParameterTest" />
+      <option name="METHOD_NAME" value="TestSession(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlaywrightReportTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
         <pattern>
@@ -95,8 +109,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.PlaywrightReportTest" />
-      <option name="METHOD_NAME" value="testPlaywrightReport" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -133,36 +146,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaywrightSessionTest.firstScript" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PlaywrightSession" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
-      <option name="METHOD_NAME" value="firstScript" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.App" />
-      <item itemvalue="JUnit.PlaywrightSessionTest.firstScript" />
-      <item itemvalue="JUnit.PlaywrightReportTest.testPlaywrightReport" />
+      <item itemvalue="JUnit.PlaywrightParameterTest.TestSession" />
+      <item itemvalue="JUnit.PlaywrightReportTest" />
       <item itemvalue="JUnit.PlaywrightSessionTest.CreateDataConfigJson" />
       <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
-        <item itemvalue="JUnit.PlaywrightReportTest.testPlaywrightReport" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.firstScript" />
         <item itemvalue="JUnit.PlaywrightSessionTest.CreateDataConfigJson" />
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.PlaywrightParameterTest.TestSession" />
+        <item itemvalue="JUnit.PlaywrightReportTest" />
       </list>
     </recent_temporary>
   </component>
@@ -174,125 +171,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670419530192</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Playwright DataConfigTest Json">
-      <created>1673620982003</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1673620982003</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Playwright DataConfigTest Test">
-      <created>1673964252234</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1673964252234</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Playwright DataConfigTest Test Main">
-      <created>1674030081801</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1674030081801</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Playwright Refinement Datastructures">
-      <created>1674211344393</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1674211344393</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Playwright Refinement Datastructures">
-      <created>1674221993072</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1674221993072</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Playwright Refinement Datastructures">
-      <created>1674226224722</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1674226224722</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Playwright Refinement Locators">
-      <created>1674742968263</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1674742968263</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Playwright Refinement Locators">
-      <created>1675073896798</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1675073896798</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Playwright Refinement Locators">
-      <created>1675073955225</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1675073955225</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Playwright Refinement DataConfig">
-      <created>1675084947076</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1675084947076</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Playwright Refinement DataConfig">
-      <created>1675158886163</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1675158886163</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Playwright Refinement DataConfig">
-      <created>1675170160671</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1675170160671</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Playwright Refinement DataConfig Redactorfields">
-      <created>1675257124540</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1675257124540</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Playwright DataConfig Hr">
-      <created>1675264888578</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1675264888578</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Playwright DataConfig Hr, Meeting">
-      <created>1675331523726</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1675331523726</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Playwright DataConfig Hr, Meeting">
-      <created>1675350843799</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1675350843799</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Playwright DataConfig Hr, Meeting, select folder path">
-      <created>1675428047592</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1675428047592</updated>
     </task>
     <task id="LOCAL-00042" summary="Playwright DataConfig Hr, Meeting, select folder path">
       <created>1675429348136</created>
@@ -518,7 +396,126 @@
       <option name="project" value="LOCAL" />
       <updated>1677577045442</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Playwright Input validation">
+      <created>1678183644200</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1678183644200</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Playwright Input validation">
+      <created>1678201936737</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1678201936737</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Playwright Input validation">
+      <created>1678269731323</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1678269731323</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Playwright Input validation">
+      <created>1678278568786</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1678278568786</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Playwright Input validation">
+      <created>1678289367577</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1678289367577</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Playwright Input validation Keyword List">
+      <created>1678356068342</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1678356068342</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Playwright Input validation Keyword List">
+      <created>1678369596717</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1678369596717</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Playwright Input validation Keyword List">
+      <created>1678373776616</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1678373776616</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Playwright Input validation Keyword List">
+      <created>1678375837190</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1678375837190</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Playwright Input validation Keyword List">
+      <created>1678376002360</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1678376002360</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Playwright Input validation Keyword List">
+      <created>1678787837090</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1678787837090</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Playwright Input validation Keyword List">
+      <created>1678791229442</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1678791229442</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Playwright Input validation Keyword List">
+      <created>1678801174575</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1678801174576</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Playwright Input validation Keyword List">
+      <created>1678889114665</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1678889114666</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Playwright Input validation Keyword List">
+      <created>1678892655159</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1678892655159</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Playwright Input validation Keyword List">
+      <created>1678893899476</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1678893899476</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Playwright Input validation Keyword List">
+      <created>1678958593601</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1678958593602</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,8 +531,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Playwright DataConfigTest Json" />
-    <MESSAGE value="Playwright DataConfigTest Test" />
     <MESSAGE value="Playwright DataConfigTest Test Main" />
     <MESSAGE value="Playwright Refinement Datastructures" />
     <MESSAGE value="Playwright Refinement Locators" />
@@ -559,7 +554,9 @@
     <MESSAGE value="Playwright Html Report" />
     <MESSAGE value="Playwright Html Report Testlogging" />
     <MESSAGE value="Playwright Html Report Test Reporting with Screenshots" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright Html Report Test Reporting with Screenshots" />
+    <MESSAGE value="Playwright Input validation" />
+    <MESSAGE value="Playwright Input validation Keyword List" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright Input validation Keyword List" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -571,6 +568,12 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="innerHTML" />
+        <watch expression="rows" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PlaywrightSession$App.ic" NAME="App Coverage Results" MODIFIED="1676364305322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
