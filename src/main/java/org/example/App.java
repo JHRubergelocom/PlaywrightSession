@@ -15,7 +15,7 @@ public class App
             Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(5000));
             Page page = browser.newPage();
             page.navigate("http://playwright.dev");
-            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("example.png")));
+            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(BaseFunctions.getReportPath() + "example.png")));
             System.out.println(page.title());
         }
         */

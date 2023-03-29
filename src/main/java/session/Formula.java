@@ -3,7 +3,10 @@ package session;
 import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.options.AriaRole;
+import report.ReportParagraph;
+import report.ReportTable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -47,7 +50,7 @@ public class Formula {
     }
     private boolean inputRadioButton(String name) {
         try {
-            return BaseFunctions.check(frameLocator.getByRole(AriaRole.RADIO, new FrameLocator.GetByRoleOptions().setName(name)));
+            return BaseFunctions.check(frameLocator.getByRole(AriaRole.RADIO, new FrameLocator.GetByRoleOptions().setName(name).setExact(true)));
         } catch (Exception e) {
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not selectable</span>");
             return false;
@@ -100,7 +103,7 @@ public class Formula {
             case KWL -> checkData =  inputKwlField(selector, control.getValue());
         }
         if(!checkData) {
-            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, selector) + ".png");
+            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageEloControlCheckData(control), BaseFunctions.getScreenShotFileName(eloAction, selector) + ".png");
         }
         return checkData;
     }
@@ -150,6 +153,250 @@ public class Formula {
         }
         return checkData;
     }
+    private boolean isEmptyValueControl(Locator locator) {
+        String inputValue = locator.inputValue();
+        return inputValue.equals("");
+    }
+    private boolean checkMandatoryControls() {
+        boolean checkData = true;
+
+        Locator rows = frameLocator.locator("[eloverify=\"" + "notemptyforward" + "\"]");
+        int count = rows.count();
+
+        System.out.println("*".repeat(10) + " MandatoryControls " + "*".repeat(10));
+        System.out.println("rows.count(): " + count);
+
+        List<String> tableCols = new ArrayList<>();
+        tableCols.add("Feld");
+        tableCols.add("Wert");
+        List<List<String>> tableCells = new ArrayList<>();
+
+        List<ReportParagraph> reportParagraphsEmptyValueControls = new ArrayList<>();
+
+        for (int i = 0; i < count; ++i) {
+            System.out.println("Row: " + i + " getAttribute(\"name\") " + rows.nth(i).getAttribute("name"));
+            System.out.println("Row: " + i + " inputValue() " + rows.nth(i).inputValue());
+            System.out.println("Row: " + i + " " + rows.nth(i));
+
+            List<String> tableLineCells = new ArrayList<>();
+            String name = rows.nth(i).getAttribute("name");
+            String value = rows.nth(i).inputValue();
+            if( isEmptyValueControl(rows.nth(i)) && !name.endsWith("1")) {
+                tableLineCells.add("<span>" + name + "</span>");
+                tableLineCells.add("<span>" + value + "</span>");
+                BaseFunctions.reportMessage(reportParagraphsEmptyValueControls, "<span>MandatoryControl " + name + " not filled</span>");
+                checkData = false;
+            } else {
+                tableLineCells.add(name);
+                tableLineCells.add(value);
+            }
+            tableCells.add(tableLineCells);
+        }
+        System.out.println("*".repeat(10) + " MandatoryControls " + "*".repeat(10));
+
+        ReportTable reportTable = new ReportTable(tableCols, tableCells);
+        BaseFunctions.reportMessageAndTable(webclientSession.getReportParagraphs(), "Pflichtfelder", reportTable);
+        webclientSession.getReportParagraphs().addAll(reportParagraphsEmptyValueControls);
+
+        return checkData;
+    }
+    private boolean expectedValueKwlField(String name, String value) {
+        try {
+            Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
+            boolean checkData = BaseFunctions.checkValueControl(locator, value);
+            if(!checkData) {
+                BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + " = " + locator.inputValue() + " stimmt nicht mit " + value +  " überein</span>");
+            }
+            return checkData;
+        } catch (Exception e) {
+            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not avaible</span>");
+            return false;
+        }
+    }
+    private boolean expectedValueRedactorField(String name, String value) {
+        try {
+            Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
+            value = "<p>" + value + "</p>";
+            boolean checkData = BaseFunctions.checkValueControl(locator, value);
+            if(!checkData) {
+                BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + "=" + locator.inputValue() + " stimmt nicht mit " + value +  " überein</span>");
+            }
+            return checkData;
+        } catch (Exception e) {
+            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not avaible</span>");
+            return false;
+        }
+    }
+    private boolean expectedValueRadioButton(String name, String value) {
+        try {
+            Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
+            boolean checkData = BaseFunctions.checkValueRadioButton(locator, value);
+            if(!checkData) {
+                BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + " = " + locator.inputValue() + " stimmt nicht mit " + value +  " überein</span>");
+            }
+            return checkData;
+        } catch (Exception e) {
+            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not avaible</span>");
+            return false;
+        }
+    }
+    private boolean expectedValueCheckBox(String name, String value) {
+        try {
+            Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
+            if (value.equalsIgnoreCase("true")) {
+                value = "1";
+            } else {
+                value = "0";
+            }
+            boolean checkData = BaseFunctions.checkValueControl(locator, value);
+            if(!checkData) {
+                BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + " = " + locator.inputValue() + " stimmt nicht mit " + value +  " überein</span>");
+            }
+            return checkData;
+        } catch (Exception e) {
+            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not avaible</span>");
+            return false;
+        }
+    }
+    private boolean expectedValueDynKwlField(String name, String value) {
+        try {
+            Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
+            boolean checkData = BaseFunctions.checkValueControl(locator, value);
+            if(!checkData) {
+                BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + " = " + locator.inputValue() + " stimmt nicht mit " + value +  " überein</span>");
+            }
+            return checkData;
+        } catch (Exception e) {
+            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not avaible</span>");
+            return false;
+        }
+    }
+    private boolean expectedValueTextField(String name, String text) {
+        try {
+            Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
+            boolean checkData = BaseFunctions.checkValueControl(locator, text);
+            if(!checkData) {
+                BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + " = " + locator.inputValue() + " stimmt nicht mit " + text +  " überein</span>");
+            }
+            return checkData;
+        } catch (Exception e) {
+            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not avaible</span>");
+            return false;
+        }
+    }
+    private boolean expectedValueControl(ELOControl expectedValueControl) {
+        boolean checkData = true;
+
+        String selector = expectedValueControl.getSelector();
+        switch(expectedValueControl.getType()) {
+            case TEXT -> checkData = expectedValueTextField(selector, expectedValueControl.getValue());
+            case DYNKWL -> checkData = expectedValueDynKwlField(selector, expectedValueControl.getValue());
+            case CHECKBOX -> checkData =  expectedValueCheckBox(selector, expectedValueControl.getValue());
+            case RADIO -> checkData =  expectedValueRadioButton(selector, expectedValueControl.getValue());
+            case REDACTOR -> checkData =  expectedValueRedactorField(selector, expectedValueControl.getValue());
+            case KWL -> checkData =  expectedValueKwlField(selector, expectedValueControl.getValue());
+        }
+        if(!checkData) {
+            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageEloControlExpectedValue(expectedValueControl), BaseFunctions.getScreenShotFileName(eloAction, selector) + " expectedValue.png");
+        }
+        return checkData;
+    }
+    private void reportExpectedValueControls(List<ELOControl> expectedValueControls) {
+        if (expectedValueControls.isEmpty()) {
+            return;
+        }
+        List<String> tableCols = new ArrayList<>();
+        tableCols.add("Feld");
+        tableCols.add("aktueller Wert");
+        tableCols.add("erwarteter Wert");
+
+        List<List<String>> tableCells = new ArrayList<>();
+
+        for (ELOControl expectedValueControl : expectedValueControls) {
+            List<String> tableLineCells = new ArrayList<>();
+            String field = expectedValueControl.getSelector();
+            String expValue = expectedValueControl.getValue();
+            String actValue;
+            try {
+                boolean checkData = false;
+                Locator locator = frameLocator.locator("[name=\"" + field + "\"]");
+                if (expectedValueControl.getType() == ELOControlType.CHECKBOX) {
+                    if (expValue.equalsIgnoreCase("true")) {
+                        checkData = BaseFunctions.checkValueControl(locator, "1");
+                    } else if (expValue.equalsIgnoreCase("false")){
+                        checkData = BaseFunctions.checkValueControl(locator, "0");
+                    }
+                } else if (expectedValueControl.getType() == ELOControlType.REDACTOR) {
+                    checkData = BaseFunctions.checkValueControl(locator, "<p>" + expValue + "</p>");
+                } else if (expectedValueControl.getType() == ELOControlType.RADIO) {
+                    checkData = BaseFunctions.checkValueRadioButton(locator, expValue);
+                } else {
+                    checkData = BaseFunctions.checkValueControl(locator, expValue);
+                }
+                actValue = "";
+                if (locator.count() == 1) {
+                    actValue = locator.inputValue();
+                }
+                if (expectedValueControl.getType() == ELOControlType.CHECKBOX) {
+                    if (actValue.equalsIgnoreCase("1")) {
+                        actValue = "true";
+                    } else {
+                        actValue = "false";
+                    }
+                } else if (expectedValueControl.getType() == ELOControlType.REDACTOR) {
+                    actValue = actValue.replace("<p>", "");
+                    actValue = actValue.replace("</p>", "");
+                } else if (expectedValueControl.getType() == ELOControlType.RADIO) {
+                    int count = locator.count();
+                    System.out.println("*".repeat(80));
+                    System.out.println("rows.count(): " + count);
+                    for (int i = 0; i < count; ++i) {
+                        System.out.println("Row: " + i + " getAttribute(\"autovalidval\") " + locator.nth(i).getAttribute("autovalidval"));
+                        System.out.println("Row: " + i + " textContent() " + locator.nth(i).textContent());
+                        System.out.println("Row: " + i + " inputValue() " + locator.nth(i).inputValue());
+                        System.out.println("Row: " + i + " innerTest() " + locator.nth(i).innerText());
+                        System.out.println("Row: " + i + " innerHTML() " + locator.nth(i).innerHTML());
+                        System.out.println("Row: " + i + " " + locator.nth(i));
+
+                        String autovalidval = locator.nth(i).getAttribute("autovalidval");
+                        String inputValue = locator.nth(i).inputValue();
+                        if (autovalidval != null) {
+                            if (autovalidval.equals(inputValue)) {
+                                actValue = inputValue;
+                            }
+                        }
+                    }
+                }
+                if(!checkData) {
+                    tableLineCells.add("<span>" + field + "</span>");
+                    tableLineCells.add("<span>" + actValue + "</span>");
+                    tableLineCells.add("<span>" + expValue + "</span>");
+                } else {
+                    tableLineCells.add(field);
+                    tableLineCells.add(actValue);
+                    tableLineCells.add(expValue);
+                }
+            } catch (Exception e) {
+                tableLineCells.add("<span>" + field + "</span>");
+                tableLineCells.add("<span>" + "undefiniert" + "</span>");
+                tableLineCells.add("<span>" + expValue + "</span>");
+            }
+            tableCells.add(tableLineCells);
+        }
+
+        ReportTable reportTable = new ReportTable(tableCols, tableCells);
+        BaseFunctions.reportMessageAndTable(webclientSession.getReportParagraphs(), "Feldwertprüfung", reportTable);
+    }
+    private boolean expectedValueControls(List<ELOControl> expectedValueControls) {
+        reportExpectedValueControls(expectedValueControls);
+        boolean checkData = true;
+        for (ELOControl expectedValueControl : expectedValueControls) {
+            if(!expectedValueControl(expectedValueControl)) {
+                checkData = false;
+            }
+        }
+        return checkData;
+    }
     public Formula(FrameLocator frameLocator, WebclientSession webclientSession, ELOAction eloAction) {
         this.frameLocator = frameLocator;
         this.webclientSession = webclientSession;
@@ -172,7 +419,13 @@ public class Formula {
             if(!inputControlsTables(tabPage.getTables())) {
                 checkData = false;
             }
-            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotFileName(eloAction, tabName), BaseFunctions.getScreenShotFileName(eloAction, tabName) + ".png");
+            if(!expectedValueControls(tabPage.getExpectedValueControls())) {
+                checkData = false;
+            }
+            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageTabPage(tabName), BaseFunctions.getScreenShotFileName(eloAction, tabName) + ".png");
+        }
+        if(!checkMandatoryControls()) {
+            checkData = false;
         }
         return checkData;
     }
@@ -181,7 +434,7 @@ public class Formula {
         try {
             click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName(formulaSaveButton)));
         } catch (Exception e) {
-            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "Formula") + ".png");
+            BaseFunctions.reportScreenshot(webclientSession, "<span>" + "Formular cannot be saved" + "</span>", BaseFunctions.getScreenShotFileName(eloAction, "Formula") + ".png");
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + "Formular cannot be saved" + "</span>");
         }
     }

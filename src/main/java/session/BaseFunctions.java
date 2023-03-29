@@ -15,6 +15,10 @@ import java.util.Optional;
 
 public class BaseFunctions {
     private static final long millis = 5000;
+    private static final String reportPath = "testreport/";
+    public static String getReportPath() {
+        return reportPath;
+    }
     public static void sleep() {
         try {
             Thread.sleep(millis);
@@ -59,6 +63,7 @@ public class BaseFunctions {
         for (int i = 0; i < count; ++i) {
             System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
             System.out.println("Row: " + i + " innerHTML() " + rows.nth(i).innerHTML());
+            System.out.println("Row: " + i + " innerText() " + rows.nth(i).innerText());
             System.out.println("Row: " + i + " " + rows.nth(i));
             if (rows.nth(i).isVisible()) {
                 System.out.println("      Row: " + i + "getAttribute(" + attributeKey + ") " + rows.nth(i).getAttribute(attributeKey));
@@ -221,6 +226,34 @@ public class BaseFunctions {
         ReportTable reportTable = getDynKwlTable(frameLocator);
         return checkKwlTable(reportParagraphs, reportTable, text);
     }
+    public static boolean checkValueControl(Locator control, String value) {
+        String inputValue = control.inputValue();
+        return inputValue.equals(value);
+    }
+    public static boolean checkValueRadioButton(Locator rows, String value) {
+        int count = rows.count();
+        System.out.println("*".repeat(80));
+        System.out.println("rows.count(): " + count);
+        for (int i = 0; i < count; ++i) {
+            System.out.println("Row: " + i + " getAttribute(\"autovalidval\") " + rows.nth(i).getAttribute("autovalidval"));
+            System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
+            System.out.println("Row: " + i + " inputValue() " + rows.nth(i).inputValue());
+            System.out.println("Row: " + i + " innerTest() " + rows.nth(i).innerText());
+            System.out.println("Row: " + i + " innerHTML() " + rows.nth(i).innerHTML());
+            System.out.println("Row: " + i + " " + rows.nth(i));
+
+            String autovalidval = rows.nth(i).getAttribute("autovalidval");
+            String inputValue = rows.nth(i).inputValue();
+            if (autovalidval != null) {
+                if (autovalidval.equals(inputValue)) {
+                    if (value.equals(inputValue)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
     public static DataConfig readDataConfig(String jsonDataConfigFileName) {
         Gson gson = new Gson();
         DataConfig dataConfig;
@@ -268,8 +301,17 @@ public class BaseFunctions {
                 eloAction.getSelectionDialogItem() + " " +
                 tabName;
     }
+    public static String getScreenShotMessageEloControlCheckData(ELOControl control) {
+        return "<span>CheckData von " + control.getSelector() + " " + control.getValue() + " fehlgeschlagen</span>";
+    }
+    public static String getScreenShotMessageEloControlExpectedValue(ELOControl expectedValueControl) {
+        return "<span>ExpectedValue von " + expectedValueControl.getSelector() + " " + expectedValueControl.getValue() + " fehlgeschlagen</span>";
+    }
+    public static String getScreenShotMessageTabPage(String tabName) {
+        return "TabPage " + tabName;
+    }
     public static void reportScreenshot(WebclientSession webclientSession,  String message, String screenshot) {
-        webclientSession.getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get(screenshot)));
+        webclientSession.getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get(BaseFunctions.getReportPath() + screenshot)));
 
         List<String> reportHeader = new ArrayList<>();
         reportHeader.add(message);
@@ -305,5 +347,4 @@ public class BaseFunctions {
 
         reportParagraphs.add(reportParagraph);
     }
-
 }

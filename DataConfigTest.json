@@ -89,6 +89,14 @@
                   ]
                 ]
               }
+            ],
+            "expectedValueControls": [
+              {
+                "selector": "IX_MAP_MEETING_BOARD_ORGANIZER1",
+                "value": "Jan Eichner",
+                "type": "DYNKWL",
+                "checkValue": true
+              }
             ]
           },
           "Benachrichtigungen": {
@@ -177,7 +185,8 @@
                   ]
                 ]
               }
-            ]
+            ],
+            "expectedValueControls": []
           },
           "Einstellungen": {
             "initTabPage": [],
@@ -195,7 +204,15 @@
                 "checkValue": true
               }
             ],
-            "tables": []
+            "tables": [],
+            "expectedValueControls": [
+              {
+                "selector": "IX_MAP_MEETING_BOARD_SETTING_ITEMTOAGENDA",
+                "value": "true",
+                "type": "CHECKBOX",
+                "checkValue": true
+              }
+            ]
           },
           "Themen": {
             "initTabPage": [],
@@ -247,7 +264,8 @@
                   ]
                 ]
               }
-            ]
+            ],
+            "expectedValueControls": []
           }
         }
       },
@@ -326,6 +344,20 @@
                   ]
                 ]
               }
+            ],
+            "expectedValueControls": [
+              {
+                "selector": "IX_GRP_MEETING_MINUTE_TAKER",
+                "value": "Charlotte Bennett",
+                "type": "DYNKWL",
+                "checkValue": true
+              },
+              {
+                "selector": "IX_DESC",
+                "value": "Beschreibung Meeting1",
+                "type": "REDACTOR",
+                "checkValue": true
+              }
             ]
           },
           "Benachrichtigungen": {
@@ -414,7 +446,8 @@
                   ]
                 ]
               }
-            ]
+            ],
+            "expectedValueControls": []
           },
           "Teilnehmende": {
             "initTabPage": [],
@@ -452,7 +485,8 @@
                   ]
                 ]
               }
-            ]
+            ],
+            "expectedValueControls": []
           }
         }
       },
@@ -556,6 +590,20 @@
                   ]
                 ]
               }
+            ],
+            "expectedValueControls": [
+              {
+                "selector": "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON",
+                "value": "Adrian Smith",
+                "type": "DYNKWL",
+                "checkValue": true
+              },
+              {
+                "selector": "IX_DESC",
+                "value": "Beschreibung Thema1",
+                "type": "REDACTOR",
+                "checkValue": true
+              }
             ]
           }
         }
@@ -564,7 +612,7 @@
   },
   "eloDeleteData": {
     "arcPaths": [
-      "ARCPATH:/Meetingboard1"
+      "ARCPATH:/Administrator/Meetingboard1"
     ]
   }
 }
