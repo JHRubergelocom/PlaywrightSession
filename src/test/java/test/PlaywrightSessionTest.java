@@ -43,7 +43,16 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_FIRSTNAME", "Hans", ELOControlType.TEXT, true));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_LASTNAME", "Hansen", ELOControlType.TEXT, true));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELNO", "12345", ELOControlType.TEXT, true));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner", ELOControlType.DYNKWL, true));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft", ELOControlType.DYNKWL, true));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum", ELOControlType.DYNKWL, true));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DATEOFJOINING", "01.01.2022", ELOControlType.TEXT, true));
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
 
         return tabPages;
@@ -52,7 +61,7 @@ public class PlaywrightSessionTest {
     private Map<String, TabPage> editEmployee1() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
-
+        // Persönlich
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
@@ -63,11 +72,13 @@ public class PlaywrightSessionTest {
         List<List<ELOControl>> table = new ArrayList<>();
 
         List<ELOControl> tableLine = new ArrayList<>();
+        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_TYPE", "Ehepartner", ELOControlType.KWL, true));
         tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME", "Hugo", ELOControlType.TEXT, true));
         tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME", "Egon", ELOControlType.TEXT, true));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
+        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_TYPE", "Ehepartner", ELOControlType.KWL, true));
         tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME", "Sandra", ELOControlType.TEXT, true));
         tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME", "Renz", ELOControlType.TEXT, true));
         table.add(tableLine);
@@ -88,8 +99,27 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("part_250_emergency_contacts", "Eintrag hinzufügen", table));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME2", "Sebastian", ELOControlType.TEXT, true));
+        expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME2", "Schulz", ELOControlType.TEXT, true));
+        expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TITLE", "Doktor H", ELOControlType.TEXT, true));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_GENDER", "M - Männlich", ELOControlType.KWL, true));
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Persönlich", tabPage);
+
+        // Ein-/ Austritt
+        initTabPage = new ArrayList<>();
+        controls = new ArrayList<>();
+        controls.add(new ELOControl("befristet", "true", ELOControlType.RADIO, true));
+
+        tables = new ArrayList<>();
+
+        expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOControl("IX_MAP_DURATION_TYPE", "sol.hr.form.personnelfile.fixedterm", ELOControlType.RADIO, true));
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
+        tabPages.put("Ein-/ Austritt", tabPage);
 
         return tabPages;
 
@@ -107,7 +137,9 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
 
         return tabPages;
@@ -127,7 +159,9 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
 
         return tabPages;
@@ -147,7 +181,9 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
 
         return tabPages;
@@ -167,7 +203,9 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
 
         return tabPages;
@@ -200,7 +238,11 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER1", "Jan Eichner", ELOControlType.DYNKWL, true));
+
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Allgemein", tabPage);
 
         // Mitglieder
@@ -247,7 +289,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weiteres Thema", table));
 
-        tabPage = new TabPage(initTabPage, controls, tables);
+        expectedValueControls = new ArrayList<>();
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Themen", tabPage);
 
         // Benachrichtigungen
@@ -276,7 +320,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Benachrichtigung", table));
 
-        tabPage = new TabPage(initTabPage, controls, tables);
+        expectedValueControls = new ArrayList<>();
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Benachrichtigungen", tabPage);
 
         // Einstellungen
@@ -288,7 +334,10 @@ public class PlaywrightSessionTest {
 
         tables = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables);
+        expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOControl("IX_MAP_MEETING_BOARD_SETTING_ITEMTOAGENDA", "true", ELOControlType.CHECKBOX, true));
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Einstellungen", tabPage);
 
         return tabPages;
@@ -321,7 +370,11 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weiterer Tag", table));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOControl("IX_GRP_MEETING_MINUTE_TAKER", "Charlotte Bennett", ELOControlType.DYNKWL, true));
+        expectedValueControls.add(new ELOControl("IX_DESC", "Beschreibung Meeting1", ELOControlType.REDACTOR, true));
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Allgemein", tabPage);
 
         // Teilnehmende
@@ -348,7 +401,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weiterer Gast", table));
 
-        tabPage = new TabPage(initTabPage, controls, tables);
+        expectedValueControls = new ArrayList<>();
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Teilnehmende", tabPage);
 
         // Benachrichtigungen
@@ -377,7 +432,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Benachrichtigung", table));
 
-        tabPage = new TabPage(initTabPage, controls, tables);
+        expectedValueControls = new ArrayList<>();
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Benachrichtigungen", tabPage);
 
         // Wiederholung
@@ -429,7 +486,11 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl> expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith", ELOControlType.DYNKWL, true));
+        expectedValueControls.add(new ELOControl("IX_DESC", "Beschreibung Thema1", ELOControlType.REDACTOR, true));
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
 
         return tabPages;
@@ -450,7 +511,9 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl> expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
 
         return tabPages;
@@ -489,7 +552,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl> expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
 
         return tabPages;
@@ -520,7 +585,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl> expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Allgemein", tabPage);
 
         // Mitglieder
@@ -567,7 +634,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weiterer TOP", table));
 
-        tabPage = new TabPage(initTabPage, controls, tables);
+        expectedValueControls = new ArrayList<>();
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Tagesordnungspunkte", tabPage);
 
         // Benachrichtigungen
@@ -596,7 +665,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Benachrichtigung", table));
 
-        tabPage = new TabPage(initTabPage, controls, tables);
+        expectedValueControls = new ArrayList<>();
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Benachrichtigungen", tabPage);
 
         // Einstellungen
@@ -607,7 +678,9 @@ public class PlaywrightSessionTest {
 
         tables = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables);
+        expectedValueControls = new ArrayList<>();
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Einstellungen", tabPage);
 
         return tabPages;
@@ -639,7 +712,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weiterer Tag", table));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl> expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Allgemein", tabPage);
 
         // Teilnehmende
@@ -666,7 +741,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weiterer Gast", table));
 
-        tabPage = new TabPage(initTabPage, controls, tables);
+        expectedValueControls = new ArrayList<>();
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Teilnehmende", tabPage);
 
         // Benachrichtigungen
@@ -695,7 +772,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Benachrichtigung", table));
 
-        tabPage = new TabPage(initTabPage, controls, tables);
+        expectedValueControls = new ArrayList<>();
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Benachrichtigungen", tabPage);
 
         // Wiederholung
@@ -746,7 +825,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl> expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
 
         return tabPages;
@@ -768,7 +849,9 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl> expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
 
         return tabPages;
@@ -807,7 +890,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables);
+        List<ELOControl> expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
 
         return tabPages;
@@ -816,7 +901,9 @@ public class PlaywrightSessionTest {
     private DataConfig createDataConfig(String jsonFile) {
         switch(jsonFile) {
             case "DataConfigMeeting.json" -> {return createDataConfigMeeting();}
+            case "DataConfigTest.json" -> {return createDataConfigTest();}
             case "DataConfigHr.json" -> {return createDataConfigHr();}
+            case "DataConfigHrEmployee.json" -> {return createDataConfigHrEmployee();}
         }
         return new DataConfig();
     }
@@ -870,6 +957,45 @@ public class PlaywrightSessionTest {
         final List<String> arcPaths = new ArrayList<>();
         arcPaths.add("ARCPATH:/Personalmanagement/Personalakten/H/Hansen, Hans");
         arcPaths.add("ARCPATH:/Firma Hansens");
+
+        final ELODeleteData eloDeleteData = new ELODeleteData(arcPaths);
+
+        return new DataConfig(loginData,
+                eloSolutionArchiveData,
+                eloActionData,
+                eloDeleteData);
+    }
+    private DataConfig createDataConfigHrEmployee() {
+        // ELO Action Def Data
+        final String selectorRibbonNew = "Neu";
+        final String selectorMenuPersonnel = "Personal";
+        final String selectorButtonNewEmployee = "Neuer Mitarbeiter";
+
+        // Fill DataConfig
+        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT, true);
+        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT, true);
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON, true);
+        final String stack = "ruberg-hr.dev.elo";
+
+        final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
+
+        final ELOSolutionArchiveData eloSolutionArchiveData = new ELOSolutionArchiveData("xpath=//*[@title=\"Solutions\"]", "Solutions");
+
+        final List<ELOAction> eloActions = new ArrayList<>();
+
+        Map<String, TabPage> eloTabPages = createEmployee1();
+        ELOAction eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
+        eloActions.add(eloAction);
+
+        eloTabPages = editEmployee1();
+        eloAction = new ELOAction("Solutions/Personalmanagement/Personalakten/H/Hansen, Hans", FormulaType.VIEWER,"Speichern", "","", new ELOActionDef(), eloTabPages);
+        eloActions.add(eloAction);
+
+        final ELOActionData eloActionData = new ELOActionData(eloActions);
+
+        // Delete Data
+        final List<String> arcPaths = new ArrayList<>();
+        arcPaths.add("ARCPATH:/Personalmanagement/Personalakten/H/Hansen, Hans");
 
         final ELODeleteData eloDeleteData = new ELODeleteData(arcPaths);
 
@@ -948,10 +1074,56 @@ public class PlaywrightSessionTest {
 
         // Delete Data
         final List<String> arcPaths = new ArrayList<>();
-        arcPaths.add("ARCPATH:/Meetingboard1");
-        arcPaths.add("ARCPATH:/Meetingboard2");
-        arcPaths.add("ARCPATH:/Meetingitempool1");
-        arcPaths.add("ARCPATH:/Meetingitempool2");
+        arcPaths.add("ARCPATH:/Administrator/Meetingboard1");
+        arcPaths.add("ARCPATH:/Administrator/Meetingboard2");
+        arcPaths.add("ARCPATH:/Administrator/Meetingitempool1");
+        arcPaths.add("ARCPATH:/Administrator/Meetingitempool2");
+
+        final ELODeleteData eloDeleteData = new ELODeleteData(arcPaths);
+
+        return new DataConfig(loginData,
+                eloSolutionArchiveData,
+                eloActionData,
+                eloDeleteData);
+    }
+    private DataConfig createDataConfigTest() {
+        // ELO Action Def Data
+        final String selectorRibbonNew = "Neu";
+        final String selectorMenuMeeting = "Meeting";
+        final String selectorButtonCreateMeetingBoard = "Neues Meeting-Board";
+        final String selectorButtonCreateMeeting = "Neues Meeting";
+        final String selectorButtonCreateMeetingItem = "Neues Thema";
+
+        // Fill DataConfig
+        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT, true);
+        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT, true);
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON, true);
+        final String stack = "ruberg-meeting.dev.elo";
+
+        final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
+
+        final ELOSolutionArchiveData eloSolutionArchiveData = new ELOSolutionArchiveData("xpath=//*[@title=\"Solutions\"]", "Solutions");
+
+        final List<ELOAction> eloActions = new ArrayList<>();
+
+        Map<String, TabPage> eloTabPages = createMB1();
+        ELOAction eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK","Abbrechen", "", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingBoard), eloTabPages);
+        eloActions.add(eloAction);
+
+        eloTabPages = createME1();
+        eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeeting), eloTabPages);
+        eloActions.add(eloAction);
+
+        eloTabPages = createMI1();
+        eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingItem), eloTabPages);
+        eloActions.add(eloAction);
+
+
+        final ELOActionData eloActionData = new ELOActionData(eloActions);
+
+        // Delete Data
+        final List<String> arcPaths = new ArrayList<>();
+        arcPaths.add("ARCPATH:/Administrator/Meetingboard1");
 
         final ELODeleteData eloDeleteData = new ELODeleteData(arcPaths);
 
@@ -1019,13 +1191,24 @@ public class PlaywrightSessionTest {
         }
         BaseFunctions.sleep();
     }
+    private void getMandatoryControls(FrameLocator frameLocator) {
+        System.out.println("*".repeat(10) + " MandatoryControls " + "*".repeat(10));
+        Locator rows = frameLocator.locator("[eloverify=\"" + "notemptyforward" + "\"]");
+        int count = rows.count();
+        System.out.println("rows.count(): " + count);
+        for (int i = 0; i < count; ++i) {
+            System.out.println("Row: " + i + " getAttribute(\"name\") " + rows.nth(i).getAttribute("name"));
+            System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
+            System.out.println("Row: " + i + " inputValue() " + rows.nth(i).inputValue());
+            System.out.println("Row: " + i + " innerTest() " + rows.nth(i).innerText());
+            System.out.println("Row: " + i + " innerHTML() " + rows.nth(i).innerHTML());
+            System.out.println("Row: " + i + " " + rows.nth(i));
+        }
+        System.out.println("*".repeat(10) + " MandatoryControls " + "*".repeat(10));
+    }
     private boolean checkMandatoryControl(Locator locator) {
         String eloverify = locator.getAttribute("eloverify");
         return eloverify.equals("notemptyforward");
-    }
-    private boolean checkValueControl(Locator locator, String value) {
-        String inputValue = locator.inputValue();
-        return inputValue.equals(value);
     }
     @BeforeAll
     static void launchBrowser() {
@@ -1038,7 +1221,7 @@ public class PlaywrightSessionTest {
     }
     @BeforeEach
     void createContextAndPage() {
-        context = browser.newContext(new Browser.NewContextOptions().setRecordVideoDir(Paths.get("")));
+        context = browser.newContext(new Browser.NewContextOptions().setRecordVideoDir(Paths.get(BaseFunctions.getReportPath())));
 
         // Start tracing before creating / navigating a page.
         context.tracing().start(new Tracing.StartOptions()
@@ -1052,8 +1235,7 @@ public class PlaywrightSessionTest {
     void closeContext() {
         // Stop tracing and export it into a zip archive.
         context.tracing().stop(new Tracing.StopOptions()
-                .setPath(Paths.get("trace.zip")));
-
+                .setPath(Paths.get(BaseFunctions.getReportPath() + "trace.zip")));
         context.close();
     }
     @ParameterizedTest
@@ -1062,7 +1244,7 @@ public class PlaywrightSessionTest {
         WebclientSession.execute(jsonFile, "PlaywrightConfig.json");
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigHr.json", "DataConfigMeeting.json", "Empty.json"})
+    @ValueSource(strings = {"DataConfigHr.json", "DataConfigHrEmployee.json", "DataConfigMeeting.json", "DataConfigTest.json", "Empty.json"})
     public void CreateDataConfigJson(String jsonFile) {
         // Create DataConfig
         final DataConfig dataConfig = createDataConfig(jsonFile);
@@ -1099,7 +1281,7 @@ public class PlaywrightSessionTest {
     @Test
     public void firstScript() {
         page.navigate("http://playwright.dev");
-        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("example.png")));
+        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(BaseFunctions.getReportPath() + "example.png")));
         System.out.println(page.title());
     }
     @Test
@@ -1364,7 +1546,7 @@ public class PlaywrightSessionTest {
 
         BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_DATEOFJOINING" + "\"]"), "20220101");
 
-        // TODO Feldprüfungen, Pflichtfelder, Stichwortlisten, Felder mit bestimmten Werten gefüllt
+        getMandatoryControls(frameLocator);
 
         // Pflichtfelder
         boolean mandatoryFirstname  = checkMandatoryControl(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_FIRSTNAME" + "\"]"));
@@ -1376,13 +1558,12 @@ public class PlaywrightSessionTest {
         System.out.println("mandatoryPersonalNo is " + mandatoryPersonalNo);
 
         // Werte prüfen
-        boolean valueEqualHans = checkValueControl(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_FIRSTNAME" + "\"]"), "Hans");
+        boolean valueEqualHans = BaseFunctions.checkValueControl(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_FIRSTNAME" + "\"]"), "Hans");
         System.out.println("valueEqualHans is " + valueEqualHans);
 
-        boolean valueEqualMayer = checkValueControl(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_FIRSTNAME" + "\"]"), "Mayer");
+        boolean valueEqualMayer = BaseFunctions.checkValueControl(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_FIRSTNAME" + "\"]"), "Mayer");
         System.out.println("valueEqualMayer is " + valueEqualMayer);
 
-        // TODO
         // Formular speichern
         clickButton(frameLocator, "OK");
 
@@ -1441,14 +1622,64 @@ public class PlaywrightSessionTest {
         BaseFunctions.inputKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_GENDER", "Männlich");
         System.out.println("*".repeat(10) + " Stichwortlistenfeld Geschlecht füllen " + "*".repeat(10));
 
-        // TODO Feldprüfungen, Pflichtfelder, Stichwortlisten, Felder mit bestimmten Werten gefüllt
+        // Tabpage auswählen
+        selectTab(frameLocator, "Ein-/ Austritt");
 
+        BaseFunctions.check(frameLocator.getByRole(AriaRole.RADIO, new FrameLocator.GetByRoleOptions().setName("befristet").setExact(true)));
+        //BaseFunctions.checkValueControl(frameLocator.locator("[name=\"" + "IX_MAP_DURATION_TYPE" + "\"]"), "sol.hr.form.personnelfile.fixedterm");
+        rows = frameLocator.locator("[name=\"" + "IX_MAP_DURATION_TYPE" + "\"]");
+        count = rows.count();
+        System.out.println("*".repeat(80));
+        System.out.println("rows.count(): " + count);
+        for (int i = 0; i < count; ++i) {
+            System.out.println("Row: " + i + " getAttribute(\"autovalidval\") " + rows.nth(i).getAttribute("autovalidval"));
+            System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
+            System.out.println("Row: " + i + " inputValue() " + rows.nth(i).inputValue());
+            System.out.println("Row: " + i + " innerTest() " + rows.nth(i).innerText());
+            System.out.println("Row: " + i + " innerHTML() " + rows.nth(i).innerHTML());
+            System.out.println("Row: " + i + " " + rows.nth(i));
+        }
+        System.out.println("*".repeat(80));
 
-        // TODO
 
 
         // Speichern
         clickButton(frameLocator, "Speichern");
+
+        page.pause(); // Start Codegen
+    }
+    @Test
+    public void testLocatorMeetingItem() {
+        page.navigate("http://" + "ruberg-meeting.dev.elo" + "/ix-Solutions/plugin/de.elo.ix.plugin.proxy/web/");
+        page.getByPlaceholder("Name").fill("0");
+        page.getByPlaceholder("Passwort").fill("elo");
+        page.getByText("Anmelden").click();
+
+        // Kachel "Solutions" klicken
+        page.locator("xpath=//*[@title=\"Solutions\"]").click();
+
+        // Ordner "Solutions" auswählen
+        selectEntryByPath("Solutions");
+
+        // Ribbon "Neu" auswählen
+        BaseFunctions.sleep();
+        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, "Neu", "id", "button");
+        optionalLocator.ifPresent(Locator::click);
+
+        // Menü "Meeting" auswählen
+        BaseFunctions.sleep();
+        optionalLocator = BaseFunctions.selectByTextAttribute(page, "Meeting", "id", "button");
+        optionalLocator.ifPresent(Locator::click);
+
+        // Button "Neues Thema" auswählen
+        BaseFunctions.sleep();
+        optionalLocator = BaseFunctions.selectByTextAttribute(page, "Neues Thema", "id", "comp");
+        optionalLocator.ifPresent(Locator::click);
+
+        // Get Frame External Formula
+        BaseFunctions.sleep();
+        FrameLocator frameLocator = getFrameLocator("iframe");
+        System.out.println("framelocator = " + frameLocator);
 
         page.pause(); // Start Codegen
     }

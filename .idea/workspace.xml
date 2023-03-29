@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Input validation Keyword List" />
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Refactoring Testreport">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,50 +72,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.PlaywrightSessionTest.TestSession">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.App" />
-      <module name="PlaywrightSession" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlaywrightParameterTest.TestSession" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PlaywrightSession" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.PlaywrightParameterTest" />
-      <option name="METHOD_NAME" value="TestSession(java.lang.String)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlaywrightReportTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PlaywrightSession" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.PlaywrightReportTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PlaywrightSessionTest.CreateDataConfigJson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
@@ -146,10 +104,58 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PlaywrightSessionTest.testLocatorCompany" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PlaywrightSession" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
+      <option name="METHOD_NAME" value="testLocatorCompany" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlaywrightSessionTest.testLocatorEmployee" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PlaywrightSession" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
+      <option name="METHOD_NAME" value="testLocatorEmployee" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlaywrightSessionTest.testLoginLanguage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PlaywrightSession" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
+      <option name="METHOD_NAME" value="testLoginLanguage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.App" />
-      <item itemvalue="JUnit.PlaywrightParameterTest.TestSession" />
-      <item itemvalue="JUnit.PlaywrightReportTest" />
+      <item itemvalue="JUnit.PlaywrightSessionTest.testLocatorEmployee" />
+      <item itemvalue="JUnit.PlaywrightSessionTest.testLoginLanguage" />
+      <item itemvalue="JUnit.PlaywrightSessionTest.testLocatorCompany" />
       <item itemvalue="JUnit.PlaywrightSessionTest.CreateDataConfigJson" />
       <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
     </list>
@@ -157,9 +163,9 @@
       <list>
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
         <item itemvalue="JUnit.PlaywrightSessionTest.CreateDataConfigJson" />
-        <item itemvalue="Application.App" />
-        <item itemvalue="JUnit.PlaywrightParameterTest.TestSession" />
-        <item itemvalue="JUnit.PlaywrightReportTest" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.testLocatorEmployee" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.testLoginLanguage" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.testLocatorCompany" />
       </list>
     </recent_temporary>
   </component>
@@ -171,83 +177,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670419530192</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Playwright DataConfig Hr, Meeting, select folder path">
-      <created>1675429348136</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1675429348136</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula">
-      <created>1675437147595</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1675437147595</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula">
-      <created>1675675533817</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1675675533817</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula">
-      <created>1675688034163</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1675688034163</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula">
-      <created>1675692585821</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1675692585821</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula">
-      <created>1675695783107</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1675695783107</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula">
-      <created>1675697647921</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1675697647921</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Playwright DataConfig Hr, Meeting, select dialog">
-      <created>1675773419881</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1675773419881</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Playwright DataConfig Hr, Meeting, select dialog">
-      <created>1675778387859</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1675778387859</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Playwright DataConfig Hr, Meeting, select dialog">
-      <created>1675843089722</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1675843089723</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Playwright DataConfig Hr, Meeting, multiple tables in tabpage">
-      <created>1675848638870</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1675848638870</updated>
     </task>
     <task id="LOCAL-00053" summary="Playwright DataConfig Hr, Meeting, multiple tables in tabpage">
       <created>1675862246227</created>
@@ -515,7 +444,84 @@
       <option name="project" value="LOCAL" />
       <updated>1678958593602</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Playwright Report in Subdirectory">
+      <created>1678978083277</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1678978083277</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Playwright Check Mandatory Fields">
+      <created>1679050362239</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1679050362240</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Playwright Check Mandatory Fields">
+      <created>1679069211057</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1679069211057</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Playwright Check Mandatory Fields">
+      <created>1679316373987</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1679316373988</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Playwright Check Expected Value in Fields">
+      <created>1679388564165</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1679388564165</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Playwright Check Expected Value in Fields">
+      <created>1679409950574</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1679409950574</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Playwright Check Expected Value in Fields">
+      <created>1679411393277</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1679411393277</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Playwright Refactoring Testreport">
+      <created>1679484929166</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1679484929166</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Playwright Refactoring Testreport">
+      <created>1679584830609</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1679584830609</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Playwright Refactoring Testreport">
+      <created>1679659993450</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1679659993450</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Playwright Refactoring Testreport">
+      <created>1679904020126</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1679904020126</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -531,10 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Playwright DataConfigTest Test Main" />
-    <MESSAGE value="Playwright Refinement Datastructures" />
-    <MESSAGE value="Playwright Refinement Locators" />
-    <MESSAGE value="Playwright Refinement DataConfig" />
     <MESSAGE value="Playwright Refinement DataConfig Redactorfields" />
     <MESSAGE value="Playwright DataConfig Hr" />
     <MESSAGE value="Playwright DataConfig Hr, Meeting" />
@@ -556,15 +558,49 @@
     <MESSAGE value="Playwright Html Report Test Reporting with Screenshots" />
     <MESSAGE value="Playwright Input validation" />
     <MESSAGE value="Playwright Input validation Keyword List" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright Input validation Keyword List" />
+    <MESSAGE value="Playwright Report in Subdirectory" />
+    <MESSAGE value="Playwright Check Mandatory Fields" />
+    <MESSAGE value="Playwright Check Expected Value in Fields" />
+    <MESSAGE value="Playwright Refactoring Testreport" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright Refactoring Testreport" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/session/BaseFunctions.java</url>
-          <line>18</line>
+          <line>22</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/session/BaseFunctions.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/session/Formula.java</url>
+          <line>217</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java</url>
+          <line>1641</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/session/Formula.java</url>
+          <line>331</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/session/Formula.java</url>
+          <line>349</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java</url>
+          <line>1248</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

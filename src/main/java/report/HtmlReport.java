@@ -1,5 +1,7 @@
 package report;
 
+import session.BaseFunctions;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -217,10 +219,14 @@ public class HtmlReport {
         return htmlDoc;
     }
     public static void showReport(String htmlDoc) {
-        String reportPath = "Report.html";
+        File dir = new File(BaseFunctions.getReportPath());
+        String reportPath = BaseFunctions.getReportPath() + "Report.html";
         File reportFile = new File(reportPath);
         URI uri = reportFile.toURI();
         try {
+            if (!dir.exists()) {
+                dir.mkdir();
+            }
             if (!reportFile.exists()) {
                 reportFile.createNewFile();
             }

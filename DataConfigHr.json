@@ -84,7 +84,51 @@
                 "checkValue": true
               }
             ],
-            "tables": []
+            "tables": [],
+            "expectedValueControls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
+                "value": "Hans",
+                "type": "TEXT",
+                "checkValue": true
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_LASTNAME",
+                "value": "Hansen",
+                "type": "TEXT",
+                "checkValue": true
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_PERSONNELNO",
+                "value": "12345",
+                "type": "TEXT",
+                "checkValue": true
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_ELOUSERID",
+                "value": "Jan Eichner",
+                "type": "DYNKWL",
+                "checkValue": true
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_RESPONSIBLE",
+                "value": "Bodo Kraft",
+                "type": "DYNKWL",
+                "checkValue": true
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_SUPERIOR",
+                "value": "Gerd Baum",
+                "type": "DYNKWL",
+                "checkValue": true
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_DATEOFJOINING",
+                "value": "01.01.2022",
+                "type": "TEXT",
+                "checkValue": true
+              }
+            ]
           }
         }
       },
@@ -110,7 +154,8 @@
                 "checkValue": true
               }
             ],
-            "tables": []
+            "tables": [],
+            "expectedValueControls": []
           }
         }
       },
@@ -126,6 +171,26 @@
           "selectorButton": ""
         },
         "tabPages": {
+          "Ein-/ Austritt": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "befristet",
+                "value": "true",
+                "type": "RADIO",
+                "checkValue": true
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": [
+              {
+                "selector": "IX_MAP_DURATION_TYPE",
+                "value": "sol.hr.form.personnelfile.fixedterm",
+                "type": "RADIO",
+                "checkValue": true
+              }
+            ]
+          },
           "Persönlich": {
             "initTabPage": [],
             "controls": [
@@ -149,6 +214,12 @@
                 "table": [
                   [
                     {
+                      "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_TYPE",
+                      "value": "Ehepartner",
+                      "type": "KWL",
+                      "checkValue": true
+                    },
+                    {
                       "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME",
                       "value": "Hugo",
                       "type": "TEXT",
@@ -162,6 +233,12 @@
                     }
                   ],
                   [
+                    {
+                      "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_TYPE",
+                      "value": "Ehepartner",
+                      "type": "KWL",
+                      "checkValue": true
+                    },
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME",
                       "value": "Sandra",
@@ -211,6 +288,32 @@
                   ]
                 ]
               }
+            ],
+            "expectedValueControls": [
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME2",
+                "value": "Sebastian",
+                "type": "TEXT",
+                "checkValue": true
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME2",
+                "value": "Schulz",
+                "type": "TEXT",
+                "checkValue": true
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_TITLE",
+                "value": "Doktor H",
+                "type": "TEXT",
+                "checkValue": true
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_GENDER",
+                "value": "M - Männlich",
+                "type": "KWL",
+                "checkValue": true
+              }
             ]
           }
         }
@@ -243,7 +346,8 @@
                 "checkValue": true
               }
             ],
-            "tables": []
+            "tables": [],
+            "expectedValueControls": []
           }
         }
       },
@@ -275,7 +379,8 @@
                 "checkValue": true
               }
             ],
-            "tables": []
+            "tables": [],
+            "expectedValueControls": []
           }
         }
       },
@@ -307,7 +412,8 @@
                 "checkValue": true
               }
             ],
-            "tables": []
+            "tables": [],
+            "expectedValueControls": []
           }
         }
       }

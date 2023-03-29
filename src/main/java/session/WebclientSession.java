@@ -19,8 +19,7 @@ public class WebclientSession {
     private Page page;
     private final Playwright playwright;
     private BrowserContext browserContext;
-    private final String selectorSolutionTile;
-    private final String selectorSolutionsFolder;
+    private final DataConfig dataConfig;
     private final List<ReportParagraph> reportParagraphs;
     public Page getPage() {
         return page;
@@ -51,7 +50,7 @@ public class WebclientSession {
 
         Browser.NewContextOptions newContextOptions = new Browser.NewContextOptions();
         if (playwrightConfig.isRecordVideo()) {
-            newContextOptions.setRecordVideoDir(Paths.get(""));
+            newContextOptions.setRecordVideoDir(Paths.get(BaseFunctions.getReportPath()));
         }
 
         browserContext = createContext(browser, newContextOptions);
@@ -70,9 +69,8 @@ public class WebclientSession {
         page = startContextPage(browserContext, startOptions);
 
     }
-    private WebclientSession(PlaywrightConfig playwrightConfig, ELOSolutionArchiveData eloSolutionArchiveData) {
-        this.selectorSolutionTile = eloSolutionArchiveData.getSelectorSolutionTile();
-        this.selectorSolutionsFolder = eloSolutionArchiveData.getSelectorSolutionsFolder();
+    private WebclientSession(PlaywrightConfig playwrightConfig, DataConfig dataConfig) {
+        this.dataConfig = dataConfig;
         this.reportParagraphs = new ArrayList<>();
 
         playwright = Playwright.create();
@@ -123,7 +121,7 @@ public class WebclientSession {
         if (!eloAction.getSelectionDialogItem().equals("")) {
             System.out.println("selectionDialogItem = "+ eloAction.getSelectionDialogItem());
             BaseFunctions.sleep();
-            BaseFunctions.reportScreenshot(this, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "selectionDialogItem") + ".png");
+            BaseFunctions.reportScreenshot(this, eloAction.getSelectionDialogItem(), BaseFunctions.getScreenShotFileName(eloAction, "selectionDialogItem") + ".png");
             page.getByText(eloAction.getSelectionDialogItem()).click();
         }
     }
@@ -181,7 +179,10 @@ public class WebclientSession {
     private boolean executeAction(ELOAction eloAction,
                                Map<String, TabPage> tabPages) {
         boolean checkData = true;
-        selectSolutionsFolder();
+        selectEntryByPath(dataConfig.getEloSolutionArchiveData().getSelectorSolutionsFolder() +
+                "/" +
+                dataConfig.getLoginData().getTextUserName().getValue());
+
         if(selectEntryByPath(eloAction.getEntryPath())) {
             Optional<FrameLocator> frameLocatorOptional = startFormula(eloAction);
             if (frameLocatorOptional.isPresent()) {
@@ -191,7 +192,7 @@ public class WebclientSession {
                 } else {
                     if(!eloAction.getFormulaCancelButton().equals("")) {
                         formula.quit(eloAction.getFormulaCancelButton());
-                        BaseFunctions.reportScreenshot(this, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "Formula") + ".png");
+                        BaseFunctions.reportScreenshot(this, "<span>" + "Formular cannot be saved" + "</span>", BaseFunctions.getScreenShotFileName(eloAction, "Formula") + ".png");
                         BaseFunctions.reportMessage(reportParagraphs, "<span>" + "Formular cannot be saved" + "</span>");
                     }
                     checkData = false;
@@ -204,11 +205,7 @@ public class WebclientSession {
         return checkData;
     }
     private void selectSolutionTile() {
-        BaseFunctions.click(page.locator(selectorSolutionTile));
-    }
-    private void selectSolutionsFolder() {
-        Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, selectorSolutionsFolder, "class", "color");
-        optionalLocator.ifPresent(Locator::click);
+        BaseFunctions.click(page.locator(dataConfig.getEloSolutionArchiveData().getSelectorSolutionTile()));
     }
     private Optional<Locator> selectFolder(String folder) {
         return BaseFunctions.selectByTextAttribute(page, folder, "class", "color");
@@ -264,7 +261,7 @@ public class WebclientSession {
     private boolean selectRibbon(ELOAction eloAction){
         Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, eloAction.getEloActionDef().getSelectorRibbon(), "id", "button");
         if(optionalLocator.isPresent()) {
-            BaseFunctions.reportScreenshot(this, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "Ribbon") + ".png");
+            BaseFunctions.reportScreenshot(this, eloAction.getEloActionDef().getSelectorRibbon(), BaseFunctions.getScreenShotFileName(eloAction, "Ribbon") + ".png");
             optionalLocator.get().click();
             return true;
         }
@@ -274,7 +271,7 @@ public class WebclientSession {
     private boolean selectMenu(ELOAction eloAction){
         Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, eloAction.getEloActionDef().getSelectorMenu(), "id", "button");
         if (optionalLocator.isPresent()) {
-            BaseFunctions.reportScreenshot(this, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "Menu") + ".png");
+            BaseFunctions.reportScreenshot(this, eloAction.getEloActionDef().getSelectorMenu(), BaseFunctions.getScreenShotFileName(eloAction, "Menu") + ".png");
             optionalLocator.get().click();
             return true;
         }
@@ -284,7 +281,7 @@ public class WebclientSession {
     private boolean selectButton(ELOAction eloAction){
         Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, eloAction.getEloActionDef().getSelectorButton(), "id", "comp");
         if (optionalLocator.isPresent()) {
-            BaseFunctions.reportScreenshot(this, BaseFunctions.getScreenShotFileName(eloAction, ""), BaseFunctions.getScreenShotFileName(eloAction, "Button") + ".png");
+            BaseFunctions.reportScreenshot(this, eloAction.getEloActionDef().getSelectorButton(), BaseFunctions.getScreenShotFileName(eloAction, "Button") + ".png");
             optionalLocator.get().click();
             return true;
         }
@@ -293,7 +290,7 @@ public class WebclientSession {
     }
     private void close() {
         browserContext.tracing().stop(new Tracing.StopOptions()
-                .setPath(Paths.get("trace_" + browserContext.browser().browserType().name() + ".zip")));
+                .setPath(Paths.get(BaseFunctions.getReportPath() + "trace_" + browserContext.browser().browserType().name() + ".zip")));
         browserContext.close();
         playwright.close();
     }
@@ -323,7 +320,7 @@ public class WebclientSession {
             final PlaywrightConfig playwrightConfig = BaseFunctions.readPlaywrightConfig(jsonPlaywrightConfigFile);
 
             // Execute DataConfig
-            ws = new WebclientSession(playwrightConfig, dataConfig.getEloSolutionArchiveData());
+            ws = new WebclientSession(playwrightConfig, dataConfig);
             try {
                 ws.login(dataConfig.getLoginData());
             } catch ( Exception e) {
@@ -371,13 +368,15 @@ public class WebclientSession {
             }
         }
     }
+
     @Override
     public String toString() {
         return "WebclientSession{" +
                 "page=" + page +
                 ", playwright=" + playwright +
-                ", selectorSolutionTile='" + selectorSolutionTile + '\'' +
-                ", selectorSolutionsFolder='" + selectorSolutionsFolder + '\'' +
+                ", browserContext=" + browserContext +
+                ", dataConfig=" + dataConfig +
+                ", reportParagraphs=" + reportParagraphs +
                 '}';
     }
 }
