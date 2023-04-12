@@ -58,5 +58,8 @@
     "toNodesName": [
       "sol.common.wf.node.ok"
     ]
+  },
+  "eloExecuteRf": {
+    "eloRfs": []
   }
 }

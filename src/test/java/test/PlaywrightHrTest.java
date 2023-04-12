@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import session.*;
-
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -167,11 +166,14 @@ public class PlaywrightHrTest {
 
         final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(new ArrayList<>());
 
+        final ELOExecuteRf eloExecuteRf = new ELOExecuteRf(new ArrayList<>());
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionData,
                 eloDeleteData,
-                eloForwardWorkflow);
+                eloForwardWorkflow,
+                eloExecuteRf);
 
     }
     private DataConfig createDataConfigStartOnBoarding() {
@@ -207,11 +209,18 @@ public class PlaywrightHrTest {
 
         final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(toNodesName);
 
+        // Start AS-Direct Rule "sol.hr.PersonnelFileReminder"
+        final List<ELORf> eloRfs = new ArrayList<>();
+        eloRfs.add(new ELORf("RF_sol_common_service_ExecuteAsAction", "{ \"action\": \"sol.hr.PersonnelFileReminder\", \"config\": {} }"));
+
+        final ELOExecuteRf eloExecuteRf = new ELOExecuteRf(eloRfs);
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionData,
                 eloDeleteData,
-                eloForwardWorkflow);
+                eloForwardWorkflow,
+                eloExecuteRf);
     }
     private DataConfig createDataConfigResignation() {
         // TODO createDataConfigResignation
@@ -240,11 +249,14 @@ public class PlaywrightHrTest {
 
         final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(new ArrayList<>());
 
+        final ELOExecuteRf eloExecuteRf = new ELOExecuteRf(new ArrayList<>());
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionData,
                 eloDeleteData,
-                eloForwardWorkflow);
+                eloForwardWorkflow,
+                eloExecuteRf);
     }
     private DataConfig createDataConfigFirstdayOfWorkReminder() {
 
@@ -274,11 +286,14 @@ public class PlaywrightHrTest {
 
         final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(toNodesName);
 
+        final ELOExecuteRf eloExecuteRf = new ELOExecuteRf(new ArrayList<>());
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionData,
                 eloDeleteData,
-                eloForwardWorkflow);
+                eloForwardWorkflow,
+                eloExecuteRf);
 
     }
     private DataConfig createDataConfig(String jsonFile) {
@@ -436,8 +451,9 @@ public class PlaywrightHrTest {
         try {
             String funcName = "RF_sol_common_service_ExecuteAsAction";
             String jsonParam = "{ \"action\": \"sol.hr.PersonnelFileReminder\", \"config\": {} }";
-            System.out.println("RF-Funktion " + funcName + " mit jsonParam " + jsonParam);
-            String rfResult = RfUtils.executeRF(ixConn, funcName, jsonParam);
+            ELORf eloRf = new ELORf(funcName, jsonParam);
+            System.out.println("eloRf " + eloRf);
+            String rfResult = RfUtils.executeRF(ixConn, eloRf);
             System.out.println("rfResult: " + rfResult);
         } catch (Exception ex) {
             System.err.println("testForwardWorkflow message: " +  ex.getMessage());

@@ -962,11 +962,14 @@ public class PlaywrightSessionTest {
 
         final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(new ArrayList<>());
 
+        final ELOExecuteRf eloExecuteRf = new ELOExecuteRf(new ArrayList<>());
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionData,
                 eloDeleteData,
-                eloForwardWorkflow);
+                eloForwardWorkflow,
+                eloExecuteRf);
     }
     private DataConfig createDataConfigHrEmployee() {
         // ELO Action Def Data
@@ -1004,11 +1007,14 @@ public class PlaywrightSessionTest {
 
         final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(new ArrayList<>());
 
+        final ELOExecuteRf eloExecuteRf = new ELOExecuteRf(new ArrayList<>());
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionData,
                 eloDeleteData,
-                eloForwardWorkflow);
+                eloForwardWorkflow,
+                eloExecuteRf);
     }
     private DataConfig createDataConfigMeeting() {
         // ELO Action Def Data
@@ -1089,11 +1095,14 @@ public class PlaywrightSessionTest {
 
         final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(new ArrayList<>());
 
+        final ELOExecuteRf eloExecuteRf = new ELOExecuteRf(new ArrayList<>());
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionData,
                 eloDeleteData,
-                eloForwardWorkflow);
+                eloForwardWorkflow,
+                eloExecuteRf);
     }
     private DataConfig createDataConfigTest() {
         // ELO Action Def Data
@@ -1138,11 +1147,14 @@ public class PlaywrightSessionTest {
 
         final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(new ArrayList<>());
 
+        final ELOExecuteRf eloExecuteRf = new ELOExecuteRf(new ArrayList<>());
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionData,
                 eloDeleteData,
-                eloForwardWorkflow);
+                eloForwardWorkflow,
+                eloExecuteRf);
     }
     private FrameLocator getFrameLocator(String frameName) {
         String selector = "";

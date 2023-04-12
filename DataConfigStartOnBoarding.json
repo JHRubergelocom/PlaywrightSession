@@ -89,5 +89,13 @@
       "sol.common.wf.node.ok",
       "sol.common.wf.node.approve"
     ]
+  },
+  "eloExecuteRf": {
+    "eloRfs": [
+      {
+        "funcName": "RF_sol_common_service_ExecuteAsAction",
+        "jsonParam": "{ \"action\": \"sol.hr.PersonnelFileReminder\", \"config\": {} }"
+      }
+    ]
   }
 }

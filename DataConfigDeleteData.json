@@ -31,5 +31,8 @@
   },
   "eloForwardWorkflow": {
     "toNodesName": []
+  },
+  "eloExecuteRf": {
+    "eloRfs": []
   }
 }

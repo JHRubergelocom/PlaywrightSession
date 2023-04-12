@@ -6,6 +6,7 @@ import de.elo.ix.client.IXConnection;
 import de.elo.ix.client.WFDiagram;
 import eloix.ELOIxConnection;
 import eloix.RepoUtils;
+import eloix.RfUtils;
 import eloix.WfUtils;
 import report.HtmlReport;
 import report.ReportData;
@@ -299,7 +300,7 @@ public class WebclientSession {
         browserContext.close();
         playwright.close();
     }
-    private void deleteData(DataConfig dataConfig) throws Exception {
+    private void deleteData() throws Exception {
         // Ix Connect
         IXConnection ixConn = ELOIxConnection.getIxConnection(dataConfig.getLoginData(), true);
         System.out.println("IxConn: " + ixConn);
@@ -311,7 +312,7 @@ public class WebclientSession {
 
         ixConn.close();
     }
-    private void forwardWorkflow(DataConfig dataConfig) throws Exception {
+    private void forwardWorkflow() throws Exception {
         // Ix Connect
         IXConnection ixConn = ELOIxConnection.getIxConnection(dataConfig.getLoginData(), false);
         System.out.println("IxConn: " + ixConn);
@@ -333,6 +334,19 @@ public class WebclientSession {
         WfUtils.removeFinishedWorkflows(ixConn, finishedWorkflows);
 
         ixConn.close();
+    }
+    private void executeRF() throws Exception {
+        // Ix Connect
+        IXConnection ixConn = ELOIxConnection.getIxConnection(dataConfig.getLoginData(), true);
+        System.out.println("IxConn: " + ixConn);
+
+        // Execute RF
+        for (ELORf eloRf: dataConfig.getEloExecuteRf().getEloRfs()) {
+            RfUtils.executeRF(ixConn, eloRf);
+        }
+
+        ixConn.close();
+
     }
     private static void showReport(List<ReportParagraph> reportParagraphs) {
         ReportData reportData = new ReportData("Report Test", reportParagraphs);
@@ -370,7 +384,7 @@ public class WebclientSession {
             // Delete Data
             List<String> arcPaths = dataConfig.getEloDeleteData().getArcPaths();
             if(arcPaths.size() > 0) {
-                ws.deleteData(dataConfig);
+                ws.deleteData();
 
                 // Remove Workflows
                 ws.removeFinishedWorkflows();
@@ -379,7 +393,13 @@ public class WebclientSession {
             // Forward Workflow
             List<String> toNodesName = dataConfig.getEloForwardWorkflow().getToNodesName();
             if(toNodesName.size() > 0) {
-                ws.forwardWorkflow(dataConfig);
+                ws.forwardWorkflow();
+            }
+
+            // Execute RF
+            List<ELORf> eloRfs = dataConfig.getEloExecuteRf().getEloRfs();
+            if(eloRfs.size() > 0) {
+                ws.executeRF();
             }
 
             if(checkData) {
