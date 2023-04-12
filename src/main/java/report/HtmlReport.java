@@ -1,7 +1,5 @@
 package report;
 
-import session.BaseFunctions;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -218,9 +216,9 @@ public class HtmlReport {
 
         return htmlDoc;
     }
-    public static void showReport(String htmlDoc) {
-        File dir = new File(BaseFunctions.getReportPath());
-        String reportPath = BaseFunctions.getReportPath() + "Report.html";
+    public static void showReport(String reportPath1, String htmlDoc) {
+        File dir = new File(reportPath1);
+        String reportPath = reportPath1 + "Report.html";
         File reportFile = new File(reportPath);
         URI uri = reportFile.toURI();
         try {

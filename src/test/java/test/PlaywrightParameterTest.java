@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class PlaywrightParameterTest {
+    private final String reportPath = "testreport/";
     private Browser launch(BrowserType browserType, BrowserType.LaunchOptions options) {
         return browserType.launch(options);
     }
@@ -205,7 +206,7 @@ public class PlaywrightParameterTest {
     }
     private void closeContext(BrowserContext browserContext) {
         browserContext.tracing().stop(new Tracing.StopOptions()
-                .setPath(Paths.get(BaseFunctions.getReportPath() + "trace_" + browserContext.browser().browserType().name() + ".zip")));
+                .setPath(Paths.get(reportPath + "trace_" + browserContext.browser().browserType().name() + ".zip")));
         browserContext.close();
     }
     private PlaywrightConfig createPlaywrightConfig() {
@@ -270,7 +271,7 @@ public class PlaywrightParameterTest {
         Browser browser = launch(browserType, launchOptions);
 
         Browser.NewContextOptions newContextOptions = new Browser.NewContextOptions();
-        newContextOptions.setRecordVideoDir(Paths.get(BaseFunctions.getReportPath()));
+        newContextOptions.setRecordVideoDir(Paths.get(reportPath));
 
         BrowserContext browserContext = createContext(browser, newContextOptions);
 

@@ -24,8 +24,12 @@ public class WebclientSession {
     private BrowserContext browserContext;
     private final DataConfig dataConfig;
     private final List<ReportParagraph> reportParagraphs;
+    private final String reportPath;
     public Page getPage() {
         return page;
+    }
+    public String getReportPath() {
+        return reportPath;
     }
     public List<ReportParagraph> getReportParagraphs() {
         return reportParagraphs;
@@ -53,7 +57,7 @@ public class WebclientSession {
 
         Browser.NewContextOptions newContextOptions = new Browser.NewContextOptions();
         if (playwrightConfig.isRecordVideo()) {
-            newContextOptions.setRecordVideoDir(Paths.get(BaseFunctions.getReportPath()));
+            newContextOptions.setRecordVideoDir(Paths.get(getReportPath()));
         }
 
         browserContext = createContext(browser, newContextOptions);
@@ -72,9 +76,10 @@ public class WebclientSession {
         page = startContextPage(browserContext, startOptions);
 
     }
-    private WebclientSession(PlaywrightConfig playwrightConfig, DataConfig dataConfig) {
+    private WebclientSession(PlaywrightConfig playwrightConfig, DataConfig dataConfig, String reportPath) {
         this.dataConfig = dataConfig;
         this.reportParagraphs = new ArrayList<>();
+        this.reportPath = reportPath;
 
         playwright = Playwright.create();
         setPlaywrightConfigParameter(playwrightConfig);
@@ -296,7 +301,7 @@ public class WebclientSession {
     }
     private void close() {
         browserContext.tracing().stop(new Tracing.StopOptions()
-                .setPath(Paths.get(BaseFunctions.getReportPath() + "trace_" + browserContext.browser().browserType().name() + ".zip")));
+                .setPath(Paths.get(getReportPath() + "trace_" + browserContext.browser().browserType().name() + ".zip")));
         browserContext.close();
         playwright.close();
     }
@@ -348,10 +353,10 @@ public class WebclientSession {
         ixConn.close();
 
     }
-    private static void showReport(List<ReportParagraph> reportParagraphs) {
+    private static void showReport(String reportPath, List<ReportParagraph> reportParagraphs) {
         ReportData reportData = new ReportData("Report Test", reportParagraphs);
         String htmlDoc = HtmlReport.createReport(reportData);
-        HtmlReport.showReport(htmlDoc);
+        HtmlReport.showReport(reportPath, htmlDoc);
     }
     public static void execute(String jsonDataConfigFile, String jsonPlaywrightConfigFile) {
         boolean checkData = true;
@@ -362,7 +367,7 @@ public class WebclientSession {
             final PlaywrightConfig playwrightConfig = BaseFunctions.readPlaywrightConfig(jsonPlaywrightConfigFile);
 
             // Execute DataConfig
-            ws = new WebclientSession(playwrightConfig, dataConfig);
+            ws = new WebclientSession(playwrightConfig, dataConfig,"testreport/");
             try {
                 ws.login(dataConfig.getLoginData());
             } catch ( Exception e) {
@@ -419,13 +424,14 @@ public class WebclientSession {
             }
         } finally {
             if (ws != null) {
-                showReport(ws.getReportParagraphs());
+                showReport(ws.getReportPath(), ws.getReportParagraphs());
                 ws.close();
             } else {
-                showReport(reportParagraphs);
+                showReport("testreport/", reportParagraphs);
             }
         }
     }
+
     @Override
     public String toString() {
         return "WebclientSession{" +
@@ -434,6 +440,7 @@ public class WebclientSession {
                 ", browserContext=" + browserContext +
                 ", dataConfig=" + dataConfig +
                 ", reportParagraphs=" + reportParagraphs +
+                ", reportPath='" + reportPath + '\'' +
                 '}';
     }
 }

@@ -114,6 +114,6 @@ public class PlaywrightReportTest {
         System.out.println(reportData);
 
         String htmlDoc = HtmlReport.createReport(reportData);
-        HtmlReport.showReport(htmlDoc);
+        HtmlReport.showReport("testreport/", htmlDoc);
     }
 }

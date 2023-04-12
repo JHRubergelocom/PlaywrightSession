@@ -24,6 +24,7 @@ public class PlaywrightSessionTest {
     // New instance for each test method.
     BrowserContext context;
     Page page;
+    private final String reportPath = "testreport/";
     private Map<String, TabPage> createEmployee1() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
@@ -1245,7 +1246,7 @@ public class PlaywrightSessionTest {
     }
     @BeforeEach
     void createContextAndPage() {
-        context = browser.newContext(new Browser.NewContextOptions().setRecordVideoDir(Paths.get(BaseFunctions.getReportPath())));
+        context = browser.newContext(new Browser.NewContextOptions().setRecordVideoDir(Paths.get(reportPath)));
 
         // Start tracing before creating / navigating a page.
         context.tracing().start(new Tracing.StartOptions()
@@ -1259,7 +1260,7 @@ public class PlaywrightSessionTest {
     void closeContext() {
         // Stop tracing and export it into a zip archive.
         context.tracing().stop(new Tracing.StopOptions()
-                .setPath(Paths.get(BaseFunctions.getReportPath() + "trace.zip")));
+                .setPath(Paths.get(reportPath + "trace.zip")));
         context.close();
     }
     @ParameterizedTest
@@ -1305,7 +1306,7 @@ public class PlaywrightSessionTest {
     @Test
     public void firstScript() {
         page.navigate("http://playwright.dev");
-        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(BaseFunctions.getReportPath() + "example.png")));
+        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(reportPath + "example.png")));
         System.out.println(page.title());
     }
     @Test

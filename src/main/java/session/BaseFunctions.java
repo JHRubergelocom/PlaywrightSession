@@ -15,10 +15,6 @@ import java.util.Optional;
 
 public class BaseFunctions {
     private static final long millis = 5000;
-    private static final String reportPath = "testreport/";
-    public static String getReportPath() {
-        return reportPath;
-    }
     public static void sleep() {
         try {
             Thread.sleep(millis);
@@ -334,7 +330,7 @@ public class BaseFunctions {
         return "TabPage " + tabName;
     }
     public static void reportScreenshot(WebclientSession webclientSession,  String message, String screenshot) {
-        webclientSession.getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get(BaseFunctions.getReportPath() + screenshot)));
+        webclientSession.getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get(webclientSession.getReportPath() + screenshot)));
 
         List<String> reportHeader = new ArrayList<>();
         reportHeader.add(message);
