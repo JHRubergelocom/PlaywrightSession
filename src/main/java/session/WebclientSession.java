@@ -3,8 +3,10 @@ package session;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
 import de.elo.ix.client.IXConnection;
+import de.elo.ix.client.WFDiagram;
 import eloix.ELOIxConnection;
 import eloix.RepoUtils;
+import eloix.WfUtils;
 import report.HtmlReport;
 import report.ReportData;
 import report.ReportParagraph;
@@ -280,6 +282,9 @@ public class WebclientSession {
     }
     private boolean selectButton(ELOAction eloAction){
         Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, eloAction.getEloActionDef().getSelectorButton(), "id", "comp");
+        if (optionalLocator.isEmpty()) {
+            optionalLocator = BaseFunctions.selectByTextAttributeNotExact(page, eloAction.getEloActionDef().getSelectorButton(), "id", "comp");
+        }
         if (optionalLocator.isPresent()) {
             BaseFunctions.reportScreenshot(this, eloAction.getEloActionDef().getSelectorButton(), BaseFunctions.getScreenShotFileName(eloAction, "Button") + ".png");
             optionalLocator.get().click();
@@ -303,6 +308,29 @@ public class WebclientSession {
         for (String arcPath: dataConfig.getEloDeleteData().getArcPaths()) {
             RepoUtils.DeleteSord(ixConn, arcPath);
         }
+
+        ixConn.close();
+    }
+    private void forwardWorkflow(DataConfig dataConfig) throws Exception {
+        // Ix Connect
+        IXConnection ixConn = ELOIxConnection.getIxConnection(dataConfig.getLoginData(), false);
+        System.out.println("IxConn: " + ixConn);
+
+        // Forward Workflow
+        for (String toNodeName: dataConfig.getEloForwardWorkflow().getToNodesName()) {
+            WfUtils.forwardWorkflow(ixConn, toNodeName);
+        }
+
+        ixConn.close();
+    }
+    private void removeFinishedWorkflows() throws Exception {
+        // Ix Connect
+        IXConnection ixConn = ELOIxConnection.getIxConnection(dataConfig.getLoginData(), true);
+        System.out.println("IxConn: " + ixConn);
+
+        // Remove Workflows
+        List<WFDiagram> finishedWorkflows = WfUtils.getFinishedWorkflows(ixConn);
+        WfUtils.removeFinishedWorkflows(ixConn, finishedWorkflows);
 
         ixConn.close();
     }
@@ -343,7 +371,17 @@ public class WebclientSession {
             List<String> arcPaths = dataConfig.getEloDeleteData().getArcPaths();
             if(arcPaths.size() > 0) {
                 ws.deleteData(dataConfig);
+
+                // Remove Workflows
+                ws.removeFinishedWorkflows();
             }
+
+            // Forward Workflow
+            List<String> toNodesName = dataConfig.getEloForwardWorkflow().getToNodesName();
+            if(toNodesName.size() > 0) {
+                ws.forwardWorkflow(dataConfig);
+            }
+
             if(checkData) {
                 BaseFunctions.reportMessage(ws.getReportParagraphs(), "Test war erfolgreich!");
             } else {
@@ -368,7 +406,6 @@ public class WebclientSession {
             }
         }
     }
-
     @Override
     public String toString() {
         return "WebclientSession{" +

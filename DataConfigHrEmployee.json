@@ -3,20 +3,17 @@
     "textUserName": {
       "selector": "Name",
       "value": "Administrator",
-      "type": "TEXT",
-      "checkValue": true
+      "type": "TEXT"
     },
     "textPassword": {
       "selector": "Passwort",
       "value": "elo",
-      "type": "TEXT",
-      "checkValue": true
+      "type": "TEXT"
     },
     "buttonLogin": {
       "selector": "Anmelden",
       "value": "Login",
-      "type": "BUTTON",
-      "checkValue": true
+      "type": "BUTTON"
     },
     "stack": "ruberg-hr.dev.elo"
   },
@@ -44,44 +41,37 @@
               {
                 "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
                 "value": "Hans",
-                "type": "TEXT",
-                "checkValue": true
+                "type": "TEXT"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_LASTNAME",
                 "value": "Hansen",
-                "type": "TEXT",
-                "checkValue": true
+                "type": "TEXT"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_PERSONNELNO",
                 "value": "12345",
-                "type": "TEXT",
-                "checkValue": true
+                "type": "TEXT"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_ELOUSERID",
                 "value": "Jan Eichner",
-                "type": "DYNKWL",
-                "checkValue": true
+                "type": "DYNKWL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_RESPONSIBLE",
                 "value": "Bodo Kraft",
-                "type": "DYNKWL",
-                "checkValue": true
+                "type": "DYNKWL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_SUPERIOR",
                 "value": "Gerd Baum",
-                "type": "DYNKWL",
-                "checkValue": true
+                "type": "DYNKWL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_DATEOFJOINING",
                 "value": "20220101",
-                "type": "TEXT",
-                "checkValue": true
+                "type": "TEXT"
               }
             ],
             "tables": [],
@@ -89,44 +79,37 @@
               {
                 "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
                 "value": "Hans",
-                "type": "TEXT",
-                "checkValue": true
+                "type": "TEXT"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_LASTNAME",
                 "value": "Hansen",
-                "type": "TEXT",
-                "checkValue": true
+                "type": "TEXT"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_PERSONNELNO",
                 "value": "12345",
-                "type": "TEXT",
-                "checkValue": true
+                "type": "TEXT"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_ELOUSERID",
                 "value": "Jan Eichner",
-                "type": "DYNKWL",
-                "checkValue": true
+                "type": "DYNKWL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_RESPONSIBLE",
                 "value": "Bodo Kraft",
-                "type": "DYNKWL",
-                "checkValue": true
+                "type": "DYNKWL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_SUPERIOR",
                 "value": "Gerd Baum",
-                "type": "DYNKWL",
-                "checkValue": true
+                "type": "DYNKWL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_DATEOFJOINING",
                 "value": "01.01.2022",
-                "type": "TEXT",
-                "checkValue": true
+                "type": "TEXT"
               }
             ]
           }
@@ -150,8 +133,7 @@
               {
                 "selector": "befristet",
                 "value": "true",
-                "type": "RADIO",
-                "checkValue": true
+                "type": "RADIO"
               }
             ],
             "tables": [],
@@ -159,8 +141,7 @@
               {
                 "selector": "IX_MAP_DURATION_TYPE",
                 "value": "sol.hr.form.personnelfile.fixedterm",
-                "type": "RADIO",
-                "checkValue": true
+                "type": "RADIO"
               }
             ]
           },
@@ -170,14 +151,12 @@
               {
                 "selector": "IX_MAP_HR_PERSONNEL_TITLE",
                 "value": "Doktor H",
-                "type": "TEXT",
-                "checkValue": true
+                "type": "TEXT"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_GENDER",
                 "value": "Männlich",
-                "type": "KWL",
-                "checkValue": true
+                "type": "KWL"
               }
             ],
             "tables": [
@@ -189,40 +168,34 @@
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_TYPE",
                       "value": "Ehepartner",
-                      "type": "KWL",
-                      "checkValue": true
+                      "type": "KWL"
                     },
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME",
                       "value": "Hugo",
-                      "type": "TEXT",
-                      "checkValue": true
+                      "type": "TEXT"
                     },
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME",
                       "value": "Egon",
-                      "type": "TEXT",
-                      "checkValue": true
+                      "type": "TEXT"
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_TYPE",
                       "value": "Ehepartner",
-                      "type": "KWL",
-                      "checkValue": true
+                      "type": "KWL"
                     },
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME",
                       "value": "Sandra",
-                      "type": "TEXT",
-                      "checkValue": true
+                      "type": "TEXT"
                     },
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME",
                       "value": "Renz",
-                      "type": "TEXT",
-                      "checkValue": true
+                      "type": "TEXT"
                     }
                   ]
                 ]
@@ -235,28 +208,24 @@
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME",
                       "value": "Heinrich",
-                      "type": "TEXT",
-                      "checkValue": true
+                      "type": "TEXT"
                     },
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME",
                       "value": "Müller",
-                      "type": "TEXT",
-                      "checkValue": true
+                      "type": "TEXT"
                     }
                   ],
                   [
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME",
                       "value": "Sebastian",
-                      "type": "TEXT",
-                      "checkValue": true
+                      "type": "TEXT"
                     },
                     {
                       "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME",
                       "value": "Schulz",
-                      "type": "TEXT",
-                      "checkValue": true
+                      "type": "TEXT"
                     }
                   ]
                 ]
@@ -266,26 +235,22 @@
               {
                 "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME2",
                 "value": "Sebastian",
-                "type": "TEXT",
-                "checkValue": true
+                "type": "TEXT"
               },
               {
                 "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME2",
                 "value": "Schulz",
-                "type": "TEXT",
-                "checkValue": true
+                "type": "TEXT"
               },
               {
                 "selector": "IX_MAP_HR_PERSONNEL_TITLE",
                 "value": "Doktor H",
-                "type": "TEXT",
-                "checkValue": true
+                "type": "TEXT"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_GENDER",
                 "value": "M - Männlich",
-                "type": "KWL",
-                "checkValue": true
+                "type": "KWL"
               }
             ]
           }
@@ -297,5 +262,8 @@
     "arcPaths": [
       "ARCPATH:/Personalmanagement/Personalakten/H/Hansen, Hans"
     ]
+  },
+  "eloForwardWorkflow": {
+    "toNodesName": []
   }
 }

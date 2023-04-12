@@ -33,24 +33,24 @@ public class PlaywrightSessionTest {
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_FIRSTNAME", "Hans", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_LASTNAME", "Hansen", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELNO", "12345", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DATEOFJOINING", "20220101", ELOControlType.TEXT, true));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_FIRSTNAME", "Hans", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_LASTNAME", "Hansen", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELNO", "12345", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DATEOFJOINING", "20220101", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
 
         List<ELOControl>  expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_FIRSTNAME", "Hans", ELOControlType.TEXT, true));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_LASTNAME", "Hansen", ELOControlType.TEXT, true));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELNO", "12345", ELOControlType.TEXT, true));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner", ELOControlType.DYNKWL, true));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft", ELOControlType.DYNKWL, true));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum", ELOControlType.DYNKWL, true));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DATEOFJOINING", "01.01.2022", ELOControlType.TEXT, true));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_FIRSTNAME", "Hans", ELOControlType.TEXT));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_LASTNAME", "Hansen", ELOControlType.TEXT));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELNO", "12345", ELOControlType.TEXT));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner", ELOControlType.DYNKWL));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft", ELOControlType.DYNKWL));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum", ELOControlType.DYNKWL));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DATEOFJOINING", "01.01.2022", ELOControlType.TEXT));
 
         TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
@@ -65,22 +65,22 @@ public class PlaywrightSessionTest {
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TITLE", "Doktor H", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_GENDER", "Männlich", ELOControlType.KWL, true));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TITLE", "Doktor H", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_GENDER", "Männlich", ELOControlType.KWL));
 
         List<ELOTable> tables = new ArrayList<>();
         List<List<ELOControl>> table = new ArrayList<>();
 
         List<ELOControl> tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_TYPE", "Ehepartner", ELOControlType.KWL, true));
-        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME", "Hugo", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME", "Egon", ELOControlType.TEXT, true));
+        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_TYPE", "Ehepartner", ELOControlType.KWL));
+        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME", "Hugo", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME", "Egon", ELOControlType.TEXT));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_TYPE", "Ehepartner", ELOControlType.KWL, true));
-        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME", "Sandra", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME", "Renz", ELOControlType.TEXT, true));
+        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_TYPE", "Ehepartner", ELOControlType.KWL));
+        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_FIRSTNAME", "Sandra", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_FAMILYMEMBER_LASTNAME", "Renz", ELOControlType.TEXT));
         table.add(tableLine);
 
         tables.add(new ELOTable("part_240_family_members", "Eintrag hinzufügen", table));
@@ -88,22 +88,22 @@ public class PlaywrightSessionTest {
         table = new ArrayList<>();
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME", "Heinrich", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME", "Müller", ELOControlType.TEXT, true));
+        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME", "Heinrich", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME", "Müller", ELOControlType.TEXT));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME", "Sebastian", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME", "Schulz", ELOControlType.TEXT, true));
+        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME", "Sebastian", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME", "Schulz", ELOControlType.TEXT));
         table.add(tableLine);
 
         tables.add(new ELOTable("part_250_emergency_contacts", "Eintrag hinzufügen", table));
 
         List<ELOControl>  expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME2", "Sebastian", ELOControlType.TEXT, true));
-        expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME2", "Schulz", ELOControlType.TEXT, true));
-        expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TITLE", "Doktor H", ELOControlType.TEXT, true));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_GENDER", "M - Männlich", ELOControlType.KWL, true));
+        expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME2", "Sebastian", ELOControlType.TEXT));
+        expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME2", "Schulz", ELOControlType.TEXT));
+        expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TITLE", "Doktor H", ELOControlType.TEXT));
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_GENDER", "M - Männlich", ELOControlType.KWL));
 
         TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Persönlich", tabPage);
@@ -111,12 +111,12 @@ public class PlaywrightSessionTest {
         // Ein-/ Austritt
         initTabPage = new ArrayList<>();
         controls = new ArrayList<>();
-        controls.add(new ELOControl("befristet", "true", ELOControlType.RADIO, true));
+        controls.add(new ELOControl("befristet", "true", ELOControlType.RADIO));
 
         tables = new ArrayList<>();
 
         expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_MAP_DURATION_TYPE", "sol.hr.form.personnelfile.fixedterm", ELOControlType.RADIO, true));
+        expectedValueControls.add(new ELOControl("IX_MAP_DURATION_TYPE", "sol.hr.form.personnelfile.fixedterm", ELOControlType.RADIO));
 
         tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Ein-/ Austritt", tabPage);
@@ -133,7 +133,7 @@ public class PlaywrightSessionTest {
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_COMPANY", "Firma Hansens", ELOControlType.TEXT, true));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_COMPANY", "Firma Hansens", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
 
@@ -154,8 +154,8 @@ public class PlaywrightSessionTest {
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DIVISION", "Orgastruktur1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_HR_CHARTELEMENT_DESC", "Beschreibung Orgastruktur1", ELOControlType.TEXT, true));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DIVISION", "Orgastruktur1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_CHARTELEMENT_DESC", "Beschreibung Orgastruktur1", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
 
@@ -176,8 +176,8 @@ public class PlaywrightSessionTest {
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DEPARTMENT", "Abteilung1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_HR_CHARTELEMENT_DESC", "Beschreibung Beschreibung Abteilung1", ELOControlType.TEXT, true));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DEPARTMENT", "Abteilung1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_CHARTELEMENT_DESC", "Beschreibung Beschreibung Abteilung1", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
 
@@ -198,8 +198,8 @@ public class PlaywrightSessionTest {
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_TEAM", "Team1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_HR_CHARTELEMENT_DESC", "Beschreibung Team1", ELOControlType.TEXT, true));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_TEAM", "Team1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_CHARTELEMENT_DESC", "Beschreibung Team1", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
 
@@ -219,27 +219,27 @@ public class PlaywrightSessionTest {
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_MINUTE_TAKER", "Bodo Kraft", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_DESC", "Meetingboard1", ELOControlType.TEXT, true));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_MINUTE_TAKER", "Bodo Kraft", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_DESC", "Meetingboard1", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
         List<List<ELOControl>> table = new ArrayList<>();
 
         List<ELOControl> tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER", "Jan Eichner", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER", "Jan Eichner", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER", "Sandra Renz", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER", "Sandra Renz", ELOControlType.DYNKWL));
 
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
         List<ELOControl>  expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER1", "Jan Eichner", ELOControlType.DYNKWL, true));
+        expectedValueControls.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER1", "Jan Eichner", ELOControlType.DYNKWL));
 
 
         TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
@@ -276,15 +276,15 @@ public class PlaywrightSessionTest {
         tables = new ArrayList<>();
         table = new ArrayList<>();
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_TITLE", "Rückblende", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DURATION", "30", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DESC", "Rückblick vergangene Projekte", ELOControlType.TEXT, true));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_TITLE", "Rückblende", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DURATION", "30", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DESC", "Rückblick vergangene Projekte", ELOControlType.TEXT));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_TITLE", "Planung", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DURATION", "40", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DESC", "Zukünftige Projekte", ELOControlType.TEXT, true));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_TITLE", "Planung", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DURATION", "40", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DESC", "Zukünftige Projekte", ELOControlType.TEXT));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weiteres Thema", table));
@@ -301,21 +301,21 @@ public class PlaywrightSessionTest {
         tables = new ArrayList<>();
         table = new ArrayList<>();
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Meeting-Einladung", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "O", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "y", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "-", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_STARTDATE", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Meeting-Einladung", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "O", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "y", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "-", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_STARTDATE", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Meeting-Einladung", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "A", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "Q", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "+", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_ENDDATE", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Meeting-Einladung", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "A", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "Q", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "+", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_ENDDATE", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weitere Benachrichtigung", table));
@@ -328,14 +328,14 @@ public class PlaywrightSessionTest {
         // Einstellungen
         initTabPage = new ArrayList<>();
         controls = new ArrayList<>();
-        controls.add(new ELOControl("IX_MAP_MEETING_BOARD_MEETING_DEFAULT_NAME", "Meeting1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_MAP_MEETING_BOARD_SETTING_ITEMTOAGENDA", "true", ELOControlType.CHECKBOX, true));
+        controls.add(new ELOControl("IX_MAP_MEETING_BOARD_MEETING_DEFAULT_NAME", "Meeting1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_MEETING_BOARD_SETTING_ITEMTOAGENDA", "true", ELOControlType.CHECKBOX));
 
 
         tables = new ArrayList<>();
 
         expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_MAP_MEETING_BOARD_SETTING_ITEMTOAGENDA", "true", ELOControlType.CHECKBOX, true));
+        expectedValueControls.add(new ELOControl("IX_MAP_MEETING_BOARD_SETTING_ITEMTOAGENDA", "true", ELOControlType.CHECKBOX));
 
         tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Einstellungen", tabPage);
@@ -351,28 +351,28 @@ public class PlaywrightSessionTest {
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_MEETING_NAME", "Meeting1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_LOCATION", "Musterstadt", ELOControlType.DYNKWL, false));
-        controls.add(new ELOControl("IX_GRP_MEETING_MINUTE_TAKER", "Charlotte Bennett", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des Meetings.", "Beschreibung Meeting1", ELOControlType.REDACTOR, true));
+        controls.add(new ELOControl("IX_GRP_MEETING_NAME", "Meeting1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_LOCATION", "Musterstadt", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_MINUTE_TAKER", "Charlotte Bennett", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des Meetings.", "Beschreibung Meeting1", ELOControlType.REDACTOR));
 
         List<ELOTable> tables = new ArrayList<>();
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_START", "09:00", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_END", "17:00", ELOControlType.TEXT, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_START", "09:00", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_END", "17:00", ELOControlType.TEXT));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_START", "09:00", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_END", "17:00", ELOControlType.TEXT, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_START", "09:00", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_END", "17:00", ELOControlType.TEXT));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weiterer Tag", table));
 
         List<ELOControl>  expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_GRP_MEETING_MINUTE_TAKER", "Charlotte Bennett", ELOControlType.DYNKWL, true));
-        expectedValueControls.add(new ELOControl("IX_DESC", "Beschreibung Meeting1", ELOControlType.REDACTOR, true));
+        expectedValueControls.add(new ELOControl("IX_GRP_MEETING_MINUTE_TAKER", "Charlotte Bennett", ELOControlType.DYNKWL));
+        expectedValueControls.add(new ELOControl("IX_DESC", "Beschreibung Meeting1", ELOControlType.REDACTOR));
 
         TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("Allgemein", tabPage);
@@ -384,10 +384,10 @@ public class PlaywrightSessionTest {
         tables = new ArrayList<>();
         table = new ArrayList<>();
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_LASTNAME", "Baum", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_FIRSTNAME", "Gerd", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_EMAIL", "g.baum@contelo.de", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_COMPANYNAME", "Contelo AG", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_LASTNAME", "Baum", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_FIRSTNAME", "Gerd", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_EMAIL", "g.baum@contelo.de", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_COMPANYNAME", "Contelo AG", ELOControlType.DYNKWL));
         table.add(tableLine);
 
 /*
@@ -413,21 +413,21 @@ public class PlaywrightSessionTest {
         tables = new ArrayList<>();
         table = new ArrayList<>();
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Meeting-Einladung", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "O", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "y", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "-", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_STARTDATE", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Meeting-Einladung", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "O", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "y", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "-", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_STARTDATE", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Meeting-Einladung", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "A", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "Q", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "+", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_ENDDATE", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Meeting-Einladung", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "A", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "Q", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "+", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_ENDDATE", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weitere Benachrichtigung", table));
@@ -444,7 +444,7 @@ public class PlaywrightSessionTest {
         table = new ArrayList<>();
 
         checkboxes = new TreeMap<>();
-        checkboxes.put("WF_MAP_MEETING_REPETITION_CREATE", true);
+        checkboxes.put("WF_MAP_MEETING_REPETITION_CREATE");
 
         tabPage = new TabPage(fields, table, "", checkboxes, AssignmentStatus.NOTHING);
         tabPages.put("Wiederholung", tabPage);
@@ -459,36 +459,36 @@ public class PlaywrightSessionTest {
         // "" (Nur eine tabPage)
 
         List<ELOControl> initTabPage = new ArrayList<>();
-        initTabPage.add(new ELOControl("Meeting", "true", ELOControlType.RADIO, true));
+        initTabPage.add(new ELOControl("Meeting", "true", ELOControlType.RADIO));
 
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB1", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_NAME", "Meeting1", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_TITLE", "Thema1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_DURATION", "40", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des Themas.", "Beschreibung Thema1", ELOControlType.REDACTOR, true));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB1", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_NAME", "Meeting1", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_TITLE", "Thema1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_DURATION", "40", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des Themas.", "Beschreibung Thema1", ELOControlType.REDACTOR));
 
         List<ELOTable> tables = new ArrayList<>();
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
 
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Kraft", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Bodo", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Kraft", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Bodo", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Davis", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Jessica", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Davis", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Jessica", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
         List<ELOControl> expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith", ELOControlType.DYNKWL, true));
-        expectedValueControls.add(new ELOControl("IX_DESC", "Beschreibung Thema1", ELOControlType.REDACTOR, true));
+        expectedValueControls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith", ELOControlType.DYNKWL));
+        expectedValueControls.add(new ELOControl("IX_DESC", "Beschreibung Thema1", ELOControlType.REDACTOR));
 
         TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
         tabPages.put("", tabPage);
@@ -504,10 +504,10 @@ public class PlaywrightSessionTest {
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB1", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_POOL_NAME", "Meetingitempool1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_DESC", "Beschreibung Meetingitempool1", ELOControlType.TEXT, true));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB1", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_POOL_NAME", "Meetingitempool1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_DESC", "Beschreibung Meetingitempool1", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
 
@@ -526,28 +526,28 @@ public class PlaywrightSessionTest {
         // "" (Nur eine tabPage)
 
         List<ELOControl> initTabPage = new ArrayList<>();
-        initTabPage.add(new ELOControl("Themensammlung", "true", ELOControlType.RADIO, true));
+        initTabPage.add(new ELOControl("Themensammlung", "true", ELOControlType.RADIO));
 
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB1", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_MAP_MEETING_ITEM_POOL_NAME", "Meetingitempool1", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_TITLE", "Thema1 Ideenpool1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_DURATION", "40", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des Themas.", "Beschreibung Thema1", ELOControlType.REDACTOR, true));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard1", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB1", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_MAP_MEETING_ITEM_POOL_NAME", "Meetingitempool1", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_TITLE", "Thema1 Ideenpool1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_DURATION", "40", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des Themas.", "Beschreibung Thema1", ELOControlType.REDACTOR));
 
         List<ELOTable> tables = new ArrayList<>();
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Kraft", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Bodo", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Kraft", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Bodo", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Davis", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Jessica", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Davis", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Jessica", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weitere Person", table));
@@ -568,19 +568,19 @@ public class PlaywrightSessionTest {
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard2", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB2", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_MINUTE_TAKER", "David Lee", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_DESC", "Beschreibung Meetingboard2", ELOControlType.TEXT, true));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard2", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB2", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_MINUTE_TAKER", "David Lee", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_DESC", "Beschreibung Meetingboard2", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER", "Jan Eichner", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER", "Jan Eichner", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER", "Sandra Renz", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER", "Sandra Renz", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weitere Person", table));
@@ -621,15 +621,15 @@ public class PlaywrightSessionTest {
         tables = new ArrayList<>();
         table = new ArrayList<>();
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_TITLE", "Rückblende", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DURATION", "30", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DESC", "Rückblick vergangene Projekte", ELOControlType.TEXT, true));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_TITLE", "Rückblende", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DURATION", "30", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DESC", "Rückblick vergangene Projekte", ELOControlType.TEXT));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_TITLE", "Planung", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DURATION", "40", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DESC", "Zukünftige Projekte", ELOControlType.TEXT, true));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_TITLE", "Planung", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DURATION", "40", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_ITEM_DESC", "Zukünftige Projekte", ELOControlType.TEXT));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weiterer TOP", table));
@@ -646,21 +646,21 @@ public class PlaywrightSessionTest {
         tables = new ArrayList<>();
         table = new ArrayList<>();
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Sitzungseinladung", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "O", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "y", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "-", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_STARTDATE", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Sitzungseinladung", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "O", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "y", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "-", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_STARTDATE", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Sitzungseinladung", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "A", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "Q", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "+", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_ENDDATE", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Sitzungseinladung", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "A", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "Q", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "+", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_ENDDATE", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weitere Benachrichtigung", table));
@@ -673,8 +673,8 @@ public class PlaywrightSessionTest {
         // Einstellungen
         initTabPage = new ArrayList<>();
         controls = new ArrayList<>();
-        controls.add(new ELOControl("IX_MAP_MEETING_BOARD_MEETING_DEFAULT_NAME", "Meeting2", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_MAP_MEETING_BOARD_SETTING_APPROVAL_REQUIRED", "false", ELOControlType.CHECKBOX, true));
+        controls.add(new ELOControl("IX_MAP_MEETING_BOARD_MEETING_DEFAULT_NAME", "Meeting2", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_MEETING_BOARD_SETTING_APPROVAL_REQUIRED", "false", ELOControlType.CHECKBOX));
 
         tables = new ArrayList<>();
 
@@ -693,21 +693,21 @@ public class PlaywrightSessionTest {
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_MEETING_NAME", "Sitzung1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_LOCATION", "Musterdorf", ELOControlType.DYNKWL, false));
-        controls.add(new ELOControl("IX_GRP_MEETING_MINUTE_TAKER", "Bodo Kraft", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung der Sitzung.", "Beschreibung Sitzung1", ELOControlType.REDACTOR, true));
+        controls.add(new ELOControl("IX_GRP_MEETING_NAME", "Sitzung1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_LOCATION", "Musterdorf", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_MINUTE_TAKER", "Bodo Kraft", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung der Sitzung.", "Beschreibung Sitzung1", ELOControlType.REDACTOR));
 
         List<ELOTable> tables = new ArrayList<>();
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_START", "11:00", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_END", "16:00", ELOControlType.TEXT, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_START", "11:00", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_END", "16:00", ELOControlType.TEXT));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_START", "09:00", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_END", "17:00", ELOControlType.TEXT, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_START", "09:00", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_TIMESLOT_END", "17:00", ELOControlType.TEXT));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weiterer Tag", table));
@@ -724,10 +724,10 @@ public class PlaywrightSessionTest {
         tables = new ArrayList<>();
         table = new ArrayList<>();
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_LASTNAME", "Baum", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_FIRSTNAME", "Gerd", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_EMAIL", "g.baum@contelo.de", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_COMPANYNAME", "Contelo AG", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_LASTNAME", "Baum", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_FIRSTNAME", "Gerd", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_EMAIL", "g.baum@contelo.de", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("WF_MAP_MEETING_PERSON_COMPANYNAME", "Contelo AG", ELOControlType.DYNKWL));
         table.add(tableLine);
 
 /*
@@ -753,21 +753,21 @@ public class PlaywrightSessionTest {
         tables = new ArrayList<>();
         table = new ArrayList<>();
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Sitzungseinladung", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "O", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "y", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "-", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_STARTDATE", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Sitzungseinladung", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "O", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "y", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "-", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_STARTDATE", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Sitzungseinladung", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "A", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "Q", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "+", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_ENDDATE", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_TEMPLATE_", "Sitzungseinladung", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_RECIPIENTS_", "A", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_VALUE_", "1", ELOControlType.TEXT));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SHIFT_UNIT_", "Q", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_SIGN_", "+", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_NOTIFICATION_REFERENCE_DATE_", "MEETING_ENDDATE", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weitere Benachrichtigung", table));
@@ -784,7 +784,7 @@ public class PlaywrightSessionTest {
         table = new ArrayList<>();
 
         checkboxes = new TreeMap<>();
-        checkboxes.put("WF_MAP_MEETING_REPETITION_CREATE", true);
+        checkboxes.put("WF_MAP_MEETING_REPETITION_CREATE");
 
         tabPage = new TabPage(fields, table, "", checkboxes, AssignmentStatus.NOTHING);
         tabPages.put("Wiederholung", tabPage);
@@ -799,28 +799,28 @@ public class PlaywrightSessionTest {
         // "" (Nur eine tabPage)
 
         List<ELOControl> initTabPage = new ArrayList<>();
-        initTabPage.add(new ELOControl("Sitzung", "true", ELOControlType.RADIO, true));
+        initTabPage.add(new ELOControl("Sitzung", "true", ELOControlType.RADIO));
 
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard2", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB2", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_NAME", "Sitzung1", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_TITLE", "TOP1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_DURATION", "30", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "David Lee", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des TOPs.", "Beschreibung TOP1", ELOControlType.REDACTOR, true));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard2", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB2", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_NAME", "Sitzung1", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_TITLE", "TOP1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_DURATION", "30", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "David Lee", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des TOPs.", "Beschreibung TOP1", ELOControlType.REDACTOR));
 
         List<ELOTable> tables = new ArrayList<>();
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Bennett", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Charlotte", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Bennett", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Charlotte", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Davis", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Jessica", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Davis", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Jessica", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weitere Person", table));
@@ -842,10 +842,10 @@ public class PlaywrightSessionTest {
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard2", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB2", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_POOL_NAME", "Meetingitempool2", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_DESC", "Beschreibung Meetingitempool2", ELOControlType.TEXT, true));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard2", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB2", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_POOL_NAME", "Meetingitempool2", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_DESC", "Beschreibung Meetingitempool2", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
 
@@ -864,28 +864,28 @@ public class PlaywrightSessionTest {
         // "" (Nur eine tabPage)
 
         List<ELOControl> initTabPage = new ArrayList<>();
-        initTabPage.add(new ELOControl("Themensammlung", "true", ELOControlType.RADIO, true));
+        initTabPage.add(new ELOControl("Themensammlung", "true", ELOControlType.RADIO));
 
         List<ELOControl> controls = new ArrayList<>();
 
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard2", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB2", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_MAP_MEETING_ITEM_POOL_NAME", "Meetingitempool2", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_TITLE", "TOP1", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_DURATION", "30", ELOControlType.TEXT, true));
-        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "David Lee", ELOControlType.DYNKWL, true));
-        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des TOPs.", "Beschreibung TOP1 Meetingitempool2", ELOControlType.REDACTOR, true));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_NAME", "Meetingboard2", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_BOARD_CODE", "MB2", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_MAP_MEETING_ITEM_POOL_NAME", "Meetingitempool2", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_TITLE", "TOP1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_DURATION", "30", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "David Lee", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("Hinterlegen Sie eine Beschreibung des TOPs.", "Beschreibung TOP1 Meetingitempool2", ELOControlType.REDACTOR));
 
         List<ELOTable> tables = new ArrayList<>();
         List<List<ELOControl>> table = new ArrayList<>();
         List<ELOControl> tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Bennett", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Charlotte", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Bennett", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Charlotte", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tableLine = new ArrayList<>();
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Davis", ELOControlType.DYNKWL, true));
-        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Jessica", ELOControlType.DYNKWL, true));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_LASTNAME", "Davis", ELOControlType.DYNKWL));
+        tableLine.add(new ELOControl("IX_MAP_MEETING_ITEM_SPEAKER_FIRSTNAME", "Jessica", ELOControlType.DYNKWL));
         table.add(tableLine);
 
         tables.add(new ELOTable("", "Weitere Person", table));
@@ -916,9 +916,9 @@ public class PlaywrightSessionTest {
         final String selectorButtonNewChartElement = "Organisation erweitern";
 
         // Fill DataConfig
-        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT, true);
-        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT, true);
-        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON, true);
+        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT);
+        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT);
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON);
         final String stack = "ruberg-hr.dev.elo";
 
         final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
@@ -960,10 +960,13 @@ public class PlaywrightSessionTest {
 
         final ELODeleteData eloDeleteData = new ELODeleteData(arcPaths);
 
+        final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(new ArrayList<>());
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionData,
-                eloDeleteData);
+                eloDeleteData,
+                eloForwardWorkflow);
     }
     private DataConfig createDataConfigHrEmployee() {
         // ELO Action Def Data
@@ -972,9 +975,9 @@ public class PlaywrightSessionTest {
         final String selectorButtonNewEmployee = "Neuer Mitarbeiter";
 
         // Fill DataConfig
-        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT, true);
-        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT, true);
-        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON, true);
+        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT);
+        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT);
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON);
         final String stack = "ruberg-hr.dev.elo";
 
         final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
@@ -999,10 +1002,13 @@ public class PlaywrightSessionTest {
 
         final ELODeleteData eloDeleteData = new ELODeleteData(arcPaths);
 
+        final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(new ArrayList<>());
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionData,
-                eloDeleteData);
+                eloDeleteData,
+                eloForwardWorkflow);
     }
     private DataConfig createDataConfigMeeting() {
         // ELO Action Def Data
@@ -1019,9 +1025,9 @@ public class PlaywrightSessionTest {
         final String selectorButtonCreateMeetingItemPoolPremium = "Neue Themensammlung";
 
         // Fill DataConfig
-        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT, true);
-        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT, true);
-        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON, true);
+        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT);
+        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT);
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON);
         final String stack = "ruberg-meeting.dev.elo";
 
         final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
@@ -1081,10 +1087,13 @@ public class PlaywrightSessionTest {
 
         final ELODeleteData eloDeleteData = new ELODeleteData(arcPaths);
 
+        final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(new ArrayList<>());
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionData,
-                eloDeleteData);
+                eloDeleteData,
+                eloForwardWorkflow);
     }
     private DataConfig createDataConfigTest() {
         // ELO Action Def Data
@@ -1095,9 +1104,9 @@ public class PlaywrightSessionTest {
         final String selectorButtonCreateMeetingItem = "Neues Thema";
 
         // Fill DataConfig
-        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT, true);
-        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT, true);
-        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON, true);
+        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT);
+        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT);
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON);
         final String stack = "ruberg-meeting.dev.elo";
 
         final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
@@ -1127,10 +1136,13 @@ public class PlaywrightSessionTest {
 
         final ELODeleteData eloDeleteData = new ELODeleteData(arcPaths);
 
+        final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(new ArrayList<>());
+
         return new DataConfig(loginData,
                 eloSolutionArchiveData,
                 eloActionData,
-                eloDeleteData);
+                eloDeleteData,
+                eloForwardWorkflow);
     }
     private FrameLocator getFrameLocator(String frameName) {
         String selector = "";
@@ -1540,9 +1552,9 @@ public class PlaywrightSessionTest {
         BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_PERSONNELNO" + "\"]"), "12345");
 
         List<ReportParagraph> reportParagraphs = new ArrayList<>();
-        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner", true);
-        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft", true);
-        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum", true);
+        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner");
+        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft");
+        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum");
 
         BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_DATEOFJOINING" + "\"]"), "20220101");
 
@@ -1701,9 +1713,9 @@ public class PlaywrightSessionTest {
     public void testEloIxConnectAndDeleteData() {
 
         // Fill LoginData
-        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT, true);
-        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT, true);
-        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON, true);
+        final ELOControl textUserName = new ELOControl("Name", "Administrator", ELOControlType.TEXT);
+        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT);
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON);
         final String stack = "ruberg-hr.dev.elo";
         final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
         final String arcPath = "ARCPATH:/Personalmanagement/Personalakten/H/Hansen, Hans";

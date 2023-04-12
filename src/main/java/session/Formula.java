@@ -6,7 +6,9 @@ import com.microsoft.playwright.options.AriaRole;
 import report.ReportParagraph;
 import report.ReportTable;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -64,9 +66,9 @@ public class Formula {
             return false;
         }
     }
-    private boolean inputDynKwlField(String name, String text, boolean checkValue) {
+    private boolean inputDynKwlField(String name, String text) {
         try {
-            return BaseFunctions.inputDynKwlField(webclientSession.getReportParagraphs(),frameLocator, name, text, checkValue);
+            return BaseFunctions.inputDynKwlField(webclientSession.getReportParagraphs(),frameLocator, name, text);
         } catch (Exception e) {
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + text + " in " + name + " not selectable</span>");
             return false;
@@ -90,17 +92,25 @@ public class Formula {
     private boolean inputControl(ELOControl control, int index) {
         boolean checkData = true;
 
+        String value = control.getValue();
+
+        if (control.getValue().equals("#nowdate#")) {
+            Date nowDate = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+            value = simpleDateFormat.format(nowDate);
+        }
+
         String selector = control.getSelector();
         if (index > 0) {
             selector = selector + index;
         }
         switch(control.getType()) {
-            case TEXT -> checkData = inputTextField(selector, control.getValue());
-            case DYNKWL -> checkData = inputDynKwlField(selector, control.getValue(), control.isCheckValue());
-            case CHECKBOX -> checkData =  inputCheckBox(selector, control.getValue());
+            case TEXT -> checkData = inputTextField(selector, value);
+            case DYNKWL -> checkData = inputDynKwlField(selector, value);
+            case CHECKBOX -> checkData =  inputCheckBox(selector, value);
             case RADIO -> checkData =  inputRadioButton(selector);
-            case REDACTOR -> checkData =  inputRedactorField(selector, control.getValue());
-            case KWL -> checkData =  inputKwlField(selector, control.getValue());
+            case REDACTOR -> checkData =  inputRedactorField(selector, value);
+            case KWL -> checkData =  inputKwlField(selector, value);
         }
         if(!checkData) {
             BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageEloControlCheckData(control), BaseFunctions.getScreenShotFileName(eloAction, selector) + ".png");

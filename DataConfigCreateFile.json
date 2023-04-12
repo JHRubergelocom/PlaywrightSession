@@ -1,0 +1,134 @@
+{
+  "loginData": {
+    "textUserName": {
+      "selector": "Name",
+      "value": "Bodo Kraft",
+      "type": "TEXT"
+    },
+    "textPassword": {
+      "selector": "Passwort",
+      "value": "elo",
+      "type": "TEXT"
+    },
+    "buttonLogin": {
+      "selector": "Anmelden",
+      "value": "Login",
+      "type": "BUTTON"
+    },
+    "stack": "ruberg-hr.dev.elo"
+  },
+  "eloSolutionArchiveData": {
+    "selectorSolutionTile": "xpath\u003d//*[@title\u003d\"Solutions\"]",
+    "selectorSolutionsFolder": "Solutions"
+  },
+  "eloActionData": {
+    "eloActions": [
+      {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "Neu",
+          "selectorMenu": "Personal",
+          "selectorButton": "Neuer Mitarbeiter"
+        },
+        "tabPages": {
+          "": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
+                "value": "Hans",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_LASTNAME",
+                "value": "Hansen",
+                "type": "TEXT"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "Solutions/Personalmanagement/Personalakten/H/Hansen, Hans",
+        "formulaType": "VIEWER",
+        "formulaSaveButton": "Speichern",
+        "formulaCancelButton": "",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "",
+          "selectorMenu": "",
+          "selectorButton": ""
+        },
+        "tabPages": {
+          "Personal": {
+            "initTabPage": [],
+            "controls": [],
+            "tables": [],
+            "expectedValueControls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_PERSONNELSTATUS",
+                "value": "O - In Vorbereitung",
+                "type": "KWL"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "entryPath": "Solutions/Personalmanagement/Personalakten/H/Hansen, Hans",
+        "formulaType": "VIEWER",
+        "formulaSaveButton": "Speichern",
+        "formulaCancelButton": "",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "",
+          "selectorMenu": "",
+          "selectorButton": ""
+        },
+        "tabPages": {
+          "Personal": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_WORKSCHEDULE",
+                "value": "Teilzeit",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_LICENSEPLATE",
+                "value": "S-AA 1234",
+                "type": "TEXT"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          },
+          "Persönlich": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_BIRTHDAY",
+                "value": "25.03.1960",
+                "type": "TEXT"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      }
+    ]
+  },
+  "eloDeleteData": {
+    "arcPaths": []
+  },
+  "eloForwardWorkflow": {
+    "toNodesName": []
+  }
+}
