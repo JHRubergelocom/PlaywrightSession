@@ -2,12 +2,11 @@ package test;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.AriaRole;
 import de.elo.ix.client.IXConnection;
 import de.elo.ix.client.WFDiagram;
 import eloix.ELOIxConnection;
 import eloix.RepoUtils;
+import eloix.RfUtils;
 import eloix.WfUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,7 +14,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import session.*;
 
 import java.io.*;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -306,26 +304,6 @@ public class PlaywrightHrTest {
         System.out.println("*".repeat(30) + "Finished Workflows" + "*".repeat(30));
         return finishedWorkflows;
     }
-    private BrowserContext createBrowserContext(Playwright playwright) {
-        Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-
-        BrowserContext context = browser.newContext(new Browser.NewContextOptions().setRecordVideoDir(Paths.get(BaseFunctions.getReportPath())));
-
-        // Start tracing before creating / navigating a page.
-        context.tracing().start(new Tracing.StartOptions()
-                .setScreenshots(true)
-                .setSnapshots(true)
-                .setSources(true));
-
-        return context;
-    }
-    private void closeBrowserContext(BrowserContext browserContext) {
-        // Stop tracing and export it into a zip archive.
-        browserContext.tracing().stop(new Tracing.StopOptions()
-                .setPath(Paths.get(BaseFunctions.getReportPath() + "trace.zip")));
-        browserContext.close();
-    }
-
     @ParameterizedTest
     @ValueSource(strings = {"DataConfigCreateFile.json", "DataConfigStartOnBoarding.json", "DataConfigDeleteData.json", "DataConfigFirstdayOfWorkReminder.json"})
     public void CreateDataConfigJson(String jsonFile) {
@@ -435,27 +413,35 @@ public class PlaywrightHrTest {
 
     }
     @Test
-    public void testCallAs() {
-        Playwright playwright = Playwright.create();
-        BrowserContext browserContext = createBrowserContext(playwright);
-        browserContext.clearPermissions();
-        Page page = browserContext.newPage();
-        page.navigate("http://" + "ruberg-hr.dev.elo" + "/as-Solutions/?cmd=status");
-        Locator byRole = page.getByRole(AriaRole.ROW, new Page.GetByRoleOptions().setName("sol.hr.PersonnelFileReminder"));
-        Locator reload = byRole.getByRole(AriaRole.LINK, new Locator.GetByRoleOptions().setName("Reload"));
-        reload.click();
+    public void testExecuteRF() {
 
-        byRole = page.getByRole(AriaRole.ROW, new Page.GetByRoleOptions().setName("sol.hr.PersonnelFileReminder"));
-        reload = byRole.getByRole(AriaRole.LINK, new Locator.GetByRoleOptions().setName("Reload"));
-        reload.click();
+        // Fill LoginData
+        final ELOControl textUserName = new ELOControl("Name", "Gerd Baum", ELOControlType.TEXT);
+        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT);
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON);
+        final String stack = "ruberg-hr.dev.elo";
+        final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
 
+        // Ix Connect
+        IXConnection ixConn;
+        try {
+            ixConn = ELOIxConnection.getIxConnection(loginData, true);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("IxConn: " + ixConn);
+        System.out.println( "ixConn.getLoginResult().getUser(): " + ixConn.getLoginResult().getUser());
 
-        page.pause(); // Start Codegen
-
-
-        closeBrowserContext(browserContext);
-
-        playwright.close();
-
+        // Execute RF
+        try {
+            String funcName = "RF_sol_common_service_ExecuteAsAction";
+            String jsonParam = "{ \"action\": \"sol.hr.PersonnelFileReminder\", \"config\": {} }";
+            System.out.println("RF-Funktion " + funcName + " mit jsonParam " + jsonParam);
+            String rfResult = RfUtils.executeRF(ixConn, funcName, jsonParam);
+            System.out.println("rfResult: " + rfResult);
+        } catch (Exception ex) {
+            System.err.println("testForwardWorkflow message: " +  ex.getMessage());
+        }
+        ixConn.close();
     }
 }
