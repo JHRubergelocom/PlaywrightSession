@@ -129,9 +129,9 @@ public class PlaywrightParameterTest {
         BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_PERSONNELNO" + "\"]"), "12345");
 
         List<ReportParagraph> reportParagraphs = new ArrayList<>();
-        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner", true);
-        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft", true);
-        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum", true);
+        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner");
+        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft");
+        BaseFunctions.inputDynKwlField(reportParagraphs, frameLocator, "IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum");
         BaseFunctions.type(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_DATEOFJOINING" + "\"]"), "20220101");
 
         // Formular speichern

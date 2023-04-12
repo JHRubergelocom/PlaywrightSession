@@ -59,6 +59,33 @@ public class BaseFunctions {
     public static Optional<Locator> selectByTextAttribute(Page page, String text, String attributeKey, String attributeValue) {
         Locator rows = page.getByText(text, new Page.GetByTextOptions().setExact(true));
         int count = rows.count();
+        /*
+        if (!matchexact) {
+            if (count == 0) {
+                rows = page.getByText(text, new Page.GetByTextOptions());
+                count = rows.count();
+            }
+        }
+         */
+        System.out.println("rows.count(): " + count);
+        for (int i = 0; i < count; ++i) {
+            System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
+            System.out.println("Row: " + i + " innerHTML() " + rows.nth(i).innerHTML());
+            System.out.println("Row: " + i + " innerText() " + rows.nth(i).innerText());
+            System.out.println("Row: " + i + " " + rows.nth(i));
+            if (rows.nth(i).isVisible()) {
+                System.out.println("      Row: " + i + "getAttribute(" + attributeKey + ") " + rows.nth(i).getAttribute(attributeKey));
+                if (rows.nth(i).getAttribute(attributeKey).contains(attributeValue)) {
+                    return Optional.of(rows.nth(i));
+                }
+            }
+        }
+        System.err.println("selectByTextAttribute: " + text + " nicht gefunden!");
+        return Optional.empty();
+    }
+    public static Optional<Locator> selectByTextAttributeNotExact(Page page, String text, String attributeKey, String attributeValue) {
+        Locator rows = page.getByText(text, new Page.GetByTextOptions());
+        int count = rows.count();
         System.out.println("rows.count(): " + count);
         for (int i = 0; i < count; ++i) {
             System.out.println("Row: " + i + " textContent() " + rows.nth(i).textContent());
@@ -199,13 +226,9 @@ public class BaseFunctions {
         }
         return checkOK;
     }
-    public static boolean inputDynKwlField(List<ReportParagraph> reportParagraphs, FrameLocator frameLocator, String name, String text, boolean checkValue) {
+    public static boolean inputDynKwlField(List<ReportParagraph> reportParagraphs, FrameLocator frameLocator, String name, String text) {
         Locator locator = type(frameLocator.locator("[name=\"" + name + "\"]"), text);
         sleep();
-
-        if(!checkValue) {
-            return true;
-        }
 
         String autocomplete = locator.getAttribute("id");
         System.out.println("autocomplete = " + autocomplete);

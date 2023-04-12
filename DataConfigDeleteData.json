@@ -1,0 +1,35 @@
+{
+  "loginData": {
+    "textUserName": {
+      "selector": "Name",
+      "value": "Administrator",
+      "type": "TEXT"
+    },
+    "textPassword": {
+      "selector": "Passwort",
+      "value": "elo",
+      "type": "TEXT"
+    },
+    "buttonLogin": {
+      "selector": "Anmelden",
+      "value": "Login",
+      "type": "BUTTON"
+    },
+    "stack": "ruberg-hr.dev.elo"
+  },
+  "eloSolutionArchiveData": {
+    "selectorSolutionTile": "xpath\u003d//*[@title\u003d\"Solutions\"]",
+    "selectorSolutionsFolder": "Solutions"
+  },
+  "eloActionData": {
+    "eloActions": []
+  },
+  "eloDeleteData": {
+    "arcPaths": [
+      "ARCPATH:/Personalmanagement/Personalakten/H/Hansen, Hans"
+    ]
+  },
+  "eloForwardWorkflow": {
+    "toNodesName": []
+  }
+}
