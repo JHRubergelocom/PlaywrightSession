@@ -1,0 +1,99 @@
+{
+  "loginData": {
+    "textUserName": {
+      "selector": "Name",
+      "value": "Gerd Baum",
+      "type": "TEXT"
+    },
+    "textPassword": {
+      "selector": "Passwort",
+      "value": "elo",
+      "type": "TEXT"
+    },
+    "buttonLogin": {
+      "selector": "Anmelden",
+      "value": "Login",
+      "type": "BUTTON"
+    },
+    "stack": "ruberg-hr.dev.elo"
+  },
+  "eloSolutionArchiveData": {
+    "selectorSolutionTile": "xpath\u003d//*[@title\u003d\"Solutions\"]",
+    "selectorSolutionsFolder": "Solutions"
+  },
+  "eloActionData": {
+    "eloActions": [
+      {
+        "entryPath": "Solutions/Personalmanagement/Personalakten/H/Hansen, Hans",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "Personal",
+          "selectorMenu": "Personal",
+          "selectorButton": "Austrittsprozess"
+        },
+        "tabPages": {
+          "": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_DATEOFNOTICE",
+                "value": "#nowdate#",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_DATEOFLEAVING",
+                "value": "#nowdate#",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_BLOB_HR_PERSONNEL_TERMINATIONCOMMENT",
+                "value": "Mitarbeiterkündifung",
+                "type": "TEXT"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "Solutions/Personalmanagement/Personalakten/H/Hansen, Hans",
+        "formulaType": "VIEWER",
+        "formulaSaveButton": "Speichern",
+        "formulaCancelButton": "",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "",
+          "selectorMenu": "",
+          "selectorButton": ""
+        },
+        "tabPages": {
+          "Personal": {
+            "initTabPage": [],
+            "controls": [],
+            "tables": [],
+            "expectedValueControls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_PERSONNELSTATUS",
+                "value": "C - Gekündigt",
+                "type": "KWL"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "eloDeleteData": {
+    "arcPaths": []
+  },
+  "eloForwardWorkflow": {
+    "toNodesName": []
+  },
+  "eloExecuteRf": {
+    "eloRfs": []
+  }
+}

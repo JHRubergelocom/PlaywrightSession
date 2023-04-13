@@ -10,13 +10,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Testcases HR Execute RF-Function">
+      <change afterPath="$PROJECT_DIR$/DataConfigStartOffBoarding.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144702308/30baba2e239d2204260dd99abd879a30.webm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144702308/Report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144702308/loginwebclient.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144702308/trace_chromium.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Neu Personal Neuer Mitarbeiter  .png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Neu Personal Neuer Mitarbeiter  Button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Neu Personal Neuer Mitarbeiter  Menu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Neu Personal Neuer Mitarbeiter  Ribbon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Solutions Personalmanagement Personalakten H Hansen, Hans Personal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Solutions Personalmanagement Personalakten H Hansen, Hans Persönlich.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/c8066c3c6fa0ad0b65b1fb5976f8745f.webm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/loginwebclient.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/trace_chromium.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/63c732adaac361a379080eea03b71e3d.webm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/Personal Personal Eintrittsprozess  .png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/Personal Personal Eintrittsprozess  Button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/Personal Personal Eintrittsprozess  Menu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/Personal Personal Eintrittsprozess  Ribbon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/Report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/loginwebclient.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/trace_chromium.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145444342/Report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145444342/Solutions Personalmanagement Personalakten H Hansen, Hans Personal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145444342/e45ac6c73de3c2c649bb5a3270277889.webm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145444342/loginwebclient.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145444342/trace_chromium.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145642787/801b57858f2428f165bcd46d91846b68.webm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230413145642787/loginwebclient.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightParameterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightParameterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightReportTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightReportTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +103,22 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.PlaywrightHrTest.TestSession">
+    <configuration name="PlaywrightHrTest.CreateDataConfigJson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PlaywrightSession" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.PlaywrightHrTest" />
+      <option name="METHOD_NAME" value="CreateDataConfigJson(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PlaywrightHrTest.TestSession" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
@@ -142,36 +183,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaywrightSessionTest.firstScript" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PlaywrightSession" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
-      <option name="METHOD_NAME" value="firstScript" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
+      <item itemvalue="JUnit.PlaywrightHrTest.CreateDataConfigJson" />
       <item itemvalue="JUnit.PlaywrightHrTest.testDateTime" />
       <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
-      <item itemvalue="JUnit.PlaywrightSessionTest.firstScript" />
       <item itemvalue="JUnit.PlaywrightHrTest.testExecuteRF" />
       <item itemvalue="JUnit.PlaywrightHrTest.TestSession" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PlaywrightHrTest.TestSession" />
+        <item itemvalue="JUnit.PlaywrightHrTest.CreateDataConfigJson" />
         <item itemvalue="JUnit.PlaywrightHrTest.testExecuteRF" />
         <item itemvalue="JUnit.PlaywrightHrTest.testDateTime" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
-        <item itemvalue="JUnit.PlaywrightSessionTest.firstScript" />
       </list>
     </recent_temporary>
   </component>
@@ -183,13 +208,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670419530192</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Playwright Screenshots after Formula Input">
-      <created>1677149558594</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1677149558595</updated>
     </task>
     <task id="LOCAL-00068" summary="Playwright Html Report">
       <created>1677166128703</created>
@@ -527,7 +545,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681308670415</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="Playwright Testcases HR Execute RF-Function">
+      <created>1681371532513</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1681371532513</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

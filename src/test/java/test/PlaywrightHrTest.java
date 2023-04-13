@@ -38,7 +38,7 @@ public class PlaywrightHrTest {
 
         return tabPages;
     }
-    private Map<String, TabPage> checkEmployee() {
+    private Map<String, TabPage> checkStatusO() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();
 
@@ -130,6 +130,45 @@ public class PlaywrightHrTest {
         return tabPages;
 
     }
+    private Map<String, TabPage> checkStatusC() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        List<ELOControl> initTabPage = new ArrayList<>();
+        List<ELOControl> controls = new ArrayList<>();
+
+        List<ELOTable> tables = new ArrayList<>();
+
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELSTATUS", "C - Gekündigt", ELOControlType.KWL));
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
+        tabPages.put("Personal", tabPage);
+
+        return tabPages;
+
+    }
+    private Map<String, TabPage> startOffBoarding() {
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // "" (Nur eine tabPage)
+
+        List<ELOControl> initTabPage = new ArrayList<>();
+        List<ELOControl> controls = new ArrayList<>();
+
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_DATEOFNOTICE", "#nowdate#", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DATEOFLEAVING", "#nowdate#", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_BLOB_HR_PERSONNEL_TERMINATIONCOMMENT", "Mitarbeiterkündifung", ELOControlType.TEXT));
+
+        List<ELOTable> tables = new ArrayList<>();
+
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
+        tabPages.put("", tabPage);
+
+        return tabPages;
+    }
     private DataConfig createDataConfigCreateFile() {
         // ELO Action Def Data
         final String selectorRibbonNew = "Neu";
@@ -152,7 +191,7 @@ public class PlaywrightHrTest {
         ELOAction eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
         eloActions.add(eloAction);
 
-        eloTabPages = checkEmployee();
+        eloTabPages = checkStatusO();
         eloAction = new ELOAction("Solutions/Personalmanagement/Personalakten/H/Hansen, Hans", FormulaType.VIEWER,"Speichern", "","", new ELOActionDef(), eloTabPages);
         eloActions.add(eloAction);
 
@@ -296,6 +335,50 @@ public class PlaywrightHrTest {
                 eloExecuteRf);
 
     }
+    private DataConfig createDataConfigStartOffBoarding() {
+        // TODO createDataConfigStartOffBoarding
+
+        // ELO Action Def Data
+        final String selectorRibbonNew = "Personal";
+        final String selectorMenuPersonnel = "Personal";
+        final String selectorButtonStartOnBoarding = "Austrittsprozess";
+
+        // Fill DataConfig
+        final ELOControl textUserName = new ELOControl("Name", "Gerd Baum", ELOControlType.TEXT);
+        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT);
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON);
+        final String stack = "ruberg-hr.dev.elo";
+
+        final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
+
+        final ELOSolutionArchiveData eloSolutionArchiveData = new ELOSolutionArchiveData("xpath=//*[@title=\"Solutions\"]", "Solutions");
+
+        final List<ELOAction> eloActions = new ArrayList<>();
+
+        Map<String, TabPage> eloTabPages = startOffBoarding();
+        ELOAction eloAction = new ELOAction("Solutions/Personalmanagement/Personalakten/H/Hansen, Hans", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonStartOnBoarding), eloTabPages);
+        eloActions.add(eloAction);
+
+        eloTabPages = checkStatusC();
+        eloAction = new ELOAction("Solutions/Personalmanagement/Personalakten/H/Hansen, Hans", FormulaType.VIEWER,"Speichern", "","", new ELOActionDef(), eloTabPages);
+        eloActions.add(eloAction);
+
+        final ELOActionData eloActionData = new ELOActionData(eloActions);
+
+        final ELODeleteData eloDeleteData = new ELODeleteData(new ArrayList<>());
+
+        final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(new ArrayList<>());
+
+        final ELOExecuteRf eloExecuteRf = new ELOExecuteRf(new ArrayList<>());
+
+        return new DataConfig(loginData,
+                eloSolutionArchiveData,
+                eloActionData,
+                eloDeleteData,
+                eloForwardWorkflow,
+                eloExecuteRf);
+
+    }
     private DataConfig createDataConfig(String jsonFile) {
         switch(jsonFile) {
             case "DataConfigCreateFile.json" -> {return createDataConfigCreateFile();}
@@ -303,6 +386,7 @@ public class PlaywrightHrTest {
             case "DataConfigResignation.json" -> {return createDataConfigResignation();}
             case "DataConfigDeleteData.json" -> {return createDataConfigDeleteData();}
             case "DataConfigFirstdayOfWorkReminder.json" -> {return createDataConfigFirstdayOfWorkReminder();}
+            case "DataConfigStartOffBoarding.json" -> {return createDataConfigStartOffBoarding();}
         }
         return new DataConfig();
     }
@@ -320,7 +404,7 @@ public class PlaywrightHrTest {
         return finishedWorkflows;
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigCreateFile.json", "DataConfigStartOnBoarding.json", "DataConfigDeleteData.json", "DataConfigFirstdayOfWorkReminder.json"})
+    @ValueSource(strings = {"DataConfigCreateFile.json", "DataConfigStartOnBoarding.json", "DataConfigDeleteData.json", "DataConfigFirstdayOfWorkReminder.json", "DataConfigStartOffBoarding.json"})
     public void CreateDataConfigJson(String jsonFile) {
         // Create DataConfig
         final DataConfig dataConfig = createDataConfig(jsonFile);
@@ -355,7 +439,7 @@ public class PlaywrightHrTest {
         System.out.println("-".repeat(100));
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigDeleteData.json"})
+    @ValueSource(strings = {"DataConfigStartOffBoarding.json"})
     public void TestSession(String jsonFile) {
         WebclientSession.execute(jsonFile, "PlaywrightConfig.json");
     }
