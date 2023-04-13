@@ -9,12 +9,25 @@ import report.ReportTable;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 public class BaseFunctions {
     private static final long millis = 5000;
+    public static String getTimeStamp() {
+        Date nowDate = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String value = simpleDateFormat.format(nowDate);
+
+        System.out.println("Zeitstempel: " + value);
+        return value;
+    }
+    public static String getTestReportDir() {
+        return "testreport_" + getTimeStamp() + "/";
+    }
     public static void sleep() {
         try {
             Thread.sleep(millis);

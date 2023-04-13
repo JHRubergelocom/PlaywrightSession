@@ -24,7 +24,7 @@ public class PlaywrightSessionTest {
     // New instance for each test method.
     BrowserContext context;
     Page page;
-    private final String reportPath = "testreport/";
+    private final String reportPath = BaseFunctions.getTestReportDir();
     private Map<String, TabPage> createEmployee1() {
 
         Map<String, TabPage> tabPages = new TreeMap<>();

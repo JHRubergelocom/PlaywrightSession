@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class PlaywrightParameterTest {
-    private final String reportPath = "testreport/";
+    private final String reportPath = BaseFunctions.getTestReportDir();
     private Browser launch(BrowserType browserType, BrowserType.LaunchOptions options) {
         return browserType.launch(options);
     }

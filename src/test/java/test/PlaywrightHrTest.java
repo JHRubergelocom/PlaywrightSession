@@ -355,7 +355,7 @@ public class PlaywrightHrTest {
         System.out.println("-".repeat(100));
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigFirstdayOfWorkReminder.json"})
+    @ValueSource(strings = {"DataConfigDeleteData.json"})
     public void TestSession(String jsonFile) {
         WebclientSession.execute(jsonFile, "PlaywrightConfig.json");
     }
@@ -419,12 +419,13 @@ public class PlaywrightHrTest {
         ixConn.close();
     }
     @Test
-    public void testDate() {
+    public void testDateTime() {
         Date nowDate = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSS");
         String value = simpleDateFormat.format(nowDate);
 
         System.out.println("Aktuelles Datum: " + value);
+        BaseFunctions.getTimeStamp();
 
     }
     @Test

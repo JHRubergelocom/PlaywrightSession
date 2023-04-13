@@ -5,6 +5,7 @@ import report.HtmlReport;
 import report.ReportData;
 import report.ReportParagraph;
 import report.ReportTable;
+import session.BaseFunctions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,6 +115,6 @@ public class PlaywrightReportTest {
         System.out.println(reportData);
 
         String htmlDoc = HtmlReport.createReport(reportData);
-        HtmlReport.showReport("testreport/", htmlDoc);
+        HtmlReport.showReport(BaseFunctions.getTestReportDir(), htmlDoc);
     }
 }

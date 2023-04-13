@@ -367,7 +367,7 @@ public class WebclientSession {
             final PlaywrightConfig playwrightConfig = BaseFunctions.readPlaywrightConfig(jsonPlaywrightConfigFile);
 
             // Execute DataConfig
-            ws = new WebclientSession(playwrightConfig, dataConfig,"testreport/");
+            ws = new WebclientSession(playwrightConfig, dataConfig, BaseFunctions.getTestReportDir());
             try {
                 ws.login(dataConfig.getLoginData());
             } catch ( Exception e) {
@@ -427,7 +427,7 @@ public class WebclientSession {
                 showReport(ws.getReportPath(), ws.getReportParagraphs());
                 ws.close();
             } else {
-                showReport("testreport/", reportParagraphs);
+                showReport(BaseFunctions.getTestReportDir(), reportParagraphs);
             }
         }
     }
