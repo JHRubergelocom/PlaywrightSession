@@ -9,37 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Testcases HR Execute RF-Function">
-      <change afterPath="$PROJECT_DIR$/DataConfigStartOffBoarding.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144702308/30baba2e239d2204260dd99abd879a30.webm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144702308/Report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144702308/loginwebclient.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144702308/trace_chromium.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Neu Personal Neuer Mitarbeiter  .png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Neu Personal Neuer Mitarbeiter  Button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Neu Personal Neuer Mitarbeiter  Menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Neu Personal Neuer Mitarbeiter  Ribbon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Solutions Personalmanagement Personalakten H Hansen, Hans Personal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/Solutions Personalmanagement Personalakten H Hansen, Hans Persönlich.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/c8066c3c6fa0ad0b65b1fb5976f8745f.webm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/loginwebclient.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413144912878/trace_chromium.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/63c732adaac361a379080eea03b71e3d.webm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/Personal Personal Eintrittsprozess  .png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/Personal Personal Eintrittsprozess  Button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/Personal Personal Eintrittsprozess  Menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/Personal Personal Eintrittsprozess  Ribbon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/Report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/loginwebclient.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145242887/trace_chromium.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145444342/Report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145444342/Solutions Personalmanagement Personalakten H Hansen, Hans Personal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145444342/e45ac6c73de3c2c649bb5a3270277889.webm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145444342/loginwebclient.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145444342/trace_chromium.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145642787/801b57858f2428f165bcd46d91846b68.webm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testreport_20230413145642787/loginwebclient.png" afterDir="false" />
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Testcases HR Start off Boarding">
+      <change afterPath="$PROJECT_DIR$/DataConfigCreateFilesAmelie.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" afterDir="false" />
     </list>
@@ -79,7 +50,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ruberg/OneDrive - ELO Digital Office GmbH/Dokumente/Entwicklung/IntelliJ/EloUnittest&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ruberg/OneDrive - ELO Digital Office GmbH/Dokumente/Entwicklung/IntelliJ/PlaywrightSession&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.46896553&quot;,
@@ -208,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670419530192</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Playwright Html Report">
-      <created>1677166128703</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1677166128703</updated>
     </task>
     <task id="LOCAL-00069" summary="Playwright Html Report Testlogging">
       <created>1677233324790</created>
@@ -552,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681371532513</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="Playwright Testcases HR Start off Boarding">
+      <created>1681390843764</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1681390843765</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -568,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Playwright DataConfig Hr, Meeting, select folder path, select viewer formula" />
     <MESSAGE value="Playwright DataConfig Hr, Meeting, select dialog" />
     <MESSAGE value="Playwright DataConfig Hr, Meeting, multiple tables in tabpage" />
     <MESSAGE value="Playwright DataConfig Hr, Meeting, kwl field input" />
@@ -593,7 +563,8 @@
     <MESSAGE value="Playwright Testcases HR Start On Boarding" />
     <MESSAGE value="Playwright Testcases HR Start On Boarding Prepared" />
     <MESSAGE value="Playwright Testcases HR Execute RF-Function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright Testcases HR Execute RF-Function" />
+    <MESSAGE value="Playwright Testcases HR Start off Boarding" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright Testcases HR Start off Boarding" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

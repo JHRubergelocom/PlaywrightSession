@@ -1,0 +1,688 @@
+{
+  "loginData": {
+    "textUserName": {
+      "selector": "Name",
+      "value": "Bodo Kraft",
+      "type": "TEXT"
+    },
+    "textPassword": {
+      "selector": "Passwort",
+      "value": "elo",
+      "type": "TEXT"
+    },
+    "buttonLogin": {
+      "selector": "Anmelden",
+      "value": "Login",
+      "type": "BUTTON"
+    },
+    "stack": "ruberg-hr.dev.elo"
+  },
+  "eloSolutionArchiveData": {
+    "selectorSolutionTile": "xpath\u003d//*[@title\u003d\"Solutions\"]",
+    "selectorSolutionsFolder": "Solutions"
+  },
+  "eloActionData": {
+    "eloActions": [
+      {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "Neu",
+          "selectorMenu": "Personal",
+          "selectorButton": "Neuer Mitarbeiter"
+        },
+        "tabPages": {
+          "": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
+                "value": "Geneviève-Gabrielle",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_LASTNAME",
+                "value": "Leutheusser-Schnarrenberger",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_RESPONSIBLE",
+                "value": "HR",
+                "type": "DYNKWL"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "Solutions/Personalmanagement/Personalakten/L/Leutheusser-Schnarrenberger, Geneviève-Gabrielle",
+        "formulaType": "VIEWER",
+        "formulaSaveButton": "Speichern",
+        "formulaCancelButton": "",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "",
+          "selectorMenu": "",
+          "selectorButton": ""
+        },
+        "tabPages": {
+          "Persönlich": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_TITLE",
+                "value": "Dipl.-Soz.päd. (DH)",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_STREETADDRESS",
+                "value": "Franz-Joseph-Spiegler-Straße 75",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_POSTALCODE",
+                "value": "97013",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_CITY",
+                "value": "Bad Gottleuba-Berggießhübel",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_STATE",
+                "value": "Baden-Württemberg",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_COUNTRY",
+                "value": "Deutschland",
+                "type": "DYNKWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BUSINESSEMAIL",
+                "value": "a.boehm@contelo.com",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PRIVATEEMAIL",
+                "value": "a_boehm@web.de",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BUSINESSPHONENUMBER",
+                "value": "+49 731-123456",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PRIVATEPHONENUMBER",
+                "value": "07522 987654",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BUSINESSMOBILENUMBER",
+                "value": "(+49)176 12345678",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PRIVATEMOBILENUMBER",
+                "value": "0160-12345698",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_GENDER",
+                "value": "Weiblich",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_FIRSTLANGUAGE",
+                "value": "Deutsch",
+                "type": "DYNKWL"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_BIRTHDAY",
+                "value": "23.12.1999",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BIRTHPLACE",
+                "value": "Krätze",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BIRTHNAME",
+                "value": "Schnarrenberger",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_NATIONALITY",
+                "value": "Deutschland",
+                "type": "DYNKWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_RELIGIOUSDENOMINATION",
+                "value": "Katholisch",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_CIVILSTATUS",
+                "value": "Verheiratet",
+                "type": "KWL"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          },
+          "Personal": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PHYSICALFILINGLOCATION",
+                "value": "143581 - 154566",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_LICENSEPLATE",
+                "value": "S-AA 1234",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_TIN",
+                "value": "99 999 999 999",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_SOCIALSECURITYNUMBER",
+                "value": "12 123456 W 123",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_HEALTHINSURANCENUMBER",
+                "value": "A123456789",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BANK",
+                "value": "COMMERZBANK AG",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_IBAN",
+                "value": "DE 99 12345678 987654321",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_CURRENCY",
+                "value": "Euro",
+                "type": "DYNKWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BANK_COUNTRY",
+                "value": "Deutschland",
+                "type": "DYNKWL"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_WORKSCHEDULE",
+                "value": "Vollzeit",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_VACATIONQUOTA",
+                "value": "30",
+                "type": "TEXT"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          },
+          "Ein-/ Austritt": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "unbefristet",
+                "value": "true",
+                "type": "RADIO"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_DATEOFJOINING",
+                "value": "01.04.2023",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICE",
+                "value": "3",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICE_UNIT",
+                "value": "Monate",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICE_TP",
+                "value": "Monatsende",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PROBATIONARYPERIODDURATION",
+                "value": "6",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PROBATIONARYPERIODDURATION_UNIT",
+                "value": "Monate",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICEPROBATIONARY",
+                "value": "1",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICEPROBATIONARY_UNIT",
+                "value": "Monate",
+                "type": "KWL"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "Neu",
+          "selectorMenu": "Personal",
+          "selectorButton": "Neuer Mitarbeiter"
+        },
+        "tabPages": {
+          "": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
+                "value": "Karl-Theodor Maria Nikolaus Johann Jacob Philipp Franz Joseph",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_LASTNAME",
+                "value": "Buhl",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_RESPONSIBLE",
+                "value": "Personal",
+                "type": "DYNKWL"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "Solutions/Personalmanagement/Personalakten/B/Buhl, Karl-Theodor Maria Nikolaus Johann Jacob Philipp Franz Joseph",
+        "formulaType": "VIEWER",
+        "formulaSaveButton": "Speichern",
+        "formulaCancelButton": "",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "",
+          "selectorMenu": "",
+          "selectorButton": ""
+        },
+        "tabPages": {
+          "Persönlich": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_TITLE",
+                "value": "Master of Disaster Management and Risk Governance",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_NAMEAFFIX",
+                "value": "Freiherr von und zu Guttenberg",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_CITY",
+                "value": "Buckow (Märkische Schweiz)",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BIRTHPLACE",
+                "value": "São Paulo",
+                "type": "TEXT"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "Neu",
+          "selectorMenu": "Personal",
+          "selectorButton": "Neuer Mitarbeiter"
+        },
+        "tabPages": {
+          "": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
+                "value": "Adoración",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_LASTNAME",
+                "value": "Bärenfänger",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_RESPONSIBLE",
+                "value": "sol.hr.roles.Managers",
+                "type": "DYNKWL"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "Solutions/Personalmanagement/Personalakten/B/Bärenfänger, Adoración",
+        "formulaType": "VIEWER",
+        "formulaSaveButton": "Speichern",
+        "formulaCancelButton": "",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "",
+          "selectorMenu": "",
+          "selectorButton": ""
+        },
+        "tabPages": {
+          "Persönlich": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_TITLE",
+                "value": "M. Comp. Sc.",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_CITY",
+                "value": "Bad Wörishofen",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_GENDER",
+                "value": "Weiblich",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BIRTHPLACE",
+                "value": "Kyōto",
+                "type": "TEXT"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "Neu",
+          "selectorMenu": "Personal",
+          "selectorButton": "Neuer Mitarbeiter"
+        },
+        "tabPages": {
+          "": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
+                "value": "Françoise Andrés Evaristo",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_LASTNAME",
+                "value": "Montaña Lucena",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_RESPONSIBLE",
+                "value": "HR",
+                "type": "DYNKWL"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "Solutions/Personalmanagement/Personalakten/M/Montaña Lucena, Françoise Andrés Evaristo",
+        "formulaType": "VIEWER",
+        "formulaSaveButton": "Speichern",
+        "formulaCancelButton": "",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "",
+          "selectorMenu": "",
+          "selectorButton": ""
+        },
+        "tabPages": {
+          "Persönlich": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_CITY",
+                "value": "Auerbach in der Oberpfalz",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_GENDER",
+                "value": "Divers",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BIRTHPLACE",
+                "value": "Ecatepec de Morelos",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_COUNTRY",
+                "value": "Mexiko",
+                "type": "DYNKWL"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "Neu",
+          "selectorMenu": "Personal",
+          "selectorButton": "Neuer Mitarbeiter"
+        },
+        "tabPages": {
+          "": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
+                "value": "Annaëlle",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_LASTNAME",
+                "value": "Stephan",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_RESPONSIBLE",
+                "value": "HR",
+                "type": "DYNKWL"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "Solutions/Personalmanagement/Personalakten/S/Stephan, Annaëlle",
+        "formulaType": "VIEWER",
+        "formulaSaveButton": "Speichern",
+        "formulaCancelButton": "",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "",
+          "selectorMenu": "",
+          "selectorButton": ""
+        },
+        "tabPages": {
+          "Persönlich": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_TITLE",
+                "value": "Dr. rer. biol. vet.",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_CITY",
+                "value": "Frankenberg/Sa.",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BIRTHPLACE",
+                "value": "Ciudad Juárez",
+                "type": "TEXT"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "",
+        "formulaType": "EXTERNAL",
+        "formulaSaveButton": "OK",
+        "formulaCancelButton": "Abbrechen",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "Neu",
+          "selectorMenu": "Personal",
+          "selectorButton": "Neuer Mitarbeiter"
+        },
+        "tabPages": {
+          "": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
+                "value": "Sançar Ömür",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_LASTNAME",
+                "value": "Çamurcuoğlu",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_RESPONSIBLE",
+                "value": "Bodo Kraft",
+                "type": "DYNKWL"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      },
+      {
+        "entryPath": "Solutions/Personalmanagement/Personalakten/Ç/Çamurcuoğlu, Sançar Ömür",
+        "formulaType": "VIEWER",
+        "formulaSaveButton": "Speichern",
+        "formulaCancelButton": "",
+        "selectionDialogItem": "",
+        "eloActionDef": {
+          "selectorRibbon": "",
+          "selectorMenu": "",
+          "selectorButton": ""
+        },
+        "tabPages": {
+          "Persönlich": {
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_TITLE",
+                "value": "Dr.",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_CITY",
+                "value": "Xi’an",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BIRTHPLACE",
+                "value": "Bogotá",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_COUNTRY",
+                "value": "Japan",
+                "type": "DYNKWL"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          }
+        }
+      }
+    ]
+  },
+  "eloDeleteData": {
+    "arcPaths": []
+  },
+  "eloForwardWorkflow": {
+    "toNodesName": []
+  },
+  "eloExecuteRf": {
+    "eloRfs": []
+  }
+}

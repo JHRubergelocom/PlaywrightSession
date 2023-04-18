@@ -439,7 +439,7 @@ public class PlaywrightHrTest {
         System.out.println("-".repeat(100));
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigStartOffBoarding.json"})
+    @ValueSource(strings = {"DataConfigCreateFilesAmelie.json"})
     public void TestSession(String jsonFile) {
         WebclientSession.execute(jsonFile, "PlaywrightConfig.json");
     }
