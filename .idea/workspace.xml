@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Testcases HR Start off Boarding">
-      <change afterPath="$PROJECT_DIR$/DataConfigCreateFilesAmelie.json" afterDir="false" />
+    <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Testcases HR">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataConfigCreateFilesAmelie.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigCreateFilesAmelie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataConfigDeleteData.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigDeleteData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,13 +180,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670419530192</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Playwright Html Report Testlogging">
-      <created>1677233324790</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1677233324790</updated>
     </task>
     <task id="LOCAL-00070" summary="Playwright Html Report Test Reporting with Screenshots">
       <created>1677249399887</created>
@@ -523,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681390843765</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="Playwright Testcases HR">
+      <created>1681821720218</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1681821720218</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -559,12 +560,12 @@
     <MESSAGE value="Playwright Check Mandatory Fields" />
     <MESSAGE value="Playwright Check Expected Value in Fields" />
     <MESSAGE value="Playwright Refactoring Testreport" />
-    <MESSAGE value="Playwright Testcases HR" />
     <MESSAGE value="Playwright Testcases HR Start On Boarding" />
     <MESSAGE value="Playwright Testcases HR Start On Boarding Prepared" />
     <MESSAGE value="Playwright Testcases HR Execute RF-Function" />
     <MESSAGE value="Playwright Testcases HR Start off Boarding" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playwright Testcases HR Start off Boarding" />
+    <MESSAGE value="Playwright Testcases HR" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playwright Testcases HR" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

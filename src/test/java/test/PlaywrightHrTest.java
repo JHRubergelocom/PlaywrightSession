@@ -283,6 +283,12 @@ public class PlaywrightHrTest {
         // Delete Data
         final List<String> arcPaths = new ArrayList<>();
         arcPaths.add("ARCPATH:/Personalmanagement/Personalakten/H/Hansen, Hans");
+        arcPaths.add("ARCPATH:/Personalmanagement/Personalakten/L/Leutheusser-Schnarrenberger, Geneviève-Gabrielle");
+        arcPaths.add("ARCPATH:/Personalmanagement/Personalakten/B/Buhl, Karl-Theodor Maria Nikolaus Johann Jacob Philipp Franz Joseph");
+        arcPaths.add("ARCPATH:/Personalmanagement/Personalakten/B/Bärenfänger, Adoración");
+        arcPaths.add("ARCPATH:/Personalmanagement/Personalakten/M/Montaña Lucena, Françoise Andrés Evaristo");
+        arcPaths.add("ARCPATH:/Personalmanagement/Personalakten/S/Stephan, Annaëlle");
+        arcPaths.add("ARCPATH:/Personalmanagement/Personalakten/Ç/Çamurcuoğlu, Sançar Ömür");
 
         final ELODeleteData eloDeleteData = new ELODeleteData(arcPaths);
 
@@ -439,7 +445,7 @@ public class PlaywrightHrTest {
         System.out.println("-".repeat(100));
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigCreateFilesAmelie.json"})
+    @ValueSource(strings = {"DataConfigDeleteData.json"})
     public void TestSession(String jsonFile) {
         WebclientSession.execute(jsonFile, "PlaywrightConfig.json");
     }

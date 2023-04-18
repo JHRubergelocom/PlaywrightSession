@@ -26,7 +26,13 @@
   },
   "eloDeleteData": {
     "arcPaths": [
-      "ARCPATH:/Personalmanagement/Personalakten/H/Hansen, Hans"
+      "ARCPATH:/Personalmanagement/Personalakten/H/Hansen, Hans",
+      "ARCPATH:/Personalmanagement/Personalakten/L/Leutheusser-Schnarrenberger, Geneviève-Gabrielle",
+      "ARCPATH:/Personalmanagement/Personalakten/B/Buhl, Karl-Theodor Maria Nikolaus Johann Jacob Philipp Franz Joseph",
+      "ARCPATH:/Personalmanagement/Personalakten/B/Bärenfänger, Adoración",
+      "ARCPATH:/Personalmanagement/Personalakten/M/Montaña Lucena, Françoise Andrés Evaristo",
+      "ARCPATH:/Personalmanagement/Personalakten/S/Stephan, Annaëlle",
+      "ARCPATH:/Personalmanagement/Personalakten/Ç/Çamurcuoğlu, Sançar Ömür"
     ]
   },
   "eloForwardWorkflow": {
