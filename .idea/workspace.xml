@@ -12,7 +12,8 @@
     <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Testcases HR">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataConfigCreateFilesAmelie.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigCreateFilesAmelie.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataConfigDeleteData.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigDeleteData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/Formula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Formula.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,13 +181,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670419530192</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Playwright Html Report Test Reporting with Screenshots">
-      <created>1677249399887</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1677249399887</updated>
     </task>
     <task id="LOCAL-00071" summary="Playwright Html Report Test Reporting with Screenshots">
       <created>1677500047132</created>
@@ -524,7 +518,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681821720218</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="Playwright Testcases HR">
+      <created>1681826307869</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1681826307869</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -612,7 +613,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/session/WebclientSession.java</url>
-          <line>400</line>
+          <line>402</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>

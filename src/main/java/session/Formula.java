@@ -89,7 +89,7 @@ public class Formula {
             }
         }
     }
-    private boolean inputControl(ELOControl control, int index) {
+    private boolean inputControl(ELOControl control, int tabIndex, int index) {
         boolean checkData = true;
 
         String value = control.getValue();
@@ -101,8 +101,8 @@ public class Formula {
         }
 
         String selector = control.getSelector();
-        if (index > 0) {
-            selector = selector + index;
+        if (tabIndex > 0) {
+            selector = selector + tabIndex;
         }
         switch(control.getType()) {
             case TEXT -> checkData = inputTextField(selector, value);
@@ -113,14 +113,14 @@ public class Formula {
             case KWL -> checkData =  inputKwlField(selector, value);
         }
         if(!checkData) {
-            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageEloControlCheckData(control), BaseFunctions.getScreenShotFileName(eloAction, selector) + ".png");
+            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageEloControlCheckData(control), BaseFunctions.getScreenShotFileName(eloAction, selector) + index + ".png");
         }
         return checkData;
     }
-    private boolean inputControls(List<ELOControl> controls) {
+    private boolean inputControls(List<ELOControl> controls, int index) {
         boolean checkData = true;
         for (ELOControl control: controls) {
-            if(!inputControl(control, 0)) {
+            if(!inputControl(control, 0, index)) {
                 checkData = false;
             }
         }
@@ -138,26 +138,26 @@ public class Formula {
         }
         BaseFunctions.sleep();
     }
-    private boolean inputControlsTable(ELOTable eloTable) {
+    private boolean inputControlsTable(ELOTable eloTable, int index) {
         boolean checkData = true;
-        int index = 1;
+        int tabIndex = 1;
         for (List<ELOControl> tableLine: eloTable.getTable()) {
-            if (index > 1) {
+            if (tabIndex > 1) {
                 clickAddLineButton(eloTable);
             }
             for (ELOControl control: tableLine) {
-                if(!inputControl(control, index)) {
+                if(!inputControl(control, tabIndex, index)) {
                     checkData = false;
                 }
             }
-            index++;
+            tabIndex++;
         }
         return checkData;
     }
-    private boolean inputControlsTables(List<ELOTable> tables) {
+    private boolean inputControlsTables(List<ELOTable> tables, int index) {
         boolean checkData = true;
         for(ELOTable eloTable: tables) {
-            if(!inputControlsTable(eloTable)) {
+            if(!inputControlsTable(eloTable, index )) {
                 checkData = false;
             }
         }
@@ -294,7 +294,7 @@ public class Formula {
             return false;
         }
     }
-    private boolean expectedValueControl(ELOControl expectedValueControl) {
+    private boolean expectedValueControl(ELOControl expectedValueControl, int index) {
         boolean checkData = true;
 
         String selector = expectedValueControl.getSelector();
@@ -307,7 +307,7 @@ public class Formula {
             case KWL -> checkData =  expectedValueKwlField(selector, expectedValueControl.getValue());
         }
         if(!checkData) {
-            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageEloControlExpectedValue(expectedValueControl), BaseFunctions.getScreenShotFileName(eloAction, selector) + " expectedValue.png");
+            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageEloControlExpectedValue(expectedValueControl), BaseFunctions.getScreenShotFileName(eloAction, selector) + index + " expectedValue.png");
         }
         return checkData;
     }
@@ -397,11 +397,11 @@ public class Formula {
         ReportTable reportTable = new ReportTable(tableCols, tableCells);
         BaseFunctions.reportMessageAndTable(webclientSession.getReportParagraphs(), "Feldwertprüfung", reportTable);
     }
-    private boolean expectedValueControls(List<ELOControl> expectedValueControls) {
+    private boolean expectedValueControls(List<ELOControl> expectedValueControls, int index) {
         reportExpectedValueControls(expectedValueControls);
         boolean checkData = true;
         for (ELOControl expectedValueControl : expectedValueControls) {
-            if(!expectedValueControl(expectedValueControl)) {
+            if(!expectedValueControl(expectedValueControl, index)) {
                 checkData = false;
             }
         }
@@ -412,7 +412,7 @@ public class Formula {
         this.webclientSession = webclientSession;
         this.eloAction = eloAction;
     }
-    public boolean inputData(Map<String, TabPage> tabpages) {
+    public boolean inputData(Map<String, TabPage> tabpages, int index) {
         boolean checkData = true;
         for (Map.Entry<String,TabPage> entry: tabpages.entrySet()) {
             System.out.println("Key Tabpage: " + entry.getKey());
@@ -423,28 +423,28 @@ public class Formula {
 
             selectTab(tabName);
             initTabPage(tabPage.getInitTabPage());
-            if(!inputControls(tabPage.getControls())) {
+            if(!inputControls(tabPage.getControls(), index)) {
                 checkData = false;
             }
-            if(!inputControlsTables(tabPage.getTables())) {
+            if(!inputControlsTables(tabPage.getTables(), index)) {
                 checkData = false;
             }
-            if(!expectedValueControls(tabPage.getExpectedValueControls())) {
+            if(!expectedValueControls(tabPage.getExpectedValueControls(), index)) {
                 checkData = false;
             }
-            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageTabPage(tabName), BaseFunctions.getScreenShotFileName(eloAction, tabName) + ".png");
+            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageTabPage(tabName), BaseFunctions.getScreenShotFileName(eloAction, tabName) + index + ".png");
         }
         if(!checkMandatoryControls()) {
             checkData = false;
         }
         return checkData;
     }
-    public void quit(String formulaSaveButton) {
+    public void quit(String formulaSaveButton, int index) {
         BaseFunctions.sleep();
         try {
             click(frameLocator.getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName(formulaSaveButton)));
         } catch (Exception e) {
-            BaseFunctions.reportScreenshot(webclientSession, "<span>" + "Formular cannot be saved" + "</span>", BaseFunctions.getScreenShotFileName(eloAction, "Formula") + ".png");
+            BaseFunctions.reportScreenshot(webclientSession, "<span>" + "Formular cannot be saved" + "</span>", BaseFunctions.getScreenShotFileName(eloAction, "Formula") + index + ".png");
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + "Formular cannot be saved" + "</span>");
         }
     }

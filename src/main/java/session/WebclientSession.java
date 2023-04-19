@@ -125,38 +125,38 @@ public class WebclientSession {
         System.out.println("frameLocator " + frameLocator);
         return frameLocator;
     }
-    private void startSelectionDialogItem(ELOAction eloAction) {
+    private void startSelectionDialogItem(ELOAction eloAction, int index) {
         if (!eloAction.getSelectionDialogItem().equals("")) {
             System.out.println("selectionDialogItem = "+ eloAction.getSelectionDialogItem());
             BaseFunctions.sleep();
-            BaseFunctions.reportScreenshot(this, eloAction.getSelectionDialogItem(), BaseFunctions.getScreenShotFileName(eloAction, "selectionDialogItem") + ".png");
+            BaseFunctions.reportScreenshot(this, eloAction.getSelectionDialogItem(), BaseFunctions.getScreenShotFileName(eloAction, "selectionDialogItem") + index + ".png");
             page.getByText(eloAction.getSelectionDialogItem()).click();
         }
     }
-    private Optional<FrameLocator> startExternalFormular(ELOAction eloAction) {
+    private Optional<FrameLocator> startExternalFormular(ELOAction eloAction, int index) {
         System.out.println("eloActionDef " + eloAction.getEloActionDef());
         System.out.println("selectionDialogItem " + eloAction.getSelectionDialogItem());
         BaseFunctions.sleep();
-        if (!selectRibbon(eloAction)) {
+        if (!selectRibbon(eloAction, index)) {
             return Optional.empty();
         }
         BaseFunctions.sleep();
-        if(!selectMenu(eloAction)) {
-            return Optional.empty();
-        }
-
-        BaseFunctions.sleep();
-        if (!selectButton(eloAction)) {
+        if(!selectMenu(eloAction, index)) {
             return Optional.empty();
         }
 
         BaseFunctions.sleep();
-        startSelectionDialogItem(eloAction);
+        if (!selectButton(eloAction, index)) {
+            return Optional.empty();
+        }
+
+        BaseFunctions.sleep();
+        startSelectionDialogItem(eloAction, index);
         BaseFunctions.sleep();
 
         return  Optional.of(getFrameLocator("iframe"));
     }
-    private Optional<FrameLocator> startViewerFormular(ELOAction eloAction) {
+    private Optional<FrameLocator> startViewerFormular(ELOAction eloAction, int index) {
         BaseFunctions.sleep();
         Locator rows = page.locator("xpath=//*[@class=\"x-btn-button\"]");
         int count = rows.count();
@@ -172,35 +172,35 @@ public class WebclientSession {
                 rows.nth(i).click();
             }
         }
-        startSelectionDialogItem(eloAction);
+        startSelectionDialogItem(eloAction, index);
         BaseFunctions.sleep();
 
         return Optional.of(getFrameLocator("FormularViewer"));
     }
-    private Optional<FrameLocator> startFormula(ELOAction eloAction) {
+    private Optional<FrameLocator> startFormula(ELOAction eloAction, int index) {
         switch (eloAction.getFormulaType()) {
-            case EXTERNAL -> { return startExternalFormular(eloAction);}
-            case VIEWER -> { return startViewerFormular(eloAction);}
+            case EXTERNAL -> { return startExternalFormular(eloAction, index);}
+            case VIEWER -> { return startViewerFormular(eloAction, index);}
         }
         return Optional.empty();
     }
     private boolean executeAction(ELOAction eloAction,
-                               Map<String, TabPage> tabPages) {
+                               Map<String, TabPage> tabPages, int index) {
         boolean checkData = true;
         selectEntryByPath(dataConfig.getEloSolutionArchiveData().getSelectorSolutionsFolder() +
                 "/" +
                 dataConfig.getLoginData().getTextUserName().getValue());
 
         if(selectEntryByPath(eloAction.getEntryPath())) {
-            Optional<FrameLocator> frameLocatorOptional = startFormula(eloAction);
+            Optional<FrameLocator> frameLocatorOptional = startFormula(eloAction, index);
             if (frameLocatorOptional.isPresent()) {
                 Formula formula = new Formula(frameLocatorOptional.get(), this, eloAction);
-                if(formula.inputData(tabPages)) {
-                    formula.quit(eloAction.getFormulaSaveButton());
+                if(formula.inputData(tabPages, index)) {
+                    formula.quit(eloAction.getFormulaSaveButton(), index);
                 } else {
                     if(!eloAction.getFormulaCancelButton().equals("")) {
-                        formula.quit(eloAction.getFormulaCancelButton());
-                        BaseFunctions.reportScreenshot(this, "<span>" + "Formular cannot be saved" + "</span>", BaseFunctions.getScreenShotFileName(eloAction, "Formula") + ".png");
+                        formula.quit(eloAction.getFormulaCancelButton(), index);
+                        BaseFunctions.reportScreenshot(this, "<span>" + "Formular cannot be saved" + "</span>", BaseFunctions.getScreenShotFileName(eloAction, "Formula" + index) + ".png");
                         BaseFunctions.reportMessage(reportParagraphs, "<span>" + "Formular cannot be saved" + "</span>");
                     }
                     checkData = false;
@@ -266,33 +266,33 @@ public class WebclientSession {
         }
         return true;
     }
-    private boolean selectRibbon(ELOAction eloAction){
+    private boolean selectRibbon(ELOAction eloAction, int index){
         Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, eloAction.getEloActionDef().getSelectorRibbon(), "id", "button");
         if(optionalLocator.isPresent()) {
-            BaseFunctions.reportScreenshot(this, eloAction.getEloActionDef().getSelectorRibbon(), BaseFunctions.getScreenShotFileName(eloAction, "Ribbon") + ".png");
+            BaseFunctions.reportScreenshot(this, eloAction.getEloActionDef().getSelectorRibbon(), BaseFunctions.getScreenShotFileName(eloAction, "Ribbon" + index) + ".png");
             optionalLocator.get().click();
             return true;
         }
         BaseFunctions.reportMessage(reportParagraphs, "<span>Ribbon " + eloAction.getEloActionDef().getSelectorRibbon() + " nicht gefunden!</span>");
         return false;
     }
-    private boolean selectMenu(ELOAction eloAction){
+    private boolean selectMenu(ELOAction eloAction, int index){
         Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, eloAction.getEloActionDef().getSelectorMenu(), "id", "button");
         if (optionalLocator.isPresent()) {
-            BaseFunctions.reportScreenshot(this, eloAction.getEloActionDef().getSelectorMenu(), BaseFunctions.getScreenShotFileName(eloAction, "Menu") + ".png");
+            BaseFunctions.reportScreenshot(this, eloAction.getEloActionDef().getSelectorMenu(), BaseFunctions.getScreenShotFileName(eloAction, "Menu" + index) + ".png");
             optionalLocator.get().click();
             return true;
         }
         BaseFunctions.reportMessage(reportParagraphs, "<span>Menu " + eloAction.getEloActionDef().getSelectorMenu() + " nicht gefunden!</span>");
         return false;
     }
-    private boolean selectButton(ELOAction eloAction){
+    private boolean selectButton(ELOAction eloAction, int index){
         Optional<Locator> optionalLocator = BaseFunctions.selectByTextAttribute(page, eloAction.getEloActionDef().getSelectorButton(), "id", "comp");
         if (optionalLocator.isEmpty()) {
             optionalLocator = BaseFunctions.selectByTextAttributeNotExact(page, eloAction.getEloActionDef().getSelectorButton(), "id", "comp");
         }
         if (optionalLocator.isPresent()) {
-            BaseFunctions.reportScreenshot(this, eloAction.getEloActionDef().getSelectorButton(), BaseFunctions.getScreenShotFileName(eloAction, "Button") + ".png");
+            BaseFunctions.reportScreenshot(this, eloAction.getEloActionDef().getSelectorButton(), BaseFunctions.getScreenShotFileName(eloAction, "Button" + index) + ".png");
             optionalLocator.get().click();
             return true;
         }
@@ -373,13 +373,15 @@ public class WebclientSession {
             } catch ( Exception e) {
                 throw new Exception("Login fehlgeschlagen!");
             }
+            int index = 1;
             for (ELOAction eloAction: dataConfig.getEloActionData().getEloActions()) {
                 Map<String, TabPage> tabPages = eloAction.getTabPages();
 
                 // Execute Action
-                if(!ws.executeAction(eloAction, tabPages)) {
+                if(!ws.executeAction(eloAction, tabPages, index)) {
                     checkData = false;
                 }
+                index++;
             }
 
             if (playwrightConfig.isPause()) {
