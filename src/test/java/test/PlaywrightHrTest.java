@@ -169,6 +169,213 @@ public class PlaywrightHrTest {
 
         return tabPages;
     }
+    private Map<String, TabPage> createEmployeeFL(String firstname, String lastname, String responsible) {
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // "" (Nur eine tabPage)
+
+        List<ELOControl> initTabPage = new ArrayList<>();
+        List<ELOControl> controls = new ArrayList<>();
+
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_FIRSTNAME", firstname, ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_LASTNAME", lastname, ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_RESPONSIBLE", responsible, ELOControlType.DYNKWL));
+
+        List<ELOTable> tables = new ArrayList<>();
+
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
+        tabPages.put("", tabPage);
+
+        return tabPages;
+    }
+    private String getEntryPath(String firstname, String lastname) {
+        return "Solutions/Personalmanagement/Personalakten/" + lastname.charAt(0) + "/" + lastname + ", " + firstname;
+    }
+    private Map<String, TabPage> editEmployeeLG() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // Persönlich
+        List<ELOControl> initTabPage = new ArrayList<>();
+
+        List<ELOControl> controls = new ArrayList<>();
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TITLE", "Dipl.-Soz.päd. (DH)", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_STREETADDRESS", "Franz-Joseph-Spiegler-Straße 75", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_POSTALCODE", "97013", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_CITY", "Bad Gottleuba-Berggießhübel", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_STATE", "Baden-Württemberg", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_COUNTRY", "Deutschland", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BUSINESSEMAIL", "a.boehm@contelo.com", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_PRIVATEEMAIL", "a_boehm@web.de", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BUSINESSPHONENUMBER", "+49 731-123456", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_PRIVATEPHONENUMBER", "07522 987654", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BUSINESSMOBILENUMBER", "(+49)176 12345678", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_PRIVATEMOBILENUMBER", "0160-12345698", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_GENDER", "Weiblich", ELOControlType.KWL));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_FIRSTLANGUAGE", "Deutsch", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_BIRTHDAY", "23.12.1999", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BIRTHPLACE", "Krätze", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BIRTHNAME", "Schnarrenberger", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_NATIONALITY", "Deutschland", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_RELIGIOUSDENOMINATION", "Katholisch", ELOControlType.KWL));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_CIVILSTATUS", "Verheiratet", ELOControlType.KWL));
+
+        List<ELOTable> tables = new ArrayList<>();
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
+        tabPages.put("Persönlich", tabPage);
+
+        // Personal
+        initTabPage = new ArrayList<>();
+
+        controls = new ArrayList<>();
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_PHYSICALFILINGLOCATION", "143581 - 154566", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_LICENSEPLATE", "S-AA 1234", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TIN", "99 999 999 999", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_SOCIALSECURITYNUMBER", "12 123456 W 123", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_HEALTHINSURANCENUMBER", "A123456789", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BANK", "COMMERZBANK AG", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_IBAN", "DE 99 12345678 987654321", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_CURRENCY", "Euro", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BANK_COUNTRY", "Deutschland", ELOControlType.DYNKWL));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_WORKSCHEDULE", "Vollzeit", ELOControlType.KWL));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_VACATIONQUOTA", "30", ELOControlType.TEXT));
+
+        tables = new ArrayList<>();
+        expectedValueControls = new ArrayList<>();
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
+        tabPages.put("Personal", tabPage);
+
+        // Ein-/ Austritt
+        initTabPage = new ArrayList<>();
+
+        controls = new ArrayList<>();
+        controls.add(new ELOControl("unbefristet", "true", ELOControlType.RADIO));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DATEOFJOINING", "01.04.2023", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_PERIODOFNOTICE", "3", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_PERIODOFNOTICE_UNIT", "Monate", ELOControlType.KWL));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_PERIODOFNOTICE_TP", "Monatsende", ELOControlType.KWL));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_PROBATIONARYPERIODDURATION", "6", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_PROBATIONARYPERIODDURATION_UNIT", "Monate", ELOControlType.KWL));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_PERIODOFNOTICEPROBATIONARY", "1", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_PERIODOFNOTICEPROBATIONARY_UNIT", "Monate", ELOControlType.KWL));
+
+        tables = new ArrayList<>();
+        expectedValueControls = new ArrayList<>();
+
+        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
+        tabPages.put("Ein-/ Austritt", tabPage);
+
+        return tabPages;
+    }
+    private Map<String, TabPage> editEmployeeBK() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // Persönlich
+        List<ELOControl> initTabPage = new ArrayList<>();
+
+        List<ELOControl> controls = new ArrayList<>();
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TITLE", "Master of Disaster Management and Risk Governance", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_NAMEAFFIX", "Freiherr von und zu Guttenberg", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_CITY", "Buckow (Märkische Schweiz)", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BIRTHPLACE", "São Paulo", ELOControlType.TEXT));
+
+        List<ELOTable> tables = new ArrayList<>();
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
+        tabPages.put("Persönlich", tabPage);
+
+        return tabPages;
+    }
+    private Map<String, TabPage> editEmployeeBA() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // Persönlich
+        List<ELOControl> initTabPage = new ArrayList<>();
+
+        List<ELOControl> controls = new ArrayList<>();
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TITLE", "M. Comp. Sc.", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_CITY", "Bad Wörishofen", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_GENDER", "Weiblich", ELOControlType.KWL));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BIRTHPLACE", "Kyōto", ELOControlType.TEXT));
+
+        List<ELOTable> tables = new ArrayList<>();
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
+        tabPages.put("Persönlich", tabPage);
+
+        return tabPages;
+    }
+    private Map<String, TabPage> editEmployeeMF() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // Persönlich
+        List<ELOControl> initTabPage = new ArrayList<>();
+
+        List<ELOControl> controls = new ArrayList<>();
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_CITY", "Auerbach in der Oberpfalz", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_GENDER", "Divers", ELOControlType.KWL));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BIRTHPLACE", "Ecatepec de Morelos", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_COUNTRY", "Mexiko", ELOControlType.DYNKWL));
+
+        List<ELOTable> tables = new ArrayList<>();
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
+        tabPages.put("Persönlich", tabPage);
+
+        return tabPages;
+    }
+    private Map<String, TabPage> editEmployeeS() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // Persönlich
+        List<ELOControl> initTabPage = new ArrayList<>();
+
+        List<ELOControl> controls = new ArrayList<>();
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TITLE", "Dr. rer. biol. vet.", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_CITY", "Frankenberg/Sa.", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BIRTHPLACE", "Ciudad Juárez", ELOControlType.TEXT));
+
+        List<ELOTable> tables = new ArrayList<>();
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
+        tabPages.put("Persönlich", tabPage);
+
+        return tabPages;
+    }
+    private Map<String, TabPage> editEmployeeCS() {
+
+        Map<String, TabPage> tabPages = new TreeMap<>();
+
+        // Persönlich
+        List<ELOControl> initTabPage = new ArrayList<>();
+
+        List<ELOControl> controls = new ArrayList<>();
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TITLE", "Dr.", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_CITY", "Xi’an", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BIRTHPLACE", "Bogotá", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_COUNTRY", "Japan", ELOControlType.DYNKWL));
+
+        List<ELOTable> tables = new ArrayList<>();
+        List<ELOControl>  expectedValueControls = new ArrayList<>();
+
+        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
+        tabPages.put("Persönlich", tabPage);
+
+        return tabPages;
+    }
     private DataConfig createDataConfigCreateFile() {
         // ELO Action Def Data
         final String selectorRibbonNew = "Neu";
@@ -385,6 +592,94 @@ public class PlaywrightHrTest {
                 eloExecuteRf);
 
     }
+    private DataConfig createDataConfigFilesAmelie() {
+        // ELO Action Def Data
+        final String selectorRibbonNew = "Neu";
+        final String selectorMenuPersonnel = "Personal";
+        final String selectorButtonNewEmployee = "Neuer Mitarbeiter";
+
+        // Fill DataConfig
+        final ELOControl textUserName = new ELOControl("Name", "Ute Schenk", ELOControlType.TEXT);
+        final ELOControl textPassword = new ELOControl("Passwort", "elo", ELOControlType.TEXT);
+        final ELOControl buttonLogin = new ELOControl("Anmelden", "Login", ELOControlType.BUTTON);
+        final String stack = "ruberg-hr.dev.elo";
+
+        final LoginData loginData = new LoginData(textUserName, textPassword, buttonLogin,stack);
+
+        final ELOSolutionArchiveData eloSolutionArchiveData = new ELOSolutionArchiveData("xpath=//*[@title=\"Solutions\"]", "Solutions");
+
+        final List<ELOAction> eloActions = new ArrayList<>();
+
+        Map<String, TabPage> eloTabPages = createEmployeeFL("Geneviève-Gabrielle", "Leutheusser-Schnarrenberger", "HR");
+        ELOAction eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
+        eloActions.add(eloAction);
+
+        eloTabPages = editEmployeeLG();
+        eloAction = new ELOAction(getEntryPath("Geneviève-Gabrielle", "Leutheusser-Schnarrenberger"), FormulaType.VIEWER,"Speichern", "","", new ELOActionDef(), eloTabPages);
+        eloActions.add(eloAction);
+
+
+        eloTabPages = createEmployeeFL("Karl-Theodor Maria Nikolaus Johann Jacob Philipp Franz Joseph", "Buhl", "Personal");
+        eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
+        eloActions.add(eloAction);
+
+        eloTabPages = editEmployeeBK();
+        eloAction = new ELOAction(getEntryPath("Karl-Theodor Maria Nikolaus Johann Jacob Philipp Franz Joseph", "Buhl"), FormulaType.VIEWER,"Speichern", "","", new ELOActionDef(), eloTabPages);
+        eloActions.add(eloAction);
+
+
+        eloTabPages = createEmployeeFL("Adoración", "Bärenfänger", "sol.hr.roles.Managers");
+        eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
+        eloActions.add(eloAction);
+
+        eloTabPages = editEmployeeBA();
+        eloAction = new ELOAction(getEntryPath("Adoración", "Bärenfänger"), FormulaType.VIEWER,"Speichern", "","", new ELOActionDef(), eloTabPages);
+        eloActions.add(eloAction);
+
+
+        eloTabPages = createEmployeeFL("Françoise Andrés Evaristo", "Montaña Lucena", "HR");
+        eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
+        eloActions.add(eloAction);
+
+        eloTabPages = editEmployeeMF();
+        eloAction = new ELOAction(getEntryPath("Françoise Andrés Evaristo", "Montaña Lucena"), FormulaType.VIEWER,"Speichern", "","", new ELOActionDef(), eloTabPages);
+        eloActions.add(eloAction);
+
+
+        eloTabPages = createEmployeeFL("Annaëlle", "Stephan","HR");
+        eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
+        eloActions.add(eloAction);
+
+        eloTabPages = editEmployeeS();
+        eloAction = new ELOAction(getEntryPath("Annaëlle", "Stephan"), FormulaType.VIEWER,"Speichern", "","", new ELOActionDef(), eloTabPages);
+        eloActions.add(eloAction);
+
+
+        eloTabPages = createEmployeeFL("Sançar Ömür", "Çamurcuoğlu", "Ute Schenk");
+        eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
+        eloActions.add(eloAction);
+
+        eloTabPages = editEmployeeCS();
+        eloAction = new ELOAction(getEntryPath("Sançar Ömür", "Çamurcuoğlu"), FormulaType.VIEWER,"Speichern", "","", new ELOActionDef(), eloTabPages);
+        eloActions.add(eloAction);
+
+        final ELOActionData eloActionData = new ELOActionData(eloActions);
+
+        final ELODeleteData eloDeleteData = new ELODeleteData(new ArrayList<>());
+
+        final ELOForwardWorkflow eloForwardWorkflow = new ELOForwardWorkflow(new ArrayList<>());
+
+        final ELOExecuteRf eloExecuteRf = new ELOExecuteRf(new ArrayList<>());
+
+        return new DataConfig(loginData,
+                eloSolutionArchiveData,
+                eloActionData,
+                eloDeleteData,
+                eloForwardWorkflow,
+                eloExecuteRf);
+
+
+    }
     private DataConfig createDataConfig(String jsonFile) {
         switch(jsonFile) {
             case "DataConfigCreateFile.json" -> {return createDataConfigCreateFile();}
@@ -393,6 +688,7 @@ public class PlaywrightHrTest {
             case "DataConfigDeleteData.json" -> {return createDataConfigDeleteData();}
             case "DataConfigFirstdayOfWorkReminder.json" -> {return createDataConfigFirstdayOfWorkReminder();}
             case "DataConfigStartOffBoarding.json" -> {return createDataConfigStartOffBoarding();}
+            case "DataConfigCreateFilesAmelie.json" -> {return createDataConfigFilesAmelie();}
         }
         return new DataConfig();
     }
@@ -410,7 +706,7 @@ public class PlaywrightHrTest {
         return finishedWorkflows;
     }
     @ParameterizedTest
-    @ValueSource(strings = {"DataConfigCreateFile.json", "DataConfigStartOnBoarding.json", "DataConfigDeleteData.json", "DataConfigFirstdayOfWorkReminder.json", "DataConfigStartOffBoarding.json"})
+    @ValueSource(strings = {"DataConfigCreateFile.json", "DataConfigStartOnBoarding.json", "DataConfigDeleteData.json", "DataConfigFirstdayOfWorkReminder.json", "DataConfigStartOffBoarding.json", "DataConfigCreateFilesAmelie.json"})
     public void CreateDataConfigJson(String jsonFile) {
         // Create DataConfig
         final DataConfig dataConfig = createDataConfig(jsonFile);
@@ -516,6 +812,17 @@ public class PlaywrightHrTest {
 
         System.out.println("Aktuelles Datum: " + value);
         BaseFunctions.getTimeStamp();
+
+    }
+    @Test
+    public void testEntryPath() {
+        String firstname = "Geneviève-Gabrielle";
+        String lastname = "Leutheusser-Schnarrenberger";
+
+        System.out.println("firstname: " + firstname);
+        System.out.println("lastname: " + lastname);
+
+        System.out.println("EntryPath: " + getEntryPath(firstname, lastname));
 
     }
     @Test
