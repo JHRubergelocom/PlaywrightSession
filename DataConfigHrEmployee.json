@@ -80,37 +80,44 @@
               {
                 "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
                 "value": "Hans",
-                "type": "TEXT"
+                "type": "TEXT",
+                "operator": "EQUAL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_LASTNAME",
                 "value": "Hansen",
-                "type": "TEXT"
+                "type": "TEXT",
+                "operator": "EQUAL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_PERSONNELNO",
                 "value": "12345",
-                "type": "TEXT"
+                "type": "TEXT",
+                "operator": "EQUAL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_ELOUSERID",
                 "value": "Jan Eichner",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "operator": "EQUAL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_RESPONSIBLE",
                 "value": "Bodo Kraft",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "operator": "EQUAL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_SUPERIOR",
                 "value": "Gerd Baum",
-                "type": "DYNKWL"
+                "type": "DYNKWL",
+                "operator": "EQUAL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_DATEOFJOINING",
                 "value": "01.01.2022",
-                "type": "TEXT"
+                "type": "TEXT",
+                "operator": "EQUAL"
               }
             ]
           }
@@ -219,22 +226,26 @@
               {
                 "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME2",
                 "value": "Sebastian",
-                "type": "TEXT"
+                "type": "TEXT",
+                "operator": "EQUAL"
               },
               {
                 "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME2",
                 "value": "Schulz",
-                "type": "TEXT"
+                "type": "TEXT",
+                "operator": "EQUAL"
               },
               {
                 "selector": "IX_MAP_HR_PERSONNEL_TITLE",
                 "value": "Doktor H",
-                "type": "TEXT"
+                "type": "TEXT",
+                "operator": "EQUAL"
               },
               {
                 "selector": "IX_GRP_HR_PERSONNEL_GENDER",
                 "value": "M - Männlich",
-                "type": "KWL"
+                "type": "KWL",
+                "operator": "EQUAL"
               }
             ]
           },
@@ -253,7 +264,8 @@
               {
                 "selector": "IX_MAP_DURATION_TYPE",
                 "value": "sol.hr.form.personnelfile.fixedterm",
-                "type": "RADIO"
+                "type": "RADIO",
+                "operator": "EQUAL"
               }
             ]
           }

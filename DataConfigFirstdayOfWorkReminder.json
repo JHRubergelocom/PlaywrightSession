@@ -44,7 +44,8 @@
               {
                 "selector": "IX_GRP_HR_PERSONNEL_PERSONNELSTATUS",
                 "value": "E - Angestellt",
-                "type": "KWL"
+                "type": "KWL",
+                "operator": "EQUAL"
               }
             ]
           }

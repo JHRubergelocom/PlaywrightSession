@@ -258,9 +258,16 @@ public class BaseFunctions {
         ReportTable reportTable = getDynKwlTable(frameLocator);
         return checkKwlTable(reportParagraphs, reportTable, text);
     }
-    public static boolean checkValueControl(Locator control, String value) {
+    public static boolean checkValueEqualControl(Locator control, String value) {
         String inputValue = control.inputValue();
         return inputValue.equals(value);
+    }
+    public static boolean checkValueExistControl(Locator control, ELOControlType type) {
+        String inputValue = control.inputValue();
+        if (type == ELOControlType.REDACTOR) {
+            return !inputValue.equals("<p></p>");
+        }
+        return !inputValue.isEmpty();
     }
     public static boolean checkValueRadioButton(Locator rows, String value) {
         int count = rows.count();
@@ -336,8 +343,8 @@ public class BaseFunctions {
     public static String getScreenShotMessageEloControlCheckData(ELOControl control) {
         return "<span>CheckData von " + control.getSelector() + " " + control.getValue() + " fehlgeschlagen</span>";
     }
-    public static String getScreenShotMessageEloControlCheckValue(ELOControl expectedValueControl) {
-        return "<span>ExpectedValue von " + expectedValueControl.getSelector() + " " + expectedValueControl.getValue() + " fehlgeschlagen</span>";
+    public static String getScreenShotMessageEloControlCheckValue(ELOCheckValueControl checkValueControl) {
+        return "<span>CheckValue von " + checkValueControl.getSelector() + " " + checkValueControl.getValue() + " fehlgeschlagen</span>";
     }
     public static String getScreenShotMessageTabPage(String tabName) {
         return "TabPage " + tabName;

@@ -10,20 +10,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Testcases HR Test report">
+      <change afterPath="$PROJECT_DIR$/src/main/java/session/ELOCheckValueControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/session/ELOCheckValueOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154124494/309f6ee12b37127ace4ea612463b233b.webm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154124494/Neu Personal Neuer Mitarbeiter  1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154124494/Neu Personal Neuer Mitarbeiter  Button1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154124494/Neu Personal Neuer Mitarbeiter  Menu1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154124494/Neu Personal Neuer Mitarbeiter  Ribbon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154124494/Report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154124494/Solutions Personalmanagement Personalakten H Hansen, Hans Personal2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154124494/Solutions Personalmanagement Personalakten H Hansen, Hans Personal3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154124494/Solutions Personalmanagement Personalakten H Hansen, Hans Persönlich3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154124494/loginwebclient.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154124494/trace_chromium.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154516043/3031e37e1caed149d21a2ab67d4b89e3.webm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154516043/Personal Personal Eintrittsprozess  1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154516043/Personal Personal Eintrittsprozess  Button1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154516043/Personal Personal Eintrittsprozess  Menu1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154516043/Personal Personal Eintrittsprozess  Ribbon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154516043/Report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154516043/loginwebclient.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testreport_20230420154516043/trace_chromium.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataConfigCreateFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigCreateFile.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataConfigCreateFilesAmelie.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigCreateFilesAmelie.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataConfigFirstdayOfWorkReminder.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigFirstdayOfWorkReminder.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataConfigHr.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigHr.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataConfigHrEmployee.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigHrEmployee.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataConfigMeeting.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigMeeting.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataConfigStartOffBoarding.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigStartOffBoarding.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataConfigStartOnBoarding.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigStartOnBoarding.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataConfigTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigTest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/BaseFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/session/Formula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Formula.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/session/TabPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/TabPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +104,7 @@
       <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession\target" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlaywrightSessionTest.TestSession">
+  <component name="RunManager" selected="JUnit.PlaywrightHrTest.TestSession">
     <configuration name="PlaywrightHrTest.CreateDataConfigJson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
@@ -174,10 +194,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlaywrightHrTest.TestSession" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
         <item itemvalue="JUnit.PlaywrightSessionTest.CreateDataConfigJson" />
         <item itemvalue="JUnit.PlaywrightHrTest.CreateDataConfigJson" />
-        <item itemvalue="JUnit.PlaywrightHrTest.TestSession" />
         <item itemvalue="JUnit.PlaywrightHrTest.testEntryPath" />
       </list>
     </recent_temporary>
@@ -190,13 +210,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670419530192</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Playwright Input validation">
-      <created>1678183644200</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1678183644200</updated>
     </task>
     <task id="LOCAL-00075" summary="Playwright Input validation">
       <created>1678201936737</created>
@@ -534,7 +547,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681978342240</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00123" summary="Playwright Testcases HR Test report">
+      <created>1681982152707</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1681982152707</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -586,23 +606,18 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/session/Formula.java</url>
-          <line>226</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java</url>
-          <line>1666</line>
+          <line>1650</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/session/Formula.java</url>
-          <line>340</line>
+          <line>370</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/session/Formula.java</url>
-          <line>358</line>
+          <line>388</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

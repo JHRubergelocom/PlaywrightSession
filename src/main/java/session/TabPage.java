@@ -7,8 +7,8 @@ public class TabPage {
     private final List<ELOControl> initTabPage;
     private final List<ELOControl> controls;
     private final List<ELOTable> tables;
-    private final List<ELOControl> checkValueControls;
-    public TabPage(String tabName, List<ELOControl> initTabPage, List<ELOControl> controls, List<ELOTable> tables, List<ELOControl> checkValueControls) {
+    private final List<ELOCheckValueControl> checkValueControls;
+    public TabPage(String tabName, List<ELOControl> initTabPage, List<ELOControl> controls, List<ELOTable> tables, List<ELOCheckValueControl> checkValueControls) {
         this.tabName = tabName;
         this.initTabPage = initTabPage;
         this.controls = controls;
@@ -27,7 +27,7 @@ public class TabPage {
     public List<ELOControl> getInitTabPage() {
         return initTabPage;
     }
-    public List<ELOControl> getCheckValueControls() {
+    public List<ELOCheckValueControl> getCheckValueControls() {
         return checkValueControls;
     }
 

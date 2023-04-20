@@ -44,14 +44,14 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_FIRSTNAME", "Hans", ELOControlType.TEXT));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_LASTNAME", "Hansen", ELOControlType.TEXT));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELNO", "12345", ELOControlType.TEXT));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner", ELOControlType.DYNKWL));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft", ELOControlType.DYNKWL));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum", ELOControlType.DYNKWL));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DATEOFJOINING", "01.01.2022", ELOControlType.TEXT));
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_FIRSTNAME", "Hans", ELOControlType.TEXT, ELOCheckValueOperator.EQUAL));
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_LASTNAME", "Hansen", ELOControlType.TEXT, ELOCheckValueOperator.EQUAL));
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_PERSONNELNO", "12345", ELOControlType.TEXT, ELOCheckValueOperator.EQUAL));
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_ELOUSERID", "Jan Eichner", ELOControlType.DYNKWL, ELOCheckValueOperator.EQUAL));
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_RESPONSIBLE", "Bodo Kraft", ELOControlType.DYNKWL, ELOCheckValueOperator.EQUAL));
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum", ELOControlType.DYNKWL, ELOCheckValueOperator.EQUAL));
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_DATEOFJOINING", "01.01.2022", ELOControlType.TEXT, ELOCheckValueOperator.EQUAL));
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -100,11 +100,11 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("part_250_emergency_contacts", "Eintrag hinzufügen", table));
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME2", "Sebastian", ELOControlType.TEXT));
-        expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME2", "Schulz", ELOControlType.TEXT));
-        expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TITLE", "Doktor H", ELOControlType.TEXT));
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_GENDER", "M - Männlich", ELOControlType.KWL));
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOCheckValueControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME2", "Sebastian", ELOControlType.TEXT, ELOCheckValueOperator.EQUAL));
+        expectedValueControls.add(new ELOCheckValueControl("IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_LASTNAME2", "Schulz", ELOControlType.TEXT, ELOCheckValueOperator.EQUAL));
+        expectedValueControls.add(new ELOCheckValueControl("IX_MAP_HR_PERSONNEL_TITLE", "Doktor H", ELOControlType.TEXT, ELOCheckValueOperator.EQUAL));
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_GENDER", "M - Männlich", ELOControlType.KWL, ELOCheckValueOperator.EQUAL));
 
         TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -117,13 +117,12 @@ public class PlaywrightSessionTest {
         tables = new ArrayList<>();
 
         expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_MAP_DURATION_TYPE", "sol.hr.form.personnelfile.fixedterm", ELOControlType.RADIO));
+        expectedValueControls.add(new ELOCheckValueControl("IX_MAP_DURATION_TYPE", "sol.hr.form.personnelfile.fixedterm", ELOControlType.RADIO, ELOCheckValueOperator.EQUAL));
 
         tabPage = new TabPage("Ein-/ Austritt", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List< TabPage> createCompany1() {
 
@@ -138,13 +137,12 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List< TabPage> createChartElementDivision1() {
 
@@ -160,13 +158,12 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List< TabPage> createChartElementDepartement1() {
 
@@ -182,13 +179,12 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List< TabPage> createChartElementTeam1() {
 
@@ -204,13 +200,12 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List< TabPage> createMB1() {
 
@@ -239,9 +234,8 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER1", "Jan Eichner", ELOControlType.DYNKWL));
-
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOCheckValueControl("IX_MAP_MEETING_BOARD_ORGANIZER1", "Jan Eichner", ELOControlType.DYNKWL, ELOCheckValueOperator.EQUAL));
 
         TabPage tabPage = new TabPage("Allgemein", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -336,13 +330,12 @@ public class PlaywrightSessionTest {
         tables = new ArrayList<>();
 
         expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_MAP_MEETING_BOARD_SETTING_ITEMTOAGENDA", "true", ELOControlType.CHECKBOX));
+        expectedValueControls.add(new ELOCheckValueControl("IX_MAP_MEETING_BOARD_SETTING_ITEMTOAGENDA", "true", ELOControlType.CHECKBOX, ELOCheckValueOperator.EQUAL));
 
         tabPage = new TabPage("Einstellungen", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List< TabPage> createME1() {
 
@@ -371,9 +364,9 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weiterer Tag", table));
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_GRP_MEETING_MINUTE_TAKER", "Charlotte Bennett", ELOControlType.DYNKWL));
-        expectedValueControls.add(new ELOControl("IX_DESC", "Beschreibung Meeting1", ELOControlType.REDACTOR));
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_MEETING_MINUTE_TAKER", "Charlotte Bennett", ELOControlType.DYNKWL, ELOCheckValueOperator.EQUAL));
+        expectedValueControls.add(new ELOCheckValueControl("IX_DESC", "Beschreibung Meeting1", ELOControlType.REDACTOR, ELOCheckValueOperator.EQUAL));
 
         TabPage tabPage = new TabPage("Allgemein", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -451,7 +444,6 @@ public class PlaywrightSessionTest {
         tabPages.put("Wiederholung", tabPage);
          */
         return tabPages;
-
     }
     private List< TabPage> createMI1() {
 
@@ -487,15 +479,14 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
-        List<ELOControl> expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith", ELOControlType.DYNKWL));
-        expectedValueControls.add(new ELOControl("IX_DESC", "Beschreibung Thema1", ELOControlType.REDACTOR));
+        List<ELOCheckValueControl> expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith", ELOControlType.DYNKWL, ELOCheckValueOperator.EQUAL));
+        expectedValueControls.add(new ELOCheckValueControl("IX_DESC", "Beschreibung Thema1", ELOControlType.REDACTOR, ELOCheckValueOperator.EQUAL));
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List< TabPage> createMIP1() {
 
@@ -512,13 +503,12 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl> expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl> expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List< TabPage> createMIPMI1() {
 
@@ -553,13 +543,12 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
-        List<ELOControl> expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl> expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List< TabPage> createMB2Premium() {
 
@@ -586,7 +575,7 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
-        List<ELOControl> expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl> expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("Allgemein", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -685,7 +674,6 @@ public class PlaywrightSessionTest {
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List< TabPage> createME1Premium() {
         List< TabPage> tabPages = new ArrayList<>();
@@ -713,7 +701,7 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weiterer Tag", table));
 
-        List<ELOControl> expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl> expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("Allgemein", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -791,7 +779,6 @@ public class PlaywrightSessionTest {
         tabPages.put("Wiederholung", tabPage);
         */
         return tabPages;
-
     }
     private List< TabPage> createMI1Premium() {
 
@@ -826,13 +813,12 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
-        List<ELOControl> expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl> expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List< TabPage> createMIP2Premium() {
 
@@ -850,13 +836,12 @@ public class PlaywrightSessionTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl> expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl> expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List< TabPage> createMIPMI1Premium() {
 
@@ -891,13 +876,12 @@ public class PlaywrightSessionTest {
 
         tables.add(new ELOTable("", "Weitere Person", table));
 
-        List<ELOControl> expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl> expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private DataConfig createDataConfig(String jsonFile) {
         switch(jsonFile) {
@@ -1583,10 +1567,10 @@ public class PlaywrightSessionTest {
         System.out.println("mandatoryPersonalNo is " + mandatoryPersonalNo);
 
         // Werte prüfen
-        boolean valueEqualHans = BaseFunctions.checkValueControl(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_FIRSTNAME" + "\"]"), "Hans");
+        boolean valueEqualHans = BaseFunctions.checkValueEqualControl(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_FIRSTNAME" + "\"]"), "Hans");
         System.out.println("valueEqualHans is " + valueEqualHans);
 
-        boolean valueEqualMayer = BaseFunctions.checkValueControl(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_FIRSTNAME" + "\"]"), "Mayer");
+        boolean valueEqualMayer = BaseFunctions.checkValueEqualControl(frameLocator.locator("[name=\"" + "IX_GRP_HR_PERSONNEL_FIRSTNAME" + "\"]"), "Mayer");
         System.out.println("valueEqualMayer is " + valueEqualMayer);
 
         // Formular speichern

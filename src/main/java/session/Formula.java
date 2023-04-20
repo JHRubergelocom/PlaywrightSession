@@ -209,108 +209,138 @@ public class Formula {
 
         return checkData;
     }
-    private boolean checkValueKwlField(String name, String value) {
-        try {
-            Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
-            boolean checkData = BaseFunctions.checkValueControl(locator, value);
-            if(!checkData) {
-                BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + " = " + locator.inputValue() + " stimmt nicht mit " + value +  " überein</span>");
+    private boolean checkValueControl(ELOCheckValueControl checkValueControl, Locator locator, String name, String value) {
+        boolean checkData = false;
+        switch(checkValueControl.getOperator()) {
+            case EQUAL -> {
+                checkData = BaseFunctions.checkValueEqualControl(locator, value);
+                if(!checkData) {
+                    BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + " = " + locator.inputValue() + " stimmt nicht mit " + value +  " überein</span>");
+                }
             }
-            return checkData;
+            case EXIST -> {
+                checkData = BaseFunctions.checkValueExistControl(locator, checkValueControl.getType());
+                if(!checkData) {
+                    BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + "nicht gefüllt überein</span>");
+                }
+            }
+        }
+        return checkData;
+    }
+    private boolean checkValueRadioButton(ELOCheckValueControl checkValueControl, Locator locator, String name, String value) {
+        boolean checkData = false;
+        switch(checkValueControl.getOperator()) {
+            case EQUAL -> {
+                checkData = BaseFunctions.checkValueRadioButton(locator, value);
+                if(!checkData) {
+                    BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + " = " + locator.inputValue() + " stimmt nicht mit " + value +  " überein</span>");
+                }
+            }
+            case EXIST -> {
+                checkData = BaseFunctions.checkValueRadioButton(locator, value);
+                if(!checkData) {
+                    BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + "konnte nicht gefunden werden</span>");
+                }
+            }
+        }
+        return checkData;
+    }
+    private boolean checkValueKwlField(ELOCheckValueControl checkValueControl) {
+        String name = "";
+        try {
+            name = checkValueControl.getSelector();
+            String value = checkValueControl.getValue();
+            Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
+            return checkValueControl(checkValueControl, locator, name, value);
         } catch (Exception e) {
-            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not avaible</span>");
+            BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not available</span>");
             return false;
         }
     }
-    private boolean checkValueRedactorField(String name, String value) {
+    private boolean checkValueRedactorField(ELOCheckValueControl checkValueControl) {
+        String name = "";
         try {
+            name = checkValueControl.getSelector();
+            String value = checkValueControl.getValue();
             Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
             value = "<p>" + value + "</p>";
-            boolean checkData = BaseFunctions.checkValueControl(locator, value);
-            if(!checkData) {
-                BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + "=" + locator.inputValue() + " stimmt nicht mit " + value +  " überein</span>");
-            }
-            return checkData;
+            return checkValueControl(checkValueControl, locator, name, value);
         } catch (Exception e) {
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not avaible</span>");
             return false;
         }
     }
-    private boolean checkValueRadioButton(String name, String value) {
+    private boolean checkValueRadioButton(ELOCheckValueControl checkValueControl) {
+        String name = "";
         try {
+            name = checkValueControl.getSelector();
+            String value = checkValueControl.getValue();
             Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
-            boolean checkData = BaseFunctions.checkValueRadioButton(locator, value);
-            if(!checkData) {
-                BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + " = " + locator.inputValue() + " stimmt nicht mit " + value +  " überein</span>");
-            }
-            return checkData;
+            return checkValueRadioButton(checkValueControl, locator, name, value);
         } catch (Exception e) {
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not avaible</span>");
             return false;
         }
     }
-    private boolean checkValueCheckBox(String name, String value) {
+    private boolean checkValueCheckBox(ELOCheckValueControl checkValueControl) {
+        String name = "";
         try {
+            name = checkValueControl.getSelector();
+            String value = checkValueControl.getValue();
             Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
             if (value.equalsIgnoreCase("true")) {
                 value = "1";
             } else {
                 value = "0";
             }
-            boolean checkData = BaseFunctions.checkValueControl(locator, value);
-            if(!checkData) {
-                BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + " = " + locator.inputValue() + " stimmt nicht mit " + value +  " überein</span>");
-            }
-            return checkData;
+            return checkValueControl(checkValueControl, locator, name, value);
         } catch (Exception e) {
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not avaible</span>");
             return false;
         }
     }
-    private boolean checkValueDynKwlField(String name, String value) {
+    private boolean checkValueDynKwlField(ELOCheckValueControl checkValueControl) {
+        String name = "";
         try {
+            name = checkValueControl.getSelector();
+            String value = checkValueControl.getValue();
             Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
-            boolean checkData = BaseFunctions.checkValueControl(locator, value);
-            if(!checkData) {
-                BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + " = " + locator.inputValue() + " stimmt nicht mit " + value +  " überein</span>");
-            }
-            return checkData;
+            return checkValueControl(checkValueControl, locator, name, value);
         } catch (Exception e) {
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not avaible</span>");
             return false;
         }
     }
-    private boolean checkValueTextField(String name, String text) {
+    private boolean checkValueTextField(ELOCheckValueControl checkValueControl) {
+        String name = "";
         try {
+            name = checkValueControl.getSelector();
+            String text = checkValueControl.getValue();
             Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
-            boolean checkData = BaseFunctions.checkValueControl(locator, text);
-            if(!checkData) {
-                BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>Inhalt von " + name + " = " + locator.inputValue() + " stimmt nicht mit " + text +  " überein</span>");
-            }
-            return checkData;
+            return checkValueControl(checkValueControl, locator, name, text);
         } catch (Exception e) {
             BaseFunctions.reportMessage(webclientSession.getReportParagraphs(), "<span>" + name + " not avaible</span>");
             return false;
         }
     }
-    private boolean checkValueControl(ELOControl checkValueControl, int index) {
+    private boolean checkValueControl(ELOCheckValueControl checkValueControl, int index) {
         boolean checkData = true;
 
         String selector = checkValueControl.getSelector();
         switch(checkValueControl.getType()) {
-            case TEXT -> checkData = checkValueTextField(selector, checkValueControl.getValue());
-            case DYNKWL -> checkData = checkValueDynKwlField(selector, checkValueControl.getValue());
-            case CHECKBOX -> checkData =  checkValueCheckBox(selector, checkValueControl.getValue());
-            case RADIO -> checkData =  checkValueRadioButton(selector, checkValueControl.getValue());
-            case REDACTOR -> checkData =  checkValueRedactorField(selector, checkValueControl.getValue());
-            case KWL -> checkData =  checkValueKwlField(selector, checkValueControl.getValue());
+            case TEXT -> checkData = checkValueTextField(checkValueControl);
+            case DYNKWL -> checkData = checkValueDynKwlField(checkValueControl);
+            case CHECKBOX -> checkData =  checkValueCheckBox(checkValueControl);
+            case RADIO -> checkData =  checkValueRadioButton(checkValueControl);
+            case REDACTOR -> checkData =  checkValueRedactorField(checkValueControl);
+            case KWL -> checkData =  checkValueKwlField(checkValueControl);
         }
         if(!checkData) {
             BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageEloControlCheckValue(checkValueControl), BaseFunctions.getScreenShotFileName(eloAction, selector) + index + " checkValue.png");
         }
         return checkData;
     }
-    private void reportCheckValueControls(List<ELOControl> checkValueControls) {
+    private void reportCheckValueControls(List<ELOCheckValueControl> checkValueControls) {
         if (checkValueControls.isEmpty()) {
             return;
         }
@@ -321,7 +351,7 @@ public class Formula {
 
         List<List<String>> tableCells = new ArrayList<>();
 
-        for (ELOControl checkValueControl : checkValueControls) {
+        for (ELOCheckValueControl checkValueControl : checkValueControls) {
             List<String> tableLineCells = new ArrayList<>();
             String field = checkValueControl.getSelector();
             String expValue = checkValueControl.getValue();
@@ -331,16 +361,16 @@ public class Formula {
                 Locator locator = frameLocator.locator("[name=\"" + field + "\"]");
                 if (checkValueControl.getType() == ELOControlType.CHECKBOX) {
                     if (expValue.equalsIgnoreCase("true")) {
-                        checkData = BaseFunctions.checkValueControl(locator, "1");
+                        checkData = BaseFunctions.checkValueEqualControl(locator, "1");
                     } else if (expValue.equalsIgnoreCase("false")){
-                        checkData = BaseFunctions.checkValueControl(locator, "0");
+                        checkData = BaseFunctions.checkValueEqualControl(locator, "0");
                     }
                 } else if (checkValueControl.getType() == ELOControlType.REDACTOR) {
-                    checkData = BaseFunctions.checkValueControl(locator, "<p>" + expValue + "</p>");
+                    checkData = BaseFunctions.checkValueEqualControl(locator, "<p>" + expValue + "</p>");
                 } else if (checkValueControl.getType() == ELOControlType.RADIO) {
                     checkData = BaseFunctions.checkValueRadioButton(locator, expValue);
                 } else {
-                    checkData = BaseFunctions.checkValueControl(locator, expValue);
+                    checkData = BaseFunctions.checkValueEqualControl(locator, expValue);
                 }
                 actValue = "";
                 if (locator.count() == 1) {
@@ -396,10 +426,10 @@ public class Formula {
         ReportTable reportTable = new ReportTable(tableCols, tableCells);
         BaseFunctions.reportMessageAndTable(webclientSession.getReportParagraphs(), "Feldwertprüfung", reportTable);
     }
-    private boolean checkValueControls(List<ELOControl> checkValueControls, int index) {
+    private boolean checkValueControls(List<ELOCheckValueControl> checkValueControls, int index) {
         reportCheckValueControls(checkValueControls);
         boolean checkData = true;
-        for (ELOControl checkValueControl : checkValueControls) {
+        for (ELOCheckValueControl checkValueControl : checkValueControls) {
             if(!checkValueControl(checkValueControl, index)) {
                 checkData = false;
             }

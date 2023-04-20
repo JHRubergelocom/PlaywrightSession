@@ -30,7 +30,7 @@ public class PlaywrightHrTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl> expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -46,8 +46,8 @@ public class PlaywrightHrTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELSTATUS", "O - In Vorbereitung", ELOControlType.KWL));
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_PERSONNELSTATUS", "O - In Vorbereitung", ELOControlType.KWL, ELOCheckValueOperator.EQUAL));
 
         TabPage tabPage = new TabPage("Personal", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -66,7 +66,7 @@ public class PlaywrightHrTest {
         controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_LICENSEPLATE", "S-AA 1234", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("Personal", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -104,7 +104,7 @@ public class PlaywrightHrTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -120,14 +120,13 @@ public class PlaywrightHrTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELSTATUS", "E - Angestellt", ELOControlType.KWL));
+        List<ELOCheckValueControl> expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_PERSONNELSTATUS", "E - Angestellt", ELOControlType.KWL, ELOCheckValueOperator.EQUAL));
 
         TabPage tabPage = new TabPage("Personal", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List<TabPage> checkStatusC() {
 
@@ -138,14 +137,13 @@ public class PlaywrightHrTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
-        expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELSTATUS", "C - Gekündigt", ELOControlType.KWL));
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_PERSONNELSTATUS", "C - Gekündigt", ELOControlType.KWL, ELOCheckValueOperator.EQUAL));
 
         TabPage tabPage = new TabPage("Personal", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
 
         return tabPages;
-
     }
     private List<TabPage> startOffBoarding() {
         List<TabPage> tabPages = new ArrayList<>();
@@ -157,11 +155,11 @@ public class PlaywrightHrTest {
 
         controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_DATEOFNOTICE", "#nowdate#", ELOControlType.TEXT));
         controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DATEOFLEAVING", "#nowdate#", ELOControlType.TEXT));
-        controls.add(new ELOControl("IX_BLOB_HR_PERSONNEL_TERMINATIONCOMMENT", "Mitarbeiterkündifung", ELOControlType.TEXT));
+        controls.add(new ELOControl("IX_BLOB_HR_PERSONNEL_TERMINATIONCOMMENT", "Mitarbeiterkündigung", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -182,7 +180,7 @@ public class PlaywrightHrTest {
 
         List<ELOTable> tables = new ArrayList<>();
 
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -222,7 +220,7 @@ public class PlaywrightHrTest {
         controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_CIVILSTATUS", "Verheiratet", ELOControlType.KWL));
 
         List<ELOTable> tables = new ArrayList<>();
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -285,7 +283,7 @@ public class PlaywrightHrTest {
         controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BIRTHPLACE", "São Paulo", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -306,7 +304,7 @@ public class PlaywrightHrTest {
         controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BIRTHPLACE", "Kyōto", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -327,7 +325,7 @@ public class PlaywrightHrTest {
         controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_COUNTRY", "Mexiko", ELOControlType.DYNKWL));
 
         List<ELOTable> tables = new ArrayList<>();
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -347,7 +345,7 @@ public class PlaywrightHrTest {
         controls.add(new ELOControl("IX_MAP_HR_PERSONNEL_BIRTHPLACE", "Ciudad Juárez", ELOControlType.TEXT));
 
         List<ELOTable> tables = new ArrayList<>();
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -368,7 +366,7 @@ public class PlaywrightHrTest {
         controls.add(new ELOControl("IX_GRP_HR_PERSONNEL_COUNTRY", "Japan", ELOControlType.DYNKWL));
 
         List<ELOTable> tables = new ArrayList<>();
-        List<ELOControl>  expectedValueControls = new ArrayList<>();
+        List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
 
         TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -822,6 +820,9 @@ public class PlaywrightHrTest {
         System.out.println("lastname: " + lastname);
 
         System.out.println("EntryPath: " + getEntryPath(firstname, lastname));
+
+        ELOCheckValueControl eloCheckValueControl = new ELOCheckValueControl();
+        System.out.println("eloCheckValueControl: " + eloCheckValueControl);
 
     }
     @Test
