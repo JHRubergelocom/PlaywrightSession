@@ -209,7 +209,7 @@ public class Formula {
 
         return checkData;
     }
-    private boolean expectedValueKwlField(String name, String value) {
+    private boolean checkValueKwlField(String name, String value) {
         try {
             Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
             boolean checkData = BaseFunctions.checkValueControl(locator, value);
@@ -222,7 +222,7 @@ public class Formula {
             return false;
         }
     }
-    private boolean expectedValueRedactorField(String name, String value) {
+    private boolean checkValueRedactorField(String name, String value) {
         try {
             Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
             value = "<p>" + value + "</p>";
@@ -236,7 +236,7 @@ public class Formula {
             return false;
         }
     }
-    private boolean expectedValueRadioButton(String name, String value) {
+    private boolean checkValueRadioButton(String name, String value) {
         try {
             Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
             boolean checkData = BaseFunctions.checkValueRadioButton(locator, value);
@@ -249,7 +249,7 @@ public class Formula {
             return false;
         }
     }
-    private boolean expectedValueCheckBox(String name, String value) {
+    private boolean checkValueCheckBox(String name, String value) {
         try {
             Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
             if (value.equalsIgnoreCase("true")) {
@@ -267,7 +267,7 @@ public class Formula {
             return false;
         }
     }
-    private boolean expectedValueDynKwlField(String name, String value) {
+    private boolean checkValueDynKwlField(String name, String value) {
         try {
             Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
             boolean checkData = BaseFunctions.checkValueControl(locator, value);
@@ -280,7 +280,7 @@ public class Formula {
             return false;
         }
     }
-    private boolean expectedValueTextField(String name, String text) {
+    private boolean checkValueTextField(String name, String text) {
         try {
             Locator locator = frameLocator.locator("[name=\"" + name + "\"]");
             boolean checkData = BaseFunctions.checkValueControl(locator, text);
@@ -293,25 +293,25 @@ public class Formula {
             return false;
         }
     }
-    private boolean expectedValueControl(ELOControl expectedValueControl, int index) {
+    private boolean checkValueControl(ELOControl checkValueControl, int index) {
         boolean checkData = true;
 
-        String selector = expectedValueControl.getSelector();
-        switch(expectedValueControl.getType()) {
-            case TEXT -> checkData = expectedValueTextField(selector, expectedValueControl.getValue());
-            case DYNKWL -> checkData = expectedValueDynKwlField(selector, expectedValueControl.getValue());
-            case CHECKBOX -> checkData =  expectedValueCheckBox(selector, expectedValueControl.getValue());
-            case RADIO -> checkData =  expectedValueRadioButton(selector, expectedValueControl.getValue());
-            case REDACTOR -> checkData =  expectedValueRedactorField(selector, expectedValueControl.getValue());
-            case KWL -> checkData =  expectedValueKwlField(selector, expectedValueControl.getValue());
+        String selector = checkValueControl.getSelector();
+        switch(checkValueControl.getType()) {
+            case TEXT -> checkData = checkValueTextField(selector, checkValueControl.getValue());
+            case DYNKWL -> checkData = checkValueDynKwlField(selector, checkValueControl.getValue());
+            case CHECKBOX -> checkData =  checkValueCheckBox(selector, checkValueControl.getValue());
+            case RADIO -> checkData =  checkValueRadioButton(selector, checkValueControl.getValue());
+            case REDACTOR -> checkData =  checkValueRedactorField(selector, checkValueControl.getValue());
+            case KWL -> checkData =  checkValueKwlField(selector, checkValueControl.getValue());
         }
         if(!checkData) {
-            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageEloControlExpectedValue(expectedValueControl), BaseFunctions.getScreenShotFileName(eloAction, selector) + index + " expectedValue.png");
+            BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageEloControlCheckValue(checkValueControl), BaseFunctions.getScreenShotFileName(eloAction, selector) + index + " checkValue.png");
         }
         return checkData;
     }
-    private void reportExpectedValueControls(List<ELOControl> expectedValueControls) {
-        if (expectedValueControls.isEmpty()) {
+    private void reportCheckValueControls(List<ELOControl> checkValueControls) {
+        if (checkValueControls.isEmpty()) {
             return;
         }
         List<String> tableCols = new ArrayList<>();
@@ -321,23 +321,23 @@ public class Formula {
 
         List<List<String>> tableCells = new ArrayList<>();
 
-        for (ELOControl expectedValueControl : expectedValueControls) {
+        for (ELOControl checkValueControl : checkValueControls) {
             List<String> tableLineCells = new ArrayList<>();
-            String field = expectedValueControl.getSelector();
-            String expValue = expectedValueControl.getValue();
+            String field = checkValueControl.getSelector();
+            String expValue = checkValueControl.getValue();
             String actValue;
             try {
                 boolean checkData = false;
                 Locator locator = frameLocator.locator("[name=\"" + field + "\"]");
-                if (expectedValueControl.getType() == ELOControlType.CHECKBOX) {
+                if (checkValueControl.getType() == ELOControlType.CHECKBOX) {
                     if (expValue.equalsIgnoreCase("true")) {
                         checkData = BaseFunctions.checkValueControl(locator, "1");
                     } else if (expValue.equalsIgnoreCase("false")){
                         checkData = BaseFunctions.checkValueControl(locator, "0");
                     }
-                } else if (expectedValueControl.getType() == ELOControlType.REDACTOR) {
+                } else if (checkValueControl.getType() == ELOControlType.REDACTOR) {
                     checkData = BaseFunctions.checkValueControl(locator, "<p>" + expValue + "</p>");
-                } else if (expectedValueControl.getType() == ELOControlType.RADIO) {
+                } else if (checkValueControl.getType() == ELOControlType.RADIO) {
                     checkData = BaseFunctions.checkValueRadioButton(locator, expValue);
                 } else {
                     checkData = BaseFunctions.checkValueControl(locator, expValue);
@@ -346,16 +346,16 @@ public class Formula {
                 if (locator.count() == 1) {
                     actValue = locator.inputValue();
                 }
-                if (expectedValueControl.getType() == ELOControlType.CHECKBOX) {
+                if (checkValueControl.getType() == ELOControlType.CHECKBOX) {
                     if (actValue.equalsIgnoreCase("1")) {
                         actValue = "true";
                     } else {
                         actValue = "false";
                     }
-                } else if (expectedValueControl.getType() == ELOControlType.REDACTOR) {
+                } else if (checkValueControl.getType() == ELOControlType.REDACTOR) {
                     actValue = actValue.replace("<p>", "");
                     actValue = actValue.replace("</p>", "");
-                } else if (expectedValueControl.getType() == ELOControlType.RADIO) {
+                } else if (checkValueControl.getType() == ELOControlType.RADIO) {
                     int count = locator.count();
                     System.out.println("*".repeat(80));
                     System.out.println("rows.count(): " + count);
@@ -396,11 +396,11 @@ public class Formula {
         ReportTable reportTable = new ReportTable(tableCols, tableCells);
         BaseFunctions.reportMessageAndTable(webclientSession.getReportParagraphs(), "Feldwertprüfung", reportTable);
     }
-    private boolean expectedValueControls(List<ELOControl> expectedValueControls, int index) {
-        reportExpectedValueControls(expectedValueControls);
+    private boolean checkValueControls(List<ELOControl> checkValueControls, int index) {
+        reportCheckValueControls(checkValueControls);
         boolean checkData = true;
-        for (ELOControl expectedValueControl : expectedValueControls) {
-            if(!expectedValueControl(expectedValueControl, index)) {
+        for (ELOControl checkValueControl : checkValueControls) {
+            if(!checkValueControl(checkValueControl, index)) {
                 checkData = false;
             }
         }
@@ -426,7 +426,7 @@ public class Formula {
             if(!inputControlsTables(tabPage.getTables(), index)) {
                 checkData = false;
             }
-            if(!expectedValueControls(tabPage.getExpectedValueControls(), index)) {
+            if(!checkValueControls(tabPage.getCheckValueControls(), index)) {
                 checkData = false;
             }
             BaseFunctions.reportScreenshot(webclientSession, BaseFunctions.getScreenShotMessageTabPage(tabName), BaseFunctions.getScreenShotFileName(eloAction, tabName) + index + ".png");

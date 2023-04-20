@@ -56,7 +56,7 @@
               }
             ],
             "tables": [],
-            "expectedValueControls": []
+            "checkValueControls": []
           }
         ]
       },
@@ -77,7 +77,7 @@
             "initTabPage": [],
             "controls": [],
             "tables": [],
-            "expectedValueControls": [
+            "checkValueControls": [
               {
                 "selector": "IX_GRP_HR_PERSONNEL_PERSONNELSTATUS",
                 "value": "C - Gekündigt",

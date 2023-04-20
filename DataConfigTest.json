@@ -82,7 +82,7 @@
                 ]
               }
             ],
-            "expectedValueControls": [
+            "checkValueControls": [
               {
                 "selector": "IX_MAP_MEETING_BOARD_ORGANIZER1",
                 "value": "Jan Eichner",
@@ -136,7 +136,7 @@
                 ]
               }
             ],
-            "expectedValueControls": []
+            "checkValueControls": []
           },
           {
             "tabName": "Benachrichtigungen",
@@ -214,7 +214,7 @@
                 ]
               }
             ],
-            "expectedValueControls": []
+            "checkValueControls": []
           },
           {
             "tabName": "Einstellungen",
@@ -232,7 +232,7 @@
               }
             ],
             "tables": [],
-            "expectedValueControls": [
+            "checkValueControls": [
               {
                 "selector": "IX_MAP_MEETING_BOARD_SETTING_ITEMTOAGENDA",
                 "value": "true",
@@ -311,7 +311,7 @@
                 ]
               }
             ],
-            "expectedValueControls": [
+            "checkValueControls": [
               {
                 "selector": "IX_GRP_MEETING_MINUTE_TAKER",
                 "value": "Charlotte Bennett",
@@ -358,7 +358,7 @@
                 ]
               }
             ],
-            "expectedValueControls": []
+            "checkValueControls": []
           },
           {
             "tabName": "Benachrichtigungen",
@@ -436,7 +436,7 @@
                 ]
               }
             ],
-            "expectedValueControls": []
+            "checkValueControls": []
           }
         ]
       },
@@ -530,7 +530,7 @@
                 ]
               }
             ],
-            "expectedValueControls": [
+            "checkValueControls": [
               {
                 "selector": "IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON",
                 "value": "Adrian Smith",

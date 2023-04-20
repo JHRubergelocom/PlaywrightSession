@@ -76,7 +76,7 @@
               }
             ],
             "tables": [],
-            "expectedValueControls": [
+            "checkValueControls": [
               {
                 "selector": "IX_GRP_HR_PERSONNEL_FIRSTNAME",
                 "value": "Hans",
@@ -139,7 +139,7 @@
               }
             ],
             "tables": [],
-            "expectedValueControls": []
+            "checkValueControls": []
           }
         ]
       },
@@ -242,7 +242,7 @@
                 ]
               }
             ],
-            "expectedValueControls": [
+            "checkValueControls": [
               {
                 "selector": "IX_MAP_HR_PERSONNEL_EMERGENCYCONTACT_FIRSTNAME2",
                 "value": "Sebastian",
@@ -276,7 +276,7 @@
               }
             ],
             "tables": [],
-            "expectedValueControls": [
+            "checkValueControls": [
               {
                 "selector": "IX_MAP_DURATION_TYPE",
                 "value": "sol.hr.form.personnelfile.fixedterm",
@@ -314,7 +314,7 @@
               }
             ],
             "tables": [],
-            "expectedValueControls": []
+            "checkValueControls": []
           }
         ]
       },
@@ -346,7 +346,7 @@
               }
             ],
             "tables": [],
-            "expectedValueControls": []
+            "checkValueControls": []
           }
         ]
       },
@@ -378,7 +378,7 @@
               }
             ],
             "tables": [],
-            "expectedValueControls": []
+            "checkValueControls": []
           }
         ]
       }

@@ -336,7 +336,7 @@ public class BaseFunctions {
     public static String getScreenShotMessageEloControlCheckData(ELOControl control) {
         return "<span>CheckData von " + control.getSelector() + " " + control.getValue() + " fehlgeschlagen</span>";
     }
-    public static String getScreenShotMessageEloControlExpectedValue(ELOControl expectedValueControl) {
+    public static String getScreenShotMessageEloControlCheckValue(ELOControl expectedValueControl) {
         return "<span>ExpectedValue von " + expectedValueControl.getSelector() + " " + expectedValueControl.getValue() + " fehlgeschlagen</span>";
     }
     public static String getScreenShotMessageTabPage(String tabName) {
