@@ -34,8 +34,9 @@
           "selectorMenu": "Personal",
           "selectorButton": "Neuer Mitarbeiter"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [],
             "controls": [
               {
@@ -52,7 +53,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "Solutions/Personalmanagement/Personalakten/H/Hansen, Hans",
@@ -65,8 +66,9 @@
           "selectorMenu": "",
           "selectorButton": ""
         },
-        "tabPages": {
-          "Personal": {
+        "tabPages": [
+          {
+            "tabName": "Personal",
             "initTabPage": [],
             "controls": [],
             "tables": [],
@@ -78,7 +80,7 @@
               }
             ]
           }
-        }
+        ]
       },
       {
         "entryPath": "Solutions/Personalmanagement/Personalakten/H/Hansen, Hans",
@@ -91,8 +93,9 @@
           "selectorMenu": "",
           "selectorButton": ""
         },
-        "tabPages": {
-          "Personal": {
+        "tabPages": [
+          {
+            "tabName": "Personal",
             "initTabPage": [],
             "controls": [
               {
@@ -109,7 +112,8 @@
             "tables": [],
             "expectedValueControls": []
           },
-          "Persönlich": {
+          {
+            "tabName": "Persönlich",
             "initTabPage": [],
             "controls": [
               {
@@ -121,7 +125,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       }
     ]
   },

@@ -34,8 +34,9 @@
           "selectorMenu": "Personal",
           "selectorButton": "Neuer Mitarbeiter"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [],
             "controls": [
               {
@@ -113,7 +114,7 @@
               }
             ]
           }
-        }
+        ]
       },
       {
         "entryPath": "Solutions/Personalmanagement/Personalakten/H/Hansen, Hans",
@@ -126,26 +127,9 @@
           "selectorMenu": "",
           "selectorButton": ""
         },
-        "tabPages": {
-          "Ein-/ Austritt": {
-            "initTabPage": [],
-            "controls": [
-              {
-                "selector": "befristet",
-                "value": "true",
-                "type": "RADIO"
-              }
-            ],
-            "tables": [],
-            "expectedValueControls": [
-              {
-                "selector": "IX_MAP_DURATION_TYPE",
-                "value": "sol.hr.form.personnelfile.fixedterm",
-                "type": "RADIO"
-              }
-            ]
-          },
-          "Persönlich": {
+        "tabPages": [
+          {
+            "tabName": "Persönlich",
             "initTabPage": [],
             "controls": [
               {
@@ -253,8 +237,27 @@
                 "type": "KWL"
               }
             ]
+          },
+          {
+            "tabName": "Ein-/ Austritt",
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "befristet",
+                "value": "true",
+                "type": "RADIO"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": [
+              {
+                "selector": "IX_MAP_DURATION_TYPE",
+                "value": "sol.hr.form.personnelfile.fixedterm",
+                "type": "RADIO"
+              }
+            ]
           }
-        }
+        ]
       }
     ]
   },

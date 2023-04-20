@@ -10,7 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 public class Formula {
     private final FrameLocator frameLocator;
@@ -412,14 +411,12 @@ public class Formula {
         this.webclientSession = webclientSession;
         this.eloAction = eloAction;
     }
-    public boolean inputData(Map<String, TabPage> tabpages, int index) {
+    public boolean inputData(List<TabPage> tabPages, int index) {
         boolean checkData = true;
-        for (Map.Entry<String,TabPage> entry: tabpages.entrySet()) {
-            System.out.println("Key Tabpage: " + entry.getKey());
-            System.out.println("Value Tabpage: " + entry.getValue());
+        for (TabPage tabPage: tabPages) {
+            System.out.println("Tabpage: " + tabPage);
 
-            String tabName = entry.getKey();
-            TabPage tabPage = entry.getValue();
+            String tabName = tabPage.getTabName();
 
             selectTab(tabName);
             initTabPage(tabPage.getInitTabPage());

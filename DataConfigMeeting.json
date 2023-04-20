@@ -34,8 +34,9 @@
           "selectorMenu": "Meeting",
           "selectorButton": "Neues Meeting-Board"
         },
-        "tabPages": {
-          "Allgemein": {
+        "tabPages": [
+          {
+            "tabName": "Allgemein",
             "initTabPage": [],
             "controls": [
               {
@@ -89,7 +90,56 @@
               }
             ]
           },
-          "Benachrichtigungen": {
+          {
+            "tabName": "Themen",
+            "initTabPage": [],
+            "controls": [],
+            "tables": [
+              {
+                "selectorTable": "",
+                "addLineButtonName": "Weiteres Thema",
+                "table": [
+                  [
+                    {
+                      "selector": "WF_MAP_MEETING_ITEM_TITLE",
+                      "value": "Rückblende",
+                      "type": "TEXT"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_ITEM_DURATION",
+                      "value": "30",
+                      "type": "TEXT"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_ITEM_DESC",
+                      "value": "Rückblick vergangene Projekte",
+                      "type": "TEXT"
+                    }
+                  ],
+                  [
+                    {
+                      "selector": "WF_MAP_MEETING_ITEM_TITLE",
+                      "value": "Planung",
+                      "type": "TEXT"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_ITEM_DURATION",
+                      "value": "40",
+                      "type": "TEXT"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_ITEM_DESC",
+                      "value": "Zukünftige Projekte",
+                      "type": "TEXT"
+                    }
+                  ]
+                ]
+              }
+            ],
+            "expectedValueControls": []
+          },
+          {
+            "tabName": "Benachrichtigungen",
             "initTabPage": [],
             "controls": [],
             "tables": [
@@ -166,7 +216,8 @@
             ],
             "expectedValueControls": []
           },
-          "Einstellungen": {
+          {
+            "tabName": "Einstellungen",
             "initTabPage": [],
             "controls": [
               {
@@ -188,55 +239,8 @@
                 "type": "CHECKBOX"
               }
             ]
-          },
-          "Themen": {
-            "initTabPage": [],
-            "controls": [],
-            "tables": [
-              {
-                "selectorTable": "",
-                "addLineButtonName": "Weiteres Thema",
-                "table": [
-                  [
-                    {
-                      "selector": "WF_MAP_MEETING_ITEM_TITLE",
-                      "value": "Rückblende",
-                      "type": "TEXT"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_ITEM_DURATION",
-                      "value": "30",
-                      "type": "TEXT"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_ITEM_DESC",
-                      "value": "Rückblick vergangene Projekte",
-                      "type": "TEXT"
-                    }
-                  ],
-                  [
-                    {
-                      "selector": "WF_MAP_MEETING_ITEM_TITLE",
-                      "value": "Planung",
-                      "type": "TEXT"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_ITEM_DURATION",
-                      "value": "40",
-                      "type": "TEXT"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_ITEM_DESC",
-                      "value": "Zukünftige Projekte",
-                      "type": "TEXT"
-                    }
-                  ]
-                ]
-              }
-            ],
-            "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -249,8 +253,9 @@
           "selectorMenu": "Meeting",
           "selectorButton": "Neues Meeting"
         },
-        "tabPages": {
-          "Allgemein": {
+        "tabPages": [
+          {
+            "tabName": "Allgemein",
             "initTabPage": [],
             "controls": [
               {
@@ -319,7 +324,44 @@
               }
             ]
           },
-          "Benachrichtigungen": {
+          {
+            "tabName": "Teilnehmende",
+            "initTabPage": [],
+            "controls": [],
+            "tables": [
+              {
+                "selectorTable": "",
+                "addLineButtonName": "Weiterer Gast",
+                "table": [
+                  [
+                    {
+                      "selector": "WF_MAP_MEETING_PERSON_LASTNAME",
+                      "value": "Baum",
+                      "type": "DYNKWL"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_PERSON_FIRSTNAME",
+                      "value": "Gerd",
+                      "type": "DYNKWL"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_PERSON_EMAIL",
+                      "value": "g.baum@contelo.de",
+                      "type": "DYNKWL"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_PERSON_COMPANYNAME",
+                      "value": "Contelo AG",
+                      "type": "DYNKWL"
+                    }
+                  ]
+                ]
+              }
+            ],
+            "expectedValueControls": []
+          },
+          {
+            "tabName": "Benachrichtigungen",
             "initTabPage": [],
             "controls": [],
             "tables": [
@@ -395,43 +437,8 @@
               }
             ],
             "expectedValueControls": []
-          },
-          "Teilnehmende": {
-            "initTabPage": [],
-            "controls": [],
-            "tables": [
-              {
-                "selectorTable": "",
-                "addLineButtonName": "Weiterer Gast",
-                "table": [
-                  [
-                    {
-                      "selector": "WF_MAP_MEETING_PERSON_LASTNAME",
-                      "value": "Baum",
-                      "type": "DYNKWL"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_PERSON_FIRSTNAME",
-                      "value": "Gerd",
-                      "type": "DYNKWL"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_PERSON_EMAIL",
-                      "value": "g.baum@contelo.de",
-                      "type": "DYNKWL"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_PERSON_COMPANYNAME",
-                      "value": "Contelo AG",
-                      "type": "DYNKWL"
-                    }
-                  ]
-                ]
-              }
-            ],
-            "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -444,8 +451,9 @@
           "selectorMenu": "Meeting",
           "selectorButton": "Neues Thema"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [
               {
                 "selector": "Meeting",
@@ -535,7 +543,7 @@
               }
             ]
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -548,8 +556,9 @@
           "selectorMenu": "Sitzung",
           "selectorButton": "Neues Meeting-Board"
         },
-        "tabPages": {
-          "Allgemein": {
+        "tabPages": [
+          {
+            "tabName": "Allgemein",
             "initTabPage": [],
             "controls": [
               {
@@ -597,7 +606,56 @@
             ],
             "expectedValueControls": []
           },
-          "Benachrichtigungen": {
+          {
+            "tabName": "Tagesordnungspunkte",
+            "initTabPage": [],
+            "controls": [],
+            "tables": [
+              {
+                "selectorTable": "",
+                "addLineButtonName": "Weiterer TOP",
+                "table": [
+                  [
+                    {
+                      "selector": "WF_MAP_MEETING_ITEM_TITLE",
+                      "value": "Rückblende",
+                      "type": "TEXT"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_ITEM_DURATION",
+                      "value": "30",
+                      "type": "TEXT"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_ITEM_DESC",
+                      "value": "Rückblick vergangene Projekte",
+                      "type": "TEXT"
+                    }
+                  ],
+                  [
+                    {
+                      "selector": "WF_MAP_MEETING_ITEM_TITLE",
+                      "value": "Planung",
+                      "type": "TEXT"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_ITEM_DURATION",
+                      "value": "40",
+                      "type": "TEXT"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_ITEM_DESC",
+                      "value": "Zukünftige Projekte",
+                      "type": "TEXT"
+                    }
+                  ]
+                ]
+              }
+            ],
+            "expectedValueControls": []
+          },
+          {
+            "tabName": "Benachrichtigungen",
             "initTabPage": [],
             "controls": [],
             "tables": [
@@ -674,7 +732,8 @@
             ],
             "expectedValueControls": []
           },
-          "Einstellungen": {
+          {
+            "tabName": "Einstellungen",
             "initTabPage": [],
             "controls": [
               {
@@ -690,55 +749,8 @@
             ],
             "tables": [],
             "expectedValueControls": []
-          },
-          "Tagesordnungspunkte": {
-            "initTabPage": [],
-            "controls": [],
-            "tables": [
-              {
-                "selectorTable": "",
-                "addLineButtonName": "Weiterer TOP",
-                "table": [
-                  [
-                    {
-                      "selector": "WF_MAP_MEETING_ITEM_TITLE",
-                      "value": "Rückblende",
-                      "type": "TEXT"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_ITEM_DURATION",
-                      "value": "30",
-                      "type": "TEXT"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_ITEM_DESC",
-                      "value": "Rückblick vergangene Projekte",
-                      "type": "TEXT"
-                    }
-                  ],
-                  [
-                    {
-                      "selector": "WF_MAP_MEETING_ITEM_TITLE",
-                      "value": "Planung",
-                      "type": "TEXT"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_ITEM_DURATION",
-                      "value": "40",
-                      "type": "TEXT"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_ITEM_DESC",
-                      "value": "Zukünftige Projekte",
-                      "type": "TEXT"
-                    }
-                  ]
-                ]
-              }
-            ],
-            "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -751,8 +763,9 @@
           "selectorMenu": "Sitzung",
           "selectorButton": "Neue Sitzung"
         },
-        "tabPages": {
-          "Allgemein": {
+        "tabPages": [
+          {
+            "tabName": "Allgemein",
             "initTabPage": [],
             "controls": [
               {
@@ -810,7 +823,44 @@
             ],
             "expectedValueControls": []
           },
-          "Benachrichtigungen": {
+          {
+            "tabName": "Teilnehmende",
+            "initTabPage": [],
+            "controls": [],
+            "tables": [
+              {
+                "selectorTable": "",
+                "addLineButtonName": "Weiterer Gast",
+                "table": [
+                  [
+                    {
+                      "selector": "WF_MAP_MEETING_PERSON_LASTNAME",
+                      "value": "Baum",
+                      "type": "DYNKWL"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_PERSON_FIRSTNAME",
+                      "value": "Gerd",
+                      "type": "DYNKWL"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_PERSON_EMAIL",
+                      "value": "g.baum@contelo.de",
+                      "type": "DYNKWL"
+                    },
+                    {
+                      "selector": "WF_MAP_MEETING_PERSON_COMPANYNAME",
+                      "value": "Contelo AG",
+                      "type": "DYNKWL"
+                    }
+                  ]
+                ]
+              }
+            ],
+            "expectedValueControls": []
+          },
+          {
+            "tabName": "Benachrichtigungen",
             "initTabPage": [],
             "controls": [],
             "tables": [
@@ -886,43 +936,8 @@
               }
             ],
             "expectedValueControls": []
-          },
-          "Teilnehmende": {
-            "initTabPage": [],
-            "controls": [],
-            "tables": [
-              {
-                "selectorTable": "",
-                "addLineButtonName": "Weiterer Gast",
-                "table": [
-                  [
-                    {
-                      "selector": "WF_MAP_MEETING_PERSON_LASTNAME",
-                      "value": "Baum",
-                      "type": "DYNKWL"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_PERSON_FIRSTNAME",
-                      "value": "Gerd",
-                      "type": "DYNKWL"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_PERSON_EMAIL",
-                      "value": "g.baum@contelo.de",
-                      "type": "DYNKWL"
-                    },
-                    {
-                      "selector": "WF_MAP_MEETING_PERSON_COMPANYNAME",
-                      "value": "Contelo AG",
-                      "type": "DYNKWL"
-                    }
-                  ]
-                ]
-              }
-            ],
-            "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -935,8 +950,9 @@
           "selectorMenu": "Sitzung",
           "selectorButton": "Neuer TOP"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [
               {
                 "selector": "Sitzung",
@@ -1015,7 +1031,7 @@
             ],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -1028,8 +1044,9 @@
           "selectorMenu": "Meeting",
           "selectorButton": "Neue Themensammlung"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [],
             "controls": [
               {
@@ -1056,7 +1073,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -1069,8 +1086,9 @@
           "selectorMenu": "Meeting",
           "selectorButton": "Neues Thema"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [
               {
                 "selector": "Themensammlung",
@@ -1149,7 +1167,7 @@
             ],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -1162,8 +1180,9 @@
           "selectorMenu": "Sitzung",
           "selectorButton": "Neue Themensammlung"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [],
             "controls": [
               {
@@ -1190,7 +1209,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -1203,8 +1222,9 @@
           "selectorMenu": "Sitzung",
           "selectorButton": "Neuer TOP"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [
               {
                 "selector": "Themensammlung",
@@ -1283,7 +1303,7 @@
             ],
             "expectedValueControls": []
           }
-        }
+        ]
       }
     ]
   },

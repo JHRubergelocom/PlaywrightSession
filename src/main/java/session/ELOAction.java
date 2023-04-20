@@ -1,6 +1,6 @@
 package session;
 
-import java.util.Map;
+import java.util.List;
 
 public class ELOAction {
     private final String entryPath;
@@ -9,8 +9,8 @@ public class ELOAction {
     private final String formulaCancelButton;
     private final String selectionDialogItem;
     private final ELOActionDef eloActionDef;
-    private final Map<String, TabPage> tabPages;
-    public ELOAction(String entryPath, FormulaType formulaType, String formulaSaveButton, String formulaCancelButton, String selectionDialogItem, ELOActionDef eloActionDef, Map<String, TabPage> tabPages) {
+    private final List<TabPage> tabPages;
+    public ELOAction(String entryPath, FormulaType formulaType, String formulaSaveButton, String formulaCancelButton, String selectionDialogItem, ELOActionDef eloActionDef, List<TabPage> tabPages) {
         this.entryPath = entryPath;
         this.formulaType = formulaType;
         this.formulaSaveButton = formulaSaveButton;
@@ -37,7 +37,7 @@ public class ELOAction {
     public ELOActionDef getEloActionDef() {
         return eloActionDef;
     }
-    public Map<String, TabPage> getTabPages() {
+    public List<TabPage> getTabPages() {
         return tabPages;
     }
 

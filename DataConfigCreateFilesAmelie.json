@@ -34,8 +34,9 @@
           "selectorMenu": "Personal",
           "selectorButton": "Neuer Mitarbeiter"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [],
             "controls": [
               {
@@ -57,7 +58,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "Solutions/Personalmanagement/Personalakten/L/Leutheusser-Schnarrenberger, Geneviève-Gabrielle",
@@ -70,122 +71,9 @@
           "selectorMenu": "",
           "selectorButton": ""
         },
-        "tabPages": {
-          "Ein-/ Austritt": {
-            "initTabPage": [],
-            "controls": [
-              {
-                "selector": "unbefristet",
-                "value": "true",
-                "type": "RADIO"
-              },
-              {
-                "selector": "IX_GRP_HR_PERSONNEL_DATEOFJOINING",
-                "value": "01.04.2023",
-                "type": "TEXT"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICE",
-                "value": "3",
-                "type": "TEXT"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICE_UNIT",
-                "value": "Monate",
-                "type": "KWL"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICE_TP",
-                "value": "Monatsende",
-                "type": "KWL"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_PROBATIONARYPERIODDURATION",
-                "value": "6",
-                "type": "TEXT"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_PROBATIONARYPERIODDURATION_UNIT",
-                "value": "Monate",
-                "type": "KWL"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICEPROBATIONARY",
-                "value": "1",
-                "type": "TEXT"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICEPROBATIONARY_UNIT",
-                "value": "Monate",
-                "type": "KWL"
-              }
-            ],
-            "tables": [],
-            "expectedValueControls": []
-          },
-          "Personal": {
-            "initTabPage": [],
-            "controls": [
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_PHYSICALFILINGLOCATION",
-                "value": "143581 - 154566",
-                "type": "TEXT"
-              },
-              {
-                "selector": "IX_GRP_HR_PERSONNEL_LICENSEPLATE",
-                "value": "S-AA 1234",
-                "type": "TEXT"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_TIN",
-                "value": "99 999 999 999",
-                "type": "TEXT"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_SOCIALSECURITYNUMBER",
-                "value": "12 123456 W 123",
-                "type": "TEXT"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_HEALTHINSURANCENUMBER",
-                "value": "A123456789",
-                "type": "TEXT"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_BANK",
-                "value": "COMMERZBANK AG",
-                "type": "TEXT"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_IBAN",
-                "value": "DE 99 12345678 987654321",
-                "type": "TEXT"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_CURRENCY",
-                "value": "Euro",
-                "type": "DYNKWL"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_BANK_COUNTRY",
-                "value": "Deutschland",
-                "type": "DYNKWL"
-              },
-              {
-                "selector": "IX_GRP_HR_PERSONNEL_WORKSCHEDULE",
-                "value": "Vollzeit",
-                "type": "KWL"
-              },
-              {
-                "selector": "IX_MAP_HR_PERSONNEL_VACATIONQUOTA",
-                "value": "30",
-                "type": "TEXT"
-              }
-            ],
-            "tables": [],
-            "expectedValueControls": []
-          },
-          "Persönlich": {
+        "tabPages": [
+          {
+            "tabName": "Persönlich",
             "initTabPage": [],
             "controls": [
               {
@@ -291,8 +179,124 @@
             ],
             "tables": [],
             "expectedValueControls": []
+          },
+          {
+            "tabName": "Personal",
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PHYSICALFILINGLOCATION",
+                "value": "143581 - 154566",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_LICENSEPLATE",
+                "value": "S-AA 1234",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_TIN",
+                "value": "99 999 999 999",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_SOCIALSECURITYNUMBER",
+                "value": "12 123456 W 123",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_HEALTHINSURANCENUMBER",
+                "value": "A123456789",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BANK",
+                "value": "COMMERZBANK AG",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_IBAN",
+                "value": "DE 99 12345678 987654321",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_CURRENCY",
+                "value": "Euro",
+                "type": "DYNKWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_BANK_COUNTRY",
+                "value": "Deutschland",
+                "type": "DYNKWL"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_WORKSCHEDULE",
+                "value": "Vollzeit",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_VACATIONQUOTA",
+                "value": "30",
+                "type": "TEXT"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
+          },
+          {
+            "tabName": "Ein-/ Austritt",
+            "initTabPage": [],
+            "controls": [
+              {
+                "selector": "unbefristet",
+                "value": "true",
+                "type": "RADIO"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_DATEOFJOINING",
+                "value": "01.04.2023",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICE",
+                "value": "3",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICE_UNIT",
+                "value": "Monate",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICE_TP",
+                "value": "Monatsende",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PROBATIONARYPERIODDURATION",
+                "value": "6",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PROBATIONARYPERIODDURATION_UNIT",
+                "value": "Monate",
+                "type": "KWL"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICEPROBATIONARY",
+                "value": "1",
+                "type": "TEXT"
+              },
+              {
+                "selector": "IX_MAP_HR_PERSONNEL_PERIODOFNOTICEPROBATIONARY_UNIT",
+                "value": "Monate",
+                "type": "KWL"
+              }
+            ],
+            "tables": [],
+            "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -305,8 +309,9 @@
           "selectorMenu": "Personal",
           "selectorButton": "Neuer Mitarbeiter"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [],
             "controls": [
               {
@@ -328,7 +333,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "Solutions/Personalmanagement/Personalakten/B/Buhl, Karl-Theodor Maria Nikolaus Johann Jacob Philipp Franz Joseph",
@@ -341,8 +346,9 @@
           "selectorMenu": "",
           "selectorButton": ""
         },
-        "tabPages": {
-          "Persönlich": {
+        "tabPages": [
+          {
+            "tabName": "Persönlich",
             "initTabPage": [],
             "controls": [
               {
@@ -369,7 +375,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -382,8 +388,9 @@
           "selectorMenu": "Personal",
           "selectorButton": "Neuer Mitarbeiter"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [],
             "controls": [
               {
@@ -405,7 +412,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "Solutions/Personalmanagement/Personalakten/B/Bärenfänger, Adoración",
@@ -418,8 +425,9 @@
           "selectorMenu": "",
           "selectorButton": ""
         },
-        "tabPages": {
-          "Persönlich": {
+        "tabPages": [
+          {
+            "tabName": "Persönlich",
             "initTabPage": [],
             "controls": [
               {
@@ -446,7 +454,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -459,8 +467,9 @@
           "selectorMenu": "Personal",
           "selectorButton": "Neuer Mitarbeiter"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [],
             "controls": [
               {
@@ -482,7 +491,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "Solutions/Personalmanagement/Personalakten/M/Montaña Lucena, Françoise Andrés Evaristo",
@@ -495,8 +504,9 @@
           "selectorMenu": "",
           "selectorButton": ""
         },
-        "tabPages": {
-          "Persönlich": {
+        "tabPages": [
+          {
+            "tabName": "Persönlich",
             "initTabPage": [],
             "controls": [
               {
@@ -523,7 +533,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -536,8 +546,9 @@
           "selectorMenu": "Personal",
           "selectorButton": "Neuer Mitarbeiter"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [],
             "controls": [
               {
@@ -559,7 +570,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "Solutions/Personalmanagement/Personalakten/S/Stephan, Annaëlle",
@@ -572,8 +583,9 @@
           "selectorMenu": "",
           "selectorButton": ""
         },
-        "tabPages": {
-          "Persönlich": {
+        "tabPages": [
+          {
+            "tabName": "Persönlich",
             "initTabPage": [],
             "controls": [
               {
@@ -595,7 +607,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "",
@@ -608,8 +620,9 @@
           "selectorMenu": "Personal",
           "selectorButton": "Neuer Mitarbeiter"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [],
             "controls": [
               {
@@ -631,7 +644,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "Solutions/Personalmanagement/Personalakten/Ç/Çamurcuoğlu, Sançar Ömür",
@@ -644,8 +657,9 @@
           "selectorMenu": "",
           "selectorButton": ""
         },
-        "tabPages": {
-          "Persönlich": {
+        "tabPages": [
+          {
+            "tabName": "Persönlich",
             "initTabPage": [],
             "controls": [
               {
@@ -672,7 +686,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       }
     ]
   },

@@ -15,7 +15,6 @@ import report.ReportParagraph;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public class WebclientSession {
@@ -185,7 +184,7 @@ public class WebclientSession {
         return Optional.empty();
     }
     private boolean executeAction(ELOAction eloAction,
-                               Map<String, TabPage> tabPages, int index) {
+                               List<TabPage> tabPages, int index) {
         boolean checkData = true;
         selectEntryByPath(dataConfig.getEloSolutionArchiveData().getSelectorSolutionsFolder() +
                 "/" +
@@ -375,7 +374,7 @@ public class WebclientSession {
             }
             int index = 1;
             for (ELOAction eloAction: dataConfig.getEloActionData().getEloActions()) {
-                Map<String, TabPage> tabPages = eloAction.getTabPages();
+                List<TabPage> tabPages = eloAction.getTabPages();
 
                 // Execute Action
                 if(!ws.executeAction(eloAction, tabPages, index)) {

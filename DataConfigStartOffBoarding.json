@@ -34,8 +34,9 @@
           "selectorMenu": "Personal",
           "selectorButton": "Austrittsprozess"
         },
-        "tabPages": {
-          "": {
+        "tabPages": [
+          {
+            "tabName": "",
             "initTabPage": [],
             "controls": [
               {
@@ -57,7 +58,7 @@
             "tables": [],
             "expectedValueControls": []
           }
-        }
+        ]
       },
       {
         "entryPath": "Solutions/Personalmanagement/Personalakten/H/Hansen, Hans",
@@ -70,8 +71,9 @@
           "selectorMenu": "",
           "selectorButton": ""
         },
-        "tabPages": {
-          "Personal": {
+        "tabPages": [
+          {
+            "tabName": "Personal",
             "initTabPage": [],
             "controls": [],
             "tables": [],
@@ -83,7 +85,7 @@
               }
             ]
           }
-        }
+        ]
       }
     ]
   },

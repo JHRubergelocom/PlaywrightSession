@@ -17,9 +17,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class PlaywrightHrTest {
-
-    private Map<String, TabPage> createEmployee() {
-        Map<String, TabPage> tabPages = new TreeMap<>();
+    private List<TabPage> createEmployee() {
+        List<TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -33,14 +32,14 @@ public class PlaywrightHrTest {
 
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
     }
-    private Map<String, TabPage> checkStatusO() {
+    private List<TabPage> checkStatusO() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List<TabPage> tabPages = new ArrayList<>();
 
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
@@ -50,14 +49,14 @@ public class PlaywrightHrTest {
         List<ELOControl>  expectedValueControls = new ArrayList<>();
         expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELSTATUS", "O - In Vorbereitung", ELOControlType.KWL));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Personal", tabPage);
+        TabPage tabPage = new TabPage("Personal", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
     }
-    private Map<String, TabPage> editEmployee() {
+    private List<TabPage> editEmployee() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List<TabPage> tabPages = new ArrayList<>();
 
         // Personal
         List<ELOControl> initTabPage = new ArrayList<>();
@@ -69,8 +68,8 @@ public class PlaywrightHrTest {
         List<ELOTable> tables = new ArrayList<>();
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Personal", tabPage);
+        TabPage tabPage = new TabPage("Personal", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Persönlich
         initTabPage = new ArrayList<>();
@@ -81,13 +80,13 @@ public class PlaywrightHrTest {
         tables = new ArrayList<>();
         expectedValueControls = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Persönlich", tabPage);
+        tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
     }
-    private Map<String, TabPage> startOnBoarding() {
-        Map<String, TabPage> tabPages = new TreeMap<>();
+    private List<TabPage> startOnBoarding() {
+        List<TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -107,14 +106,14 @@ public class PlaywrightHrTest {
 
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
     }
-    private Map<String, TabPage> checkEmployeeOnBoardingStatus() {
+    private List<TabPage> checkEmployeeOnBoardingStatus() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List<TabPage> tabPages = new ArrayList<>();
 
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
@@ -124,15 +123,15 @@ public class PlaywrightHrTest {
         List<ELOControl>  expectedValueControls = new ArrayList<>();
         expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELSTATUS", "E - Angestellt", ELOControlType.KWL));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Personal", tabPage);
+        TabPage tabPage = new TabPage("Personal", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> checkStatusC() {
+    private List<TabPage> checkStatusC() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List<TabPage> tabPages = new ArrayList<>();
 
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
@@ -142,14 +141,14 @@ public class PlaywrightHrTest {
         List<ELOControl>  expectedValueControls = new ArrayList<>();
         expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_PERSONNELSTATUS", "C - Gekündigt", ELOControlType.KWL));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Personal", tabPage);
+        TabPage tabPage = new TabPage("Personal", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> startOffBoarding() {
-        Map<String, TabPage> tabPages = new TreeMap<>();
+    private List<TabPage> startOffBoarding() {
+        List<TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -164,13 +163,13 @@ public class PlaywrightHrTest {
 
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
     }
-    private Map<String, TabPage> createEmployeeFL(String firstname, String lastname, String responsible) {
-        Map<String, TabPage> tabPages = new TreeMap<>();
+    private List<TabPage> createEmployeeFL(String firstname, String lastname, String responsible) {
+        List<TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -185,17 +184,17 @@ public class PlaywrightHrTest {
 
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
     }
     private String getEntryPath(String firstname, String lastname) {
         return "Solutions/Personalmanagement/Personalakten/" + lastname.charAt(0) + "/" + lastname + ", " + firstname;
     }
-    private Map<String, TabPage> editEmployeeLG() {
+    private List<TabPage> editEmployeeLG() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List<TabPage> tabPages = new ArrayList<>();
 
         // Persönlich
         List<ELOControl> initTabPage = new ArrayList<>();
@@ -225,8 +224,8 @@ public class PlaywrightHrTest {
         List<ELOTable> tables = new ArrayList<>();
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Persönlich", tabPage);
+        TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Personal
         initTabPage = new ArrayList<>();
@@ -247,8 +246,8 @@ public class PlaywrightHrTest {
         tables = new ArrayList<>();
         expectedValueControls = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Personal", tabPage);
+        tabPage = new TabPage("Personal", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Ein-/ Austritt
         initTabPage = new ArrayList<>();
@@ -267,14 +266,14 @@ public class PlaywrightHrTest {
         tables = new ArrayList<>();
         expectedValueControls = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Ein-/ Austritt", tabPage);
+        tabPage = new TabPage("Ein-/ Austritt", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
     }
-    private Map<String, TabPage> editEmployeeBK() {
+    private List<TabPage> editEmployeeBK() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List<TabPage> tabPages = new ArrayList<>();
 
         // Persönlich
         List<ELOControl> initTabPage = new ArrayList<>();
@@ -288,14 +287,14 @@ public class PlaywrightHrTest {
         List<ELOTable> tables = new ArrayList<>();
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Persönlich", tabPage);
+        TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
     }
-    private Map<String, TabPage> editEmployeeBA() {
+    private List<TabPage> editEmployeeBA() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List<TabPage> tabPages = new ArrayList<>();
 
         // Persönlich
         List<ELOControl> initTabPage = new ArrayList<>();
@@ -309,14 +308,14 @@ public class PlaywrightHrTest {
         List<ELOTable> tables = new ArrayList<>();
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Persönlich", tabPage);
+        TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
     }
-    private Map<String, TabPage> editEmployeeMF() {
+    private List<TabPage> editEmployeeMF() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List<TabPage> tabPages = new ArrayList<>();
 
         // Persönlich
         List<ELOControl> initTabPage = new ArrayList<>();
@@ -330,14 +329,14 @@ public class PlaywrightHrTest {
         List<ELOTable> tables = new ArrayList<>();
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Persönlich", tabPage);
+        TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
     }
-    private Map<String, TabPage> editEmployeeS() {
+    private List<TabPage> editEmployeeS() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List<TabPage> tabPages = new ArrayList<>();
 
         // Persönlich
         List<ELOControl> initTabPage = new ArrayList<>();
@@ -350,14 +349,14 @@ public class PlaywrightHrTest {
         List<ELOTable> tables = new ArrayList<>();
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Persönlich", tabPage);
+        TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
     }
-    private Map<String, TabPage> editEmployeeCS() {
+    private List<TabPage> editEmployeeCS() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List<TabPage> tabPages = new ArrayList<>();
 
         // Persönlich
         List<ELOControl> initTabPage = new ArrayList<>();
@@ -371,8 +370,8 @@ public class PlaywrightHrTest {
         List<ELOTable> tables = new ArrayList<>();
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Persönlich", tabPage);
+        TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
     }
@@ -394,7 +393,7 @@ public class PlaywrightHrTest {
 
         final List<ELOAction> eloActions = new ArrayList<>();
 
-        Map<String, TabPage> eloTabPages = createEmployee();
+        List<TabPage> eloTabPages = createEmployee();
         ELOAction eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
         eloActions.add(eloAction);
 
@@ -440,7 +439,7 @@ public class PlaywrightHrTest {
 
         final List<ELOAction> eloActions = new ArrayList<>();
 
-        Map<String, TabPage> eloTabPages = startOnBoarding();
+        List<TabPage> eloTabPages = startOnBoarding();
         ELOAction eloAction = new ELOAction("Solutions/Personalmanagement/Personalakten/H/Hansen, Hans", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonStartOnBoarding), eloTabPages);
         eloActions.add(eloAction);
 
@@ -524,7 +523,7 @@ public class PlaywrightHrTest {
 
         final List<ELOAction> eloActions = new ArrayList<>();
 
-        Map<String, TabPage> eloTabPages = checkEmployeeOnBoardingStatus();
+        List<TabPage> eloTabPages = checkEmployeeOnBoardingStatus();
         ELOAction eloAction = new ELOAction("Solutions/Personalmanagement/Personalakten/H/Hansen, Hans", FormulaType.VIEWER,"Speichern", "","", new ELOActionDef(), eloTabPages);
         eloActions.add(eloAction);
 
@@ -568,7 +567,7 @@ public class PlaywrightHrTest {
 
         final List<ELOAction> eloActions = new ArrayList<>();
 
-        Map<String, TabPage> eloTabPages = startOffBoarding();
+        List<TabPage> eloTabPages = startOffBoarding();
         ELOAction eloAction = new ELOAction("Solutions/Personalmanagement/Personalakten/H/Hansen, Hans", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonStartOnBoarding), eloTabPages);
         eloActions.add(eloAction);
 
@@ -610,7 +609,7 @@ public class PlaywrightHrTest {
 
         final List<ELOAction> eloActions = new ArrayList<>();
 
-        Map<String, TabPage> eloTabPages = createEmployeeFL("Geneviève-Gabrielle", "Leutheusser-Schnarrenberger", "HR");
+        List<TabPage> eloTabPages = createEmployeeFL("Geneviève-Gabrielle", "Leutheusser-Schnarrenberger", "HR");
         ELOAction eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
         eloActions.add(eloAction);
 

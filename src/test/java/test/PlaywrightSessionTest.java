@@ -25,9 +25,9 @@ public class PlaywrightSessionTest {
     BrowserContext context;
     Page page;
     private final String reportPath = BaseFunctions.getTestReportDir();
-    private Map<String, TabPage> createEmployee1() {
+    private List< TabPage> createEmployee1() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -53,15 +53,15 @@ public class PlaywrightSessionTest {
         expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_SUPERIOR", "Gerd Baum", ELOControlType.DYNKWL));
         expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_DATEOFJOINING", "01.01.2022", ELOControlType.TEXT));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> editEmployee1() {
+    private List< TabPage> editEmployee1() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
         // Persönlich
         List<ELOControl> initTabPage = new ArrayList<>();
         List<ELOControl> controls = new ArrayList<>();
@@ -106,8 +106,8 @@ public class PlaywrightSessionTest {
         expectedValueControls.add(new ELOControl("IX_MAP_HR_PERSONNEL_TITLE", "Doktor H", ELOControlType.TEXT));
         expectedValueControls.add(new ELOControl("IX_GRP_HR_PERSONNEL_GENDER", "M - Männlich", ELOControlType.KWL));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Persönlich", tabPage);
+        TabPage tabPage = new TabPage("Persönlich", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Ein-/ Austritt
         initTabPage = new ArrayList<>();
@@ -119,15 +119,15 @@ public class PlaywrightSessionTest {
         expectedValueControls = new ArrayList<>();
         expectedValueControls.add(new ELOControl("IX_MAP_DURATION_TYPE", "sol.hr.form.personnelfile.fixedterm", ELOControlType.RADIO));
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Ein-/ Austritt", tabPage);
+        tabPage = new TabPage("Ein-/ Austritt", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> createCompany1() {
+    private List< TabPage> createCompany1() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -140,15 +140,15 @@ public class PlaywrightSessionTest {
 
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> createChartElementDivision1() {
+    private List< TabPage> createChartElementDivision1() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -162,15 +162,15 @@ public class PlaywrightSessionTest {
 
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> createChartElementDepartement1() {
+    private List< TabPage> createChartElementDepartement1() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -184,15 +184,15 @@ public class PlaywrightSessionTest {
 
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> createChartElementTeam1() {
+    private List< TabPage> createChartElementTeam1() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -206,15 +206,15 @@ public class PlaywrightSessionTest {
 
         List<ELOControl>  expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> createMB1() {
+    private List< TabPage> createMB1() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // Allgemein
         List<ELOControl> initTabPage = new ArrayList<>();
@@ -243,29 +243,29 @@ public class PlaywrightSessionTest {
         expectedValueControls.add(new ELOControl("IX_MAP_MEETING_BOARD_ORGANIZER1", "Jan Eichner", ELOControlType.DYNKWL));
 
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Allgemein", tabPage);
+        TabPage tabPage = new TabPage("Allgemein", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Mitglieder
 /*
-        fields = new TreeMap<>();
+        fields = new ArrayList<>();
 
         table = new ArrayList<>();
-        tableLine = new TreeMap<>();
+        tableLine = new ArrayList<>();
         tableLine.put("WF_MAP_MEETING_PERSON_LASTNAME", "Baum");
         tableLine.put("WF_MAP_MEETING_PERSON_FIRSTNAME", "Gerd");
         tableLine.put("WF_MAP_MEETING_PERSON_EMAIL", "g.baum@contelo.de");
         tableLine.put("WF_MAP_MEETING_PERSON_COMPANYNAME", "Contelo AG");
         table.add(tableLine);
 
-        tableLine = new TreeMap<>();
+        tableLine = new ArrayList<>();
         tableLine.put("WF_MAP_MEETING_PERSON_LASTNAME", "Renz");
         tableLine.put("WF_MAP_MEETING_PERSON_FIRSTNAME", "Sandra");
         tableLine.put("WF_MAP_MEETING_PERSON_EMAIL", "s.renz@contelo.de");
         tableLine.put("WF_MAP_MEETING_PERSON_COMPANYNAME", "Contelo AG");
         table.add(tableLine);
 
-        checkboxes = new TreeMap<>();
+        checkboxes = new ArrayList<>();
 
         tabPage = new TabPage(fields, table, "Weiteres Mitglied", checkboxes, AssignmentStatus.NOTHING);
         tabPages.put("Mitglieder", tabPage);
@@ -292,8 +292,8 @@ public class PlaywrightSessionTest {
 
         expectedValueControls = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Themen", tabPage);
+        tabPage = new TabPage("Themen", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Benachrichtigungen
         initTabPage = new ArrayList<>();
@@ -323,8 +323,8 @@ public class PlaywrightSessionTest {
 
         expectedValueControls = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Benachrichtigungen", tabPage);
+        tabPage = new TabPage("Benachrichtigungen", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Einstellungen
         initTabPage = new ArrayList<>();
@@ -338,15 +338,15 @@ public class PlaywrightSessionTest {
         expectedValueControls = new ArrayList<>();
         expectedValueControls.add(new ELOControl("IX_MAP_MEETING_BOARD_SETTING_ITEMTOAGENDA", "true", ELOControlType.CHECKBOX));
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Einstellungen", tabPage);
+        tabPage = new TabPage("Einstellungen", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> createME1() {
+    private List< TabPage> createME1() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // Allgemein
         List<ELOControl> initTabPage = new ArrayList<>();
@@ -375,8 +375,8 @@ public class PlaywrightSessionTest {
         expectedValueControls.add(new ELOControl("IX_GRP_MEETING_MINUTE_TAKER", "Charlotte Bennett", ELOControlType.DYNKWL));
         expectedValueControls.add(new ELOControl("IX_DESC", "Beschreibung Meeting1", ELOControlType.REDACTOR));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Allgemein", tabPage);
+        TabPage tabPage = new TabPage("Allgemein", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Teilnehmende
         initTabPage = new ArrayList<>();
@@ -392,7 +392,7 @@ public class PlaywrightSessionTest {
         table.add(tableLine);
 
 /*
-        tableLine = new TreeMap<>();
+        tableLine = new ArrayList<>();
         tableLine.put("WF_MAP_MEETING_PERSON_LASTNAME", "Renz");
         tableLine.put("WF_MAP_MEETING_PERSON_FIRSTNAME", "Sandra");
         tableLine.put("WF_MAP_MEETING_PERSON_EMAIL", "s.renz@contelo.de");
@@ -404,8 +404,8 @@ public class PlaywrightSessionTest {
 
         expectedValueControls = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Teilnehmende", tabPage);
+        tabPage = new TabPage("Teilnehmende", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Benachrichtigungen
         initTabPage = new ArrayList<>();
@@ -435,16 +435,16 @@ public class PlaywrightSessionTest {
 
         expectedValueControls = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Benachrichtigungen", tabPage);
+        tabPage = new TabPage("Benachrichtigungen", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Wiederholung
         /*
-        fields = new TreeMap<>();
+        fields = new ArrayList<>();
 
         table = new ArrayList<>();
 
-        checkboxes = new TreeMap<>();
+        checkboxes = new ArrayList<>();
         checkboxes.put("WF_MAP_MEETING_REPETITION_CREATE");
 
         tabPage = new TabPage(fields, table, "", checkboxes, AssignmentStatus.NOTHING);
@@ -453,9 +453,9 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-    private Map<String, TabPage> createMI1() {
+    private List< TabPage> createMI1() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -491,15 +491,15 @@ public class PlaywrightSessionTest {
         expectedValueControls.add(new ELOControl("IX_GRP_MEETING_ITEM_RESPONSIBLE_PERSON", "Adrian Smith", ELOControlType.DYNKWL));
         expectedValueControls.add(new ELOControl("IX_DESC", "Beschreibung Thema1", ELOControlType.REDACTOR));
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> createMIP1() {
+    private List< TabPage> createMIP1() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
         List<ELOControl> initTabPage = new ArrayList<>();
@@ -514,15 +514,15 @@ public class PlaywrightSessionTest {
 
         List<ELOControl> expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> createMIPMI1() {
+    private List< TabPage> createMIPMI1() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -555,15 +555,15 @@ public class PlaywrightSessionTest {
 
         List<ELOControl> expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> createMB2Premium() {
+    private List< TabPage> createMB2Premium() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // Allgemein
         List<ELOControl> initTabPage = new ArrayList<>();
@@ -588,29 +588,29 @@ public class PlaywrightSessionTest {
 
         List<ELOControl> expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Allgemein", tabPage);
+        TabPage tabPage = new TabPage("Allgemein", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Mitglieder
         /*
-        fields = new TreeMap<>();
+        fields = new ArrayList<>();
 
         table = new ArrayList<>();
-        tableLine = new TreeMap<>();
+        tableLine = new ArrayList<>();
         tableLine.put("WF_MAP_MEETING_PERSON_LASTNAME", "Baum");
         tableLine.put("WF_MAP_MEETING_PERSON_FIRSTNAME", "Gerd");
         tableLine.put("WF_MAP_MEETING_PERSON_EMAIL", "g.baum@contelo.de");
         tableLine.put("WF_MAP_MEETING_PERSON_COMPANYNAME", "Contelo AG");
         table.add(tableLine);
 
-        tableLine = new TreeMap<>();
+        tableLine = new ArrayList<>();
         tableLine.put("WF_MAP_MEETING_PERSON_LASTNAME", "Renz");
         tableLine.put("WF_MAP_MEETING_PERSON_FIRSTNAME", "Sandra");
         tableLine.put("WF_MAP_MEETING_PERSON_EMAIL", "s.renz@contelo.de");
         tableLine.put("WF_MAP_MEETING_PERSON_COMPANYNAME", "Contelo AG");
         table.add(tableLine);
 
-        checkboxes = new TreeMap<>();
+        checkboxes = new ArrayList<>();
 
         tabPage = new TabPage(fields, table, "Weiteres Mitglied", checkboxes, AssignmentStatus.NOTHING);
         tabPages.put("Mitglieder", tabPage);
@@ -637,8 +637,8 @@ public class PlaywrightSessionTest {
 
         expectedValueControls = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Tagesordnungspunkte", tabPage);
+        tabPage = new TabPage("Tagesordnungspunkte", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Benachrichtigungen
         initTabPage = new ArrayList<>();
@@ -668,8 +668,8 @@ public class PlaywrightSessionTest {
 
         expectedValueControls = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Benachrichtigungen", tabPage);
+        tabPage = new TabPage("Benachrichtigungen", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Einstellungen
         initTabPage = new ArrayList<>();
@@ -681,14 +681,14 @@ public class PlaywrightSessionTest {
 
         expectedValueControls = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Einstellungen", tabPage);
+        tabPage = new TabPage("Einstellungen", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> createME1Premium() {
-        Map<String, TabPage> tabPages = new TreeMap<>();
+    private List< TabPage> createME1Premium() {
+        List< TabPage> tabPages = new ArrayList<>();
 
         // Allgemein
         List<ELOControl> initTabPage = new ArrayList<>();
@@ -715,8 +715,8 @@ public class PlaywrightSessionTest {
 
         List<ELOControl> expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Allgemein", tabPage);
+        TabPage tabPage = new TabPage("Allgemein", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Teilnehmende
         initTabPage = new ArrayList<>();
@@ -732,7 +732,7 @@ public class PlaywrightSessionTest {
         table.add(tableLine);
 
 /*
-        tableLine = new TreeMap<>();
+        tableLine = new ArrayList<>();
         tableLine.put("WF_MAP_MEETING_PERSON_LASTNAME", "Renz");
         tableLine.put("WF_MAP_MEETING_PERSON_FIRSTNAME", "Sandra");
         tableLine.put("WF_MAP_MEETING_PERSON_EMAIL", "s.renz@contelo.de");
@@ -744,8 +744,8 @@ public class PlaywrightSessionTest {
 
         expectedValueControls = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Teilnehmende", tabPage);
+        tabPage = new TabPage("Teilnehmende", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Benachrichtigungen
         initTabPage = new ArrayList<>();
@@ -775,16 +775,16 @@ public class PlaywrightSessionTest {
 
         expectedValueControls = new ArrayList<>();
 
-        tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("Benachrichtigungen", tabPage);
+        tabPage = new TabPage("Benachrichtigungen", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         // Wiederholung
         /*
-        fields = new TreeMap<>();
+        fields = new ArrayList<>();
 
         table = new ArrayList<>();
 
-        checkboxes = new TreeMap<>();
+        checkboxes = new ArrayList<>();
         checkboxes.put("WF_MAP_MEETING_REPETITION_CREATE");
 
         tabPage = new TabPage(fields, table, "", checkboxes, AssignmentStatus.NOTHING);
@@ -793,9 +793,9 @@ public class PlaywrightSessionTest {
         return tabPages;
 
     }
-    private Map<String, TabPage> createMI1Premium() {
+    private List< TabPage> createMI1Premium() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -828,15 +828,15 @@ public class PlaywrightSessionTest {
 
         List<ELOControl> expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> createMIP2Premium() {
+    private List< TabPage> createMIP2Premium() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -852,15 +852,15 @@ public class PlaywrightSessionTest {
 
         List<ELOControl> expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
     }
-    private Map<String, TabPage> createMIPMI1Premium() {
+    private List< TabPage> createMIPMI1Premium() {
 
-        Map<String, TabPage> tabPages = new TreeMap<>();
+        List< TabPage> tabPages = new ArrayList<>();
 
         // "" (Nur eine tabPage)
 
@@ -893,8 +893,8 @@ public class PlaywrightSessionTest {
 
         List<ELOControl> expectedValueControls = new ArrayList<>();
 
-        TabPage tabPage = new TabPage(initTabPage, controls, tables, expectedValueControls);
-        tabPages.put("", tabPage);
+        TabPage tabPage = new TabPage("", initTabPage, controls, tables, expectedValueControls);
+        tabPages.add(tabPage);
 
         return tabPages;
 
@@ -928,7 +928,7 @@ public class PlaywrightSessionTest {
 
         final List<ELOAction> eloActions = new ArrayList<>();
 
-        Map<String, TabPage> eloTabPages = createEmployee1();
+        List< TabPage> eloTabPages = createEmployee1();
         ELOAction eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
         eloActions.add(eloAction);
 
@@ -990,7 +990,7 @@ public class PlaywrightSessionTest {
 
         final List<ELOAction> eloActions = new ArrayList<>();
 
-        Map<String, TabPage> eloTabPages = createEmployee1();
+        List< TabPage> eloTabPages = createEmployee1();
         ELOAction eloAction = new ELOAction("", FormulaType.EXTERNAL, "OK", "Abbrechen","", new ELOActionDef(selectorRibbonNew, selectorMenuPersonnel, selectorButtonNewEmployee), eloTabPages);
         eloActions.add(eloAction);
 
@@ -1043,7 +1043,7 @@ public class PlaywrightSessionTest {
 
         final List<ELOAction> eloActions = new ArrayList<>();
 
-        Map<String, TabPage> eloTabPages = createMB1();
+        List< TabPage> eloTabPages = createMB1();
         ELOAction eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK","Abbrechen", "", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingBoard), eloTabPages);
         eloActions.add(eloAction);
 
@@ -1125,7 +1125,7 @@ public class PlaywrightSessionTest {
 
         final List<ELOAction> eloActions = new ArrayList<>();
 
-        Map<String, TabPage> eloTabPages = createMB1();
+        List< TabPage> eloTabPages = createMB1();
         ELOAction eloAction = new ELOAction("", FormulaType.EXTERNAL,"OK","Abbrechen", "", new ELOActionDef(selectorRibbonNew, selectorMenuMeeting, selectorButtonCreateMeetingBoard), eloTabPages);
         eloActions.add(eloAction);
 

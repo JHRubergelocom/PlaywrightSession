@@ -11,8 +11,21 @@
   <component name="ChangeListManager">
     <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Testcases HR Test report">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataConfigCreateFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigCreateFile.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataConfigCreateFilesAmelie.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigCreateFilesAmelie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataConfigFirstdayOfWorkReminder.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigFirstdayOfWorkReminder.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataConfigHr.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigHr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataConfigHrEmployee.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigHrEmployee.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataConfigMeeting.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigMeeting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataConfigStartOffBoarding.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigStartOffBoarding.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataConfigStartOnBoarding.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigStartOnBoarding.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataConfigTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigTest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/ELOAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/ELOAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/Formula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Formula.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/TabPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/TabPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,22 +119,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaywrightHrTest.testDateTime" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PlaywrightSession" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.PlaywrightHrTest" />
-      <option name="METHOD_NAME" value="testDateTime" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PlaywrightHrTest.testEntryPath" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
@@ -138,7 +135,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaywrightHrTest.testExecuteRF" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlaywrightSessionTest.CreateDataConfigJson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
         <pattern>
@@ -147,27 +144,43 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.PlaywrightHrTest" />
-      <option name="METHOD_NAME" value="testExecuteRF" />
+      <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
+      <option name="METHOD_NAME" value="CreateDataConfigJson(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlaywrightSessionTest.TestSession" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PlaywrightSession" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.PlaywrightSessionTest" />
+      <option name="METHOD_NAME" value="TestSession(java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.PlaywrightSessionTest.CreateDataConfigJson" />
+      <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
       <item itemvalue="JUnit.PlaywrightHrTest.testEntryPath" />
       <item itemvalue="JUnit.PlaywrightHrTest.CreateDataConfigJson" />
-      <item itemvalue="JUnit.PlaywrightHrTest.testDateTime" />
-      <item itemvalue="JUnit.PlaywrightHrTest.testExecuteRF" />
       <item itemvalue="JUnit.PlaywrightHrTest.TestSession" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PlaywrightHrTest.TestSession" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
+        <item itemvalue="JUnit.PlaywrightSessionTest.CreateDataConfigJson" />
         <item itemvalue="JUnit.PlaywrightHrTest.CreateDataConfigJson" />
         <item itemvalue="JUnit.PlaywrightHrTest.testEntryPath" />
-        <item itemvalue="JUnit.PlaywrightHrTest.testExecuteRF" />
-        <item itemvalue="JUnit.PlaywrightHrTest.testDateTime" />
       </list>
     </recent_temporary>
   </component>
@@ -179,13 +192,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670419530192</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Playwright Html Report Test Reporting with Screenshots">
-      <created>1677512517241</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1677512517241</updated>
     </task>
     <task id="LOCAL-00073" summary="Playwright Html Report Test Reporting with Screenshots">
       <created>1677577045441</created>
@@ -523,7 +529,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681892377281</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="Playwright Testcases HR Test report">
+      <created>1681910458628</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1681910458628</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

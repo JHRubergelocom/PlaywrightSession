@@ -34,8 +34,9 @@
           "selectorMenu": "",
           "selectorButton": ""
         },
-        "tabPages": {
-          "Personal": {
+        "tabPages": [
+          {
+            "tabName": "Personal",
             "initTabPage": [],
             "controls": [],
             "tables": [],
@@ -47,7 +48,7 @@
               }
             ]
           }
-        }
+        ]
       }
     ]
   },
