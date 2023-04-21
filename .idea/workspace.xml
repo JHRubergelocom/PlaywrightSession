@@ -11,11 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2fcd0456-e2a3-4fe1-9136-6d7bb38b6450" name="Changes" comment="Playwright Testcases HR Check Value Control">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataConfigCreateFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigCreateFile.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eloix/WfUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eloix/WfUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/Formula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/Formula.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/WebclientSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightHrTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataConfigMeeting.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigMeeting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataConfigTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataConfigTest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/PlaywrightSessionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +74,7 @@
       <recent name="C:\Users\ruberg\Documents\Entwicklung\IntelliJ\PlaywrightSession\target" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlaywrightHrTest.TestSession">
+  <component name="RunManager" selected="JUnit.PlaywrightSessionTest.TestSession">
     <configuration name="PlaywrightHrTest.CreateDataConfigJson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PlaywrightSession" />
       <extension name="coverage">
@@ -166,11 +164,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PlaywrightHrTest.TestSession" />
-        <item itemvalue="JUnit.PlaywrightHrTest.testEloIxConnectAndDeleteData" />
-        <item itemvalue="JUnit.PlaywrightHrTest.CreateDataConfigJson" />
         <item itemvalue="JUnit.PlaywrightSessionTest.TestSession" />
         <item itemvalue="JUnit.PlaywrightSessionTest.CreateDataConfigJson" />
+        <item itemvalue="JUnit.PlaywrightHrTest.TestSession" />
+        <item itemvalue="JUnit.PlaywrightHrTest.CreateDataConfigJson" />
+        <item itemvalue="JUnit.PlaywrightHrTest.testEloIxConnectAndDeleteData" />
       </list>
     </recent_temporary>
   </component>
@@ -182,13 +180,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670419530192</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Playwright Input validation">
-      <created>1678269731323</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1678269731323</updated>
     </task>
     <task id="LOCAL-00077" summary="Playwright Input validation">
       <created>1678278568786</created>
@@ -526,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681998754783</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="Playwright Testcases HR Check Value Control">
+      <created>1682065997122</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1682065997122</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

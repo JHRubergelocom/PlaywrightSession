@@ -268,7 +268,7 @@
               {
                 "selector": "IX_GRP_MEETING_LOCATION",
                 "value": "Musterstadt",
-                "type": "DYNKWL"
+                "type": "TEXT"
               },
               {
                 "selector": "IX_GRP_MEETING_MINUTE_TAKER",
