@@ -48,6 +48,7 @@ public class PlaywrightHrTest {
 
         List<ELOCheckValueControl>  expectedValueControls = new ArrayList<>();
         expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_PERSONNELSTATUS", "O - In Vorbereitung", ELOControlType.KWL, ELOCheckValueOperator.EQUAL));
+        expectedValueControls.add(new ELOCheckValueControl("IX_GRP_HR_PERSONNEL_PERSONNELNO", "", ELOControlType.TEXT, ELOCheckValueOperator.EXIST));
 
         TabPage tabPage = new TabPage("Personal", initTabPage, controls, tables, expectedValueControls);
         tabPages.add(tabPage);
@@ -702,6 +703,19 @@ public class PlaywrightHrTest {
         System.out.println("*".repeat(30) + "Finished Workflows" + "*".repeat(30));
         return finishedWorkflows;
     }
+    private List<WFDiagram> getActiveWorkflows(IXConnection ixConn) {
+        System.out.println("*".repeat(30) + "Active Workflows" + "*".repeat(30));
+        List<WFDiagram> activeWorkflows = WfUtils.getActiveWorkflows(ixConn);
+        for (WFDiagram wf: activeWorkflows) {
+            System.out.println("wf.getId(): " + wf.getId());
+            System.out.println("wf.getName(): " + wf.getName());
+            System.out.println("wf.getNameTranslationKey(): " + wf.getNameTranslationKey());
+            System.out.println("wf.getTemplateName(): " + wf.getTemplateName());
+            System.out.println("-".repeat(60));
+        }
+        System.out.println("*".repeat(30) + "Active Workflows" + "*".repeat(30));
+        return activeWorkflows;
+    }
     @ParameterizedTest
     @ValueSource(strings = {"DataConfigCreateFile.json", "DataConfigStartOnBoarding.json", "DataConfigDeleteData.json", "DataConfigFirstdayOfWorkReminder.json", "DataConfigStartOffBoarding.json", "DataConfigCreateFilesAmelie.json"})
     public void CreateDataConfigJson(String jsonFile) {
@@ -798,6 +812,9 @@ public class PlaywrightHrTest {
         // Remove Workflows
         List<WFDiagram> finishedWorkflows = getFinishedWorkflows(ixConn);
         WfUtils.removeFinishedWorkflows(ixConn, finishedWorkflows);
+
+        List<WFDiagram> activeWorkflows = getActiveWorkflows(ixConn);
+        WfUtils.removeActiveWorkflows(ixConn, activeWorkflows);
 
         ixConn.close();
     }

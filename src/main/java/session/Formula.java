@@ -340,10 +340,21 @@ public class Formula {
         }
         return checkData;
     }
-    private void reportCheckValueControls(List<ELOCheckValueControl> checkValueControls) {
+
+    private void reportCheckValueEqualControls(List<ELOCheckValueControl> checkValueControls) {
         if (checkValueControls.isEmpty()) {
             return;
         }
+        boolean checkValueEqualExist = false;
+        for (ELOCheckValueControl checkValueControl : checkValueControls) {
+            if (checkValueControl.getOperator() == ELOCheckValueOperator.EQUAL) {
+                checkValueEqualExist = true;
+            }
+        }
+        if (!checkValueEqualExist) {
+            return;
+        }
+
         List<String> tableCols = new ArrayList<>();
         tableCols.add("Feld");
         tableCols.add("aktueller Wert");
@@ -352,79 +363,171 @@ public class Formula {
         List<List<String>> tableCells = new ArrayList<>();
 
         for (ELOCheckValueControl checkValueControl : checkValueControls) {
-            List<String> tableLineCells = new ArrayList<>();
-            String field = checkValueControl.getSelector();
-            String expValue = checkValueControl.getValue();
-            String actValue;
-            try {
-                boolean checkData = false;
-                Locator locator = frameLocator.locator("[name=\"" + field + "\"]");
-                if (checkValueControl.getType() == ELOControlType.CHECKBOX) {
-                    if (expValue.equalsIgnoreCase("true")) {
-                        checkData = BaseFunctions.checkValueEqualControl(locator, "1");
-                    } else if (expValue.equalsIgnoreCase("false")){
-                        checkData = BaseFunctions.checkValueEqualControl(locator, "0");
-                    }
-                } else if (checkValueControl.getType() == ELOControlType.REDACTOR) {
-                    checkData = BaseFunctions.checkValueEqualControl(locator, "<p>" + expValue + "</p>");
-                } else if (checkValueControl.getType() == ELOControlType.RADIO) {
-                    checkData = BaseFunctions.checkValueRadioButton(locator, expValue);
-                } else {
-                    checkData = BaseFunctions.checkValueEqualControl(locator, expValue);
-                }
-                actValue = "";
-                if (locator.count() == 1) {
-                    actValue = locator.inputValue();
-                }
-                if (checkValueControl.getType() == ELOControlType.CHECKBOX) {
-                    if (actValue.equalsIgnoreCase("1")) {
-                        actValue = "true";
+            if (checkValueControl.getOperator() == ELOCheckValueOperator.EQUAL) {
+                List<String> tableLineCells = new ArrayList<>();
+                String field = checkValueControl.getSelector();
+                String expValue = checkValueControl.getValue();
+                String actValue;
+                try {
+                    boolean checkData = false;
+                    Locator locator = frameLocator.locator("[name=\"" + field + "\"]");
+                    if (checkValueControl.getType() == ELOControlType.CHECKBOX) {
+                        if (expValue.equalsIgnoreCase("true")) {
+                            checkData = BaseFunctions.checkValueEqualControl(locator, "1");
+                        } else if (expValue.equalsIgnoreCase("false")){
+                            checkData = BaseFunctions.checkValueEqualControl(locator, "0");
+                        }
+                    } else if (checkValueControl.getType() == ELOControlType.REDACTOR) {
+                        checkData = BaseFunctions.checkValueEqualControl(locator, "<p>" + expValue + "</p>");
+                    } else if (checkValueControl.getType() == ELOControlType.RADIO) {
+                        checkData = BaseFunctions.checkValueRadioButton(locator, expValue);
                     } else {
-                        actValue = "false";
+                        checkData = BaseFunctions.checkValueEqualControl(locator, expValue);
                     }
-                } else if (checkValueControl.getType() == ELOControlType.REDACTOR) {
-                    actValue = actValue.replace("<p>", "");
-                    actValue = actValue.replace("</p>", "");
-                } else if (checkValueControl.getType() == ELOControlType.RADIO) {
-                    int count = locator.count();
-                    System.out.println("*".repeat(80));
-                    System.out.println("rows.count(): " + count);
-                    for (int i = 0; i < count; ++i) {
-                        System.out.println("Row: " + i + " getAttribute(\"autovalidval\") " + locator.nth(i).getAttribute("autovalidval"));
-                        System.out.println("Row: " + i + " textContent() " + locator.nth(i).textContent());
-                        System.out.println("Row: " + i + " inputValue() " + locator.nth(i).inputValue());
-                        System.out.println("Row: " + i + " innerTest() " + locator.nth(i).innerText());
-                        System.out.println("Row: " + i + " innerHTML() " + locator.nth(i).innerHTML());
-                        System.out.println("Row: " + i + " " + locator.nth(i));
+                    actValue = "";
+                    if (locator.count() == 1) {
+                        actValue = locator.inputValue();
+                    }
+                    if (checkValueControl.getType() == ELOControlType.CHECKBOX) {
+                        if (actValue.equalsIgnoreCase("1")) {
+                            actValue = "true";
+                        } else {
+                            actValue = "false";
+                        }
+                    } else if (checkValueControl.getType() == ELOControlType.REDACTOR) {
+                        actValue = actValue.replace("<p>", "");
+                        actValue = actValue.replace("</p>", "");
+                    } else if (checkValueControl.getType() == ELOControlType.RADIO) {
+                        int count = locator.count();
+                        System.out.println("*".repeat(80));
+                        System.out.println("rows.count(): " + count);
+                        for (int i = 0; i < count; ++i) {
+                            System.out.println("Row: " + i + " getAttribute(\"autovalidval\") " + locator.nth(i).getAttribute("autovalidval"));
+                            System.out.println("Row: " + i + " textContent() " + locator.nth(i).textContent());
+                            System.out.println("Row: " + i + " inputValue() " + locator.nth(i).inputValue());
+                            System.out.println("Row: " + i + " innerTest() " + locator.nth(i).innerText());
+                            System.out.println("Row: " + i + " innerHTML() " + locator.nth(i).innerHTML());
+                            System.out.println("Row: " + i + " " + locator.nth(i));
 
-                        String autovalidval = locator.nth(i).getAttribute("autovalidval");
-                        String inputValue = locator.nth(i).inputValue();
-                        if (autovalidval != null) {
-                            if (autovalidval.equals(inputValue)) {
-                                actValue = inputValue;
+                            String autovalidval = locator.nth(i).getAttribute("autovalidval");
+                            String inputValue = locator.nth(i).inputValue();
+                            if (autovalidval != null) {
+                                if (autovalidval.equals(inputValue)) {
+                                    actValue = inputValue;
+                                }
                             }
                         }
                     }
-                }
-                if(!checkData) {
+                    if(!checkData) {
+                        tableLineCells.add("<span>" + field + "</span>");
+                        tableLineCells.add("<span>" + actValue + "</span>");
+                        tableLineCells.add("<span>" + expValue + "</span>");
+                    } else {
+                        tableLineCells.add(field);
+                        tableLineCells.add(actValue);
+                        tableLineCells.add(expValue);
+                    }
+                } catch (Exception e) {
                     tableLineCells.add("<span>" + field + "</span>");
-                    tableLineCells.add("<span>" + actValue + "</span>");
+                    tableLineCells.add("<span>" + "undefiniert" + "</span>");
                     tableLineCells.add("<span>" + expValue + "</span>");
-                } else {
-                    tableLineCells.add(field);
-                    tableLineCells.add(actValue);
-                    tableLineCells.add(expValue);
                 }
-            } catch (Exception e) {
-                tableLineCells.add("<span>" + field + "</span>");
-                tableLineCells.add("<span>" + "undefiniert" + "</span>");
-                tableLineCells.add("<span>" + expValue + "</span>");
+                tableCells.add(tableLineCells);
             }
-            tableCells.add(tableLineCells);
+
         }
 
         ReportTable reportTable = new ReportTable(tableCols, tableCells);
-        BaseFunctions.reportMessageAndTable(webclientSession.getReportParagraphs(), "Feldwertprüfung", reportTable);
+        BaseFunctions.reportMessageAndTable(webclientSession.getReportParagraphs(), "Feldwertübereinstimmung", reportTable);
+
+    }
+    private void reportCheckValueExistControls(List<ELOCheckValueControl> checkValueControls) {
+        if (checkValueControls.isEmpty()) {
+            return;
+        }
+        boolean checkValueExistExist = false;
+        for (ELOCheckValueControl checkValueControl : checkValueControls) {
+            if (checkValueControl.getOperator() == ELOCheckValueOperator.EXIST) {
+                checkValueExistExist = true;
+            }
+        }
+        if (!checkValueExistExist) {
+            return;
+        }
+
+        List<String> tableCols = new ArrayList<>();
+        tableCols.add("Feld");
+        tableCols.add("aktueller Wert");
+
+        List<List<String>> tableCells = new ArrayList<>();
+
+        for (ELOCheckValueControl checkValueControl : checkValueControls) {
+            if (checkValueControl.getOperator() == ELOCheckValueOperator.EXIST) {
+                List<String> tableLineCells = new ArrayList<>();
+                String field = checkValueControl.getSelector();
+                String actValue;
+                try {
+                    boolean checkData = false;
+                    Locator locator = frameLocator.locator("[name=\"" + field + "\"]");
+                    checkData = BaseFunctions.checkValueExistControl(locator, checkValueControl.getType());
+
+                    actValue = "";
+                    if (locator.count() == 1) {
+                        actValue = locator.inputValue();
+                    }
+                    if (checkValueControl.getType() == ELOControlType.CHECKBOX) {
+                        if (actValue.equalsIgnoreCase("1")) {
+                            actValue = "true";
+                        } else {
+                            actValue = "false";
+                        }
+                    } else if (checkValueControl.getType() == ELOControlType.REDACTOR) {
+                        actValue = actValue.replace("<p>", "");
+                        actValue = actValue.replace("</p>", "");
+                    } else if (checkValueControl.getType() == ELOControlType.RADIO) {
+                        int count = locator.count();
+                        System.out.println("*".repeat(80));
+                        System.out.println("rows.count(): " + count);
+                        for (int i = 0; i < count; ++i) {
+                            System.out.println("Row: " + i + " getAttribute(\"autovalidval\") " + locator.nth(i).getAttribute("autovalidval"));
+                            System.out.println("Row: " + i + " textContent() " + locator.nth(i).textContent());
+                            System.out.println("Row: " + i + " inputValue() " + locator.nth(i).inputValue());
+                            System.out.println("Row: " + i + " innerTest() " + locator.nth(i).innerText());
+                            System.out.println("Row: " + i + " innerHTML() " + locator.nth(i).innerHTML());
+                            System.out.println("Row: " + i + " " + locator.nth(i));
+
+                            String autovalidval = locator.nth(i).getAttribute("autovalidval");
+                            String inputValue = locator.nth(i).inputValue();
+                            if (autovalidval != null) {
+                                if (autovalidval.equals(inputValue)) {
+                                    actValue = inputValue;
+                                }
+                            }
+                        }
+                    }
+                    if(!checkData) {
+                        tableLineCells.add("<span>" + field + "</span>");
+                        tableLineCells.add("<span>" + actValue + "</span>");
+                    } else {
+                        tableLineCells.add(field);
+                        tableLineCells.add(actValue);
+                    }
+                } catch (Exception e) {
+                    tableLineCells.add("<span>" + field + "</span>");
+                    tableLineCells.add("<span>" + "undefiniert" + "</span>");
+                }
+                tableCells.add(tableLineCells);
+            }
+
+        }
+
+        ReportTable reportTable = new ReportTable(tableCols, tableCells);
+        BaseFunctions.reportMessageAndTable(webclientSession.getReportParagraphs(), "Feldwert eingetragen", reportTable);
+
+    }
+    private void reportCheckValueControls(List<ELOCheckValueControl> checkValueControls) {
+        reportCheckValueEqualControls(checkValueControls);
+        reportCheckValueExistControls(checkValueControls);
     }
     private boolean checkValueControls(List<ELOCheckValueControl> checkValueControls, int index) {
         reportCheckValueControls(checkValueControls);

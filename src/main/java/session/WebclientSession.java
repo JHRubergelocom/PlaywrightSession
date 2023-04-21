@@ -328,6 +328,17 @@ public class WebclientSession {
 
         ixConn.close();
     }
+    private void removeActiveWorkflows() throws Exception {
+        // Ix Connect
+        IXConnection ixConn = ELOIxConnection.getIxConnection(dataConfig.getLoginData(), true);
+        System.out.println("IxConn: " + ixConn);
+
+        // Remove Workflows
+        List<WFDiagram> activeWorkflows = WfUtils.getActiveWorkflows(ixConn);
+        WfUtils.removeActiveWorkflows(ixConn, activeWorkflows);
+
+        ixConn.close();
+    }
     private void removeFinishedWorkflows() throws Exception {
         // Ix Connect
         IXConnection ixConn = ELOIxConnection.getIxConnection(dataConfig.getLoginData(), true);
@@ -394,6 +405,7 @@ public class WebclientSession {
 
                 // Remove Workflows
                 ws.removeFinishedWorkflows();
+                ws.removeActiveWorkflows();
             }
 
             // Forward Workflow
@@ -432,7 +444,6 @@ public class WebclientSession {
             }
         }
     }
-
     @Override
     public String toString() {
         return "WebclientSession{" +

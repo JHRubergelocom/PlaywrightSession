@@ -38,7 +38,7 @@ public class WfUtils {
         }
         return workflows;
     }
-    private static List<WFDiagram> getActiveWorkflows (IXConnection ixConn) {
+    public static List<WFDiagram> getActiveWorkflows (IXConnection ixConn) {
         FindWorkflowInfo findInfo = new FindWorkflowInfo();
         findInfo.setType(WFTypeC.ACTIVE);
         return findWorkflows(ixConn, findInfo);
@@ -61,6 +61,15 @@ public class WfUtils {
             throw new Exception("Kein aktiver Workflow vorhanden");
         }
     }
+    public static void removeActiveWorkflows(IXConnection ixConn, List<WFDiagram> workflows) {
+        for (WFDiagram wf: workflows) {
+            try {
+                ixConn.ix().deleteWorkFlow(wf.getId() + "", WFTypeC.ACTIVE, LockC.FORCE);
+            } catch (RemoteException ex) {
+                System.err.println("RemoteException message: " + ex.getMessage());
+            }
+        }
+    }
     public static List<WFDiagram> getFinishedWorkflows (IXConnection ixConn) {
         FindWorkflowInfo findInfo = new FindWorkflowInfo();
         findInfo.setType(WFTypeC.FINISHED);
@@ -74,7 +83,6 @@ public class WfUtils {
                 System.err.println("RemoteException message: " + ex.getMessage());
             }
         }
-
     }
     public static List<WFNode> getActiveUserNodes (WFDiagram workflow) {
         List<WFNode> nodes  = new ArrayList<>();

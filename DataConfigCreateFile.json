@@ -78,6 +78,12 @@
                 "value": "O - In Vorbereitung",
                 "type": "KWL",
                 "operator": "EQUAL"
+              },
+              {
+                "selector": "IX_GRP_HR_PERSONNEL_PERSONNELNO",
+                "value": "",
+                "type": "TEXT",
+                "operator": "EXIST"
               }
             ]
           }
